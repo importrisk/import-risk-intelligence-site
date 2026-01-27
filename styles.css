@@ -288,42 +288,61 @@ html { scroll-behavior: smooth;
 
 /* ---------- Sections ---------- */
 .section{
-  padding: 54px 0;
+  padding: 64px 0;
+  background: linear-gradient(
+    to bottom,
+    #f1f4f8 0%,
+    #eef2f6 100%
+  );
 }
 
 .section-alt{
-  background: #ffffff;
+  background: linear-gradient(
+    to bottom,
+    #e9edf3 0%,
+    #f4f6fa 100%
+  );
   border-top: 1px solid rgba(15, 23, 42, .06);
   border-bottom: 1px solid rgba(15, 23, 42, .06);
 }
 
+/* subtle divider between stacked sections */
+.section + .section{
+  border-top: 1px solid rgba(15, 23, 42, .05);
+}
+
 .section-title{
-  margin: 0 0 10px;
-  font-size: 22px;
+  margin: 0 0 14px;
+  font-size: 24px;
+  font-weight: 600;
   letter-spacing: -0.01em;
+  color: #0f172a;
 }
 
 .section-text{
   margin: 0;
-  max-width: 760px;
-  color: rgba(15, 23, 42, .70);
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(15, 23, 42, .72);
 }
 
+/* ---------- Request Box ---------- */
 .request-box{
-  margin-top: 18px;
-  padding: 18px;
-  border-radius: 16px;
+  margin-top: 22px;
+  padding: 20px 22px;
   background: rgba(79,142,220,.08);
   border: 1px solid rgba(79,142,220,.16);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
 }
+
 .request-label{
   margin: 0;
-  color: rgba(15, 23, 42, .72);
   font-weight: 600;
+  color: rgba(15, 23, 42, .72);
 }
 
 /* ---------- Footer ---------- */
