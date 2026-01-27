@@ -189,6 +189,12 @@ html { scroll-behavior: smooth;
   text-shadow: 0 10px 24px rgba(0,0,0,.28);
 }
 
+.hero-cta-note{
+  margin-top: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,.75);
+}
+
 .hero-actions{
   margin-top: 22px;
 }
