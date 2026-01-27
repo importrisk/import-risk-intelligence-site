@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Import Risk Intelligence</title>
+  <meta name="description" content="Independent risk monitoring for U.S. importers." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">IR</span>
+        <span class="brand-name">Import Risk Intelligence</span>
+      </a>
+
+      <nav class="nav">
+        <a class="nav-link is-active" href="#home">Home</a>
+        <a class="nav-link" href="#what-we-do">What We Do</a>
+        <a class="nav-link" href="#who-its-for">Who It’s For</a>
+        <a class="nav-link nav-cta" href="#request">Request Coverage</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <!-- Placeholder background. Swap later with an image in CSS. -->
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+      <h1 class="hero-title">Import &amp; Supply Chain<br/>Risk Intelligence</h1>
+      <p class="hero-subtitle">Independent risk monitoring for U.S. importers.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#request">Request Coverage</a>
+      </div>
+    </div>
+
+    <!-- Lower panel with the three tiles -->
+    <section class="features" aria-label="Coverage categories">
+      <div class="container">
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <!-- Simple inline icon -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2a10 10 0 1010 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">PORTS</h3>
+            <p class="feature-text">Monitor disruptions at key ports globally</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M2.5 12h19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 2.5c2.8 2.7 4.2 6.1 4.2 9.5S14.8 18.8 12 21.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 2.5C9.2 5.2 7.8 8.6 7.8 12s1.4 6.8 4.2 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">COUNTRIES</h3>
+            <p class="feature-text">Track risks in origin countries</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 7.5h16v12H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M7 7.5V5.5h10v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M9 12h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">PRODUCTS</h3>
+            <p class="feature-text">Focus on specific product categories</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Placeholder sections (so nav links have targets) -->
+  <section id="what-we-do" class="section">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-text">Placeholder copy. We’ll add your exact service language next.</p>
+    </div>
+  </section>
+
+  <section id="who-its-for" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Who It’s For</h2>
+      <p class="section-text">Placeholder copy. We’ll define ideal clients and use cases.</p>
+    </div>
+  </section>
+
+  <section id="request" class="section">
+    <div class="container">
+      <h2 class="section-title">Request Coverage</h2>
+      <p class="section-text">Placeholder. Later this can become a simple form or an email link.</p>
+
+      <div class="request-box">
+        <p class="request-label">For now:</p>
+        <a class="btn btn-primary" href="mailto:you@yourdomain.com?subject=Request%20Coverage%20-%20Import%20Risk%20Intelligence">
+          Email Request
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Import Risk Intelligence</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle + footer year
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".nav");
+    toggle?.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
