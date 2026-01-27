@@ -237,21 +237,15 @@ html { scroll-behavior: smooth;
 
 .feature:last-child{ border-right: 0; }
 
-.feature-icon{
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: #ffffff;
+.feature-icon {
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.feature-icon svg{
-  width: 28px;
-  height: 28px;
+.feature-icon svg {
+  width: 34px;
+  height: 34px;
+  display: block;
 }
 
 .feature-title{
