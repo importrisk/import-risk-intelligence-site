@@ -21,8 +21,8 @@ html, body{ height: 100%; }
 body{
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  color: var(--text);
-  background: #f6f8fb;
+  color: rgba(255,255,255,.86);      /* CHANGED */
+  background: var(--bg);             /* CHANGED */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -288,27 +288,19 @@ html { scroll-behavior: smooth;
 
 /* ---------- Sections ---------- */
 .section{
-  padding: 64px 0;
-  background: linear-gradient(
-    to bottom,
-    #f1f4f8 0%,
-    #eef2f6 100%
-  );
+  padding: 64px 0;                          /* unchanged */
+  background: transparent;                  /* CHANGED */
 }
 
 .section-alt{
-  background: linear-gradient(
-    to bottom,
-    #e9edf3 0%,
-    #f4f6fa 100%
-  );
-  border-top: 1px solid rgba(15, 23, 42, .06);
-  border-bottom: 1px solid rgba(15, 23, 42, .06);
+  background: transparent;                  /* CHANGED */
+  border-top: 0;                            /* CHANGED */
+  border-bottom: 0;                         /* CHANGED */
 }
 
 /* subtle divider between stacked sections */
 .section + .section{
-  border-top: 1px solid rgba(15, 23, 42, .05);
+  border-top: 1px solid rgba(255,255,255,.08);  /* CHANGED */
 }
 
 .section-title{
@@ -316,7 +308,7 @@ html { scroll-behavior: smooth;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #0f172a;
+  color: rgba(255,255,255,.92);             /* CHANGED */
 }
 
 .section-text{
@@ -324,15 +316,15 @@ html { scroll-behavior: smooth;
   max-width: 720px;
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(15, 23, 42, .72);
+  color: rgba(255,255,255,.72);             /* CHANGED */
 }
 
 /* ---------- Request Box ---------- */
 .request-box{
   margin-top: 22px;
   padding: 20px 22px;
-  background: rgba(79,142,220,.08);
-  border: 1px solid rgba(79,142,220,.16);
+  background: rgba(255,255,255,.06);        /* CHANGED */
+  border: 1px solid rgba(255,255,255,.12);  /* CHANGED */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -342,14 +334,15 @@ html { scroll-behavior: smooth;
 .request-label{
   margin: 0;
   font-weight: 600;
-  color: rgba(15, 23, 42, .72);
+  color: rgba(255,255,255,.78);             /* CHANGED */
 }
 
 /* ---------- Footer ---------- */
 .footer{
   padding: 26px 0 40px;
-  color: rgba(15, 23, 42, .55);
+  color: rgba(255,255,255,.55);             /* CHANGED */
   font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,.08); /* CHANGED */
 }
 .footer-inner{
   display: flex;
