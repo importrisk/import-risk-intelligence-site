@@ -169,7 +169,7 @@ html { scroll-behavior: smooth;
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 100px 0 48px;
+  padding: 120px 0 48px;
   color: rgba(255,255,255,.95);
 }
 
@@ -184,7 +184,7 @@ html { scroll-behavior: smooth;
 .hero-subtitle{
   margin: 14px auto 0;
   max-width: 680px;
-  font-size: 16px;
+  font-size: 19px;
   color: rgba(255,255,255,.78);
   text-shadow: 0 10px 24px rgba(0,0,0,.28);
 }
