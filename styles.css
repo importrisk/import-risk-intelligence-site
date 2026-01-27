@@ -229,25 +229,27 @@ html { scroll-behavior: smooth;
 }
 
 .feature{
-  padding: 22px 18px;
-  text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 118px;
 }
 
 .feature:last-child{ border-right: 0; }
 
-.feature-icon {
+.feature-icon{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  color: #ffffff;
+  margin: 0 0 8px;
+  color: #fff;
 }
 
-.feature-icon svg {
-  width: 34px;
-  height: 34px;
+.feature-icon svg{
+  width: 32px;
+  height: 32px;
   display: block;
 }
 
