@@ -86,6 +86,10 @@ html { scroll-behavior: smooth;
   font-weight: 800;
 }
 
+.brand-ir{
+  font-weight: 800;
+}
+
 .nav{
   display: flex;
   align-items: center;
