@@ -185,6 +185,13 @@ linear-gradient(
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch; /* KEY FIX */
+  .feature-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  min-height: 180px; /* or whatever feels right */
+}
+
   background: transparent;
   border: 0;
   box-shadow: none;
