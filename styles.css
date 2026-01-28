@@ -137,16 +137,13 @@ html{ scroll-behavior: smooth; }
   filter: saturate(.92) contrast(.98) brightness(.92);
 }
 
-/* ✅ ONLY CHANGE */
-.hero-overlay{
-  display: none;
-}
+.hero-overlay{ display: none; }
 
 .hero-inner{
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 120px 0 0; /* CHANGED: was 120px 0 48px */
+  padding: 120px 0 0;
   color: rgba(255,255,255,.95);
 }
 
@@ -172,32 +169,40 @@ html{ scroll-behavior: smooth; }
 .features{
   position: relative;
   z-index: 3;
-  padding: 0 0 24px; /* unchanged */
-  background: rgba(255,255,255,0.04); /* unchanged */
-  border-bottom: 1px solid rgba(255,255,255,0.08); /* unchanged */
+  margin-top: -1px; /* FIX: removes bright seam from hero */
+  padding: 0 0 24px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* CHANGED: remove inner "card" look so tiles feel integrated into the full-width band */
 .feature-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: transparent; /* CHANGED: was rgba(255,255,255,0.06) */
-  border: 0;              /* CHANGED: was 1px solid rgba(255,255,255,0.12) */
-  box-shadow: none;       /* CHANGED: was 0 18px 50px rgba(0,0,0,0.18) */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
-/* CHANGED: slightly softer dividers between items */
 .feature{
-  display: flex;               /* NEW */
-  flex-direction: column;      /* NEW */
-  align-items: center;         /* NEW */
-  justify-content: center;     /* NEW */
-  padding: 32px 22px;          /* slight bump for breathing room */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 22px;
   text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.10);
 }
 
-.feature:last-child{ border-right: 0; }
+/* Floating dividers */
+.feature:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.10);
+}
 
 /* ---------- Footer ---------- */
 .footer{
@@ -229,11 +234,10 @@ html{ scroll-behavior: smooth; }
 
 .section-split{
   position: relative;
-  padding: 24px 0; /* unchanged */
+  padding: 24px 0;
   overflow: hidden;
 }
 
-/* Two-column layout */
 .split-inner{
   position: relative;
   display: grid;
@@ -242,53 +246,38 @@ html{ scroll-behavior: smooth; }
   align-items: start;
 }
 
-/* TEXT COLUMN */
 .split-text{
   position: relative;
   z-index: 3;
-  max-width: 680px; /* unchanged */
+  max-width: 680px;
 }
 
-/* Kill default section padding INSIDE split */
 .section-split .section{
   padding: 0;
   background: transparent;
   border: 0;
 }
 
-/* CHANGED: remove stacked default heading/paragraph margins inside the split sections */
-.section-split .section-title{
-  margin: 0 0 12px;
-}
-.section-split .section-text{
-  margin: 0 0 24px;
-}
+.section-split .section-title{ margin: 0 0 12px; }
+.section-split .section-text{ margin: 0 0 24px; }
 
-/* Tight, intentional spacing between blocks */
-.section-split .section + .section{
-  margin-top: 42px; /* unchanged */
-}
+.section-split .section + .section{ margin-top: 42px; }
 
-/* VISUAL COLUMN */
 .split-visual{
   position: relative;
   height: 520px;
-
   background-image: url("assets/images/globe.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right center;
-
   opacity: 0.28;
   filter: saturate(.85) contrast(.95);
 }
 
-/* Soft fade so text bleeds INTO globe, not over it */
 .split-visual::before{
   content: "";
   position: absolute;
   inset: 0;
-
   background: linear-gradient(
     90deg,
     rgba(20,32,54,1) 0%,
@@ -298,16 +287,10 @@ html{ scroll-behavior: smooth; }
   );
 }
 
-#request .request-box {
-  margin-top: 44px; /* unchanged */
-}
+#request .request-box{ margin-top: 44px; }
 
-/* Mobile: stack + fade globe behind text */
 @media (max-width: 900px){
-  .split-inner{
-    grid-template-columns: 1fr;
-  }
-
+  .split-inner{ grid-template-columns: 1fr; }
   .split-visual{
     position: absolute;
     inset: 0;
@@ -315,14 +298,11 @@ html{ scroll-behavior: smooth; }
     background-position: center bottom;
     opacity: 0.18;
   }
-
-  .split-text{
-    max-width: 100%;
-  }
+  .split-text{ max-width: 100%; }
 }
 
-/* Ensure buttons style consistently across the site */
-.btn {
+/* Buttons */
+.btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -334,12 +314,12 @@ html{ scroll-behavior: smooth; }
   line-height: 1;
 }
 
-.btn-primary {
-  background: rgba(255, 255, 255, 0.92);
+.btn-primary{
+  background: rgba(255,255,255,0.92);
   color: #0b1526;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255,255,255,0.22);
 }
 
-.btn-primary:hover {
-  background: rgba(255, 255, 255, 1);
+.btn-primary:hover{
+  background: rgba(255,255,255,1);
 }
