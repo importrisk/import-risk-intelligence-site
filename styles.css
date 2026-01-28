@@ -231,7 +231,7 @@ html{ scroll-behavior: smooth; }
   display: grid;
   grid-template-columns: minmax(0, 640px) 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
 }
 
 /* TEXT COLUMN */
