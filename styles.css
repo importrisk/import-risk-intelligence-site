@@ -118,11 +118,12 @@ html{ scroll-behavior: smooth; }
   display: flex;
   flex-direction: column;
   padding-top: 84px;
+  overflow: hidden;
 }
 
 .hero-bg{
   position: absolute;
-  inset: 0;
+  inset: -2px;
   background-color: #1f2e45;
   background-image:
 linear-gradient(
