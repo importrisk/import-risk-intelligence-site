@@ -172,24 +172,26 @@ html{ scroll-behavior: smooth; }
 .features{
   position: relative;
   z-index: 3;
-  padding: 0 0 24px; /* CHANGED: was 40px 0 24px */
-  background: rgba(255,255,255,0.04); /* ADDED: page-wide band */
-  border-top: 1px solid rgba(255,255,255,0.08); /* ADDED: soft divider */
-  border-bottom: 1px solid rgba(255,255,255,0.08); /* ADDED: soft divider */
+  padding: 0 0 24px; /* unchanged */
+  background: rgba(255,255,255,0.04); /* unchanged */
+  border-top: 1px solid rgba(255,255,255,0.08); /* unchanged */
+  border-bottom: 1px solid rgba(255,255,255,0.08); /* unchanged */
 }
 
+/* CHANGED: remove inner "card" look so tiles feel integrated into the full-width band */
 .feature-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+  background: transparent; /* CHANGED: was rgba(255,255,255,0.06) */
+  border: 0;              /* CHANGED: was 1px solid rgba(255,255,255,0.12) */
+  box-shadow: none;       /* CHANGED: was 0 18px 50px rgba(0,0,0,0.18) */
 }
 
+/* CHANGED: slightly softer dividers between items */
 .feature{
   padding: 28px 22px;
   text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.12);
+  border-right: 1px solid rgba(255,255,255,0.10); /* CHANGED: was 0.12 */
 }
 
 .feature:last-child{ border-right: 0; }
@@ -294,7 +296,7 @@ html{ scroll-behavior: smooth; }
 }
 
 #request .request-box {
-  margin-top: 44px; /* adjust to taste: 24–40px */
+  margin-top: 44px; /* unchanged */
 }
 
 /* Mobile: stack + fade globe behind text */
