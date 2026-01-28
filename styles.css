@@ -8,8 +8,6 @@
   --muted: rgba(255,255,255,.75);
 
   --white: #ffffff;
-  --panel: rgba(255,255,255,.94);
-  --panel-border: rgba(15, 23, 42, .08);
 
   --brand: #4f8edc;
   --brand-2: #2f6fbe;
@@ -20,9 +18,9 @@
   /* Layout */
   --container: 1080px;
 
-  /* Radii (tighten these to reduce rounding site-wide) */
-  --radius: 10px;        /* was 14px */
-  --radius-sm: 8px;      /* for smaller elements */
+  /* Radii (square everywhere) */
+  --radius: 0px;
+  --radius-sm: 0px;
   --radius-none: 0px;
 
   /* Footer palette */
@@ -57,7 +55,29 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   1) Topbar / Nav
+   1) Buttons (shared)
+   ========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--radius-none);
+  text-decoration: none;
+}
+
+.btn-primary{
+  color: #fff;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 16px 34px rgba(0,0,0,.24);
+}
+
+.btn-primary:hover{ filter: brightness(1.05); }
+
+
+/* =========================================================
+   2) Topbar / Nav
    ========================================================= */
 .topbar{
   position: absolute;
@@ -82,27 +102,14 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(255,255,255,.92);
 }
 
-.brand-mark{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm); /* tightened */
-  font-weight: 800;
-  letter-spacing: .5px;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.18);
-  backdrop-filter: blur(6px);
-}
+.brand-ir{ font-weight: 800; }
+.brand-sep{ opacity: .75; }
 
 .brand-name{
   font-size: 14px;
   font-weight: 600;
   opacity: .92;
 }
-
-.brand-ir{ font-weight: 800; }
 
 .nav{
   display: flex;
@@ -135,7 +142,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   2) Hero
+   3) Hero
    ========================================================= */
 .hero{
   position: relative;
@@ -192,25 +199,22 @@ a{ color: inherit; text-decoration: none; }
 
 .hero-actions{ margin-top: 135px; }
 
-/* Force hero CTA button styling */
 .hero-actions .btn.btn-primary{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 12px 18px;
-  border-radius: var(--radius-none); /* keep square like you wanted */
   font-weight: 700;
   font-size: 14px;
-  color: #fff;
-  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
-  box-shadow: 0 16px 34px rgba(0,0,0,.24);
-  text-decoration: none;
 }
-.hero-actions .btn.btn-primary:hover{ filter: brightness(1.05); }
+
+.hero-cta-note{
+  margin: 12px auto 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.70);
+  text-shadow: 0 10px 24px rgba(0,0,0,.22);
+}
 
 
 /* =========================================================
-   3) Feature Tiles
+   4) Feature Tiles
    ========================================================= */
 .features{
   position: relative;
@@ -219,9 +223,7 @@ a{ color: inherit; text-decoration: none; }
   background: rgba(255,255,255,0.04);
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-
-  /* Seam fix with hero */
-  margin-top: -1px;
+  margin-top: -1px; /* seam fix with hero */
 }
 
 .feature-grid{
@@ -274,11 +276,11 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   4) Split Section (Text + Bio)
+   5) Split Section (Text + Bio)
    ========================================================= */
 .section-split{
   position: relative;
-  padding: 48px 0 24px; /* more air above */
+  padding: 48px 0 24px; /* separation from features */
   overflow: hidden;
 }
 
@@ -306,9 +308,14 @@ a{ color: inherit; text-decoration: none; }
 .section-split .section-text{ margin: 0 0 24px; }
 .section-split .section + .section{ margin-top: 42px; }
 
+/* Left-column Request Coverage button spacing */
+.request-box{
+  margin-top: 16px;
+}
+
 
 /* =========================================================
-   Bio Column (Right) — square, editorial, non-card
+   6) Bio Column (Right)
    ========================================================= */
 .split-bio{
   position: relative;
@@ -319,12 +326,9 @@ a{ color: inherit; text-decoration: none; }
   gap: 14px;
 
   padding: 20px;
-
-  /* square + quiet */
   background: rgba(255,255,255,0.015);
   border: 1px solid rgba(255,255,255,0.04);
   border-radius: 0;
-
   box-shadow: 0 10px 28px rgba(0,0,0,0.18);
 }
 
@@ -378,9 +382,10 @@ a{ color: inherit; text-decoration: none; }
 .bio-links a{
   opacity: 0.9;
 }
+.bio-links a:hover{ text-decoration: underline; }
 
 .bio-cta{
-  margin-top: 18px;
+  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,0.12);
 }
@@ -389,21 +394,9 @@ a{ color: inherit; text-decoration: none; }
   width: 100%;
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .split-bio{ min-height: auto; }
 
-  .bio-top{
-    grid-template-columns: 96px 1fr;
-  }
-
-  .bio-photo{
-    width: 96px;
-    height: 96px;
-  }
- }  
 /* =========================================================
-   6) Footer
+   7) Footer
    ========================================================= */
 .site-footer{
   background: var(--footer-bg);
@@ -482,7 +475,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   7) Responsive
+   8) Responsive
    ========================================================= */
 @media (max-width: 900px){
   .split-inner{
@@ -494,17 +487,17 @@ a{ color: inherit; text-decoration: none; }
     min-height: auto;
   }
 
-  .bio-cta .btn{
-    width: auto;
-  }
-
   .bio-top{
-    grid-template-columns: 96px 1fr; /* scale down photo on mobile */
+    grid-template-columns: 96px 1fr;
   }
 
   .bio-photo{
     width: 96px;
     height: 96px;
+  }
+
+  .bio-cta .btn{
+    width: auto;
   }
 }
 
@@ -513,6 +506,7 @@ a{ color: inherit; text-decoration: none; }
     flex-direction: column;
     text-align: left;
   }
+
   .site-footer .footer-right{
     text-align: left;
   }
@@ -520,10 +514,8 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   8) Legacy Footer (kept so you don’t break anything)
+   9) Legacy Footer (optional)
    ========================================================= */
-/* If your HTML still uses <footer class="footer">, it will work.
-   You can delete this block later once you switch to .site-footer. */
 .footer{
   padding: 26px 0 40px;
   color: rgba(255,255,255,.55);
