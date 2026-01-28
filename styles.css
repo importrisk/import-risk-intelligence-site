@@ -1,4 +1,6 @@
-/* ---------- Base ---------- */
+/* =========================================================
+   Base / Tokens
+   ========================================================= */
 :root{
   --bg: #1f2e45;
   --text: #0f172a;
@@ -14,10 +16,19 @@
 
   --radius: 14px;
   --container: 1080px;
+
+  /* Footer palette */
+  --footer-bg: #0b1626;
+  --footer-border: rgba(255,255,255,0.06);
+  --footer-text: #a9b6c7;
+  --footer-head: #d6dee8;
+  --footer-link: #9fb7d9;
+  --footer-faint: #7f8ea3;
 }
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
 
 body{
   margin: 0;
@@ -36,9 +47,10 @@ body{
 
 a{ color: inherit; text-decoration: none; }
 
-html{ scroll-behavior: smooth; }
 
-/* ---------- Topbar ---------- */
+/* =========================================================
+   Topbar / Nav
+   ========================================================= */
 .topbar{
   position: absolute;
   top: 0;
@@ -111,7 +123,10 @@ html{ scroll-behavior: smooth; }
 
 .nav-cta:hover{ background: rgba(79,142,220,1); }
 
-/* ---------- Hero ---------- */
+
+/* =========================================================
+   Hero
+   ========================================================= */
 .hero{
   position: relative;
   min-height: 70vh;
@@ -126,13 +141,13 @@ html{ scroll-behavior: smooth; }
   inset: -2px;
   background-color: #1f2e45;
   background-image:
-linear-gradient(
-  180deg,
-  rgba(31,46,69,.78) 0%,
-  rgba(31,46,69,.86) 60%,
-  rgba(31,46,69,.97) 100%
-),
-  url("assets/images/hero.jpg");
+    linear-gradient(
+      180deg,
+      rgba(31,46,69,.78) 0%,
+      rgba(31,46,69,.86) 60%,
+      rgba(31,46,69,.97) 100%
+    ),
+    url("assets/images/hero.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -167,83 +182,6 @@ linear-gradient(
 
 .hero-actions{ margin-top: 135px; }
 
-/* ---------- Feature Tiles ---------- */
-.features{
-  position: relative;
-  z-index: 3;
-  padding: 0; /* IMPORTANT: remove bottom-heavy padding */
-  background: rgba(255,255,255,0.04);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-
-  /* Seam fix with hero */
-  margin-top: -1px;
-}
-
-/* Grid creates the band height + centers content vertically */
-.feature-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: stretch;
-
-  /* This is what makes the whole section feel centered */
-  min-height: 200px;         /* tweak 180–220 if you want */
-  padding: 28px 0;           /* equal top/bottom padding */
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-}
-
-.feature{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 22px;           /* side padding only (keeps vertical centering true) */
-  text-align: center;
-}
-
-.feature svg{
-  width: 32px;
-  height: 32px;
-  margin-bottom: 14px;
-}
-
-.feature svg *{
-  stroke-width: 1.25; /* thinner icon lines */
-}
-
-.feature h3{
-  margin: 10px 0 8px;
-}
-
-.feature p{
-  margin: 0;
-  opacity: .85;
-  line-height: 1.5;
-}
-
-/* Floating vertical dividers (consistent length) */
-.feature:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 6px;
-  bottom: 6px;
-  width: 1px;
-  background: rgba(255,255,255,0.10);
-}
-
-/* ---------- Footer ---------- */
-.footer{
-  padding: 26px 0 40px;
-  color: rgba(255,255,255,.55);
-  font-size: 13px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
 /* --- Force hero CTA button styling (fix) --- */
 .hero-actions .btn.btn-primary{
   display: inline-flex;
@@ -260,10 +198,75 @@ linear-gradient(
 }
 .hero-actions .btn.btn-primary:hover{ filter: brightness(1.05); }
 
-/* =========================
-   Split text + globe layout
-   ========================= */
 
+/* =========================================================
+   Feature Tiles
+   ========================================================= */
+.features{
+  position: relative;
+  z-index: 3;
+  padding: 0; /* IMPORTANT: remove bottom-heavy padding */
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  /* Seam fix with hero */
+  margin-top: -1px;
+}
+
+.feature-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+
+  min-height: 200px;         /* tweak 180–220 if you want */
+  padding: 28px 0;           /* equal top/bottom padding */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.feature{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 22px;
+  text-align: center;
+}
+
+.feature svg{
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+}
+
+.feature svg *{ stroke-width: 1.25; }
+
+.feature h3{ margin: 10px 0 8px; }
+
+.feature p{
+  margin: 0;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.feature:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(255,255,255,0.10);
+}
+
+
+/* =========================================================
+   Split Section (Text + Visual)
+   ========================================================= */
 .section-split{
   position: relative;
   padding: 24px 0;
@@ -292,7 +295,6 @@ linear-gradient(
 
 .section-split .section-title{ margin: 0 0 12px; }
 .section-split .section-text{ margin: 0 0 24px; }
-
 .section-split .section + .section{ margin-top: 42px; }
 
 .split-visual{
@@ -333,7 +335,10 @@ linear-gradient(
   .split-text{ max-width: 100%; }
 }
 
-/* Buttons */
+
+/* =========================================================
+   Buttons
+   ========================================================= */
 .btn{
   display: inline-flex;
   align-items: center;
@@ -354,4 +359,87 @@ linear-gradient(
 
 .btn-primary:hover{
   background: rgba(255,255,255,1);
+}
+
+
+/* =========================================================
+   Footer (NEW)
+   ========================================================= */
+/* Recommended footer class: .site-footer */
+.site-footer{
+  background: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  padding: 64px 0;
+  color: var(--footer-text);
+}
+
+.site-footer .footer-inner{
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.site-footer .footer-title{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--footer-head);
+  margin: 0 0 12px;
+}
+
+.site-footer .footer-desc{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.site-footer .footer-right{
+  text-align: right;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.site-footer .footer-block{ margin-bottom: 16px; }
+
+.site-footer .footer-label{
+  color: var(--footer-head);
+  font-weight: 500;
+}
+
+.site-footer a{
+  color: var(--footer-link);
+  text-decoration: none;
+}
+
+.site-footer a:hover{ text-decoration: underline; }
+
+.site-footer .footer-copy{
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--footer-faint);
+}
+
+/* Mobile footer */
+@media (max-width: 768px){
+  .site-footer .footer-inner{
+    flex-direction: column;
+    text-align: left;
+  }
+  .site-footer .footer-right{
+    text-align: left;
+  }
+}
+
+
+/* =========================================================
+   Legacy Footer (kept so you don’t break anything)
+   ========================================================= */
+/* If your HTML still uses <footer class="footer">, it will work.
+   You can delete this block later once you switch to .site-footer. */
+.footer{
+  padding: 26px 0 40px;
+  color: rgba(255,255,255,.55);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
