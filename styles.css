@@ -137,7 +137,6 @@ html{ scroll-behavior: smooth; }
   filter: saturate(.92) contrast(.98) brightness(.92);
 }
 
-
 /* ✅ ONLY CHANGE */
 .hero-overlay{
   display: none;
@@ -173,7 +172,7 @@ html{ scroll-behavior: smooth; }
 .features{
   position: relative;
   z-index: 3;
-  padding: 48px 0 42px;
+  padding: 40px 0 24px; /* CHANGED: was 48px 0 42px */
 }
 
 .feature-grid{
@@ -199,6 +198,7 @@ html{ scroll-behavior: smooth; }
   font-size: 13px;
   border-top: 1px solid rgba(255,255,255,.08);
 }
+
 /* --- Force hero CTA button styling (fix) --- */
 .hero-actions .btn.btn-primary{
   display: inline-flex;
@@ -214,13 +214,14 @@ html{ scroll-behavior: smooth; }
   text-decoration: none;
 }
 .hero-actions .btn.btn-primary:hover{ filter: brightness(1.05); }
+
 /* =========================
    Split text + globe layout
    ========================= */
 
 .section-split{
   position: relative;
-  padding: 56px 0 64px; /* top | sides | bottom */
+  padding: 56px 0 64px; /* unchanged */
   overflow: hidden;
 }
 
@@ -237,9 +238,7 @@ html{ scroll-behavior: smooth; }
 .split-text{
   position: relative;
   z-index: 3;
-
-  /* This is the key bleed effect */
-  max-width: 680px;
+  max-width: 680px; /* unchanged */
 }
 
 /* Kill default section padding INSIDE split */
@@ -249,9 +248,17 @@ html{ scroll-behavior: smooth; }
   border: 0;
 }
 
+/* CHANGED: remove stacked default heading/paragraph margins inside the split sections */
+.section-split .section-title{
+  margin: 0 0 12px;
+}
+.section-split .section-text{
+  margin: 0 0 24px;
+}
+
 /* Tight, intentional spacing between blocks */
 .section-split .section + .section{
-  margin-top: 42px;
+  margin-top: 42px; /* unchanged */
 }
 
 /* VISUAL COLUMN */
@@ -300,3 +307,4 @@ html{ scroll-behavior: smooth; }
   .split-text{
     max-width: 100%;
   }
+}
