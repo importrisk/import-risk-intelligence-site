@@ -194,13 +194,25 @@ linear-gradient(
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px 22px;
+  padding: 28px 22px;
   text-align: center;
 }
 .feature svg{
   width: 32px;
   height: 32px;
   margin-bottom: 14px;
+}
+.feature-icon svg{
+  stroke-width: 1.5; /* was effectively ~2 at this size */
+}
+.feature h3{
+  margin: 10px 0 8px;
+}
+
+.feature p{
+  margin: 0;
+  opacity: .85;
+  line-height: 1.5;
 }
 
 /* Floating vertical dividers */
