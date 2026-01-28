@@ -300,25 +300,31 @@ a{ color: inherit; text-decoration: none; }
 .split-visual{
   position: relative;
   height: 520px;
-  background-image: url("assets/images/globe.png");
+
+  background-image: url("assets/images/containers-bg.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: right center;
-  opacity: 0.28;
-  filter: saturate(.85) contrast(.95);
+
+  /* Make it sit back */
+  filter: saturate(.75) contrast(.92) brightness(.88);
+  opacity: 0.32;
 }
 
 .split-visual::before{
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     90deg,
-    rgba(20,32,54,1) 0%,
-    rgba(20,32,54,.85) 18%,
-    rgba(20,32,54,.45) 38%,
-    rgba(20,32,54,0) 58%
+    rgba(31,46,69,.96) 0%,
+    rgba(31,46,69,.60) 30%,
+    rgba(31,46,69,.25) 55%,
+    rgba(31,46,69,0) 75%
   );
+
+  pointer-events: none;
 }
 
 #request .request-box{ margin-top: 44px; }
