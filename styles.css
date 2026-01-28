@@ -216,26 +216,45 @@ html{ scroll-behavior: smooth; }
 .hero-actions .btn.btn-primary:hover{ filter: brightness(1.05); }
 /* =========================
    Split text + globe layout
-========================= */
+   ========================= */
 
 .section-split{
   position: relative;
-  padding: 120px 0;
+  padding: 100px 0;
   overflow: hidden;
 }
 
+/* Two-column layout */
 .split-inner{
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 640px) 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
 }
 
+/* TEXT COLUMN */
 .split-text{
   position: relative;
-  z-index: 2;
+  z-index: 3;
+
+  /* This is the key bleed effect */
+  max-width: 680px;
 }
 
+/* Kill default section padding INSIDE split */
+.section-split .section{
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+/* Tight, intentional spacing between blocks */
+.section-split .section + .section{
+  margin-top: 42px;
+}
+
+/* VISUAL COLUMN */
 .split-visual{
   position: relative;
   height: 520px;
@@ -249,4 +268,35 @@ html{ scroll-behavior: smooth; }
   filter: saturate(.85) contrast(.95);
 }
 
+/* Soft fade so text bleeds INTO globe, not over it */
+.split-visual::before{
+  content: "";
+  position: absolute;
+  inset: 0;
 
+  background: linear-gradient(
+    90deg,
+    rgba(20,32,54,1) 0%,
+    rgba(20,32,54,.85) 18%,
+    rgba(20,32,54,.45) 38%,
+    rgba(20,32,54,0) 58%
+  );
+}
+
+/* Mobile: stack + fade globe behind text */
+@media (max-width: 900px){
+  .split-inner{
+    grid-template-columns: 1fr;
+  }
+
+  .split-visual{
+    position: absolute;
+    inset: 0;
+    height: auto;
+    background-position: center bottom;
+    opacity: 0.18;
+  }
+
+  .split-text{
+    max-width: 100%;
+  }
