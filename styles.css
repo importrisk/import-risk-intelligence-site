@@ -174,7 +174,6 @@ html{ scroll-behavior: smooth; }
   z-index: 3;
   padding: 0 0 24px; /* unchanged */
   background: rgba(255,255,255,0.04); /* unchanged */
-  border-top: 1px solid rgba(255,255,255,0.08); /* unchanged */
   border-bottom: 1px solid rgba(255,255,255,0.08); /* unchanged */
 }
 
@@ -189,9 +188,13 @@ html{ scroll-behavior: smooth; }
 
 /* CHANGED: slightly softer dividers between items */
 .feature{
-  padding: 28px 22px;
+  display: flex;               /* NEW */
+  flex-direction: column;      /* NEW */
+  align-items: center;         /* NEW */
+  justify-content: center;     /* NEW */
+  padding: 32px 22px;          /* slight bump for breathing room */
   text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.10); /* CHANGED: was 0.12 */
+  border-right: 1px solid rgba(255,255,255,0.10);
 }
 
 .feature:last-child{ border-right: 0; }
