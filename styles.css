@@ -175,6 +175,8 @@ linear-gradient(
   background: rgba(255,255,255,0.04);
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  /* Seam fix: overlap hero by 1px to prevent gradient edge line */
   margin-top: -1px;
 }
 
@@ -196,13 +198,13 @@ linear-gradient(
   text-align: center;
 }
 
-/* Floating dividers */
+/* Floating vertical dividers */
 .feature:not(:last-child)::after{
   content: "";
   position: absolute;
   right: 0;
-  top: 25%;
-  height: 50%;
+  top: 20%;
+  height: 60%;
   width: 1px;
   background: rgba(255,255,255,0.10);
 }
