@@ -221,7 +221,7 @@ html{ scroll-behavior: smooth; }
 
 .section-split{
   position: relative;
-  padding: 56px 0 64px; /* unchanged */
+  padding: 24px 0 28px; /* unchanged */
   overflow: hidden;
 }
 
