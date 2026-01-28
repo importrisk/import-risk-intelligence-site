@@ -214,4 +214,39 @@ html{ scroll-behavior: smooth; }
   text-decoration: none;
 }
 .hero-actions .btn.btn-primary:hover{ filter: brightness(1.05); }
+/* =========================
+   Split text + globe layout
+========================= */
+
+.section-split{
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.split-inner{
+  display: grid;
+  grid-template-columns: minmax(0, 640px) 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.split-text{
+  position: relative;
+  z-index: 2;
+}
+
+.split-visual{
+  position: relative;
+  height: 520px;
+
+  background-image: url("assets/images/globe.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+
+  opacity: 0.28;
+  filter: saturate(.85) contrast(.95);
+}
+
 
