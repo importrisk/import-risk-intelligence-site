@@ -278,7 +278,7 @@ a{ color: inherit; text-decoration: none; }
    ========================================================= */
 .section-split{
   position: relative;
-  padding: 24px 0;
+  padding: 48px 0 24px; /* more air above */
   overflow: hidden;
 }
 
@@ -289,7 +289,6 @@ a{ color: inherit; text-decoration: none; }
   gap: 80px;
   align-items: start;
 }
-
 
 .split-text{
   position: relative;
