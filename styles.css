@@ -225,13 +225,13 @@ linear-gradient(
   line-height: 1.5;
 }
 
-/* Floating vertical dividers */
+/* Floating vertical dividers (consistent length) */
 .feature:not(:last-child)::after{
   content: "";
   position: absolute;
   right: 0;
-  top: 18%;
-  height: 64%;
+  top: 24px;
+  bottom: 24px;
   width: 1px;
   background: rgba(255,255,255,0.10);
 }
