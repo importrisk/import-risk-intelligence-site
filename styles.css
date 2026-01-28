@@ -290,7 +290,7 @@ html{ scroll-behavior: smooth; }
   );
 }
 #request .request-box {
-  margin-top: 30px; /* adjust to taste: 24–40px */
+  margin-top: 44px; /* adjust to taste: 24–40px */
 }
 
 /* Mobile: stack + fade globe behind text */
