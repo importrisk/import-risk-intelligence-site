@@ -180,16 +180,12 @@ linear-gradient(
   margin-top: -1px;
 }
 
-/* Grid stretches children to equal height */
+/* Grid: center the columns vertically within the band */
 .feature-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: stretch; /* KEY FIX */
-  .feature-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  min-height: 180px; /* or whatever feels right */
+  align-items: center;      /* centers items vertically in the row */
+  min-height: 180px;        /* gives the band a consistent height to center within */
 }
 
   background: transparent;
