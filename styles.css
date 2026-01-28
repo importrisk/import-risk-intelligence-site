@@ -197,6 +197,11 @@ linear-gradient(
   padding: 32px 22px;
   text-align: center;
 }
+.feature svg{
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+}
 
 /* Floating vertical dividers */
 .feature:not(:last-child)::after{
