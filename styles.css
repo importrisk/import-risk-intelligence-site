@@ -146,7 +146,7 @@ html{ scroll-behavior: smooth; }
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 120px 0 48px;
+  padding: 120px 0 0; /* CHANGED: was 120px 0 48px */
   color: rgba(255,255,255,.95);
 }
 
@@ -172,7 +172,10 @@ html{ scroll-behavior: smooth; }
 .features{
   position: relative;
   z-index: 3;
-  padding: 40px 0 24px; /* CHANGED: was 48px 0 42px */
+  padding: 0 0 24px; /* CHANGED: was 40px 0 24px */
+  background: rgba(255,255,255,0.04); /* ADDED: page-wide band */
+  border-top: 1px solid rgba(255,255,255,0.08); /* ADDED: soft divider */
+  border-bottom: 1px solid rgba(255,255,255,0.08); /* ADDED: soft divider */
 }
 
 .feature-grid{
@@ -289,6 +292,7 @@ html{ scroll-behavior: smooth; }
     rgba(20,32,54,0) 58%
   );
 }
+
 #request .request-box {
   margin-top: 44px; /* adjust to taste: 24–40px */
 }
@@ -311,6 +315,7 @@ html{ scroll-behavior: smooth; }
     max-width: 100%;
   }
 }
+
 /* Ensure buttons style consistently across the site */
 .btn {
   display: inline-flex;
@@ -333,4 +338,3 @@ html{ scroll-behavior: smooth; }
 .btn-primary:hover {
   background: rgba(255, 255, 255, 1);
 }
-
