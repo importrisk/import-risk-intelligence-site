@@ -175,6 +175,7 @@ linear-gradient(
   background: rgba(255,255,255,0.04);
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-top: -1px;
 }
 
 .feature-grid{
