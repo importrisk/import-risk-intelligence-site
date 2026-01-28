@@ -289,6 +289,9 @@ html{ scroll-behavior: smooth; }
     rgba(20,32,54,0) 58%
   );
 }
+#request .request-box {
+  margin-top: 30px; /* adjust to taste: 24–40px */
+}
 
 /* Mobile: stack + fade globe behind text */
 @media (max-width: 900px){
