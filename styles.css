@@ -293,16 +293,15 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   6) FEATURES — LIGHTER SEPARATOR BAND (SOLID, NO WATER)
+   6) FEATURES — LIGHTER SEPARATOR BAND (TRANSLUCENT, ON WATER)
    ========================================================= */
 .features{
   position: relative;
   z-index: 2;
 
-  /* SOLID band so the water texture does NOT show through */
-  background: var(--band) !important;
-  background: rgba(83,103,128,.72);
-  border-top: 1px solid rgba(255,255,255,.18);
+  /* translucent band so water texture shows through */
+  background: rgba(83,103,128,.72); /* ← adjust opacity here */
+  border-top: 1px solid var(--band-border);
   border-bottom: none;
 }
 
@@ -310,7 +309,7 @@ a{ color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
-  padding: 18px 0;   /* ↓ was 34px */
+  padding: 18px 0;
 }
 
 .feature{
@@ -318,58 +317,15 @@ a{ color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
 
-  /* key fix: top-align content so wrapping text doesn't shift tiles */
+  /* top-align so multi-line text doesn’t shift tiles */
   align-items: center;
   justify-content: flex-start;
-
   text-align: center;
 
-  min-height: 180px;      /* keep your height */
-  padding: 28px 28px;     /* tighter top/bottom spacing */
-
+  min-height: 180px;
+  padding: 28px 28px;
   color: rgba(255,255,255,.92);
 }
-
-/* ICONS: keep them normal size and consistent */
-.feature svg{
-  width: 32px;
-  height: 32px;
-  display: block;
-  margin-bottom: 14px;
-  color: rgba(255,255,255,.72); /* currentColor -> stroke */
-}
-
-/* Keep icon strokes clean (your SVG uses stroke="currentColor") */
-.feature svg *{
-  stroke-width: 1.6;
-}
-
-.feature h3{
-  margin: 10px 0 6px;
-  letter-spacing: .08em;
-  font-size: 16px;              /* ← ADD THIS */
-  font-weight: 700;             /* ← ADD THIS (optional but recommended) */
-  color: rgba(255,255,255,.95);
-}
-
-.feature p{
-  margin: 0;
-  max-width: 320px;
-  line-height: 1.45;
-  font-size: 14px;              /* ← ADD THIS */
-  color: rgba(255,255,255,.78);
-}
-
-.feature:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 22px;
-  bottom: 22px;
-  width: 1px;
-  background: rgba(255,255,255,.14);
-}
-
 
 /* =========================================================
    7) SPLIT (APPROACH/SCOPE/REQUEST) — ON WATER TEXTURE
