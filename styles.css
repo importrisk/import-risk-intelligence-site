@@ -301,11 +301,10 @@ a{ color: inherit; text-decoration: none; }
 .below-fold{
   position: relative;
   color: var(--ink);
+
+  /* TEMP: make the texture obvious so we can confirm it’s working */
   background:
-    linear-gradient(180deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,0) 38%),
-    radial-gradient(1200px 420px at 50% 12%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 360px at 18% 48%, rgba(255,255,255,.18), rgba(255,255,255,0) 62%),
-    radial-gradient(900px 360px at 82% 56%, rgba(255,255,255,.16), rgba(255,255,255,0) 62%),
+    linear-gradient(180deg, rgba(255,0,0,.10), rgba(0,0,255,.10)),
     linear-gradient(180deg, var(--mist-bg) 0%, var(--mist-bg-2) 100%);
 }
 
