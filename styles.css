@@ -166,12 +166,11 @@ a{ color: inherit; text-decoration: none; }
    ========================================================= */
 
 .brand{
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  align-items: center;      /* true vertical center */
-  column-gap: 12px;
+  display: inline-flex;
+  align-items: center;      /* centers name relative to IR */
+  gap: 12px;
   color: rgba(255,255,255,.94);
+  height: 100%;             /* ensures brand itself can center cleanly */
 }
 
 .brand-ir{
@@ -179,18 +178,26 @@ a{ color: inherit; text-decoration: none; }
   font-weight: 900;
   letter-spacing: .02em;
   line-height: 1;           /* kills baseline wobble */
+  display: inline-flex;
+  align-items: center;
 }
 
 .brand-sep{
-  opacity: .65;
-  line-height: 1;           /* keep separator centered */
+  opacity: .72;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(-1px); /* tiny optical centering for the pipe */
 }
 
 .brand-name{
   font-size: 14px;
   font-weight: 600;
-  line-height: 1;           /* key: center to IR, not baseline */
+  line-height: 1;           /* critical */
   opacity: .92;
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(-1px); /* matches the pipe’s optical alignment */
 }
 
 /* =========================================================
