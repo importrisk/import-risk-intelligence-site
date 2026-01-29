@@ -106,10 +106,8 @@ a{ color: inherit; text-decoration: none; }
 
 .topbar-inner{
   display: flex;
-  align-items: center;
   justify-content: space-between;
   height: 100%;
-  gap: 18px;
 }
 
 .topbar .container{
@@ -119,17 +117,27 @@ a{ color: inherit; text-decoration: none; }
 .brand{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  height: 72px;        /* match topbar */
+  line-height: 72px;  /* FORCE visual centering */
+  gap: 12px;
   color: rgba(255,255,255,.94);
 }
 
-.brand-ir{ font-weight: 800; }
-.brand-sep{ opacity: .78; }
+.brand-ir{
+  font-size: 22px;
+  font-weight: 900;
+  line-height: inherit;
+}
+
+.brand-sep{
+  opacity: .7;
+  line-height: inherit;
+}
 
 .brand-name{
   font-size: 14px;
   font-weight: 600;
-  opacity: .92;
+  line-height: inherit;
 }
 
 .nav{
