@@ -92,89 +92,79 @@ a{ color: inherit; text-decoration: none; }
 .btn-primary:hover{ filter: brightness(1.05); }
 
 /* =========================================================
-   3) Topbar / Nav — TRUE vertical centering + true divider
-   HTML expected:
-   <header class="topbar">
-     <div class="container topbar-inner">
-       <a class="brand" href="#home" aria-label="Import Risk Intelligence">
-         <span class="brand-ir">IR</span>
-         <span class="brand-divider" aria-hidden="true"></span>
-         <span class="brand-name">Import Risk Intelligence</span>
-       </a>
-       <nav class="nav">
-         <a class="nav-link" ...>Method</a>
-         <a class="nav-link" ...>Coverage</a>
-         <a class="nav-link nav-cta" ...>Request Coverage</a>
-       </nav>
-     </div>
-   </header>
+   3) Topbar / Nav — TRUE vertical centering + divider fix
    ========================================================= */
+
 .topbar{
   position: absolute;
   inset: 0 0 auto 0;
   z-index: 5;
   height: var(--topbar-h);
   padding: 0;
-  display: grid;
-  place-items: center; /* centers the inner container vertically */
+
+  /* Center the inner container vertically in the bar */
+  display: flex;
+  align-items: center;
 }
 
 .topbar-inner{
   height: 100%;
   display: flex;
-  align-items: center; /* TRUE vertical centering */
+  align-items: center;              /* centers brand + nav */
   justify-content: space-between;
   gap: 18px;
 }
 
-/* Brand lockup */
+/* ✅ Brand as GRID kills baseline alignment issues entirely */
 .brand{
-  display: inline-flex;
-  align-items: center; /* centers IR + divider + name */
-  gap: 12px;
   height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;              /* TRUE vertical centering of every child */
+  column-gap: 12px;
+
   white-space: nowrap;
   color: rgba(255,255,255,.94);
 }
+
+/* If your HTML still has <span class="brand-sep"> | </span> hide it */
+.brand-sep{ display: none !important; }
 
 .brand-ir{
   font-size: 24px;
   font-weight: 900;
   letter-spacing: .02em;
   line-height: 1;
-  display: inline-flex;
-  align-items: center;
 }
 
-/* True vertical rule (not font-based) */
+/* ✅ True vertical rule that cannot baseline-drop */
 .brand-divider{
   width: 1px;
   height: 20px;
   background: var(--divider);
-  display: inline-block;
+  display: block;                  /* block element, no baseline */
+  align-self: center;              /* extra guarantee */
+  opacity: .85;
 }
 
-/* Brand name */
 .brand-name{
   font-size: 14px;
   font-weight: 600;
   opacity: .92;
   line-height: 1;
-  display: inline-flex;
-  align-items: center;
 }
 
 /* Nav */
 .nav{
-  display: inline-flex;
-  align-items: center; /* TRUE vertical centering */
-  gap: 18px;
   height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
   font-size: 13px;
   color: rgba(255,255,255,.86);
 }
 
-/* Links as consistent-height “pills” */
 .nav-link{
   height: 36px;
   display: inline-flex;
@@ -185,13 +175,12 @@ a{ color: inherit; text-decoration: none; }
   transition: background .15s ease, opacity .15s ease;
   border-radius: var(--radius-sm);
 }
-
 .nav-link:hover{ background: rgba(255,255,255,.10); }
-.nav-link.is-active{ opacity: 1; }
 
-/* CTA */
 .nav-cta{
   height: 40px;
+  display: inline-flex;
+  align-items: center;
   padding: 0 14px;
   background: rgba(90,149,221,.92);
   border: 1px solid rgba(255,255,255,.18);
@@ -199,6 +188,7 @@ a{ color: inherit; text-decoration: none; }
   box-shadow: 0 10px 24px rgba(0,0,0,.16);
 }
 .nav-cta:hover{ background: rgba(90,149,221,1); }
+
 
 /* =========================================================
    4) Hero
