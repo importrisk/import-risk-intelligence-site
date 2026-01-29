@@ -475,3 +475,60 @@ a{ color: inherit; text-decoration: none; }
     width: auto;
   }
 }
+/* =========================================================
+   TOPBAR — HARD OVERRIDE (paste at very bottom)
+   Forces true vertical centering of EVERYTHING in the bar
+   ========================================================= */
+
+.topbar{
+  height: var(--topbar-h, 72px) !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;         /* <- this is the key */
+}
+
+/* Your HTML: <div class="container topbar-inner"> */
+.topbar-inner{
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;         /* centers brand + nav */
+  justify-content: space-between !important;
+}
+
+/* Make sure the container inside the bar actually has height */
+.topbar-inner.container{
+  height: 100% !important;
+}
+
+/* Make brand and nav also center within the bar */
+.brand,
+.nav{
+  height: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Kill any sneaky top/bottom spacing from text */
+.brand-ir,
+.brand-sep,
+.brand-name,
+.nav-link,
+.nav-cta{
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Keep click targets consistent */
+.nav-link{
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.nav-cta{
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
