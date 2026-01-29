@@ -274,11 +274,11 @@ a{ color: inherit; text-decoration: none; }
 
   background:
     url("assets/images/water-texture.jpg") center / cover no-repeat,
-  linear-gradient(
+linear-gradient(
   180deg,
-  rgba(64,90,120,.32) 0%,
-  rgba(64,90,120,.24) 45%,
-  rgba(64,90,120,.32) 100%
+  rgba(88,118,150,.22) 0%,
+  rgba(88,118,150,.16) 45%,
+  rgba(88,118,150,.22) 100%
 ),
      
     linear-gradient(
@@ -287,7 +287,7 @@ a{ color: inherit; text-decoration: none; }
       var(--mist-bg-2) 100%
     );
 
-  background-blend-mode: overlay, normal, normal;
+ background-blend-mode: overlay, normal, normal;
 }
 
 /* (Removed .below-fold::before scanline overlay on purpose) */
