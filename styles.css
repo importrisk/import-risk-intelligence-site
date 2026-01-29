@@ -274,12 +274,12 @@ a{ color: inherit; text-decoration: none; }
 
   background:
     url("assets/images/water-texture.jpg") center / cover no-repeat,
-    linear-gradient(
-      180deg,
-      rgba(15,27,43,.65) 0%,
-      rgba(15,27,43,.55) 45%,
-      rgba(15,27,43,.65) 100%
-    ),
+   linear-gradient(
+  180deg,
+  rgba(38,54,77,.45) 0%,
+  rgba(38,54,77,.35) 45%,
+  rgba(38,54,77,.45) 100%
+),
     linear-gradient(
       180deg,
       var(--mist-bg) 0%,
