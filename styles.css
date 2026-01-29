@@ -1,11 +1,10 @@
 /* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
-   CLEAN + CONSOLIDATED + FIXED
-   Goals:
-   - Below-fold keeps WATER texture (no scanline stripes)
-   - Features = LIGHTER solid band with top/bottom borders
-   - Approach/Split = back ON water texture
-   - Footer = clean solid block (no texture showing through)
+   CLEAN, CONSOLIDATED, CORRECT
+   - Hero locked
+   - Water texture stays on Below Fold + Approach/Split
+   - Features = LIGHTER solid separator band with borders
+   - NO scanline overlay (removes "bunch of lines" in Approach)
    ========================================================= */
 
 
@@ -22,19 +21,18 @@
   --muted: rgba(255,255,255,.82);
   --faint: rgba(255,255,255,.68);
 
-  --brand:  #7fb1ea;
+  --brand: #7fb1ea;
   --brand-2:#5f94d8;
 
   --divider: rgba(255,255,255,.60);
-  --shadow: 0 12px 32px rgba(0,0,0,.18);
 
   /* Hero overlay (LOCKED) */
   --hero-top: rgba(38,54,77,.36);
   --hero-mid: rgba(38,54,77,.52);
   --hero-bottom: rgba(38,54,77,.70);
 
-  /* Below fold / mist */
-  --mist-bg:   #0f1b2b;
+  /* Below fold / mist (dark) */
+  --mist-bg: #0f1b2b;
   --mist-bg-2: #132235;
 
   --ink: rgba(255,255,255,.92);
@@ -42,13 +40,12 @@
   --ink-faint: rgba(255,255,255,.60);
 
   --mist-border: rgba(255,255,255,.10);
-  --mist-divider: rgba(255,255,255,.10);
+  --mist-divider: rgba(255,255,255,.12);
   --mist-shadow: 0 18px 44px rgba(0,0,0,.28);
 
-  /* FEATURES separator band (lighter than Approach) */
-  --feature-band: #2b4056;         /* lighter than mist-bg */
-  --feature-border: rgba(255,255,255,.18);
-  --feature-vrule: rgba(255,255,255,.14);
+  /* Features band (lighter than Approach) */
+  --band: #223447;          /* solid + lighter than mist */
+  --band-border: rgba(255,255,255,.18);
 
   /* Footer */
   --footer-bg: #243245;
@@ -57,127 +54,147 @@
   --footer-head: rgba(245,250,255,.92);
   --footer-link: rgba(175,205,242,.95);
   --footer-faint: rgba(190,205,222,.62);
+
+  /* Square edges */
+  --radius: 0px;
 }
 
 
 /* =========================================================
-   1) BASE
+   1) BASE / RESETS
    ========================================================= */
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-html{ scroll-behavior:smooth; }
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
 
 body{
-  margin:0;
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-  color:var(--text);
-  background:var(--bg);
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .container{
-  width:min(var(--container),calc(100% - 40px));
-  margin:0 auto;
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
 }
 
-a{ color:inherit; text-decoration:none; }
+a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
    2) BUTTONS
    ========================================================= */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  user-select:none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--radius);
 }
 
 .btn-primary{
-  padding:12px 18px;
-  font-size:14px;
-  font-weight:700;
-  color:#fff;
-  background:linear-gradient(180deg,var(--brand),var(--brand-2));
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 16px 34px rgba(0,0,0,.22);
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
 }
-.btn-primary:hover{ filter:brightness(1.05); }
+.btn-primary:hover{ filter: brightness(1.05); }
 
 
 /* =========================================================
-   3) TOPBAR
+   3) TOPBAR / NAV
    ========================================================= */
 .topbar{
-  position:absolute;
-  inset:0 0 auto 0;
-  height:var(--topbar-h);
-  display:flex;
-  align-items:center;
-  z-index:5;
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
 }
 
 .topbar-inner{
-  height:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
 }
 
+/* Brand (grid avoids baseline weirdness) */
 .brand{
-  height:100%;
-  display:grid;
-  grid-auto-flow:column;
-  grid-auto-columns:max-content;
-  gap:12px;
-  align-items:center;
-  white-space:nowrap;
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  column-gap: 12px;
+  white-space: nowrap;
+  color: rgba(255,255,255,.94);
 }
 
 .brand-ir{
-  font-size:24px;
-  font-weight:900;
-  transform:translateY(-1px);
-  line-height:1;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 .brand-divider{
-  width:1px;
-  height:20px;
-  background:var(--divider);
-  opacity:.85;
+  width: 1px;
+  height: 20px;
+  background: var(--divider);
+  display: block;
+  opacity: .85;
 }
 
 .brand-name{
-  font-size:14px;
-  font-weight:600;
-  line-height:1;
-  opacity:.92;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: .92;
+  line-height: 1;
 }
 
 .nav{
-  height:100%;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  font-size:13px;
-  color:rgba(255,255,255,.86);
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,.86);
 }
 
 .nav-link{
-  padding:8px 10px;
-  opacity:.92;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  opacity: .92;
+  transition: background .15s ease, opacity .15s ease;
 }
+
 .nav-link:hover{ background: rgba(255,255,255,.10); }
+.nav-link.is-active{ opacity: 1; }
+
 .nav-cta{
-  padding:8px 14px;
-  background:rgba(127,177,234,.90);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 10px 24px rgba(0,0,0,.16);
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  background: rgba(127,177,234,.88);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.16);
 }
 .nav-cta:hover{ background: rgba(127,177,234,1); }
 
@@ -186,176 +203,361 @@ a{ color:inherit; text-decoration:none; }
    4) HERO (LOCKED)
    ========================================================= */
 .hero{
-  position:relative;
-  min-height:70vh;
-  padding-top:var(--topbar-h);
-  overflow:hidden;
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--topbar-h);
+  overflow: hidden;
 }
 
 .hero-bg{
-  position:absolute;
-  inset:0;
+  position: absolute;
+  inset: -2px;
   background-image:
-    linear-gradient(180deg, var(--hero-top) 0%, var(--hero-mid) 58%, var(--hero-bottom) 100%),
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
     url("assets/images/hero-port-morning-steel.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(.96) contrast(.99) brightness(1.02);
 }
 
+.hero-overlay{ display: none; }
+
 .hero-inner{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding-top:120px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 120px 0 0;
 }
 
 .hero-title{
-  margin:0;
-  font-size:clamp(34px,4vw,56px);
-  line-height:1.08;
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   text-shadow: 0 12px 26px rgba(0,0,0,.30);
 }
 
 .hero-subtitle{
-  margin:14px auto 0;
-  max-width:680px;
-  font-size:24px;
-  color:rgba(255,255,255,.78);
+  margin: 14px auto 0;
+  max-width: 680px;
+  font-size: 24px;
+  color: rgba(255,255,255,.78);
   text-shadow:
     0 2px 8px rgba(0,0,0,.35),
     0 0 24px rgba(0,0,0,.25);
 }
 
-.hero-actions{ margin-top:135px; }
+.hero-actions{ margin-top: 135px; }
+.hero-cta-note{
+  margin: 22px auto 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.70);
+  text-shadow: 0 10px 20px rgba(0,0,0,.18);
+}
 
 
 /* =========================================================
    5) BELOW FOLD — WATER TEXTURE (GLOBAL)
-   IMPORTANT: removed scanline overlay (::before) to kill the stripes
+   IMPORTANT: NO scanline overlay (removes "bunch of lines")
    ========================================================= */
 .below-fold{
-  position:relative;
-  color:var(--ink);
+  position: relative;
+  color: var(--ink);
 
   background:
-    url("assets/images/water-texture.jpg") center/cover no-repeat,
-    linear-gradient(180deg, rgba(15,27,43,.65) 0%, rgba(15,27,43,.55) 45%, rgba(15,27,43,.65) 100%),
-    linear-gradient(180deg, var(--mist-bg) 0%, var(--mist-bg-2) 100%);
+    url("assets/images/water-texture.jpg") center / cover no-repeat,
+    linear-gradient(
+      180deg,
+      rgba(15,27,43,.65) 0%,
+      rgba(15,27,43,.55) 45%,
+      rgba(15,27,43,.65) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--mist-bg) 0%,
+      var(--mist-bg-2) 100%
+    );
 
   background-blend-mode: soft-light, normal, normal;
 }
 
+/* (Removed .below-fold::before scanline overlay on purpose) */
+
 
 /* =========================================================
-   6) FEATURES — LIGHTER SOLID SEPARATOR BAND
-   (Solid band hides water texture here only)
+   6) FEATURES — LIGHTER SEPARATOR BAND (SOLID, NO WATER)
    ========================================================= */
 .features{
-  position:relative;
-  z-index:2;
-  padding:0;
+  position: relative;
+  z-index: 2;
 
-  /* solid (opaque) so texture can't show */
-  background: var(--feature-band);
+  /* SOLID band so the water texture does NOT show through */
+  background: var(--band) !important;
+  background-image: none !important;
 
-  border-top: 1px solid var(--feature-border);
-  border-bottom: 1px solid var(--feature-border);
+  border-top: 1px solid var(--band-border);
+  border-bottom: 1px solid var(--band-border);
+
+  /* subtle edge definition (still very clean) */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 -1px 0 rgba(0,0,0,.25);
 }
 
 .feature-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  align-items:stretch;
-  padding:34px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  padding: 34px 0;
 }
 
 .feature{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-  min-height:210px;
-  padding:0 34px;
-  color:rgba(255,255,255,.92);
+  min-height: 210px;
+  padding: 0 34px;
+  color: rgba(255,255,255,.92);
 }
 
+/* ICONS: keep them normal size and consistent */
 .feature svg{
-  width:36px;
-  height:36px;
-  margin-bottom:14px;
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin-bottom: 14px;
+  color: rgba(255,255,255,.72); /* currentColor -> stroke */
 }
+
+/* Keep icon strokes clean (your SVG uses stroke="currentColor") */
 .feature svg *{
-  stroke: rgba(255,255,255,.70);
   stroke-width: 1.6;
 }
 
 .feature h3{
-  margin:10px 0 6px;
-  letter-spacing:.08em;
-  color:rgba(255,255,255,.95);
+  margin: 10px 0 6px;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.95);
 }
 
 .feature p{
-  margin:0;
-  max-width:320px;
-  line-height:1.45;
-  color:rgba(255,255,255,.78);
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.78);
 }
 
 .feature:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:22px;
-  bottom:22px;
-  width:1px;
-  background: var(--feature-vrule);
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
 }
 
 
 /* =========================================================
-   7) APPROACH / SPLIT — BACK ON WATER (no background here)
+   7) SPLIT (APPROACH/SCOPE/REQUEST) — ON WATER TEXTURE
    ========================================================= */
 .section-split{
-  position:relative;
-  padding:48px 0 36px;
-  background: transparent; /* IMPORTANT: lets below-fold water show */
+  position: relative;
+  padding: 48px 0 36px;
+  background: transparent; /* MUST stay transparent so water shows */
 }
 
 .split-inner{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 320px;
-  gap:80px;
-  align-items:start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 80px;
+  align-items: start;
 }
+
+.section{
+  padding: 0;
+}
+
+.section-title{
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 34px;
+  letter-spacing: -0.01em;
+}
+
+.section-text{
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.section + .section{ margin-top: 42px; }
+
+.request-box{ margin-top: 16px; }
 
 
 /* =========================================================
-   8) BIO CARD (glass, but still shows water behind it)
+   8) BIO CARD — GLASS ON WATER
    ========================================================= */
 .split-bio{
-  padding:20px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 20px;
   background: rgba(255,255,255,.07);
-  border:1px solid var(--mist-border);
-  box-shadow:var(--mist-shadow);
+  border: 1px solid var(--mist-border);
+  box-shadow: var(--mist-shadow);
 }
+
+.bio-top{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.bio-photo{
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.bio-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bio-name{
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--ink);
+}
+
+.bio-role{
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.bio-blurb{
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.bio-links{
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.bio-links a{
+  color: var(--ink);
+  opacity: .92;
+}
+.bio-links a:hover{ text-decoration: underline; }
+
+.bio-cta{
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--mist-divider);
+}
+
+.bio-cta .btn{ width: 100%; }
 
 
 /* =========================================================
-   9) FOOTER (solid block, never shows texture)
-   NOTE: background-image:none doesn't stop parent's bg,
-         but footer bg is opaque so you're safe either way.
+   9) FOOTER — SOLID, CLEAN (NOT ON WATER)
    ========================================================= */
 .site-footer{
-  position:relative;
-  background:var(--footer-bg);
-  border-top:1px solid var(--footer-border);
-  padding:20px 0 24px;
-  color:var(--footer-text);
+  background: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  padding: 20px 0 24px;
+  margin-top: 0;
+  color: var(--footer-text);
+}
+
+.site-footer .footer-inner{
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.site-footer .footer-brandline{
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--footer-head);
+  letter-spacing: 0.2px;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.site-footer .footer-ir{ font-weight: 800; }
+
+.site-footer .footer-pipe{
+  opacity: 0.55;
+  padding: 0 6px;
+}
+
+.site-footer .footer-desc{
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.32;
+  max-width: 520px;
+  color: var(--footer-text);
+}
+
+.site-footer .footer-legal{
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--footer-faint);
+  max-width: 560px;
+}
+
+.site-footer .footer-right{
+  text-align: right;
+  font-size: 13px;
+  line-height: 1.25;
+  flex: 0 0 auto;
+}
+
+.site-footer .footer-block{ margin-bottom: 8px; }
+
+.site-footer .footer-label{
+  color: var(--footer-head);
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+
+.site-footer a{
+  color: var(--footer-link);
+}
+.site-footer a:hover{ text-decoration: underline; }
+
+.site-footer .footer-copy{
+  margin-top: 28px;
+  font-size: 12px;
+  color: var(--footer-faint);
 }
 
 
@@ -364,35 +566,65 @@ a{ color:inherit; text-decoration:none; }
    ========================================================= */
 @media (max-width: 900px){
   .split-inner{
-    grid-template-columns:1fr;
-    gap:28px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .split-bio{ min-height: auto; }
+
+  .bio-top{
+    grid-template-columns: 96px 1fr;
+  }
+
+  .bio-photo{
+    width: 96px;
+    height: 96px;
+  }
+
+  .bio-cta .btn{ width: auto; }
+
+  .site-footer .footer-inner{
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .site-footer .footer-right{
+    text-align: left;
   }
 }
 
 @media (max-width: 720px){
   .topbar{
-    height:auto;
-    padding:10px 0;
-    align-items:flex-start;
+    height: auto;
+    padding: 10px 0;
+    align-items: flex-start;
   }
 
   .topbar-inner{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
+  .brand{ height: auto; }
+
   .nav{
-    height:auto;
-    flex-wrap:wrap;
-    gap:10px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .feature-grid{
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
+    padding: 18px 0;
+  }
+
+  .feature{
+    min-height: 160px;
+    padding: 18px 18px;
   }
 
   .feature:not(:last-child)::after{
-    display:none;
+    display: none;
   }
 }
