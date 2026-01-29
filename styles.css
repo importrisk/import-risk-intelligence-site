@@ -92,33 +92,38 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   2) Topbar / Nav
+   2) Topbar / Nav (true vertical centering)
    ========================================================= */
+
+:root{
+  --topbar-h: 72px;
+}
+
 .topbar{
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  height: 72px;
+
+  height: var(--topbar-h);
   padding: 0;
 }
 
+/* your HTML uses: <div class="container topbar-inner"> ... */
 .topbar-inner{
+  height: var(--topbar-h);
   display: flex;
+  align-items: center;              /* centers the whole row */
   justify-content: space-between;
-  height: 100%;
+  gap: 18px;
 }
 
-.topbar .container{
-  height: 100%;
-}
-
+/* Brand lockup */
 .brand{
   display: inline-flex;
   align-items: center;
-  height: 72px;        /* match topbar */
-  line-height: 72px;  /* FORCE visual centering */
+  height: var(--topbar-h);          /* force consistent vertical box */
   gap: 12px;
   color: rgba(255,255,255,.94);
 }
@@ -126,30 +131,39 @@ a{ color: inherit; text-decoration: none; }
 .brand-ir{
   font-size: 22px;
   font-weight: 900;
-  line-height: inherit;
+  letter-spacing: .02em;
+  line-height: 1;
 }
 
 .brand-sep{
   opacity: .7;
-  line-height: inherit;
+  line-height: 1;
+  transform: translateY(-1px);      /* tiny optical centering */
 }
 
 .brand-name{
   font-size: 14px;
   font-weight: 600;
-  line-height: inherit;
+  opacity: .92;
+  line-height: 1;
+  transform: translateY(-1px);      /* match the pipe */
 }
 
+/* Nav */
 .nav{
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  height: var(--topbar-h);          /* ensures links/CTA sit centered */
   gap: 18px;
   color: rgba(255,255,255,.86);
   font-size: 13px;
 }
 
 .nav-link{
-  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;                     /* gives each link a click target */
+  padding: 0 10px;
   opacity: .92;
   transition: background .15s ease, opacity .15s ease;
   border-radius: var(--radius-sm);
@@ -158,16 +172,18 @@ a{ color: inherit; text-decoration: none; }
 .nav-link:hover{ background: rgba(255,255,255,.10); }
 .nav-link.is-active{ opacity: 1; }
 
+/* CTA in nav */
 .nav-cta{
+  height: 40px;                     /* centers text inside the button */
+  padding: 0 14px;
   background: rgba(90,149,221,.92);
   border: 1px solid rgba(255,255,255,.18);
   color: #fff;
-  padding: 9px 12px;
-  border-radius: var(--radius-sm);
   box-shadow: 0 10px 24px rgba(0,0,0,.16);
 }
 
 .nav-cta:hover{ background: rgba(90,149,221,1); }
+
 
 /* =========================================================
    Brand Lockup (IR + Name)
