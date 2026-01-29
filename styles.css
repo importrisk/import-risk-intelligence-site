@@ -346,15 +346,21 @@ a{ color: inherit; text-decoration: none; }
    ========================================================= */
 .features{
   position: relative;
-  z-index: 3;
+  z-index: 4;
   padding: 0;
 
-  /* lighter than Approach, still dark steel */
-  background: rgba(255,255,255,.07);
+  /* lighter steel separator between hero and dark content */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.10) 0%,
+    rgba(255,255,255,.07) 100%
+  );
 
-  border-top: 1px solid rgba(255,255,255,.14);
-  border-bottom: 1px solid rgba(255,255,255,.14);
-  margin-top: -1px;
+  /* clear separation lines */
+  border-top: 1px solid rgba(255,255,255,.22);
+  border-bottom: 1px solid rgba(255,255,255,.22);
+
+  margin-top: 0;
 }
 
 .feature-grid{
