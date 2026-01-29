@@ -1,58 +1,38 @@
 /* =========================================================
-   Import Risk Intelligence — Morning Steel (Hero Locked)
-   Clean, organized CSS
-   Notes:
-   - Hero image + overlay tokens are LOCKED
-   - Below fold uses subtle water texture + dark steel wash
-   - Features is a LIGHTER separator band (distinct from Approach)
-   - Split/Approach section is darker, coordinated with hero
+   Import Risk Intelligence — Morning Steel Blue-Grey Theme
+   CLEAN, CONSOLIDATED, CORRECT
    ========================================================= */
 
 
 /* =========================================================
-   0) Tokens
+   0) TOKENS
    ========================================================= */
 :root{
-  /* Layout */
   --container: 1080px;
   --topbar-h: 72px;
 
-  /* Global (Hero + Topbar) palette */
+  /* Hero + Topbar */
   --bg: #3a4a5f;
-  --surface: rgba(255,255,255,.065);
-  --surface-2: rgba(255,255,255,.085);
-
   --text: rgba(255,255,255,.96);
   --muted: rgba(255,255,255,.82);
   --faint: rgba(255,255,255,.68);
-  --white: #ffffff;
 
-  /* Brand */
-  --brand:  #7fb1ea;
+  --brand: #7fb1ea;
   --brand-2:#5f94d8;
 
-  /* Lines */
-  --border: rgba(255,255,255,.14);
-  --divider: rgba(255,255,255,.60);
-
-  /* Shadows */
+  --divider: rgba(255,255,255,.6);
   --shadow: 0 12px 32px rgba(0,0,0,.18);
 
-  /* Radii (square) */
-  --radius: 0px;
-  --radius-sm: 0px;
-  --radius-none: 0px;
-
   /* Hero overlay (LOCKED) */
-  --hero-top:    rgba(38, 54, 77, .36);
-  --hero-mid:    rgba(38, 54, 77, .52);
-  --hero-bottom: rgba(38, 54, 77, .70);
+  --hero-top: rgba(38,54,77,.36);
+  --hero-mid: rgba(38,54,77,.52);
+  --hero-bottom: rgba(38,54,77,.70);
 
-  /* Below-the-fold: Dark Morning Steel */
-  --mist-bg:   #0f1b2b;
+  /* Below fold / mist */
+  --mist-bg: #0f1b2b;
   --mist-bg-2: #132235;
 
-  --ink: rgba(255,255,255,.90);
+  --ink: rgba(255,255,255,.92);
   --ink-muted: rgba(255,255,255,.74);
   --ink-faint: rgba(255,255,255,.60);
 
@@ -60,18 +40,7 @@
   --mist-divider: rgba(255,255,255,.10);
   --mist-shadow: 0 18px 44px rgba(0,0,0,.28);
 
-  /* Features separator band (lighter than Approach) */
-  --feat-bg-a: rgba(255,255,255,.10);
-  --feat-bg-b: rgba(255,255,255,.06);
-  --feat-border: rgba(255,255,255,.16);
-  --feat-divider: rgba(255,255,255,.10);
-
-  /* Approach/Split background (darker than Features) */
-  --split-a: rgba(7,14,24,.78);
-  --split-b: rgba(10,18,30,.72);
-  --split-c: rgba(12,22,36,.66);
-
-  /* Footer (darker than body, not black) */
+  /* Footer */
   --footer-bg: #243245;
   --footer-border: rgba(255,255,255,.08);
   --footer-text: rgba(230,238,247,.78);
@@ -82,585 +51,261 @@
 
 
 /* =========================================================
-   1) Base / Resets
+   1) BASE
    ========================================================= */
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
-html{ scroll-behavior: smooth; }
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
 
 body{
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:var(--bg);
 }
 
 .container{
-  width: min(var(--container), calc(100% - 40px));
-  margin: 0 auto;
+  width:min(var(--container),calc(100% - 40px));
+  margin:0 auto;
 }
 
-a{ color: inherit; text-decoration: none; }
+a{ color:inherit; text-decoration:none; }
 
 
 /* =========================================================
-   2) Buttons
+   2) BUTTONS
    ========================================================= */
 .btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: var(--radius-none);
-  text-decoration: none;
-  user-select: none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
 }
 
 .btn-primary{
-  color: #fff;
-  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 16px 34px rgba(0,0,0,.22);
+  padding:12px 18px;
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  background:linear-gradient(180deg,var(--brand),var(--brand-2));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 16px 34px rgba(0,0,0,.22);
 }
-.btn-primary:hover{ filter: brightness(1.05); }
 
 
 /* =========================================================
-   3) Topbar / Nav
+   3) TOPBAR
    ========================================================= */
 .topbar{
-  position: absolute;
-  inset: 0 0 auto 0;
-  z-index: 5;
-  height: var(--topbar-h);
-  padding: 0;
-  display: flex;
-  align-items: center;
+  position:absolute;
+  inset:0 0 auto 0;
+  height:var(--topbar-h);
+  display:flex;
+  align-items:center;
+  z-index:5;
 }
 
 .topbar-inner{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-/* Brand (grid prevents baseline weirdness) */
 .brand{
-  height: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  align-items: center;
-  column-gap: 12px;
-  white-space: nowrap;
-  color: rgba(255,255,255,.94);
+  display:grid;
+  grid-auto-flow:column;
+  gap:12px;
+  align-items:center;
 }
-
-.brand-sep{ display: none; }
 
 .brand-ir{
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: .02em;
-  line-height: 1;
-  transform: translateY(-1px);
+  font-size:24px;
+  font-weight:900;
+  transform:translateY(-1px);
 }
 
 .brand-divider{
-  width: 1px;
-  height: 20px;
-  background: var(--divider);
-  display: block;
-  align-self: center;
-  opacity: .85;
+  width:1px;
+  height:20px;
+  background:var(--divider);
 }
 
 .brand-name{
-  font-size: 14px;
-  font-weight: 600;
-  opacity: .92;
-  line-height: 1;
+  font-size:14px;
+  font-weight:600;
 }
 
-/* Nav */
 .nav{
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 13px;
-  color: rgba(255,255,255,.86);
+  display:flex;
+  gap:18px;
+  font-size:13px;
 }
 
 .nav-link{
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  opacity: .92;
-  transition: background .15s ease, opacity .15s ease;
-  border-radius: var(--radius-sm);
+  padding:8px 10px;
+  opacity:.9;
 }
-.nav-link:hover{ background: rgba(255,255,255,.10); }
-.nav-link.is-active{ opacity: 1; }
 
-/* CTA */
 .nav-cta{
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 14px;
-  background: rgba(127,177,234,.88);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(0,0,0,.16);
+  padding:8px 14px;
+  background:rgba(127,177,234,.9);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
 }
-.nav-cta:hover{ background: rgba(127,177,234,1); }
 
 
 /* =========================================================
-   4) Hero (LOCKED)
+   4) HERO (LOCKED)
    ========================================================= */
 .hero{
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  padding-top: var(--topbar-h);
-  overflow: hidden;
+  position:relative;
+  min-height:70vh;
+  padding-top:var(--topbar-h);
+  overflow:hidden;
 }
 
 .hero-bg{
-  position: absolute;
-  inset: -2px;
+  position:absolute;
+  inset:0;
   background-image:
     linear-gradient(
       180deg,
-      var(--hero-top) 0%,
-      var(--hero-mid) 58%,
-      var(--hero-bottom) 100%
+      var(--hero-top),
+      var(--hero-mid),
+      var(--hero-bottom)
     ),
     url("assets/images/hero-port-morning-steel.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: saturate(.96) contrast(.99) brightness(1.02);
+  background-size:cover;
+  background-position:center;
 }
 
-.hero-overlay{ display: none; }
-
 .hero-inner{
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 120px 0 0;
-  color: rgba(255,255,255,.95);
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding-top:120px;
 }
 
 .hero-title{
-  margin: 0;
-  font-size: clamp(34px, 4.2vw, 56px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  text-shadow: 0 12px 26px rgba(0,0,0,.30);
+  font-size:clamp(34px,4vw,56px);
 }
 
 .hero-subtitle{
-  margin: 14px auto 0;
-  max-width: 680px;
-  font-size: 24px;
-  color: rgba(255,255,255,.78);
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.35),
-    0 0 24px rgba(0,0,0,.25);
+  margin-top:14px;
+  font-size:24px;
+  color:rgba(255,255,255,.78);
 }
 
-.hero-actions{ margin-top: 135px; }
-
-.hero-actions .btn.btn-primary{
-  padding: 12px 18px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.hero-cta-note{
-  margin: 22px auto 0;
-  font-size: 14px;
-  color: rgba(255,255,255,.70);
-  text-shadow: 0 10px 20px rgba(0,0,0,.18);
-}
+.hero-actions{ margin-top:135px; }
 
 
 /* =========================================================
-   5) Below Fold Wrapper — Water Texture + Dark Steel
-   Wrap sections after .hero in:
-   <div class="below-fold"> ... </div>
+   5) BELOW FOLD — WATER TEXTURE (GLOBAL)
    ========================================================= */
 .below-fold{
-  position: relative;
-  color: var(--ink);
+  position:relative;
+  color:var(--ink);
 
   background:
-    url("assets/images/water-texture.jpg") center / cover no-repeat,
+    url("assets/images/water-texture.jpg") center/cover no-repeat,
     linear-gradient(
       180deg,
-      rgba(15,27,43,.65) 0%,
-      rgba(15,27,43,.55) 45%,
-      rgba(15,27,43,.65) 100%
+      rgba(15,27,43,.65),
+      rgba(15,27,43,.55),
+      rgba(15,27,43,.65)
     ),
-    linear-gradient(180deg, var(--mist-bg) 0%, var(--mist-bg-2) 100%);
+    linear-gradient(
+      180deg,
+      var(--mist-bg),
+      var(--mist-bg-2)
+    );
 
-  background-blend-mode: soft-light, normal, normal;
+  background-blend-mode:soft-light,normal,normal;
 }
 
-/* subtle scanline / “wet” sheen */
 .below-fold::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:
-    repeating-linear-gradient(0deg,
-      rgba(255,255,255,.035) 0px,
-      rgba(255,255,255,.035) 1px,
-      rgba(0,0,0,0) 7px,
-      rgba(0,0,0,0) 12px
-    );
+  background:repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,.035) 0px,
+    rgba(255,255,255,.035) 1px,
+    transparent 7px,
+    transparent 12px
+  );
   opacity:.45;
-  mix-blend-mode: soft-light;
 }
 
 
 /* =========================================================
-   6) Features — Lighter Separator Band (hero -> content break)
+   6) FEATURES — SOLID LIGHTER SEPARATOR BAND
    ========================================================= */
 .features{
-  position: relative;
-  z-index: 3;
-  padding: 0;
+  position:relative;
+  z-index:3;
 
-  background: linear-gradient(180deg, var(--feat-bg-a) 0%, var(--feat-bg-b) 100%);
-  border-top: 1px solid var(--feat-border);
-  border-bottom: 1px solid var(--feat-border);
+  /* THIS IS THE KEY FIX */
+  background:#223447;
+
+  border-top:1px solid rgba(255,255,255,.18);
+  border-bottom:1px solid rgba(255,255,255,.18);
 }
 
 .feature-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: stretch;
-  min-height: 200px;
-  padding: 26px 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  padding:26px 0;
 }
 
 .feature{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 190px;
-  padding: 0 26px;
-  text-align: center;
-}
-
-.feature svg{
-  width: 32px;
-  height: 32px;
-  margin-bottom: 14px;
-}
-.feature svg *{
-  stroke-width: 1.25;
-  stroke: rgba(255,255,255,.72);
-}
-
-.feature h3{
-  margin: 10px 0 6px;
-  letter-spacing: .08em;
-  color: var(--ink);
-}
-
-.feature p{
-  max-width: 260px;
-  line-height: 1.45;
-  margin: 0;
-  color: var(--ink-muted);
+  text-align:center;
+  padding:0 26px;
 }
 
 .feature:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 18px;
-  bottom: 18px;
-  width: 1px;
-  background: var(--feat-divider);
+  content:"";
+  position:absolute;
+  right:0;
+  top:18px;
+  bottom:18px;
+  width:1px;
+  background:var(--mist-divider);
 }
 
 
 /* =========================================================
-   7) Split Section (Approach/Scope/Request) — Darker than Features
+   7) APPROACH / SPLIT — BACK ON WATER
    ========================================================= */
 .section-split{
-  position: relative;
-  padding: 48px 0 36px;
-  overflow: hidden;
-  color: var(--ink);
-
-  background: linear-gradient(
-    180deg,
-    var(--split-a) 0%,
-    var(--split-b) 55%,
-    var(--split-c) 100%
-  );
+  padding:48px 0 36px;
 }
 
 .split-inner{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 80px;
-  align-items: start;
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:80px;
 }
-
-.split-text{
-  position: relative;
-  z-index: 2;
-  max-width: 680px;
-}
-
-.section-split .section{
-  padding: 0;
-  background: transparent;
-  border: 0;
-}
-
-.section-split .section-title{
-  margin: 0 0 12px;
-  color: var(--ink);
-}
-
-.section-split .section-text{
-  margin: 0 0 24px;
-  color: var(--ink-muted);
-}
-
-.section-split .section + .section{ margin-top: 42px; }
-.request-box{ margin-top: 16px; }
 
 
 /* =========================================================
-   8) Bio Column — Dark glass card (readable on dark)
+   8) BIO CARD
    ========================================================= */
 .split-bio{
-  align-self: stretch;
-  min-height: 520px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 20px;
-
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
-  box-shadow: var(--mist-shadow);
+  padding:20px;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--mist-border);
+  box-shadow:var(--mist-shadow);
 }
-
-.bio-top{
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  align-items: center;
-}
-
-.bio-photo{
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-}
-
-.bio-photo img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.bio-name{
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  margin: 0;
-  color: var(--ink);
-}
-
-.bio-role{
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--ink-faint);
-  opacity: 1;
-}
-
-.bio-blurb{
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--ink-muted);
-  opacity: 1;
-}
-
-.bio-links{
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--ink);
-}
-
-.bio-links a{
-  opacity: 0.92;
-  text-decoration: none;
-  color: var(--ink);
-}
-.bio-links a:hover{ text-decoration: underline; }
-
-.bio-cta{
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,.10);
-}
-.bio-cta .btn{ width: 100%; }
 
 
 /* =========================================================
-   9) Footer
+   9) FOOTER
    ========================================================= */
 .site-footer{
-  background: var(--footer-bg);
-  border-top: 1px solid var(--footer-border);
-  padding: 20px 0 24px;
-  margin-top: 24px;
-  color: var(--footer-text);
-}
-
-.site-footer .footer-inner{
-  display: flex;
-  justify-content: space-between;
-  gap: 48px;
-  align-items: flex-start;
-}
-
-.site-footer .footer-brandline{
-  font-size: 14px;
-  font-weight: 650;
-  color: var(--footer-head);
-  letter-spacing: 0.2px;
-  margin: 0 0 6px;
-  line-height: 1.2;
-}
-
-.site-footer .footer-ir{ font-weight: 800; }
-
-.site-footer .footer-pipe{
-  opacity: 0.55;
-  padding: 0 6px;
-}
-
-.site-footer .footer-desc{
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.32;
-  max-width: 520px;
-  color: var(--footer-text);
-}
-
-.site-footer .footer-legal{
-  margin: 16px 0 0;
-  font-size: 12px;
-  line-height: 1.35;
-  color: var(--footer-faint);
-  max-width: 560px;
-}
-
-.site-footer .footer-right{
-  text-align: right;
-  font-size: 13px;
-  line-height: 1.25;
-  flex: 0 0 auto;
-}
-
-.site-footer .footer-block{ margin-bottom: 8px; }
-
-.site-footer .footer-label{
-  color: var(--footer-head);
-  font-weight: 600;
-  margin-bottom: 2px;
-  font-size: 13px;
-}
-
-.site-footer a{
-  color: var(--footer-link);
-  text-decoration: none;
-}
-.site-footer a:hover{ text-decoration: underline; }
-
-.site-footer .footer-copy{
-  margin-top: 28px;
-  font-size: 12px;
-  color: var(--footer-faint);
-}
-
-
-/* =========================================================
-   10) Responsive
-   ========================================================= */
-@media (max-width: 900px){
-  .split-inner{
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .split-bio{ min-height: auto; }
-
-  .bio-top{
-    grid-template-columns: 96px 1fr;
-  }
-
-  .bio-photo{
-    width: 96px;
-    height: 96px;
-  }
-
-  .bio-cta .btn{ width: auto; }
-
-  .site-footer .footer-inner{
-    flex-direction: column;
-    text-align: left;
-  }
-
-  .site-footer .footer-right{
-    text-align: left;
-  }
-}
-
-@media (max-width: 720px){
-  .topbar{
-    height: auto;
-    padding: 10px 0;
-    align-items: flex-start;
-  }
-
-  .topbar-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .brand{ height: auto; }
-
-  .nav{
-    height: auto;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+  background:var(--footer-bg);
+  border-top:1px solid var(--footer-border);
+  padding:20px 0 24px;
+  color:var(--footer-text);
 }
