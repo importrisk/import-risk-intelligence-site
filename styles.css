@@ -42,10 +42,10 @@
   --radius-sm: 0px;
   --radius-none: 0px;
 
-  /* Hero overlay — LIGHT steel wash */
-  --hero-top:    rgba(88, 110, 136, .18);
-  --hero-mid:    rgba(88, 110, 136, .30);
-  --hero-bottom: rgba(88, 110, 136, .44);
+ /* Hero overlay (original) */
+--hero-top:    rgba(38, 54, 77, .36);
+--hero-mid:    rgba(38, 54, 77, .52);
+--hero-bottom: rgba(38, 54, 77, .70);
 
   /* Footer — darker than body, not black */
   --footer-bg: #243245;
@@ -228,7 +228,7 @@ a{ color: inherit; text-decoration: none; }
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: saturate(.98) contrast(1.00) brightness(1.03); /* <-- fixed */
+  filter: saturate(.96) contrast(.99) brightness(1.02);
 }
 
 .hero-overlay{ display: none; }
