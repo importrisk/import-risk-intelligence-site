@@ -16,23 +16,23 @@
   --container: 1080px;
   --topbar-h: 72px;
 
-  /* Palette */
-  --bg: #26364d;
-  --surface: rgba(255,255,255,.045);
-  --surface-2: rgba(255,255,255,.06);
+  /* Morning Steel Palette (matches hero image) */
+  --bg: #1f2a38;                 /* deep steel (less navy) */
+  --surface: rgba(255,255,255,.040);
+  --surface-2: rgba(255,255,255,.060);
 
-  --text: rgba(255,255,255,.90);
-  --muted: rgba(255,255,255,.74);
-  --faint: rgba(255,255,255,.62);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.78);
+  --faint: rgba(255,255,255,.64);
   --white: #ffffff;
 
-  /* Brand */
-  --brand:  #5a95dd;
-  --brand-2:#3c78c6;
+  /* Accent (clean, not neon) */
+  --brand:  #6ea6e6;             /* steel-sky blue */
+  --brand-2:#4f86cf;             /* deeper blue for gradient */
 
   /* Lines */
   --border: rgba(255,255,255,.10);
-  --divider: rgba(255,255,255,.55);
+  --divider: rgba(255,255,255,.52);
 
   /* Shadows */
   --shadow: 0 14px 40px rgba(0,0,0,.22);
@@ -42,20 +42,19 @@
   --radius-sm: 0px;
   --radius-none: 0px;
 
-  /* Hero overlay (subtle lightening) */
-  --hero-top:    rgba(38, 54, 77, .36);
-  --hero-mid:    rgba(38, 54, 77, .52);
-  --hero-bottom: rgba(38, 54, 77, .70);
+  /* Hero overlay (subtle steel wash, not “dark film”) */
+  --hero-top:    rgba(34, 49, 67, .20);
+  --hero-mid:    rgba(34, 49, 67, .34);
+  --hero-bottom: rgba(34, 49, 67, .52);
 
-  /* Footer palette */
-  --footer-bg: #0b1626;
-  --footer-border: rgba(255,255,255,.06);
-  --footer-text: #a9b6c7;
-  --footer-head: #d6dee8;
-  --footer-link: #9fb7d9;
-  --footer-faint: #7f8ea3;
+  /* Footer (slightly less black, stays premium) */
+  --footer-bg: #0f1a28;
+  --footer-border: rgba(255,255,255,.07);
+  --footer-text: rgba(225,235,248,.72);
+  --footer-head: rgba(245,249,255,.88);
+  --footer-link: rgba(165,202,242,.92);
+  --footer-faint: rgba(175,194,214,.62);
 }
-
 
 /* =========================================================
    1) Base / Resets
