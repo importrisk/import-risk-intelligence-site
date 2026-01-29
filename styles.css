@@ -302,13 +302,28 @@ a{ color: inherit; text-decoration: none; }
   position: relative;
   color: var(--ink);
 
-  /* TEMP: make the texture obvious so we can confirm it’s working */
   background:
-    linear-gradient(180deg, rgba(255,0,0,.10), rgba(0,0,255,.10)),
-    linear-gradient(180deg, var(--mist-bg) 0%, var(--mist-bg-2) 100%);
+    /* real water texture */
+    url("assets/images/water-texture.jpg") center / cover no-repeat,
+
+    /* soft mist wash to keep it muted */
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.28) 0%,
+      rgba(255,255,255,.16) 45%,
+      rgba(255,255,255,.10) 100%
+    ),
+
+    /* steel base */
+    linear-gradient(
+      180deg,
+      var(--mist-bg) 0%,
+      var(--mist-bg-2) 100%
+    );
+
+  background-blend-mode: soft-light, normal, normal;
 }
 
-.below-fold::before{
   content:"";
   position:absolute;
   inset:0;
