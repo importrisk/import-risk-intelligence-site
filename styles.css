@@ -42,10 +42,10 @@
   --radius-sm: 0px;
   --radius-none: 0px;
 
-  /* Hero overlay */
-  --hero-top:    rgba(38, 54, 77, .42);
-  --hero-mid:    rgba(38, 54, 77, .58);
-  --hero-bottom: rgba(38, 54, 77, .76);
+  /* Hero overlay (lighter / less gradient) */
+  --hero-top:    rgba(38, 54, 77, .30);
+  --hero-mid:    rgba(38, 54, 77, .45);
+  --hero-bottom: rgba(38, 54, 77, .62);
 }
 
 
