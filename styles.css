@@ -240,40 +240,72 @@ a{ color:inherit; text-decoration:none; }
 
 
 /* =========================================================
-   6) FEATURES — SOLID LIGHTER SEPARATOR BAND
+   FEATURES — SOLID LIGHTER SEPARATOR BAND (FIXED)
    ========================================================= */
 .features{
-  position:relative;
-  z-index:3;
+  position: relative;
+  z-index: 3;
 
-  /* THIS IS THE KEY FIX */
-  background:#223447;
+  /* solid band (opaque) so water texture cannot show through */
+  background: #223447;
 
-  border-top:1px solid rgba(255,255,255,.18);
-  border-bottom:1px solid rgba(255,255,255,.18);
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.18);
 }
 
 .feature-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  padding:26px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  padding: 34px 0;
 }
 
 .feature{
-  text-align:center;
-  padding:0 26px;
+  position: relative;                 /* REQUIRED for divider ::after */
+  display: flex;                      /* restores your centered layout */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  min-height: 210px;
+  padding: 0 34px;
+  color: rgba(255,255,255,.92);
+}
+
+.feature svg{
+  width: 36px;                        /* FIX: prevents huge SVGs */
+  height: 36px;
+  margin-bottom: 14px;
+}
+
+.feature svg *{
+  stroke: rgba(255,255,255,.70);      /* your dark theme needs white strokes */
+  stroke-width: 1.6;
+}
+
+.feature h3{
+  margin: 10px 0 6px;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.95);
+}
+
+.feature p{
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.78);
 }
 
 .feature:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:18px;
-  bottom:18px;
-  width:1px;
-  background:var(--mist-divider);
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
 }
-
 
 /* =========================================================
    7) APPROACH / SPLIT — BACK ON WATER
