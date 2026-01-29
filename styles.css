@@ -301,8 +301,7 @@ a{ color: inherit; text-decoration: none; }
 
   /* SOLID band so the water texture does NOT show through */
   background: var(--band) !important;
-  background-image: none !important;
-
+  background: rgba(83,103,128,.72);
   border-top: 1px solid rgba(255,255,255,.18);
   border-bottom: none;
 }
