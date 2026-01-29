@@ -349,13 +349,11 @@ a{ color: inherit; text-decoration: none; }
   z-index: 3;
   padding: 0;
 
-  /* lighter glass panel so it reads separate from Approach */
-  background: rgba(255,255,255,.04);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  /* lighter than Approach, still dark steel */
+  background: rgba(255,255,255,.07);
 
-  border-top: 1px solid rgba(255,255,255,.10);
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
   margin-top: -1px;
 }
 
