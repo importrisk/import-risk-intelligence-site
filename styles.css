@@ -316,7 +316,7 @@ a{ color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
-  padding: 34px 0;
+  padding: 18px 0;   /* ↓ was 34px */
 }
 
 .feature{
@@ -327,8 +327,8 @@ a{ color: inherit; text-decoration: none; }
   justify-content: center;
   text-align: center;
 
-  min-height: 210px;
-  padding: 0 34px;
+  min-height: 180px;
+  padding: 0 28px;
   color: rgba(255,255,255,.92);
 }
 
