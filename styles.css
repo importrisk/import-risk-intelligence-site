@@ -233,7 +233,7 @@ a{ color: inherit; text-decoration: none; }
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: saturate(.96) contrast(.99) brightness(.100);
+  filter: saturate(.96) contrast(.99) brightness(.1.02);
 }
 
 .hero-overlay{ display: none; }
