@@ -344,7 +344,7 @@ a{ color: inherit; text-decoration: none; }
 .feature h3{
   margin: 10px 0 6px;
   letter-spacing: .08em;
-  font-size: 14px;              /* ← ADD THIS */
+  font-size: 16px;              /* ← ADD THIS */
   font-weight: 700;             /* ← ADD THIS (optional but recommended) */
   color: rgba(255,255,255,.95);
 }
@@ -353,7 +353,7 @@ a{ color: inherit; text-decoration: none; }
   margin: 0;
   max-width: 320px;
   line-height: 1.45;
-  font-size: 12px;              /* ← ADD THIS */
+  font-size: 14px;              /* ← ADD THIS */
   color: rgba(255,255,255,.78);
 }
 
