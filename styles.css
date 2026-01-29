@@ -1,10 +1,12 @@
 /* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
    Clean CSS (no legacy footer)
-   Updated:
-   - True vertical centering for topbar + nav
-   - Replaces "|" text separator with a true vertical rule
+   Notes:
+   - Topbar is baseline-proof (brand uses GRID)
+   - Separator is a TRUE vertical rule (not a text "|")
+   - IR is nudged up 1px for optical alignment
    ========================================================= */
+
 
 /* =========================================================
    0) Tokens
@@ -46,6 +48,7 @@
   --hero-bottom: rgba(38, 54, 77, .76);
 }
 
+
 /* =========================================================
    1) Base / Resets
    ========================================================= */
@@ -70,6 +73,7 @@ body{
 
 a{ color: inherit; text-decoration: none; }
 
+
 /* =========================================================
    2) Buttons
    ========================================================= */
@@ -91,24 +95,25 @@ a{ color: inherit; text-decoration: none; }
 }
 .btn-primary:hover{ filter: brightness(1.05); }
 
+
 /* =========================================================
-   3) Topbar / Nav — TRUE vertical centering + divider fix
-   ========================================================= */
+   3) Topbar / Nav — true vertical centering + true divider
+   HTML (recommended):
+   <a class="brand" ...>
+     <span class="brand-ir">IR</span>
+     <span class="brand-divider" aria-hidden="true"></span>
+     <span class="brand-name">Import Risk Intelligence</span>
+   </a>
 
+   If you still have <span class="brand-sep"> | </span>,
+   it will be hidden automatically.
+   ========================================================= */
 .topbar{
   position: absolute;
   inset: 0 0 auto 0;
   z-index: 5;
   height: var(--topbar-h);
-  paddi/* =========================================================
-   Topbar / Brand — FINAL, baseline-proof
-   ========================================================= */
-
-.topbar{
-  position: absolute;
-  inset: 0 0 auto 0;
-  z-index: 5;
-  height: var(--topbar-h);
+  padding: 0;
   display: flex;
   align-items: center;
 }
@@ -121,31 +126,38 @@ a{ color: inherit; text-decoration: none; }
   gap: 18px;
 }
 
-/* Brand as GRID (kills baseline behavior entirely) */
+/* Brand as GRID (baseline-proof) */
 .brand{
   height: 100%;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
-  align-items: center;     /* TRUE vertical centering */
+  align-items: center; /* true vertical centering for all children */
   column-gap: 12px;
+
   white-space: nowrap;
   color: rgba(255,255,255,.94);
 }
 
+/* Hide old text separator if still present */
+.brand-sep{ display: none; }
+
+/* IR */
 .brand-ir{
   font-size: 24px;
   font-weight: 900;
   letter-spacing: .02em;
   line-height: 1;
-  transform: translateY(-2px); /* subtle optical lift */
+  transform: translateY(-1px); /* nudge IR up 1px */
 }
 
-/* TRUE vertical rule — not text */
+/* True vertical rule (cannot baseline-drop) */
 .brand-divider{
   width: 1px;
   height: 20px;
   background: var(--divider);
+  display: block;
+  align-self: center;
   opacity: .85;
 }
 
@@ -174,98 +186,12 @@ a{ color: inherit; text-decoration: none; }
   justify-content: center;
   padding: 0 10px;
   opacity: .92;
-}
-
-.nav-link:hover{
-  background: rgba(255,255,255,.10);
-}
-
-.nav-cta{
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 14px;
-  background: rgba(90,149,221,.92);
-  border: 1px solid rgba(255,255,255,.18);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(0,0,0,.16);
-}
-ng: 0;
-
-  /* Center the inner container vertically in the bar */
-  display: flex;
-  align-items: center;
-}
-
-.topbar-inner{
-  height: 100%;
-  display: flex;
-  align-items: center;              /* centers brand + nav */
-  justify-content: space-between;
-  gap: 18px;
-}
-
-/* ✅ Brand as GRID kills baseline alignment issues entirely */
-.brand{
-  height: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  align-items: center;              /* TRUE vertical centering of every child */
-  column-gap: 12px;
-
-  white-space: nowrap;
-  color: rgba(255,255,255,.94);
-}
-
-/* If your HTML still has <span class="brand-sep"> | </span> hide it */
-.brand-sep{ display: none !important; }
-
-.brand-ir{
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: .02em;
-  line-height: 1;
-}
-
-/* ✅ True vertical rule that cannot baseline-drop */
-.brand-divider{
-  width: 1px;
-  height: 20px;
-  background: var(--divider);
-  display: block;                  /* block element, no baseline */
-  align-self: center;              /* extra guarantee */
-  opacity: .85;
-}
-
-.brand-name{
-  font-size: 14px;
-  font-weight: 600;
-  opacity: .92;
-  line-height: 1;
-}
-
-/* Nav */
-.nav{
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 13px;
-  color: rgba(255,255,255,.86);
-}
-
-.nav-link{
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  opacity: .92;
   transition: background .15s ease, opacity .15s ease;
   border-radius: var(--radius-sm);
 }
+
 .nav-link:hover{ background: rgba(255,255,255,.10); }
+.nav-link.is-active{ opacity: 1; }
 
 .nav-cta{
   height: 40px;
@@ -277,6 +203,7 @@ ng: 0;
   color: #fff;
   box-shadow: 0 10px 24px rgba(0,0,0,.16);
 }
+
 .nav-cta:hover{ background: rgba(90,149,221,1); }
 
 
@@ -349,6 +276,7 @@ ng: 0;
   text-shadow: 0 10px 20px rgba(0,0,0,.18);
 }
 
+
 /* =========================================================
    5) Feature Tiles
    ========================================================= */
@@ -404,6 +332,7 @@ ng: 0;
   background: rgba(255,255,255,0.10);
 }
 
+
 /* =========================================================
    6) Split Section (Text + Bio)
    ========================================================= */
@@ -437,6 +366,7 @@ ng: 0;
 .section-split .section + .section{ margin-top: 42px; }
 
 .request-box{ margin-top: 16px; }
+
 
 /* =========================================================
    7) Bio Column
@@ -506,6 +436,7 @@ ng: 0;
 }
 .bio-cta .btn{ width: 100%; }
 
+
 /* =========================================================
    8) Responsive
    ========================================================= */
@@ -524,6 +455,7 @@ ng: 0;
   .topbar{
     height: auto;
     padding: 10px 0;
+    align-items: flex-start;
   }
 
   .topbar-inner{
@@ -531,6 +463,8 @@ ng: 0;
     align-items: flex-start;
     gap: 10px;
   }
+
+  .brand{ height: auto; }
 
   .nav{
     height: auto;
