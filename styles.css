@@ -207,7 +207,7 @@ a{ color: inherit; text-decoration: none; }
   min-height: 70vh;
   display: flex;
   flex-direction: column;
-  padding-top: 84px; /* space for topbar */
+ padding-top: var(--topbar-h);
   overflow: hidden;
 }
 
@@ -532,3 +532,53 @@ a{ color: inherit; text-decoration: none; }
   align-items: center !important;
 }
 
+/* =========================================================
+   FINAL TOPBAR FIX — true vertical centering (wins everything)
+   ========================================================= */
+
+:root{ --topbar-h: 72px; }
+
+header.topbar{
+  height: var(--topbar-h) !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;   /* centers the row inside header */
+}
+
+header.topbar > .topbar-inner{
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;   /* centers brand + nav */
+  justify-content: space-between !important;
+}
+
+/* Make sure brand + nav don't create extra vertical whitespace */
+header.topbar .brand,
+header.topbar .nav{
+  height: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+header.topbar .brand-ir,
+header.topbar .brand-sep,
+header.topbar .brand-name,
+header.topbar .nav-link,
+header.topbar .nav-cta{
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+/* Consistent click targets */
+header.topbar .nav-link{
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 10px !important;
+}
+header.topbar .nav-cta{
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 14px !important;
+}
