@@ -254,7 +254,11 @@ a{ color: inherit; text-decoration: none; }
   max-width: 680px;
   font-size: 24px;
   color: rgba(255,255,255,.78);
-  text-shadow: 0 10px 22px rgba(0,0,0,.24);
+
+  /* Soft dark separation (not obvious) */
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.35),
+    0 0 24px rgba(0,0,0,.25);
 }
 
 .hero-actions{ margin-top: 135px; }
@@ -266,11 +270,12 @@ a{ color: inherit; text-decoration: none; }
 }
 
 .hero-cta-note{
-  margin: 12px auto 0;
+  margin: 22px auto 0; /* was 12px */
   font-size: 14px;
   color: rgba(255,255,255,.70);
   text-shadow: 0 10px 20px rgba(0,0,0,.18);
 }
+
 
 
 /* =========================================================
