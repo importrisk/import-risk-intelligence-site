@@ -522,34 +522,35 @@ box-shadow:
 .bio-cta .btn{ width: 100%; }
 
 /* =========================================================
-   9) FOOTER — SOLID, CLEAN, QUIET CLOSE
+   9) FOOTER — DARK NAVY, SINGLE TOP LINE, CLEAN CLOSE
+   - Dark navy background (forced, no vars)
+   - ONE divider line only (no ::before line)
+   - Right side stacks correctly (Contact above copyright)
    ========================================================= */
 
 .site-footer{
-  background: var(--footer-bg);
-  border-top: 1px solid var(--footer-border);
-  padding: 18px 0 18px;
+  background: #0b1d2f; /* deep navy */
+  border-top: 1px solid rgba(255,255,255,.08); /* single line */
+  padding: 22px 0 20px;
   margin-top: 0;
-  color: var(--footer-text);
+  color: rgba(230,238,247,.75);
 }
 
-/* subtle internal divider for structure */
+/* IMPORTANT: remove the extra internal divider line */
 .site-footer::before{
-  content: "";
-  display: block;
-  height: 1px;
-  background: rgba(255,255,255,.06);
-  margin-bottom: 14px;
+  content: none;
 }
 
+/* Layout */
 .site-footer .footer-inner{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
+  width: 100%;
 }
 
-/* LEFT SIDE */
+/* LEFT */
 
 .site-footer .footer-brandline{
   margin: 0 0 6px;
@@ -557,16 +558,14 @@ box-shadow:
   font-weight: 650;
   letter-spacing: .2px;
   line-height: 1.2;
-  color: var(--footer-head);
+  color: rgba(255,255,255,.90);
 }
 
-.site-footer .footer-ir{
-  font-weight: 800;
-}
+.site-footer .footer-ir{ font-weight: 800; }
 
 .site-footer .footer-pipe{
   padding: 0 6px;
-  opacity: .55;
+  opacity: .5;
 }
 
 .site-footer .footer-desc{
@@ -574,7 +573,7 @@ box-shadow:
   max-width: 560px;
   font-size: 12.5px;
   line-height: 1.35;
-  color: rgba(230,238,247,.72);
+  color: rgba(210,222,236,.75);
 }
 
 .site-footer .footer-legal{
@@ -582,33 +581,31 @@ box-shadow:
   max-width: 560px;
   font-size: 11px;
   line-height: 1.35;
-  color: rgba(190,205,222,.52);
+  color: rgba(180,195,214,.50);
 }
 
-/* RIGHT SIDE */
+/* RIGHT — stack items (Contact then copyright) */
 
 .site-footer .footer-right{
   flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
   text-align: right;
   font-size: 12.5px;
   line-height: 1.35;
-  opacity: .92;
 }
 
-.site-footer .footer-block{
-  margin-bottom: 6px;
-}
-
+/* If old markup still contains these, neutralize them */
+.site-footer .footer-block,
 .site-footer .footer-label{
-  margin-bottom: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .02em;
-  color: var(--footer-head);
+  display: none;
 }
 
+/* Links */
 .site-footer a{
-  color: rgba(175,205,242,.92);
+  color: rgba(180,210,255,.90);
   text-decoration: none;
 }
 
@@ -617,31 +614,27 @@ box-shadow:
   text-underline-offset: 2px;
 }
 
-/* COPYRIGHT */
-
+/* Copyright */
 .site-footer .footer-copy{
-  margin-top: 16px;
+  margin-top: 0;
   font-size: 11px;
-  color: rgba(190,205,222,.52);
+  color: rgba(180,195,214,.50);
 }
 
 /* RESPONSIVE */
 
 @media (max-width: 900px){
   .site-footer{
-    padding: 16px 0 16px;
-  }
-
-  .site-footer::before{
-    margin-bottom: 12px;
+    padding: 18px 0 18px;
   }
 
   .site-footer .footer-inner{
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
   }
 
   .site-footer .footer-right{
+    align-items: flex-start;
     text-align: left;
   }
 }
