@@ -119,6 +119,9 @@ a{ color: inherit; text-decoration: none; }
   height: var(--topbar-h);
   display: flex;
   align-items: center;
+
+  /* NEW: subtle readability gradient behind nav (no hero changes) */
+  background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
 }
 
 .topbar-inner{
@@ -186,17 +189,18 @@ a{ color: inherit; text-decoration: none; }
 .nav-link:hover{ background: rgba(255,255,255,.10); }
 .nav-link.is-active{ opacity: 1; }
 
+/* UPDATED: slightly de-emphasize nav CTA so hero CTA stays primary */
 .nav-cta{
   height: 40px;
   display: inline-flex;
   align-items: center;
   padding: 0 14px;
-  background: rgba(127,177,234,.88);
-  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(127,177,234,.55);
+  border: 1px solid rgba(255,255,255,.16);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(0,0,0,.16);
+  box-shadow: none;
 }
-.nav-cta:hover{ background: rgba(127,177,234,1); }
+.nav-cta:hover{ background: rgba(127,177,234,.72); }
 
 
 /* =========================================================
@@ -209,6 +213,9 @@ a{ color: inherit; text-decoration: none; }
   flex-direction: column;
   padding-top: var(--topbar-h);
   overflow: hidden;
+
+  /* NEW: explicit stacking context so bg never causes weirdness */
+  isolation: isolate;
 }
 
 .hero-bg{
@@ -226,6 +233,10 @@ a{ color: inherit; text-decoration: none; }
   background-size: cover;
   background-repeat: no-repeat;
   filter: saturate(.96) contrast(.99) brightness(1.02);
+
+  /* NEW: make layering bulletproof + never intercept clicks */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-overlay{ display: none; }
@@ -315,6 +326,9 @@ a{ color: inherit; text-decoration: none; }
   background: rgba(83,103,128,.72);          /* ← adjust opacity here */
   border-top: 1px solid var(--band-border);
   border-bottom: 0;
+
+  /* NEW: premium separator highlight */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
 }
 
 .feature-grid{
