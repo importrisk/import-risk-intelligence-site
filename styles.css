@@ -354,20 +354,13 @@ box-shadow:
   padding: 18px 22px;                        /* ↓ was 28px 28px */
   color: rgba(255,255,255,.92);
 }
-.feature::before{
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: rgba(255,255,255,.28);
-  margin-bottom: 14px;
-}
 
 /* icons: keep consistent + not huge */
 .feature svg{
   width: 28px;                               /* ↓ fixes giant icons */
   height: 28px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   opacity: .85;
   color: rgba(255,255,255,.72);              /* SVG uses currentColor for stroke */
 }
@@ -380,9 +373,9 @@ box-shadow:
 /* feature heading */
 .feature h3{
   margin: 8px 0 6px;
-  letter-spacing: .14em;
+  letter-spacing: .10em;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   color: rgba(255,255,255,.95);
 }
 
