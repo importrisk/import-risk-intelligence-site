@@ -328,7 +328,9 @@ a{ color: inherit; text-decoration: none; }
   border-bottom: 0;
 
   /* NEW: premium separator highlight */
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
 .feature-grid{
@@ -348,9 +350,16 @@ a{ color: inherit; text-decoration: none; }
   justify-content: flex-start;
   text-align: center;
 
-  min-height: 160px;                         /* ↓ was 180px */
-  padding: 22px 24px;                        /* ↓ was 28px 28px */
+  min-height: 150px;                         /* ↓ was 180px */
+  padding: 18px 22px;                        /* ↓ was 28px 28px */
   color: rgba(255,255,255,.92);
+}
+.feature::before{
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: rgba(255,255,255,.28);
+  margin-bottom: 14px;
 }
 
 /* icons: keep consistent + not huge */
@@ -371,7 +380,7 @@ a{ color: inherit; text-decoration: none; }
 /* feature heading */
 .feature h3{
   margin: 8px 0 6px;
-  letter-spacing: .08em;
+  letter-spacing: .14em;
   font-size: 16px;
   font-weight: 700;
   color: rgba(255,255,255,.95);
@@ -381,9 +390,10 @@ a{ color: inherit; text-decoration: none; }
 .feature p{
   margin: 0;
   max-width: 320px;
-  line-height: 1.45;
-  font-size: 16px;
+  line-height: 1.38;
+  font-size: 15px;
   color: rgba(255,255,255,.78);
+  max-width: 260px;
 }
 
 /* vertical dividers between tiles */
