@@ -337,7 +337,7 @@ box-shadow:
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
-  padding: 18px 0;                           /* ↓ reduces top/bottom dead space */
+  padding: 14px 0;                           /* ↓ reduces top/bottom dead space */
 }
 
 .feature{
@@ -350,7 +350,7 @@ box-shadow:
   justify-content: flex-start;
   text-align: center;
 
-  min-height: 150px;                         /* ↓ was 180px */
+  min-height: 140px;                         /* ↓ was 180px */
   padding: 18px 22px;                        /* ↓ was 28px 28px */
   color: rgba(255,255,255,.92);
 }
