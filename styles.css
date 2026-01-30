@@ -431,6 +431,7 @@ box-shadow:
   margin: 0 0 18px;
   color: var(--ink-muted);
   line-height: 1.55;
+  max-width: 640px;
 }
 
 .section + .section{ margin-top: 42px; }
