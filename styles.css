@@ -3,8 +3,8 @@
    CLEAN, CONSOLIDATED, CORRECT
    - Hero locked
    - Water texture stays on Below Fold + Approach/Split
-   - Features = LIGHTER solid separator band with borders
-   - NO scanline overlay (removes "bunch of lines" in Approach)
+   - Features = LIGHTER separator band with borders
+   - NO scanline overlay (removes “bunch of lines”)
    ========================================================= */
 
 
@@ -31,7 +31,7 @@
   --hero-mid: rgba(38,54,77,.52);
   --hero-bottom: rgba(38,54,77,.70);
 
-  /* Below fold / mist (dark) */
+  /* Below fold / mist */
   --mist-bg: #0f1b2b;
   --mist-bg-2: #132235;
 
@@ -43,17 +43,9 @@
   --mist-divider: rgba(255,255,255,.12);
   --mist-shadow: 0 18px 44px rgba(0,0,0,.28);
 
-  /* Features band (lighter than Approach) */
-  --band: #536780;          /* solid + lighter than mist */
+  /* Features band */
+  --band: #536780;
   --band-border: rgba(255,255,255,.18);
-
-  /* Footer */
-  --footer-bg: #243245;
-  --footer-border: rgba(255,255,255,.08);
-  --footer-text: rgba(230,238,247,.78);
-  --footer-head: rgba(245,250,255,.92);
-  --footer-link: rgba(175,205,242,.95);
-  --footer-faint: rgba(190,205,222,.62);
 
   /* Square edges */
   --radius: 0px;
@@ -120,7 +112,7 @@ a{ color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
 
-  /* NEW: subtle readability gradient behind nav (no hero changes) */
+  /* subtle readability gradient behind nav (no hero changes) */
   background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
 }
 
@@ -132,7 +124,7 @@ a{ color: inherit; text-decoration: none; }
   gap: 18px;
 }
 
-/* Brand (grid avoids baseline weirdness) */
+/* Brand */
 .brand{
   height: 100%;
   display: grid;
@@ -185,11 +177,10 @@ a{ color: inherit; text-decoration: none; }
   opacity: .92;
   transition: background .15s ease, opacity .15s ease;
 }
-
 .nav-link:hover{ background: rgba(255,255,255,.10); }
 .nav-link.is-active{ opacity: 1; }
 
-/* UPDATED: slightly de-emphasize nav CTA so hero CTA stays primary */
+/* nav CTA de-emphasized so hero CTA stays primary */
 .nav-cta{
   height: 40px;
   display: inline-flex;
@@ -213,9 +204,7 @@ a{ color: inherit; text-decoration: none; }
   flex-direction: column;
   padding-top: var(--topbar-h);
   overflow: hidden;
-
-  /* NEW: explicit stacking context so bg never causes weirdness */
-  isolation: isolate;
+  isolation: isolate; /* bulletproof stacking context */
 }
 
 .hero-bg{
@@ -233,8 +222,6 @@ a{ color: inherit; text-decoration: none; }
   background-size: cover;
   background-repeat: no-repeat;
   filter: saturate(.96) contrast(.99) brightness(1.02);
-
-  /* NEW: make layering bulletproof + never intercept clicks */
   z-index: 0;
   pointer-events: none;
 }
@@ -267,6 +254,7 @@ a{ color: inherit; text-decoration: none; }
 }
 
 .hero-actions{ margin-top: 135px; }
+
 .hero-cta-note{
   margin: 22px auto 0;
   font-size: 18px;
@@ -277,14 +265,12 @@ a{ color: inherit; text-decoration: none; }
 
 /* =========================================================
    5) BELOW FOLD — WATER TEXTURE (GLOBAL)
-   IMPORTANT: NO scanline overlay (removes "bunch of lines")
+   IMPORTANT: NO scanline overlay
    ========================================================= */
 .below-fold{
   position: relative;
   color: var(--ink);
   overflow: hidden;
-
-  /* BASE COLOR/TINT (this is the shade) */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -292,43 +278,34 @@ a{ color: inherit; text-decoration: none; }
     rgba(12, 26, 44, .94) 100%
   );
 }
+
 .below-fold::before{
   content: "";
   position: absolute;
   inset: 0;
-
   background: url("assets/images/water-texture.jpg") center / cover no-repeat;
-
-  /* TEXTURE AMOUNT (this is the “too much texture” slider) */
-  opacity: 0.22;             /* try 0.12–0.22 */
-
-  /* Makes it feel like hero water (less crunchy) */
-  filter: blur(1.0px) saturate(0.8) contrast(0.90);
-
+  opacity: 0.22; /* texture amount */
+  filter: blur(1px) saturate(.8) contrast(.90);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Make sure your sections sit above the overlay */
 .below-fold > *{
   position: relative;
   z-index: 1;
 }
 
+
 /* =========================================================
-   6) FEATURES — LIGHTER SEPARATOR BAND (TRANSLUCENT, ON WATER)
+   6) FEATURES — LIGHTER SEPARATOR BAND (TRANSLUCENT)
    ========================================================= */
 .features{
   position: relative;
   z-index: 2;
-
-  /* translucent band so water texture shows through */
-  background: rgba(83,103,128,.72);          /* ← adjust opacity here */
+  background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   border-bottom: 0;
-
-  /* NEW: premium separator highlight */
-box-shadow:
+  box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
@@ -337,40 +314,32 @@ box-shadow:
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
-  padding: 14px 0;                           /* ↓ reduces top/bottom dead space */
+  padding: 14px 0;
 }
 
 .feature{
   position: relative;
   display: flex;
   flex-direction: column;
-
-  /* top-align so multi-line text doesn’t shift tiles */
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-
-  min-height: 140px;                         /* ↓ was 180px */
-  padding: 18px 22px;                        /* ↓ was 28px 28px */
+  min-height: 140px;
+  padding: 18px 22px;
   color: rgba(255,255,255,.92);
 }
 
-/* icons: keep consistent + not huge */
 .feature svg{
-  width: 28px;                               /* ↓ fixes giant icons */
+  width: 28px;
   height: 28px;
   display: block;
   margin-bottom: 14px;
   opacity: .85;
-  color: rgba(255,255,255,.72);              /* SVG uses currentColor for stroke */
+  color: rgba(255,255,255,.72);
 }
 
-/* keep strokes crisp */
-.feature svg *{
-  stroke-width: 1.6;
-}
+.feature svg *{ stroke-width: 1.6; }
 
-/* feature heading */
 .feature h3{
   margin: 8px 0 6px;
   letter-spacing: .10em;
@@ -379,17 +348,14 @@ box-shadow:
   color: rgba(255,255,255,.95);
 }
 
-/* feature description */
 .feature p{
   margin: 0;
-  max-width: 320px;
+  max-width: 260px;
   line-height: 1.38;
   font-size: 15px;
   color: rgba(255,255,255,.78);
-  max-width: 260px;
 }
 
-/* vertical dividers between tiles */
 .feature:not(:last-child)::after{
   content: "";
   position: absolute;
@@ -400,13 +366,14 @@ box-shadow:
   background: rgba(255,255,255,.14);
 }
 
+
 /* =========================================================
    7) SPLIT (APPROACH/SCOPE/REQUEST) — ON WATER TEXTURE
    ========================================================= */
 .section-split{
   position: relative;
   padding: 48px 0 36px;
-  background: transparent; /* MUST stay transparent so water shows */
+  background: transparent;
 }
 
 .split-inner{
@@ -416,9 +383,7 @@ box-shadow:
   align-items: start;
 }
 
-.section{
-  padding: 0;
-}
+.section{ padding: 0; }
 
 .section-title{
   margin: 0 0 12px;
@@ -435,7 +400,6 @@ box-shadow:
 }
 
 .section + .section{ margin-top: 42px; }
-
 .request-box{ margin-top: 16px; }
 
 
@@ -447,7 +411,6 @@ box-shadow:
   display: flex;
   flex-direction: column;
   gap: 14px;
-
   padding: 20px;
   background: rgba(255,255,255,.07);
   border: 1px solid var(--mist-border);
@@ -473,6 +436,7 @@ box-shadow:
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   filter: saturate(.96) contrast(.98);
 }
 
@@ -490,13 +454,9 @@ box-shadow:
 }
 
 .bio-blurb{
+  margin: 0;
   font-size: 16px;
   line-height: 1.5;
-  margin-top: 12px;
-  margin: 0;
-}
-
-.bio-blurb p{
   color: rgba(255,255,255,.82);
 }
 
@@ -508,10 +468,13 @@ box-shadow:
 }
 
 .bio-links a{
-  color: var(--ink);
-  opacity: .92;
+  color: rgba(180,210,255,.90);
+  text-decoration: none;
 }
-.bio-links a:hover{ text-decoration: underline; }
+.bio-links a:hover{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 .bio-cta{
   margin-top: auto;
@@ -521,13 +484,13 @@ box-shadow:
 
 .bio-cta .btn{ width: 100%; }
 
+
 /* =========================================================
    9) FOOTER — DARK NAVY, SINGLE TOP LINE, CLEAN CLOSE
-   - Dark navy background (forced, no vars)
-   - ONE divider line only (no ::before line)
-   - Right side stacks correctly (Contact above copyright)
+   - Dark navy background
+   - ONE divider line only
+   - Uses same gutters as .container
    ========================================================= */
-
 .site-footer{
   background: #0b1d2f; /* deep navy */
   border-top: 1px solid rgba(255,255,255,.08); /* single line */
@@ -536,22 +499,20 @@ box-shadow:
   color: rgba(230,238,247,.75);
 }
 
-/* IMPORTANT: remove the extra internal divider line */
-.site-footer::before{
-  content: none;
-}
+.site-footer::before{ content: none; }
 
-/* Layout */
+/* match page gutters even if markup gets weird */
 .site-footer .footer-inner{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
-  width: 100%;
 }
 
 /* LEFT */
-
 .site-footer .footer-brandline{
   margin: 0 0 6px;
   font-size: 13px;
@@ -584,8 +545,7 @@ box-shadow:
   color: rgba(180,195,214,.50);
 }
 
-/* RIGHT — stack items (Contact then copyright) */
-
+/* RIGHT */
 .site-footer .footer-right{
   flex: 0 0 auto;
   display: flex;
@@ -597,47 +557,25 @@ box-shadow:
   line-height: 1.35;
 }
 
-/* If old markup still contains these, neutralize them */
-.site-footer .footer-block,
-.site-footer .footer-label{
-  display: none;
-}
+/* keep existing markup, but visually simplify */
+.site-footer .footer-label{ display: none; }
+.site-footer .footer-block{ margin: 0; }
 
-/* Links */
 .site-footer a{
   color: rgba(180,210,255,.90);
   text-decoration: none;
 }
-
 .site-footer a:hover{
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* Copyright */
 .site-footer .footer-copy{
-  margin-top: 0;
+  margin: 0;
   font-size: 11px;
   color: rgba(180,195,214,.50);
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 900px){
-  .site-footer{
-    padding: 18px 0 18px;
-  }
-
-  .site-footer .footer-inner{
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .site-footer .footer-right{
-    align-items: flex-start;
-    text-align: left;
-  }
-}
 
 /* =========================================================
    10) RESPONSIVE
@@ -661,12 +599,17 @@ box-shadow:
 
   .bio-cta .btn{ width: auto; }
 
+  .site-footer{
+    padding: 18px 0 18px;
+  }
+
   .site-footer .footer-inner{
     flex-direction: column;
-    text-align: left;
+    gap: 16px;
   }
 
   .site-footer .footer-right{
+    align-items: flex-start;
     text-align: left;
   }
 }
@@ -702,7 +645,5 @@ box-shadow:
     padding: 18px 18px;
   }
 
-  .feature:not(:last-child)::after{
-    display: none;
-  }
+  .feature:not(:last-child)::after{ display: none; }
 }
