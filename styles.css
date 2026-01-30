@@ -276,12 +276,12 @@ a{ color: inherit; text-decoration: none; }
     url("assets/images/water-texture.jpg") center / cover no-repeat,
 
     /* blue-toned wash to match hero water */
-    linear-gradient(
-      180deg,
-      rgba(58, 92, 130, .28) 0%,
-      rgba(58, 92, 130, .22) 45%,
-      rgba(58, 92, 130, .26) 100%
-    ),
+   linear-gradient(
+  180deg,
+  rgba(48, 88, 132, .48) 0%,   /* darker + bluer at top */
+  rgba(64, 104, 148, .30) 45%,
+  rgba(64, 104, 148, .34) 100%
+),
 
     /* subtle depth base (lighter than before) */
     linear-gradient(
