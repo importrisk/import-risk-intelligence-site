@@ -275,24 +275,22 @@ a{ color: inherit; text-decoration: none; }
   background:
     url("assets/images/water-texture.jpg") center / cover no-repeat,
 
-    /* blue glaze (this is the “match hero water” layer) */
+    /* blue-toned wash to match hero water */
     linear-gradient(
       180deg,
-      rgba(46, 86, 120, .22) 0%,
-      rgba(46, 86, 120, .18) 45%,
-      rgba(46, 86, 120, .22) 100%
+      rgba(58, 92, 130, .28) 0%,
+      rgba(58, 92, 130, .22) 45%,
+      rgba(58, 92, 130, .26) 100%
     ),
 
-    /* depth (keeps it from getting washed out) */
+    /* subtle depth base (lighter than before) */
     linear-gradient(
       180deg,
-      rgba(18, 33, 50, .52) 0%,
-      rgba(18, 33, 50, .46) 45%,
-      rgba(18, 33, 50, .52) 100%
+      rgba(15, 27, 43, .55) 0%,
+      rgba(15, 27, 43, .60) 100%
     );
 
-  /* IMPORTANT: multiply makes the hue shift toward that steel-blue */
-  background-blend-mode: multiply, normal, normal;
+  background-blend-mode: soft-light, normal, normal;
 }
 
 /* =========================================================
