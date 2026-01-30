@@ -275,9 +275,9 @@ a{ color: inherit; text-decoration: none; }
   background:
     linear-gradient(
       180deg,
-      rgba(18, 32, 52, .78) 0%,   /* deeper navy at top */
-      rgba(24, 44, 68, .70) 45%,
-      rgba(34, 60, 90, .62) 100%
+      rgba(18, 32, 52, .88) 0%,   /* darker veil */
+      rgba(24, 44, 68, .82) 45%,
+      rgba(34, 60, 90, .78) 100%
     ),
     url("assets/images/water-texture.jpg");
 
