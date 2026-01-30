@@ -498,7 +498,9 @@ box-shadow:
 }
 
 .bio-links{
-  margin-top: 6px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.14);
   font-size: 13px;
 }
 
