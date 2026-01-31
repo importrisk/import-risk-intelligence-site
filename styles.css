@@ -597,7 +597,7 @@ a{ color: inherit; text-decoration: none; }
   z-index: 3;
 
   background: rgba(60, 80, 105, 0.75);
-  padding: 44px 0;
+  padding: 72px 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
@@ -607,9 +607,9 @@ a{ color: inherit; text-decoration: none; }
 
 /* Make feature blocks spill over band */
 .method-features > .container{
-  margin-top: -56px;
-  margin-bottom: -56px;
-
+  margin-top: -96px;
+  margin-bottom: -96px;
+ 
   display: flex;
   align-items: center;
 }
@@ -628,7 +628,7 @@ a{ color: inherit; text-decoration: none; }
 .method-feature{
   height: 160px;
 
-  background: rgba(26, 42, 64, 0.78); /* deep steel blue */
+  background: background: #1c2f47; /* solid deep steel */
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
