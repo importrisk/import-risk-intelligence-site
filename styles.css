@@ -604,10 +604,10 @@ a{ color: inherit; text-decoration: none; }
    ========================================================= */
 
 .method-features{
-  /* how far the cards + band overlap upward into the hero */
-  --lift: 120px;
+  /* how far cards extend above AND below the band */
+  --overhang: 96px;
 
-  /* vertical thickness of the band behind cards */
+  /* thickness of the band behind the cards */
   --band-pad: 56px;
 
   position: relative;
@@ -615,18 +615,15 @@ a{ color: inherit; text-decoration: none; }
 
   background: rgba(60, 80, 105, 0.75);
 
-  /* pull the whole section upward into the hero */
-  margin-top: calc(-1 * var(--lift));
-
-  /* add the space back so layout below stays correct */
-  padding: calc(var(--band-pad) + var(--lift)) 0 var(--band-pad);
+  /* band thickness only */
+  padding: var(--band-pad) 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
 
-  overflow: visible;
+  overflow: visible; /* allow card overhang + chevrons */
 }
 
 /* the centered band */
@@ -666,6 +663,8 @@ a{ color: inherit; text-decoration: none; }
 
   position: relative;
   z-index: 2;
+
+  transform: translateY(calc(-1 * var(--overhang))); /* makes cards spill upward */
 
   overflow: visible; /* critical: arrows + shadows */
 }
