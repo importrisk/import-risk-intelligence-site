@@ -616,6 +616,10 @@ a{ color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .method-feature{
