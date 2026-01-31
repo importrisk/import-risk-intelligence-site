@@ -592,21 +592,27 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   METHOD — FEATURES BAND + SPILL (WORKING)
+   METHOD — FEATURES BAND (CENTERED BEHIND CARDS + CLEAN OVERLAP)
+   KEY IDEA:
+   - Move the BAND up with margin-top (overlaps hero)
+   - Keep the GRID normal (no translate)
+   - Use equal padding top/bottom so the band is centered behind cards
    ========================================================= */
-/* =========================================================
-   METHOD — FEATURES BAND (CENTERED BEHIND CARDS)
-   ========================================================= */
+
 .method-features{
-  --spill: 96px;
+  --spill: 96px;     /* how far the whole band overlaps the hero */
+  --band-pad: 64px;  /* equal space above & below the cards */
 
   position: relative;
   z-index: 4;
 
   background: rgba(60, 80, 105, 0.75);
 
-  /* Equal padding top & bottom */
-  padding: calc(64px + var(--spill)) 0;
+  /* overlap into hero (this is the spill) */
+  margin-top: calc(-1 * var(--spill));
+
+  /* centered band behind the cards */
+  padding: var(--band-pad) 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
@@ -615,7 +621,7 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   FEATURE GRID (visual lift only)
+   FEATURE GRID (NO LIFT — keep it in normal flow)
    ========================================================= */
 .method-feature-grid{
   display: grid;
@@ -625,10 +631,7 @@ a{ color: inherit; text-decoration: none; }
 
   position: relative;
   z-index: 1;
-
-  transform: translateY(calc(-1 * var(--spill)));
 }
-
 
 /* =========================================================
    FEATURE CARD
@@ -652,7 +655,6 @@ a{ color: inherit; text-decoration: none; }
   flex-direction: column;
   gap: 10px;
 }
-
 
 /* =========================================================
    FEATURE CARD CONTENT (matches your HTML)
@@ -728,15 +730,14 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(255,255,255,.55);
 }
 
-
 /* =========================================================
-   FLOW ARROWS (purely visual)
+   FLOW ARROWS (purely visual, does NOT affect layout)
    ========================================================= */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
 
-  left: calc(100% + 14px);
+  left: calc(100% + 14px);  /* center of 28px gap */
   top: 50%;
   transform: translateY(-50%);
 
@@ -748,15 +749,11 @@ a{ color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-
 /* =========================================================
-   OPTIONAL SEAM TIGHTENING
+   IMPORTANT: seam-tightening REMOVED for now
+   (it was creating the weird band + pushing things around)
    ========================================================= */
-.method-features + .method-content{
-  margin-top: calc(-1 * (var(--spill) / 2));
-  padding-top: calc(64px + (var(--spill) / 2));
-}
-
+/* .method-features + .method-content{ ... } */
 
 /* =========================================================
    RESPONSIVE
@@ -764,22 +761,16 @@ a{ color: inherit; text-decoration: none; }
 @media (max-width: 900px){
   .method-features{
     --spill: 44px;
-    padding: 40px 0 calc(40px + var(--spill));
+    --band-pad: 44px;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
     gap: 18px;
-    transform: translateY(calc(-1 * var(--spill)));
   }
 
   .method-feature::after{
     display: none;
-  }
-
-  .method-features + .method-content{
-    margin-top: calc(-1 * (var(--spill) / 2));
-    padding-top: calc(64px + (var(--spill) / 2));
   }
 }
 
