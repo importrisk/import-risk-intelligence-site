@@ -505,163 +505,94 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   9) METHOD PAGE — HERO (SAME OVERLAY AS HOME)
+   METHOD PAGE — STYLES ONLY
+   Gradient-only hero (no photo)
+   ========================================================= */
+
+
+/* =========================================================
+   9.1) METHOD — HERO WRAPPER (SHORTER THAN HOME)
    ========================================================= */
 .method-hero{
   position: relative;
-  min-height: 70vh;
+
+  /* intentionally shorter than home hero */
+  min-height: clamp(320px, 48vh, 520px);
+
   padding-top: var(--topbar-h);
   overflow: hidden;
   isolation: isolate;
 }
 
+
+/* =========================================================
+   9.2) METHOD — HERO BACKGROUND (GRADIENT ONLY)
+   SAME gradient as Home hero overlay
+   ========================================================= */
 .method-hero-bg{
   position: absolute;
-  inset: -2px;
-  background-image:
-    linear-gradient(
-      180deg,
-      var(--hero-top) 0%,
-      var(--hero-mid) 58%,
-      var(--hero-bottom) 100%
-    ),
-    url("assets/images/hero-port-morning-steel.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: saturate(.96) contrast(.99) brightness(1.02);
-  z-index: 0;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    var(--hero-top) 0%,
+    var(--hero-mid) 58%,
+    var(--hero-bottom) 100%
+  );
+
   pointer-events: none;
+  z-index: 0;
 }
 
+
+/* =========================================================
+   9.3) METHOD — HERO CONTENT LAYER
+   (empty now, safe for future text)
+   ========================================================= */
 .method-hero > .container{
   position: relative;
   z-index: 1;
 }
 
-/* Optional method text styles (if/when you add them back) */
+
+/* =========================================================
+   9.4) METHOD — OPTIONAL HERO TEXT STYLES
+   (inactive unless you add text)
+   ========================================================= */
 .method-title{
   margin: 0;
-  font-size: clamp(32px, 4vw, 46px);
+  font-size: clamp(30px, 3.8vw, 44px);
   letter-spacing: -0.02em;
   color: var(--text);
+  text-align: center;
 }
 
 .method-subtitle{
   margin: 14px auto 0;
   max-width: 640px;
-  font-size: 18px;
+  font-size: 17px;
   color: var(--muted);
+  text-align: center;
 }
 
 
 /* =========================================================
-   10) METHOD — CENTER FLOW RIBBON (PROCESS CARDS)
+   9.5) METHOD — BELOW FOLD SPACING ONLY
+   (water texture already global)
    ========================================================= */
-.method-flow{
-  margin-top: -44px;
-  padding: 0 0 34px;
-  position: relative;
-  z-index: 3;
+.method-content{
+  padding: 64px 0 72px;
 }
 
-.flow-row{
-  display: grid;
-  grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr;
-  align-items: stretch;
-  gap: 0;
-}
 
-.flow-card{
-  position: relative;
-  padding: 18px 18px 16px;
-  color: rgba(255,255,255,.86);
-  background: rgba(40, 58, 82, .52);
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* =========================================================
+   9.6) METHOD — RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px){
+  .method-hero{
+    min-height: 300px;
+  }
 }
-
-.flow-card::before{
-  content:"";
-  position:absolute;
-  left: 12px;
-  right: 12px;
-  top: 10px;
-  height: 1px;
-  background: rgba(255,255,255,.18);
-  opacity: .9;
-}
-
-.flow-head{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.flow-icon{
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(0,0,0,.10);
-}
-
-.flow-icon svg{
-  width: 18px;
-  height: 18px;
-  color: rgba(210,230,255,.92);
-}
-
-.flow-title{
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: rgba(235,245,255,.92);
-}
-
-.flow-text{
-  margin: 0;
-  font-size: 14.5px;
-  line-height: 1.45;
-  color: rgba(210,222,236,.78);
-  max-width: 28ch;
-}
-
-.flow-chev{
-  position: relative;
-  display: block;
-}
-
-.flow-chev::before{
-  content:"";
-  position:absolute;
-  inset: 12px 0 12px 0;
-  background: rgba(40, 58, 82, .35);
-  border-top: 1px solid rgba(255,255,255,.10);
-  border-bottom: 1px solid rgba(0,0,0,.20);
-}
-
-.flow-chev::after{
-  content:"";
-  position:absolute;
-  top: 50%;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  border-top: 2px solid rgba(255,255,255,.22);
-  border-right: 2px solid rgba(255,255,255,.22);
-  opacity: .85;
-}
-
 
 /* =========================================================
    11) FOOTER (ALL FOOTER CSS IN ONE PLACE)
