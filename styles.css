@@ -590,14 +590,14 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND
+   METHOD — FEATURES BAND (background + structure)
    ========================================================= */
 .method-features{
   position: relative;
   z-index: 3;
 
   background: rgba(60, 80, 105, 0.75);
-  padding: 72px 0;
+  padding: 48px 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
@@ -605,17 +605,16 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
-/* Make feature blocks spill over band */
+/* =========================================================
+   METHOD — FEATURE BLOCK SPILL (controlled overlap)
+   ========================================================= */
 .method-features > .container{
   margin-top: -96px;
   margin-bottom: -96px;
- 
-  display: flex;
-  align-items: center;
 }
 
 /* =========================================================
-   METHOD — FEATURE BLOCK GRID (structure only)
+   METHOD — FEATURE GRID
    ========================================================= */
 .method-feature-grid{
   display: grid;
@@ -624,9 +623,12 @@ a{ color: inherit; text-decoration: none; }
   width: 100%;
 }
 
-/* Individual feature block */
+/* =========================================================
+   METHOD — FEATURE BLOCKS
+   ========================================================= */
 .method-feature{
   height: 160px;
+
   background: #1c2f47; /* solid deep steel */
   border: 1px solid rgba(255,255,255,.14);
 
@@ -634,7 +636,6 @@ a{ color: inherit; text-decoration: none; }
     0 18px 40px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.06);
 }
-
 
 /* =========================================================
    9.6) METHOD — RESPONSIVE
