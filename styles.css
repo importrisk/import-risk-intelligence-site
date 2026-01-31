@@ -643,24 +643,30 @@ a{ color: inherit; text-decoration: none; }
     0 22px 46px rgba(0,0,0,.45),
     inset 0 1px 0 rgba(255,255,255,.10);
 }
+
 /* =========================================================
    METHOD — FLOW ARROWS BETWEEN FEATURE BLOCKS
    ========================================================= */
+/* Give the arrows real breathing room */
+.method-feature-grid{
+  gap: 28px; /* was 18px */
+}
+
 .method-feature{
   position: relative;
 }
 
-/* arrow after every block except last */
+/* Arrow sits centered in the gap (doesn't distort spacing) */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
-  right: -14px;
+  left: calc(100% + 14px); /* half of 28px gap */
   top: 50%;
   transform: translateY(-50%);
 
   font-size: 22px;
   line-height: 1;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.28);
 
   pointer-events: none;
 }
