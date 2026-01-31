@@ -1,11 +1,10 @@
 /* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
-   CLEAN, CONSOLIDATED, CORRECT
+   CLEAN + ORGANIZED
    - Hero locked
-   - Water texture stays on Below Fold + Approach/Split
-   - Features = LIGHTER separator band with borders
-   - NO scanline overlay
-   - Footer link polish (no blue brand, no underline hovers)
+   - Water texture below fold
+   - Features band lighter
+   - Footer: brand stays white, links no underline, separators
    ========================================================= */
 
 
@@ -32,7 +31,7 @@
   --hero-mid: rgba(38,54,77,.52);
   --hero-bottom: rgba(38,54,77,.70);
 
-  /* Below fold / mist */
+  /* Below fold */
   --ink: rgba(255,255,255,.92);
   --ink-muted: rgba(255,255,255,.74);
   --ink-faint: rgba(255,255,255,.60);
@@ -50,7 +49,7 @@
 
 
 /* =========================================================
-   1) BASE / RESETS
+   1) BASE / RESETS (GLOBAL)
    ========================================================= */
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
@@ -75,7 +74,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   2) BUTTONS
+   2) BUTTONS (GLOBAL)
    ========================================================= */
 .btn{
   display: inline-flex;
@@ -99,7 +98,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   3) TOPBAR / NAV
+   3) TOPBAR / NAV (GLOBAL)
    ========================================================= */
 .topbar{
   position: absolute;
@@ -165,10 +164,9 @@ a{ color: inherit; text-decoration: none; }
   opacity: .75;
   text-shadow: 0 1px 10px rgba(0,0,0,.35);
 }
-
 .brand:hover .brand-divider{ opacity: .5; }
 
-/* Underline reveal — only for top nav brand name */
+/* underline reveal (top brand only) */
 .brand-name::after{
   content: "";
   position: absolute;
@@ -183,6 +181,7 @@ a{ color: inherit; text-decoration: none; }
 }
 .brand-name:hover::after{ transform: scaleX(1); }
 
+/* Nav */
 .nav{
   height: 100%;
   display: inline-flex;
@@ -218,7 +217,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   4) HERO (LOCKED)
+   4) HOME PAGE — HERO (LOCKED)
    ========================================================= */
 .hero{
   position: relative;
@@ -287,7 +286,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   5) BELOW FOLD — WATER TEXTURE (GLOBAL)
+   5) HOME PAGE — BELOW FOLD (WATER TEXTURE)
    ========================================================= */
 .below-fold{
   position: relative;
@@ -319,7 +318,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   6) FEATURES — LIGHTER SEPARATOR BAND
+   6) HOME PAGE — FEATURES BAND
    ========================================================= */
 .features{
   position: relative;
@@ -389,7 +388,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   7) SPLIT (APPROACH/SCOPE/REQUEST)
+   7) HOME PAGE — SPLIT SECTIONS
    ========================================================= */
 .section-split{
   position: relative;
@@ -425,7 +424,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   8) BIO CARD — GLASS ON WATER
+   8) HOME PAGE — BIO CARD (IF PRESENT)
    ========================================================= */
 .split-bio{
   align-self: stretch;
@@ -505,122 +504,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   9) FOOTER — CLEAN + CONSISTENT LINKS
-   ========================================================= */
-.site-footer{
-  background: #0b1d2f;
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding: 22px 0 20px;
-  margin-top: 0;
-  color: rgba(230,238,247,.75);
-}
-
-.site-footer::before{ content: none; }
-
-.site-footer .footer-inner{
-  width: min(var(--container), calc(100% - 40px));
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-/* Brandline: ALWAYS WHITE, even if you wrap it in <a> */
-.site-footer .footer-brandline,
-.site-footer .footer-brandline a{
-  margin: 0 0 6px;
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: .2px;
-  line-height: 1.2;
-  color: rgba(255,255,255,.90);
-}
-
-/* Make IR crisp white */
-.site-footer .footer-ir{
-  font-weight: 800;
-  color: #ffffff;
-}
-
-/* Pipe */
-.site-footer .footer-pipe{
-  padding: 0 6px;
-  opacity: .5;
-}
-
-/* Left text */
-.site-footer .footer-desc{
-  margin: 0;
-  max-width: 560px;
-  font-size: 12.5px;
-  line-height: 1.35;
-  color: rgba(210,222,236,.75);
-}
-
-.site-footer .footer-legal{
-  margin: 12px 0 0;
-  max-width: 560px;
-  font-size: 11px;
-  line-height: 1.35;
-  color: rgba(180,195,214,.50);
-}
-
-/* Right column */
-.site-footer .footer-right{
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  text-align: right;
-  font-size: 12.5px;
-  line-height: 1.35;
-}
-
-/* Footer nav wrapper (you added this in HTML) */
-.site-footer .footer-nav{
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-}
-
-/* Footer links: NO underline, subtle hover */
-.site-footer .footer-nav a{
-  position: relative;
-  padding: 0 8px;
-  font-size: 12.5px;
-  color: rgba(200,218,245,.92);
-  white-space: nowrap;
-  text-decoration: none;
-}
-
-.site-footer .footer-nav a:hover{
-  color: rgba(255,255,255,.96);
-  text-decoration: none;
-}
-
-/* Separators between footer links */
-.site-footer .footer-nav a:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: 3px;
-  bottom: 3px;
-  width: 1px;
-  background: rgba(255,255,255,.18);
-}
-
-/* Footer copyright */
-.site-footer .footer-copy{
-  margin: 0;
-  font-size: 11px;
-  color: rgba(180,195,214,.50);
-}
-
-
-/* =========================================================
-   10) METHOD PAGE — SIMPLE SKY INTRO (IF YOU USE THESE CLASSES)
+   9) METHOD PAGE (ONLY)
    ========================================================= */
 .method-hero{
   padding: 120px 0 72px;
@@ -649,7 +533,117 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   11) RESPONSIVE
+   10) FOOTER (ALL FOOTER CSS IN ONE PLACE)
+   ========================================================= */
+.site-footer{
+  background: #0b1d2f;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 22px 0 20px;
+  margin-top: 0;
+  color: rgba(230,238,247,.75);
+}
+
+.site-footer::before{ content: none; }
+
+.site-footer .footer-inner{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Brandline stays WHITE even if you wrap it in <a> */
+.site-footer .footer-brandline,
+.site-footer .footer-brandline a{
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .2px;
+  line-height: 1.2;
+  color: rgba(255,255,255,.90);
+}
+
+/* IR is crisp white */
+.site-footer .footer-ir{
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.site-footer .footer-pipe{
+  padding: 0 6px;
+  opacity: .5;
+}
+
+.site-footer .footer-desc{
+  margin: 0;
+  max-width: 560px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: rgba(210,222,236,.75);
+}
+
+.site-footer .footer-legal{
+  margin: 12px 0 0;
+  max-width: 560px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(180,195,214,.50);
+}
+
+.site-footer .footer-right{
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-align: right;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+/* Footer nav (Home | Method | Contact) */
+.site-footer .footer-nav{
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.site-footer .footer-nav a{
+  position: relative;
+  padding: 0 8px;
+  font-size: 12.5px;
+  color: rgba(200,218,245,.92);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.site-footer .footer-nav a:hover{
+  color: rgba(255,255,255,.96);
+  text-decoration: none; /* kill underline */
+}
+
+/* separators between links */
+.site-footer .footer-nav a:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 3px;
+  bottom: 3px;
+  width: 1px;
+  background: rgba(255,255,255,.18);
+}
+
+.site-footer .footer-copy{
+  margin: 0;
+  font-size: 11px;
+  color: rgba(180,195,214,.50);
+}
+
+
+/* =========================================================
+   11) RESPONSIVE (GLOBAL)
    ========================================================= */
 @media (max-width: 900px){
   .split-inner{
@@ -718,10 +712,10 @@ a{ color: inherit; text-decoration: none; }
 
   .feature:not(:last-child)::after{ display: none; }
 
+  /* mobile footer link separators off */
   .site-footer .footer-nav a{
     padding: 0 10px 0 0;
   }
-
   .site-footer .footer-nav a:not(:last-child)::after{
     display: none;
   }
