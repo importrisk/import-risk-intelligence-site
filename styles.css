@@ -590,15 +590,33 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND
+   METHOD — FEATURES BAND (band is a centered slab, not padding)
    ========================================================= */
 
 .method-features{
   position: relative;
   z-index: 3;
 
+  /* IMPORTANT: band height is controlled by ::before now */
+  padding: 0;
+  overflow: visible;
+}
+
+/* The actual band slab behind the cards */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  /* Center the band behind the feature blocks */
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* TUNE THIS: smaller = less band showing under the cards */
+  height: 220px;
+
   background: rgba(60, 80, 105, 0.75);
-  padding: 72px 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
@@ -615,7 +633,6 @@ a{ color: inherit; text-decoration: none; }
   align-items: center;
 }
 
-
 /* =========================================================
    METHOD — FEATURE GRID
    ========================================================= */
@@ -627,7 +644,6 @@ a{ color: inherit; text-decoration: none; }
   width: 100%;
 }
 
-
 /* =========================================================
    METHOD — FEATURE BLOCKS
    ========================================================= */
@@ -636,7 +652,7 @@ a{ color: inherit; text-decoration: none; }
   position: relative;
   height: 160px;
 
-  background: #1c2f47; /* deep steel blue */
+  background: #1c2f47;
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
@@ -644,12 +660,10 @@ a{ color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255,255,255,.06);
 }
 
-
 /* =========================================================
    METHOD — FLOW ARROWS BETWEEN BLOCKS
    ========================================================= */
 
-/* Arrow sits centered in the grid gap */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -676,15 +690,17 @@ a{ color: inherit; text-decoration: none; }
     gap: 24px;
   }
 
-  /* Remove arrows on stacked layout */
   .method-feature::after{
     display: none;
   }
 
-  /* Reduce spill so it doesn’t feel broken */
   .method-features > .container{
     margin-top: -48px;
     margin-bottom: -48px;
+  }
+
+  .method-features::before{
+    height: 260px; /* gives breathing room behind stacked blocks */
   }
 }
 
