@@ -551,18 +551,15 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   9.3) METHOD — HERO CONTENT LAYER
-   (empty now, safe for future text)
+   METHOD — HERO CONTENT LAYER
    ========================================================= */
 .method-hero > .container{
   position: relative;
   z-index: 1;
 }
 
-
 /* =========================================================
-   9.4) METHOD — OPTIONAL HERO TEXT STYLES
-   (inactive unless you add text)
+   METHOD — OPTIONAL HERO TEXT (only used if you add text)
    ========================================================= */
 .method-title{
   margin: 0;
@@ -580,30 +577,25 @@ a{ color: inherit; text-decoration: none; }
   text-align: center;
 }
 
-
 /* =========================================================
-   9.5) METHOD — BELOW FOLD SPACING ONLY
-   (water texture already global)
+   METHOD — BELOW FOLD SPACING
    ========================================================= */
 .method-content{
   padding: 64px 0 72px;
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND
-   Clean spill into hero, no footer collision
+   METHOD — FEATURES BAND + SPILL (WORKING)
    ========================================================= */
-
 .method-features{
-  /* vertical overlap amount */
-  --spill: 96px;
+  --spill: 96px; /* how far blocks overlap into the hero */
 
   position: relative;
-  z-index: 3;
+  z-index: 4; /* ensure it sits above below-fold visuals */
 
   background: rgba(60, 80, 105, 0.75);
 
-  /* band height + reserved space for spill */
+  /* band height, plus reserved space for the spilled blocks */
   padding: 44px 0 calc(44px + var(--spill));
 
   border-top: 1px solid rgba(255,255,255,.12);
@@ -612,30 +604,25 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
-
-/* =========================================================
-   FEATURE GRID (floats upward only)
-   ========================================================= */
-
+/* The grid is what moves upward (visual only, no layout collision) */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px; /* space for arrows */
+  gap: 28px;
   width: 100%;
+
+  position: relative;
+  z-index: 1;
 
   transform: translateY(calc(-1 * var(--spill)));
 }
 
-
-/* =========================================================
-   FEATURE CARDS
-   ========================================================= */
-
+/* Cards */
 .method-feature{
   position: relative;
   height: 160px;
 
-  background: #1c2f47; /* deep steel */
+  background: #1c2f47;
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
@@ -643,11 +630,7 @@ a{ color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255,255,255,.06);
 }
 
-
-/* =========================================================
-   FLOW ARROWS (purely visual)
-   ========================================================= */
-
+/* Arrows between cards (purely visual) */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -664,11 +647,17 @@ a{ color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
+/* OPTIONAL: tighten the seam between features and below-fold
+   so you don’t get an awkward empty band of background.
+   (This does NOT overlap the footer.) */
+.method-features + .method-content{
+  margin-top: calc(-1 * (var(--spill) / 2));
+  padding-top: calc(64px + (var(--spill) / 2));
+}
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-
 @media (max-width: 900px){
   .method-features{
     --spill: 44px;
@@ -683,6 +672,11 @@ a{ color: inherit; text-decoration: none; }
 
   .method-feature::after{
     display: none;
+  }
+
+  .method-features + .method-content{
+    margin-top: calc(-1 * (var(--spill) / 2));
+    padding-top: calc(64px + (var(--spill) / 2));
   }
 }
 
