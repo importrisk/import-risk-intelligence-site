@@ -750,3 +750,40 @@ a{ color: inherit; text-decoration: none; }
   font-size: 18px;
   color: var(--muted);
 }
+/* =========================================================
+   FOOTER NAV POLISH
+   ========================================================= */
+
+/* Keep IR mark crisp white */
+.site-footer .footer-ir{
+  color: #ffffff;
+}
+
+/* Footer nav layout */
+.footer-nav{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Footer nav links */
+.footer-nav a{
+  position: relative;
+  padding: 0 6px;
+  font-size: 12.5px;
+  color: rgba(180,210,255,.90);
+  white-space: nowrap;
+}
+
+/* Separator between links */
+.footer-nav a:not(:last-child)::after{
+  content: "•";
+  position: absolute;
+  right: -10px;
+  color: rgba(255,255,255,.35);
+}
+
+/* Optional: subtle hover, no underline */
+.footer-nav a:hover{
+  color: rgba(255,255,255,.95);
+}
