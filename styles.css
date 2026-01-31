@@ -601,44 +601,49 @@ a{ color: inherit; text-decoration: none; }
    METHOD — FEATURES BAND (FLAT PROCESS BAND)
    Matches your screenshot: icons + text inside ONE band
    ========================================================= */
-.method-features{
-  position: relative;
-  z-index: 3;
-
-  background: #3f5166;
-
-  /* adjust these two numbers to taste */
-  padding: 96px 0 88px;
-
-  border-top: 1px solid rgba(255,255,255,.10);
-  border-bottom: 1px solid rgba(0,0,0,.25);
-}
-
-/* horizontal guide line through icons */
-.method-features::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  /* position of the line relative to band */
-  top: 148px;
-
-  height: 1px;
-  background: rgba(255,255,255,.18);
-  pointer-events: none;
-}
-
 /* =========================================================
-   FEATURE GRID
+   METHOD — FEATURES BAND (CARDS OVERHANG TOP + BOTTOM)
    ========================================================= */
+.method-features{
+  /* how far the cards extend past the band (top and bottom) */
+  --overhang: 64px;
+
+  /* actual band thickness behind the cards */
+  --band-pad: 56px;
+
+  position: relative;
+  z-index: 4;
+
+  background: rgba(60, 80, 105, 0.75);
+
+  /* band thickness */
+  padding: var(--band-pad) 0;
+
+  border-top: 1px solid rgba(255,255,255,.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+}
+
+/* Grid is pulled up so cards overhang the band */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 56px;
+  gap: 28px;
+  width: 100%;
 
   position: relative;
   z-index: 1;
+
+  /* card overhang above the band */
+  transform: translateY(calc(-1 * var(--overhang)));
+}
+
+/* Creates equal overhang BELOW the band (so cards stick out bottom too) */
+.method-features::after{
+  content: "";
+  display: block;
+  height: var(--overhang);
 }
 
 /* =========================================================
