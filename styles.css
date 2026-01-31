@@ -672,41 +672,40 @@ a{ color: inherit; text-decoration: none; }
 /* =========================================================
    FEATURE CARD (SOLID, SQUARE)
    ========================================================= */
-
 .method-feature{
   position: relative;
 
-  /* FORCE square corners */
-  border-radius: 0 !important;
+  /* card look */
+  background: rgba(28, 47, 71, 0.92);
+  border: 1px solid rgba(255,255,255,.16);
 
-  background: #1c2f47;
-  border: 1px solid rgba(255,255,255,.14);
+  /* NO rounded corners */
+  border-radius: 0;
 
   box-shadow:
     0 18px 40px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.06);
-
-  overflow: visible; /* don’t clip arrows */
+    inset 0 1px 0 rgba(255,255,255,.07);
 }
 
 .method-feature .mf-inner{
-  min-height: 260px;          /* lets the band sit behind the middle */
-  padding: 18px 18px 16px;
+  /* this is what actually fixes the “padding got fucked up” feeling */
+  padding: 22px 22px 20px;
 
+  /* stable vertical rhythm */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+
+  /* keeps cards consistent even if one has fewer bullets */
+  min-height: 260px;
 }
 
-/* =========================================================
-   HEADER ROW: step + icon + title
-   Works whether you wrap them in .mf-head or not
-   ========================================================= */
-
+/* tighten header row so icon/title don’t float weirdly */
 .method-feature .mf-head{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 4px;
 }
 
 /* Step */
