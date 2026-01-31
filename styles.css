@@ -542,7 +542,7 @@ a{ color: inherit; text-decoration: none; }
     ),
     url("assets/images/method-hero.jpg");
 
-  background-position: center;
+  background-position: center 62%;
   background-size: cover;
   background-repeat: no-repeat;
 
