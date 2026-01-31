@@ -533,7 +533,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   10) FOOTER (ALL FOOTER CSS IN ONE PLACE)
+   FOOTER (ALL FOOTER CSS IN ONE PLACE)
    ========================================================= */
 .site-footer{
   background: #0b1d2f;
@@ -554,18 +554,29 @@ a{ color: inherit; text-decoration: none; }
   gap: 40px;
 }
 
-/* Brandline stays WHITE even if you wrap it in <a> */
-.site-footer .footer-brandline,
-.site-footer .footer-brandline a{
+/* Left block */
+.site-footer .footer-brandline{
   margin: 0 0 6px;
   font-size: 13px;
   font-weight: 650;
   letter-spacing: .2px;
   line-height: 1.2;
-  color: rgba(255,255,255,.90);
 }
 
-/* IR is crisp white */
+/* Make the entire brandline link look like plain text */
+.site-footer .footer-home-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  color: rgba(255,255,255,.90);
+  text-decoration: none;
+}
+.site-footer .footer-home-link:hover{
+  color: rgba(255,255,255,.96);
+  text-decoration: none;
+}
+
+/* IR mark stays crisp white */
 .site-footer .footer-ir{
   font-weight: 800;
   color: #ffffff;
@@ -592,6 +603,7 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(180,195,214,.50);
 }
 
+/* Right block */
 .site-footer .footer-right{
   flex: 0 0 auto;
   display: flex;
@@ -603,36 +615,37 @@ a{ color: inherit; text-decoration: none; }
   line-height: 1.35;
 }
 
-/* Footer nav (Home | Method | Contact) */
+/* Footer nav: Home | Method | Contact */
 .site-footer .footer-nav{
   display: inline-flex;
   align-items: center;
-  gap: 0;
 }
 
 .site-footer .footer-nav a{
   position: relative;
-  padding: 0 8px;
+  padding: 0 10px;
   font-size: 12.5px;
   color: rgba(200,218,245,.92);
   white-space: nowrap;
-  text-decoration: none;
-}
 
+  /* kill underline */
+  text-decoration: none !important;
+}
 .site-footer .footer-nav a:hover{
   color: rgba(255,255,255,.96);
-  text-decoration: none; /* kill underline */
+  text-decoration: none !important;
 }
 
-/* separators between links */
+/* Thin separator lines between links */
 .site-footer .footer-nav a:not(:last-child)::after{
   content: "";
   position: absolute;
-  right: -1px;
+  right: 0;
   top: 3px;
   bottom: 3px;
   width: 1px;
   background: rgba(255,255,255,.18);
+  opacity: .9;
 }
 
 .site-footer .footer-copy{
@@ -641,6 +654,31 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(180,195,214,.50);
 }
 
+/* Responsive */
+@media (max-width: 900px){
+  .site-footer{
+    padding: 18px 0 18px;
+  }
+
+  .site-footer .footer-inner{
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer .footer-right{
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 720px){
+  .site-footer .footer-nav a{
+    padding: 0 10px 0 0;
+  }
+  .site-footer .footer-nav a:not(:last-child)::after{
+    display: none;
+  }
+}
 
 /* =========================================================
    11) RESPONSIVE (GLOBAL)
