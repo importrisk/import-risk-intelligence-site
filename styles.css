@@ -590,31 +590,39 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND (band is a centered slab, not padding)
+   METHOD — FEATURES BAND (band anchored to the grid)
    ========================================================= */
 
 .method-features{
   position: relative;
   z-index: 3;
-
-  /* IMPORTANT: band height is controlled by ::before now */
   padding: 0;
   overflow: visible;
 }
 
-/* The actual band slab behind the cards */
-.method-features::before{
+/* Container holds the grid and gets pulled up/down for spill */
+.method-features > .container{
+  position: relative;
+  z-index: 0;
+
+  /* TUNE SPILL AMOUNT */
+  margin-top: -96px;
+  margin-bottom: -96px;
+}
+
+/* The band slab sits BEHIND the cards and is sized off the grid */
+.method-features > .container::before{
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
 
-  /* Center the band behind the feature blocks */
-  top: 50%;
-  transform: translateY(-50%);
+  /* make it full-bleed (wider than container) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
 
-  /* TUNE THIS: smaller = less band showing under the cards */
-  height: 220px;
+  /* band height = card height + 2 * spillPadding */
+  top: -72px;    /* TUNE: band breathing room above cards */
+  bottom: -72px; /* TUNE: band breathing room below cards */
 
   background: rgba(60, 80, 105, 0.75);
 
@@ -622,37 +630,26 @@ a{ color: inherit; text-decoration: none; }
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
-}
 
-/* Make feature blocks spill above + below band */
-.method-features > .container{
-  margin-top: -96px;
-  margin-bottom: -96px;
-
-  display: flex;
-  align-items: center;
+  z-index: -1; /* behind the feature blocks */
 }
 
 /* =========================================================
-   METHOD — FEATURE GRID
+   METHOD — FEATURE GRID + BLOCKS
    ========================================================= */
 
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 28px; /* space for arrows */
   width: 100%;
 }
-
-/* =========================================================
-   METHOD — FEATURE BLOCKS
-   ========================================================= */
 
 .method-feature{
   position: relative;
   height: 160px;
 
-  background: #1c2f47;
+  background: #1c2f47; /* solid deep steel */
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
@@ -661,14 +658,15 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FLOW ARROWS BETWEEN BLOCKS
+   METHOD — FLOW ARROWS (no layout distortion)
    ========================================================= */
 
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
 
-  left: calc(100% + 14px); /* half of 28px gap */
+  /* centered inside the 28px gap */
+  left: calc(100% + 14px);
   top: 50%;
   transform: translateY(-50%);
 
@@ -681,26 +679,27 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — RESPONSIVE CLEANUP
+   METHOD — RESPONSIVE
    ========================================================= */
 
 @media (max-width: 900px){
-  .method-feature-grid{
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .method-feature::after{
-    display: none;
-  }
-
   .method-features > .container{
     margin-top: -48px;
     margin-bottom: -48px;
   }
 
-  .method-features::before{
-    height: 260px; /* gives breathing room behind stacked blocks */
+  .method-features > .container::before{
+    top: -56px;
+    bottom: -56px;
+  }
+
+  .method-feature-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .method-feature::after{
+    display: none;
   }
 }
 
