@@ -592,14 +592,17 @@ a{ color: inherit; text-decoration: none; }
 /* METHOD — FEATURES BAND (background only) */
 .method-features{
   position: relative;
-  z-index: 3; /* above hero + below-fold seam */
+  z-index: 3;
   background: rgba(83,103,128,.72);
+
+  /* THIS is the missing piece */
+  padding: 44px 0 44px;
+
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
-
 
 /* =========================================================
    9.6) METHOD — RESPONSIVE
