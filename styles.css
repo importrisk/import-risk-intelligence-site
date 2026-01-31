@@ -527,13 +527,6 @@ a{ color: inherit; text-decoration: none; }
   isolation: isolate;
 }
 
-
-/* =========================================================
-   METHOD PAGE — FULL CSS (PASTE ONCE)
-   Hero + Process Band (flat) + Content + Responsive
-   ========================================================= */
-
-
 /* =========================================================
    9.1) METHOD — HERO WRAPPER (SHORTER THAN HOME)
    ========================================================= */
@@ -810,6 +803,45 @@ a{ color: inherit; text-decoration: none; }
   .method-feature::after{
     display: none;
   }
+}
+/* =========================================================
+   METHOD — BELOW FOLD (WATER TEXTURE CONTINUES TO FOOTER)
+   Applies to: <section class="below-fold method-content">
+   ========================================================= */
+.below-fold.method-content{
+  position: relative;
+  overflow: hidden;
+
+  /* the dark “water” base tint */
+  background: linear-gradient(
+    180deg,
+    rgba(20,42,68,.88) 0%,
+    rgba(16,34,56,.92) 55%,
+    rgba(12,26,44,.96) 100%
+  );
+
+  /* keep your existing spacing */
+  padding: 64px 0 72px;
+}
+
+/* texture layer */
+.below-fold.method-content::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.18;               /* 0.12–0.22 is the safe range */
+  filter: blur(1.2px) saturate(0.95);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* keep any content above the texture */
+.below-fold.method-content > .container{
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================================================
