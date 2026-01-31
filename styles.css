@@ -590,39 +590,54 @@ a{ color: inherit; text-decoration: none; }
   padding: 64px 0 72px;
 }
 
-
 /* =========================================================
-   METHOD — FEATURES BAND (CENTERED BEHIND CARDS + CLEAN OVERLAP)
-   KEY IDEA:
-   - Move the BAND up with margin-top (overlaps hero)
-   - Keep the GRID normal (no translate)
-   - Use equal padding top/bottom so the band is centered behind cards
+   METHOD — FEATURES BAND (CENTERED BEHIND CARDS)
+   Cards extend ABOVE and BELOW the band cleanly.
+   Band is a pseudo-element so it can be shorter than cards.
    ========================================================= */
 
 .method-features{
-  --spill: 96px;     /* how far the whole band overlaps the hero */
-  --band-pad: 64px;  /* equal space above & below the cards */
+  /* how far the cards overlap upward into the hero */
+  --spill: 96px;
+
+  /* height of the background band behind the cards */
+  --band-h: 240px;
 
   position: relative;
   z-index: 4;
 
+  /* reserve space for the upward overlap + comfortable breathing room */
+  padding: calc(var(--spill) + 72px) 0 88px;
+
+  /* IMPORTANT: band lives behind, so this section itself is transparent */
+  background: transparent;
+}
+
+/* the centered background band (does NOT control layout) */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  /* center band vertically behind the card row */
+  top: 50%;
+  transform: translateY(-50%);
+
+  height: var(--band-h);
+
   background: rgba(60, 80, 105, 0.75);
-
-  /* overlap into hero (this is the spill) */
-  margin-top: calc(-1 * var(--spill));
-
-  /* centered band behind the cards */
-  padding: var(--band-pad) 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
+
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* =========================================================
-   FEATURE GRID (NO LIFT — keep it in normal flow)
-   ========================================================= */
+/* grid is what moves upward into the hero */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -631,11 +646,11 @@ a{ color: inherit; text-decoration: none; }
 
   position: relative;
   z-index: 1;
+
+  transform: translateY(calc(-1 * var(--spill)));
 }
 
-/* =========================================================
-   FEATURE CARD
-   ========================================================= */
+/* cards */
 .method-feature{
   position: relative;
 
@@ -656,18 +671,15 @@ a{ color: inherit; text-decoration: none; }
   gap: 10px;
 }
 
-/* =========================================================
-   FEATURE CARD CONTENT (matches your HTML)
-   ========================================================= */
+/* header line (01 + icon + title) */
 .method-feature .mf-head{
   display: grid;
   grid-template-columns: auto auto 1fr;
   align-items: center;
   column-gap: 10px;
-  row-gap: 0;
 }
 
-/* Step number */
+/* step number */
 .method-feature .mf-step{
   font-size: 16px;
   letter-spacing: .08em;
@@ -675,7 +687,7 @@ a{ color: inherit; text-decoration: none; }
   line-height: 1;
 }
 
-/* Icon */
+/* icon */
 .method-feature .mf-icon{
   width: 22px;
   height: 22px;
@@ -685,14 +697,13 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(255,255,255,.75);
   opacity: .95;
 }
-
 .method-feature .mf-icon svg{
   width: 22px;
   height: 22px;
   display: block;
 }
 
-/* Title */
+/* title */
 .method-feature .mf-title{
   margin: 0;
   font-size: 22px;
@@ -700,7 +711,7 @@ a{ color: inherit; text-decoration: none; }
   color: rgba(255,255,255,.96);
 }
 
-/* Description */
+/* description */
 .method-feature .mf-description{
   margin: 0;
   font-size: 15px;
@@ -709,7 +720,7 @@ a{ color: inherit; text-decoration: none; }
   max-width: 36ch;
 }
 
-/* Bullet list */
+/* bullets */
 .method-feature .mf-points{
   margin: 8px 0 0;
   padding-left: 18px;
@@ -721,23 +732,15 @@ a{ color: inherit; text-decoration: none; }
   line-height: 1.35;
   color: rgba(255,255,255,.78);
 }
+.method-feature .mf-points li{ margin: 0; }
+.method-feature .mf-points li::marker{ color: rgba(255,255,255,.55); }
 
-.method-feature .mf-points li{
-  margin: 0;
-}
-
-.method-feature .mf-points li::marker{
-  color: rgba(255,255,255,.55);
-}
-
-/* =========================================================
-   FLOW ARROWS (purely visual, does NOT affect layout)
-   ========================================================= */
+/* arrows between cards (purely visual, doesn’t affect spacing) */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
 
-  left: calc(100% + 14px);  /* center of 28px gap */
+  left: calc(100% + 14px); /* center of 28px gap */
   top: 50%;
   transform: translateY(-50%);
 
@@ -750,23 +753,19 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   IMPORTANT: seam-tightening REMOVED for now
-   (it was creating the weird band + pushing things around)
-   ========================================================= */
-/* .method-features + .method-content{ ... } */
-
-/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
   .method-features{
     --spill: 44px;
-    --band-pad: 44px;
+    --band-h: 220px;
+    padding: calc(var(--spill) + 56px) 0 72px;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
     gap: 18px;
+    transform: translateY(calc(-1 * var(--spill)));
   }
 
   .method-feature::after{
