@@ -608,6 +608,21 @@ a{ color: inherit; text-decoration: none; }
   margin-top: -56px;
   margin-bottom: -56px;
 }
+/* METHOD — FEATURE BLOCKS (minimum to show) */
+.method-features{ padding: 44px 0; }
+  background: rgba(60, 80, 105, 0.75);
+
+.method-feature-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.method-feature{
+  height: 160px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+}
 
 /* =========================================================
    9.6) METHOD — RESPONSIVE
