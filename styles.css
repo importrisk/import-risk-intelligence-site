@@ -529,8 +529,24 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   9.2) METHOD — HERO BACKGROUND
-   (Same gradient as Home hero overlay, plus method image)
+   METHOD PAGE — FULL CSS (PASTE ONCE)
+   Hero + Process Band (flat) + Content + Responsive
+   ========================================================= */
+
+
+/* =========================================================
+   9.1) METHOD — HERO WRAPPER (SHORTER THAN HOME)
+   ========================================================= */
+.method-hero{
+  position: relative;
+  min-height: clamp(320px, 48vh, 520px);
+  padding-top: var(--topbar-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* =========================================================
+   9.2) METHOD — HERO BACKGROUND (GRADIENT + IMAGE)
    ========================================================= */
 .method-hero-bg{
   position: absolute;
@@ -553,7 +569,6 @@ a{ color: inherit; text-decoration: none; }
   z-index: 0;
 }
 
-
 /* =========================================================
    METHOD — HERO CONTENT LAYER
    ========================================================= */
@@ -561,7 +576,6 @@ a{ color: inherit; text-decoration: none; }
   position: relative;
   z-index: 1;
 }
-
 
 /* =========================================================
    METHOD — OPTIONAL HERO TEXT (only used if you add text)
@@ -584,6 +598,133 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
+   METHOD — FEATURES BAND (FLAT PROCESS BAND)
+   Matches your screenshot: icons + text inside ONE band
+   ========================================================= */
+.method-features{
+  position: relative;
+  z-index: 3;
+
+  background: #3f5166;
+
+  /* adjust these two numbers to taste */
+  padding: 96px 0 88px;
+
+  border-top: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+/* horizontal guide line through icons */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  /* position of the line relative to band */
+  top: 148px;
+
+  height: 1px;
+  background: rgba(255,255,255,.18);
+  pointer-events: none;
+}
+
+/* =========================================================
+   FEATURE GRID
+   ========================================================= */
+.method-feature-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   FEATURE BLOCK CONTENT (your HTML classes)
+   ========================================================= */
+.method-feature{
+  text-align: left;
+}
+
+/* Step number */
+.mf-step{
+  display: block;
+  margin-bottom: 28px;
+
+  font-size: 16px;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.85);
+  line-height: 1;
+}
+
+/* Optional header row if you wrap step+icon+title (safe either way) */
+.mf-head{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icon */
+.mf-icon{
+  width: 64px;
+  height: 64px;
+  margin-bottom: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+}
+
+.mf-icon svg{
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+
+/* Title */
+.mf-title{
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* Description */
+.mf-description{
+  margin: 0 0 14px;
+  max-width: 34ch;
+
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.85);
+}
+
+/* Bullet list */
+.mf-points{
+  margin: 0;
+  padding-left: 18px;
+
+  display: grid;
+  gap: 6px;
+
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(255,255,255,.78);
+}
+
+.mf-points li{
+  margin: 0;
+}
+
+.mf-points li::marker{
+  color: rgba(255,255,255,.55);
+}
+
+/* =========================================================
    METHOD — BELOW FOLD SPACING
    ========================================================= */
 .method-content{
@@ -591,92 +732,34 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND (CENTERED BEHIND LIFTED CARDS)
-   Cards extend ABOVE and BELOW the band.
-   ========================================================= */
-
-.method-features{
-  --spill: 96px;      /* how far the grid lifts into hero */
-  --band-h: 210px;    /* band height (keep < card total height) */
-
-  position: relative;
-  z-index: 4;
-
-  /* section itself is transparent; band is a pseudo element */
-  background: transparent;
-
-  /* enough space so nothing collides below */
-  padding: calc(56px + var(--spill)) 0 84px;
-}
-
-/* the band (must move UP by the same spill as the grid) */
-.method-features::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  top: 50%;
-  height: var(--band-h);
-
-  /* KEY FIX: band follows the lifted grid */
-  transform: translateY(calc(-50% - var(--spill)));
-
-  background: rgba(60, 80, 105, 0.75);
-
-  border-top: 1px solid rgba(255,255,255,.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 -1px 0 rgba(0,0,0,.22);
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* grid lifts upward into hero */
-.method-feature-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  width: 100%;
-
-  position: relative;
-  z-index: 1;
-
-  transform: translateY(calc(-1 * var(--spill)));
-}
-
-/* arrows remain purely visual */
-.method-feature:not(:last-child)::after{
-  content: "›";
-  position: absolute;
-  left: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 300;
-  color: rgba(255,255,255,.28);
-  pointer-events: none;
-}
-
-/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
   .method-features{
-    --spill: 44px;
-    --band-h: 200px;
-    padding: calc(48px + var(--spill)) 0 72px;
+    padding: 72px 0 64px;
+  }
+
+  .method-features::before{
+    display: none;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 48px;
   }
 
-  .method-feature::after{
-    display: none;
+  .mf-icon,
+  .mf-icon svg{
+    width: 56px;
+    height: 56px;
+  }
+
+  .mf-step{
+    margin-bottom: 20px;
+  }
+
+  .mf-icon{
+    margin-bottom: 20px;
   }
 }
 
