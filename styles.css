@@ -594,6 +594,9 @@ a{ color: inherit; text-decoration: none; }
 /* =========================================================
    METHOD — FEATURES BAND + SPILL (WORKING)
    ========================================================= */
+/* =========================================================
+   METHOD — FEATURES BAND (CENTERED BEHIND CARDS)
+   ========================================================= */
 .method-features{
   --spill: 96px;
 
@@ -602,15 +605,14 @@ a{ color: inherit; text-decoration: none; }
 
   background: rgba(60, 80, 105, 0.75);
 
-  /* band height + reserved spill space */
-  padding: 44px 0 calc(44px + var(--spill));
+  /* Equal padding top & bottom */
+  padding: calc(64px + var(--spill)) 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
-
 
 /* =========================================================
    FEATURE GRID (visual lift only)
