@@ -590,12 +590,12 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND (SAFE SPILL, NO FOOTER OVERLAP)
+   METHOD — FEATURES BAND (TIGHT BAND + CLEAN SPILL)
    ========================================================= */
 
 .method-features{
-  /* TUNE THIS */
-  --spill: 80px;
+  /* how far the cards float up into the hero */
+  --spill: 96px;
 
   position: relative;
   z-index: 3;
@@ -603,9 +603,9 @@ a{ color: inherit; text-decoration: none; }
   /* band */
   background: rgba(60, 80, 105, 0.75);
 
-  /* IMPORTANT: give the section enough real height
-     so spilling doesn't collide with the next section/footer */
-  padding: calc(64px + var(--spill)) 0 64px;
+  /* Tight band, but we “reserve” space below for the spill so
+     the next section/footer never gets covered. */
+  padding: 44px 0 calc(44px + var(--spill));
 
   border-top: 1px solid rgba(255,255,255,.12);
   box-shadow:
@@ -613,22 +613,22 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
-/* grid spills upward over the band into the hero */
+/* Feature grid floats upward (visual only) */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px; /* room for arrows */
+  gap: 28px;              /* room for arrows */
   width: 100%;
 
   transform: translateY(calc(-1 * var(--spill)));
 }
 
-/* cards */
+/* Cards */
 .method-feature{
   position: relative;
   height: 160px;
 
-  background: #1c2f47; /* deep steel */
+  background: #1c2f47; /* solid deep steel */
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
@@ -636,12 +636,14 @@ a{ color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255,255,255,.06);
 }
 
-/* arrows (don’t affect layout) */
+/* =========================================================
+   METHOD — FLOW ARROWS (DO NOT AFFECT LAYOUT)
+   ========================================================= */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
 
-  /* centered in the gap (gap is 28px) */
+  /* centered inside the gap (gap is 28px) */
   left: calc(100% + 14px);
   top: 50%;
   transform: translateY(-50%);
@@ -660,18 +662,20 @@ a{ color: inherit; text-decoration: none; }
 @media (max-width: 900px){
   .method-features{
     --spill: 44px;
-    padding: calc(56px + var(--spill)) 0 56px;
+    padding: 40px 0 calc(40px + var(--spill));
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
     gap: 18px;
+    transform: translateY(calc(-1 * var(--spill)));
   }
 
   .method-feature::after{
     display: none;
   }
 }
+
 
 /* =========================================================
    11) FOOTER (ALL FOOTER CSS IN ONE PLACE)
