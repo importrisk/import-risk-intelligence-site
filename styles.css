@@ -590,16 +590,14 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND (background layer only)
+   METHOD — FEATURES BAND
    ========================================================= */
+
 .method-features{
   position: relative;
   z-index: 3;
 
-  /* band color */
   background: rgba(60, 80, 105, 0.75);
-
-  /* band thickness */
   padding: 72px 0;
 
   border-top: 1px solid rgba(255,255,255,.12);
@@ -608,75 +606,85 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
-/* =========================================================
-   METHOD — FEATURE BLOCK OVERLAP
-   ========================================================= */
+/* Make feature blocks spill above + below band */
 .method-features > .container{
-  margin-top: -120px;
-  margin-bottom: -120px;
+  margin-top: -96px;
+  margin-bottom: -96px;
 
-  display: block; /* IMPORTANT: do not use flex here */
+  display: flex;
+  align-items: center;
 }
 
+
 /* =========================================================
-   METHOD — FEATURE BLOCK GRID
+   METHOD — FEATURE GRID
    ========================================================= */
+
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 28px;
   width: 100%;
 }
 
-/* =========================================================
-   METHOD — INDIVIDUAL FEATURE BLOCK
-   ========================================================= */
-.method-feature{
-  height: 160px;
-
-  /* solid deep steel */
-  background: #1c2f47;
-
-  border: 1px solid rgba(255,255,255,.12);
-
-  box-shadow:
-    0 22px 46px rgba(0,0,0,.45),
-    inset 0 1px 0 rgba(255,255,255,.10);
-}
 
 /* =========================================================
-   METHOD — FLOW ARROWS BETWEEN FEATURE BLOCKS
+   METHOD — FEATURE BLOCKS
    ========================================================= */
-/* Give the arrows real breathing room */
-.method-feature-grid{
-  gap: 28px; /* was 18px */
-}
 
 .method-feature{
   position: relative;
+  height: 160px;
+
+  background: #1c2f47; /* deep steel blue */
+  border: 1px solid rgba(255,255,255,.14);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06);
 }
 
-/* Arrow sits centered in the gap (doesn't distort spacing) */
+
+/* =========================================================
+   METHOD — FLOW ARROWS BETWEEN BLOCKS
+   ========================================================= */
+
+/* Arrow sits centered in the grid gap */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
+
   left: calc(100% + 14px); /* half of 28px gap */
   top: 50%;
   transform: translateY(-50%);
 
   font-size: 22px;
   line-height: 1;
+  font-weight: 300;
   color: rgba(255,255,255,.28);
 
   pointer-events: none;
 }
 
 /* =========================================================
-   9.6) METHOD — RESPONSIVE
+   METHOD — RESPONSIVE CLEANUP
    ========================================================= */
-@media (max-width: 720px){
-  .method-hero{
-    min-height: 300px;
+
+@media (max-width: 900px){
+  .method-feature-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Remove arrows on stacked layout */
+  .method-feature::after{
+    display: none;
+  }
+
+  /* Reduce spill so it doesn’t feel broken */
+  .method-features > .container{
+    margin-top: -48px;
+    margin-bottom: -48px;
   }
 }
 
