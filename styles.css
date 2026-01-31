@@ -590,21 +590,20 @@ a{ color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   METHOD — FEATURES BAND (TIGHT BAND + CLEAN SPILL)
+   METHOD — FEATURES BAND
+   Clean spill into hero, no footer collision
    ========================================================= */
 
 .method-features{
-  /* how far the cards float up into the hero */
+  /* vertical overlap amount */
   --spill: 96px;
 
   position: relative;
   z-index: 3;
 
-  /* band */
   background: rgba(60, 80, 105, 0.75);
 
-  /* Tight band, but we “reserve” space below for the spill so
-     the next section/footer never gets covered. */
+  /* band height + reserved space for spill */
   padding: 44px 0 calc(44px + var(--spill));
 
   border-top: 1px solid rgba(255,255,255,.12);
@@ -613,22 +612,30 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.22);
 }
 
-/* Feature grid floats upward (visual only) */
+
+/* =========================================================
+   FEATURE GRID (floats upward only)
+   ========================================================= */
+
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;              /* room for arrows */
+  gap: 28px; /* space for arrows */
   width: 100%;
 
   transform: translateY(calc(-1 * var(--spill)));
 }
 
-/* Cards */
+
+/* =========================================================
+   FEATURE CARDS
+   ========================================================= */
+
 .method-feature{
   position: relative;
   height: 160px;
 
-  background: #1c2f47; /* solid deep steel */
+  background: #1c2f47; /* deep steel */
   border: 1px solid rgba(255,255,255,.14);
 
   box-shadow:
@@ -636,15 +643,16 @@ a{ color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255,255,255,.06);
 }
 
+
 /* =========================================================
-   METHOD — FLOW ARROWS (DO NOT AFFECT LAYOUT)
+   FLOW ARROWS (purely visual)
    ========================================================= */
+
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
 
-  /* centered inside the gap (gap is 28px) */
-  left: calc(100% + 14px);
+  left: calc(100% + 14px); /* center of 28px gap */
   top: 50%;
   transform: translateY(-50%);
 
@@ -656,9 +664,11 @@ a{ color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
+
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+
 @media (max-width: 900px){
   .method-features{
     --spill: 44px;
@@ -675,7 +685,6 @@ a{ color: inherit; text-decoration: none; }
     display: none;
   }
 }
-
 
 /* =========================================================
    11) FOOTER (ALL FOOTER CSS IN ONE PLACE)
