@@ -533,17 +533,22 @@ a{ color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    180deg,
-    var(--hero-top) 0%,
-    var(--hero-mid) 58%,
-    var(--hero-bottom) 100%
-  );
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("assets/images/method-hero.jpg");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   pointer-events: none;
   z-index: 0;
 }
-
 
 /* =========================================================
    9.3) METHOD — HERO CONTENT LAYER
