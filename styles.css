@@ -573,7 +573,7 @@ img{ max-width: 100%; height: auto; display: block; }
    ========================================================= */
 .method-features{
   --overhang: 84px;   /* how far cards rise into hero */
-  --band-h: 260px;    /* height of band behind cards */
+  --band-h: 260px;    /* height of band behind cards (tweak later) */
   --gap: 28px;        /* card gap */
 
   position: relative;
@@ -581,11 +581,24 @@ img{ max-width: 100%; height: auto; display: block; }
   isolation: isolate;
   overflow: visible;
 
-  /* spacing only — no background responsibility */
-  padding: 56px 0 24px;
+  /* Pull up to kiss the hero (kills the little seam) */
+  margin-top: -2px;
 
-  /* IMPORTANT: method-features does NOT paint page background */
-  background: transparent;
+  /* Give enough space so cards can hang below the band */
+  padding: 56px 0 calc(56px + var(--overhang));
+
+  /* IMPORTANT: method-features DOES paint the water now */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(20,42,68,.89) 0%,
+      rgba(16,34,56,.91) 55%,
+      rgba(12,26,44,.94) 100%
+    ),
+    url("assets/images/water-texture.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* Feature band (anchored directly under hero) */
