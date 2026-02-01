@@ -522,7 +522,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-hero-bg{
   position: absolute;
-  inset: -20% 0 0 0; /* pull image DOWN */
+  inset: -30% 0 0 0; /* pull image DOWN */
   
   background-image:
     linear-gradient(
