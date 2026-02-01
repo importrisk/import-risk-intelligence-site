@@ -533,13 +533,26 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* show more of the lower part of the image */
-  background-position: center 78%;
+  /* Lower the image so it sits correctly at full viewport height */
+  background-position: center 84%;
   background-size: cover;
   background-repeat: no-repeat;
 
   pointer-events: none;
   z-index: 0;
+}
+
+/* Push the image further down on tall screens (no card changes) */
+@media (min-height: 900px){
+  .method-hero-bg{
+    background-position: center 88%;
+  }
+}
+
+@media (min-height: 1100px){
+  .method-hero-bg{
+    background-position: center 92%;
+  }
 }
 
 .method-hero > .container{
