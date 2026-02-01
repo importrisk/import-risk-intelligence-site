@@ -4,7 +4,8 @@
    - Home hero locked
    - Below-fold water texture
    - Features band lighter
-   - Method page includes clean hero (same overlay as Home)
+   - Method page: clean hero + centered features band behind cards
+   - NO extra dark “blob” bands (method band only via ::before)
    - Footer grouped + responsive
    ========================================================= */
 
@@ -50,7 +51,7 @@
 
 
 /* =========================================================
-   1) BASE / RESETS (GLOBAL)
+   1) BASE / RESETS
    ========================================================= */
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
@@ -72,10 +73,11 @@ body{
 }
 
 a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   2) BUTTONS (GLOBAL)
+   2) BUTTONS
    ========================================================= */
 .btn{
   display: inline-flex;
@@ -99,7 +101,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   3) TOPBAR / NAV (GLOBAL)
+   3) TOPBAR / NAV
    ========================================================= */
 .topbar{
   position: absolute;
@@ -293,6 +295,7 @@ a{ color: inherit; text-decoration: none; }
   position: relative;
   color: var(--ink);
   overflow: hidden;
+
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -488,9 +491,7 @@ a{ color: inherit; text-decoration: none; }
   font-size: 13px;
 }
 
-.bio-links a{
-  color: rgba(180,210,255,.90);
-}
+.bio-links a{ color: rgba(180,210,255,.90); }
 .bio-links a:hover{
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -505,16 +506,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   METHOD PAGE — STYLES
-   Hero + Features (band + cards + chevrons) + Below-fold water
-   Uses HTML classes:
-   .mf-inner, .mf-head, .mf-step, .mf-icon, .mf-title,
-   .mf-description, .mf-points
-   ========================================================= */
-
-
-/* =========================================================
-   9.1) METHOD — HERO (SHORTER THAN HOME)
+   9) METHOD PAGE — HERO
    ========================================================= */
 .method-hero{
   position: relative;
@@ -527,7 +519,6 @@ a{ color: inherit; text-decoration: none; }
 .method-hero-bg{
   position: absolute;
   inset: 0;
-
   background-image:
     linear-gradient(
       180deg,
@@ -536,11 +527,9 @@ a{ color: inherit; text-decoration: none; }
       var(--hero-bottom) 100%
     ),
     url("assets/images/method-hero.jpg");
-
   background-position: center 65%;
   background-size: cover;
   background-repeat: no-repeat;
-
   pointer-events: none;
   z-index: 0;
 }
@@ -569,57 +558,29 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   9.2) METHOD — FEATURES (CARDS SPILL INTO HERO)
-   - Section itself is transparent
-   - Center band is ::before
-   - Water backdrop behind the whole section is ::after
+   10) METHOD PAGE — FEATURES (BAND BEHIND CARDS)
+   IMPORTANT:
+   - The ONLY “band” is ::before (centered behind cards)
+   - The section background stays transparent (no blob)
+   - Spacing is handled by padding-bottom (no fake blocks)
    ========================================================= */
 .method-features{
   /* TUNE */
-  --overhang: 96px;   /* how far cards spill above the band */
-  --band-h: 220px;    /* height of the band behind cards */
+  --overhang: 96px;   /* how far cards spill UP into hero */
+  --band-h: 220px;    /* height of the centered band behind cards */
   --gap: 28px;        /* grid gap between cards */
 
   position: relative;
   z-index: 4;
 
-  /* IMPORTANT: the section itself is NOT a band */
-  background: transparent;
+  background: transparent;  /* critical: prevents grey blob */
+  overflow: visible;
 
-  /* only enough height to host the centered ::before band */
-  padding: 56px 0;
-
-  overflow: visible; /* allow overhang + chevrons */
+  /* enough room so translated grid doesn't leave a dead zone */
+  padding: 56px 0 calc(56px + var(--overhang));
 }
 
-/* spacer so the section ends “normally” even though the grid is translated up */
-.method-features::after{
-  content: "";
-  display: block;
-  height: var(--overhang);
-}
-
-/* Water backdrop behind the whole features area (so it blends with below-fold) */
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(20,42,68,.86) 0%,
-      rgba(16,34,56,.90) 55%,
-      rgba(12,26,44,.94) 100%
-    ),
-    url("assets/images/water-texture.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  opacity: 1;
-  filter: blur(1.2px) saturate(.95);
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Centered solid band behind cards */
+/* Centered band behind cards */
 .method-features::before{
   content: "";
   position: absolute;
@@ -638,13 +599,10 @@ a{ color: inherit; text-decoration: none; }
     inset 0 -1px 0 rgba(0,0,0,.18);
 
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
-
-/* =========================================================
-   FEATURE GRID
-   ========================================================= */
+/* Feature grid */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -652,24 +610,18 @@ a{ color: inherit; text-decoration: none; }
   width: 100%;
 
   position: relative;
-  z-index: 2;
+  z-index: 1;
 
   overflow: visible; /* arrows + shadows */
-
-  /* spills into hero */
   transform: translateY(calc(-1 * var(--overhang)));
 }
 
-
-/* =========================================================
-   FEATURE CARD (SOLID, SQUARE)
-   ========================================================= */
+/* Feature card (square) */
 .method-feature{
   position: relative;
   background: rgba(28, 47, 71, 0.92);
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 0;
-
   box-shadow:
     0 18px 40px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.07);
@@ -677,11 +629,9 @@ a{ color: inherit; text-decoration: none; }
 
 .method-feature .mf-inner{
   padding: 22px 22px 20px;
-
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   min-height: 260px;
 }
 
@@ -703,16 +653,13 @@ a{ color: inherit; text-decoration: none; }
 .method-feature .mf-icon{
   width: 22px;
   height: 22px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   color: rgba(255,255,255,.80);
   opacity: .95;
   flex: 0 0 auto;
 }
-
 .method-feature .mf-icon svg{
   width: 22px;
   height: 22px;
@@ -737,101 +684,43 @@ a{ color: inherit; text-decoration: none; }
 .method-feature .mf-points{
   margin: 8px 0 0;
   padding-left: 18px;
-
   display: grid;
   gap: 6px;
-
   font-size: 14px;
   line-height: 1.35;
   color: rgba(255,255,255,.78);
 }
 
 .method-feature .mf-points li{ margin: 0; }
+.method-feature .mf-points li::marker{ color: rgba(255,255,255,.55); }
 
-.method-feature .mf-points li::marker{
-  color: rgba(255,255,255,.55);
-}
-
-
-/* =========================================================
-   CHEVRON ARROWS BETWEEN CARDS
-   ========================================================= */
+/* Chevron arrows between cards */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
-
   left: calc(100% + (var(--gap) / 2));
   top: 50%;
   transform: translate(-50%, -50%);
-
   font-size: 22px;
   line-height: 1;
   font-weight: 300;
   color: rgba(255,255,255,.28);
-
   pointer-events: none;
   z-index: 5;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width: 900px){
-  .method-features{
-    --band-h: 240px;
-    --gap: 18px;
-    --overhang: 64px;
-    padding: 64px 0;
-  }
-
-  .method-feature-grid{
-    grid-template-columns: 1fr;
-    transform: translateY(calc(-1 * var(--overhang)));
-  }
-
-  .method-feature::after{
-    display: none;
-  }
-}
 
 /* =========================================================
-   9.3) METHOD — BELOW FOLD (WATER TEXTURE TO FOOTER)
+   11) METHOD — BELOW FOLD (WATER TEXTURE TO FOOTER)
    Applies to: <section class="below-fold method-content">
    ========================================================= */
 .below-fold.method-content{
-  position: relative;
-  overflow: hidden;
-
-  background: linear-gradient(
-    180deg,
-    rgba(20,42,68,.88) 0%,
-    rgba(16,34,56,.92) 55%,
-    rgba(12,26,44,.96) 100%
-  );
-
   padding: 64px 0 72px;
 }
 
-.below-fold.method-content::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
-  opacity: 0.18; /* 0.12–0.22 */
-  filter: blur(1.2px) saturate(0.95);
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-.below-fold.method-content > .container{
-  position: relative;
-  z-index: 1;
-}
 
 /* =========================================================
-   11) FOOTER (ALL FOOTER CSS IN ONE PLACE)
+   12) FOOTER (ALL FOOTER CSS IN ONE PLACE)
    ========================================================= */
 .site-footer{
   background: #0b1d2f;
@@ -840,8 +729,6 @@ a{ color: inherit; text-decoration: none; }
   margin-top: 0;
   color: rgba(230,238,247,.75);
 }
-
-.site-footer::before{ content: none; }
 
 .site-footer .footer-inner{
   width: min(var(--container), calc(100% - 40px));
@@ -863,24 +750,13 @@ a{ color: inherit; text-decoration: none; }
 .site-footer .footer-home-link{
   display: inline-flex;
   align-items: center;
-  gap: 0;
   color: rgba(255,255,255,.90);
   text-decoration: none;
 }
-.site-footer .footer-home-link:hover{
-  color: rgba(255,255,255,.96);
-  text-decoration: none;
-}
+.site-footer .footer-home-link:hover{ color: rgba(255,255,255,.96); }
 
-.site-footer .footer-ir{
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.site-footer .footer-pipe{
-  padding: 0 6px;
-  opacity: .5;
-}
+.site-footer .footer-ir{ font-weight: 800; color: #ffffff; }
+.site-footer .footer-pipe{ padding: 0 6px; opacity: .5; }
 
 .site-footer .footer-desc{
   margin: 0;
@@ -922,10 +798,7 @@ a{ color: inherit; text-decoration: none; }
   white-space: nowrap;
   text-decoration: none !important;
 }
-.site-footer .footer-nav a:hover{
-  color: rgba(255,255,255,.96);
-  text-decoration: none !important;
-}
+.site-footer .footer-nav a:hover{ color: rgba(255,255,255,.96); }
 
 .site-footer .footer-nav a:not(:last-child)::after{
   content: "";
@@ -946,7 +819,7 @@ a{ color: inherit; text-decoration: none; }
 
 
 /* =========================================================
-   12) RESPONSIVE (GLOBAL + COMPONENTS)
+   13) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
   .split-inner{
@@ -978,19 +851,19 @@ a{ color: inherit; text-decoration: none; }
     align-items: flex-start;
     text-align: left;
   }
-}
 
-@media (max-width: 980px){
-  .flow-row{
+  /* Method cards stack + no chevrons */
+  .method-features{
+    --band-h: 240px;
+    --gap: 18px;
+    --overhang: 64px;
+    padding: 64px 0 calc(64px + var(--overhang));
+  }
+  .method-feature-grid{
     grid-template-columns: 1fr;
-    gap: 12px;
+    transform: translateY(calc(-1 * var(--overhang)));
   }
-  .flow-chev{ display:none; }
-  .method-flow{
-    margin-top: -26px;
-    padding-bottom: 26px;
-  }
-  .flow-text{ max-width: none; }
+  .method-feature::after{ display: none; }
 }
 
 @media (max-width: 720px){
