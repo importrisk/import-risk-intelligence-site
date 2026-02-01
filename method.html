@@ -42,20 +42,24 @@ description: How Import Risk Intelligence evaluates and tracks supply-chain risk
        stroke-linecap="round" stroke-linejoin="round"
        aria-hidden="true">
 
-    <!-- outer arc -->
-    <path d="M4.5 12a7.5 7.5 0 1 1 15 0"/>
+    <!-- Outer ring (almost full circle, small wedge gap) -->
+    <circle cx="12" cy="12" r="8"
+            stroke-dasharray="42 8"
+            transform="rotate(-40 12 12)"/>
 
-    <!-- inner arc -->
-    <path d="M7.5 12a4.5 4.5 0 1 1 9 0"/>
+    <!-- Inner ring -->
+    <circle cx="12" cy="12" r="5"
+            stroke-dasharray="26 5.4"
+            transform="rotate(-40 12 12)"/>
 
-    <!-- sweep line -->
-    <path d="M12 12L18.2 6.2"/>
+    <!-- Sweep line -->
+    <path d="M12 12 L18.6 6.4"/>
 
-    <!-- center dot -->
+    <!-- Center dot -->
     <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
-
   </svg>
 </span>
+
 
 
       <h3 class="mf-title">Monitor</h3>
