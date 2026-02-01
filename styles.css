@@ -559,55 +559,51 @@ img{ max-width: 100%; height: auto; display: block; }
 /* =========================================================
    10) METHOD — FEATURES (BAND BEHIND CARDS)
    Fixes:
-   - No stray blocks / no parsing errors
-   - No grey blob: water backdrop continues behind this area via ::after
-   - Only the “band” is ::before (centered behind cards)
+   - Feature band starts immediately under hero
+   - Cards spill over ABOVE + BELOW (without layout gaps)
+   - No grey blob: water backdrop is painted on the section itself
    ========================================================= */
 .method-features{
   --overhang: 96px;   /* cards spill UP into hero */
-  --band-h: 220px;    /* height of centered band */
+  --band-h: 220px;    /* height of band behind cards */
   --gap: 28px;        /* card gap */
 
   position: relative;
   z-index: 4;
-  background: transparent;
+  isolation: isolate;
   overflow: visible;
 
-  /* This defines the section height normally (no fake spacer divs) */
-  padding: 56px 0 56px;
-}
+  /* Pull the whole section up into the hero so the band sits right under it */
+  margin-top: calc(-1 * var(--overhang));
 
-/* Water backdrop behind the whole method-features region
-   (prevents the raw body color from showing as a “grey blob”) */
-.method-features::after{
-  content: "";
-  position: absolute;
-  inset: -140px 0 -140px 0; /* extends above/below so transitions feel seamless */
+  /* Compensate so content doesn’t get chopped */
+  padding: calc(56px + var(--overhang)) 0 56px;
+
+  /* Paint the water background directly here (no z-index:-1 pseudo element) */
   background-image:
     linear-gradient(
       180deg,
-      rgba(20,42,68,.86) 0%,
-      rgba(16,34,56,.90) 55%,
+      rgba(20,42,68,.89) 0%,
+      rgba(16,34,56,.91) 55%,
       rgba(12,26,44,.94) 100%
     ),
     url("assets/images/water-texture.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.22;
-  filter: blur(1px) saturate(.8) contrast(.90);
-  pointer-events: none;
-  z-index: -1;
+  background-attachment: scroll;
 }
 
-/* Centered band behind cards */
+/* Band behind cards (right under hero edge, not centered mid-section) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+  /* Put band near the top so it reads like “under the hero” */
+  top: 56px;
+
   height: var(--band-h);
   background: rgba(60, 80, 105, 0.75);
   border-top: 1px solid rgba(255,255,255,.12);
@@ -630,7 +626,9 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 1;
 
   overflow: visible; /* arrows + shadows */
-  transform: translateY(calc(-1 * var(--overhang)));
+
+  /* IMPORTANT: remove the translateY lift */
+  transform: none;
 }
 
 /* Feature card */
@@ -725,7 +723,6 @@ img{ max-width: 100%; height: auto; display: block; }
   pointer-events: none;
   z-index: 5;
 }
-
 
 /* =========================================================
    11) METHOD — BELOW FOLD (WATER TEXTURE CONTINUES)
