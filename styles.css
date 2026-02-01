@@ -588,12 +588,12 @@ img{ max-width: 100%; height: auto; display: block; }
   padding: 56px 0 calc(56px + var(--overhang));
 
   /* IMPORTANT: method-features DOES paint the water now */
-  background-image:
+background-image:
     linear-gradient(
       180deg,
-      rgba(20,42,68,.89) 0%,
-      rgba(16,34,56,.91) 55%,
-      rgba(12,26,44,.94) 100%
+      rgba(20,42,68,.72) 0%,
+      rgba(16,34,56,.74) 70%,
+      rgba(12,26,44,.76) 100%
     ),
     url("assets/images/water-texture.jpg");
   background-position: center top;
