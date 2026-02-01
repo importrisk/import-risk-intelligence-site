@@ -560,7 +560,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .method-hero-inner{
-  padding-top: 130px;
+  padding-top: 110px;
   text-align: center;
   margin: 0 auto;          /* ← THIS is the fix */
   max-width: 720px;        /* keeps it visually tight like Home */
