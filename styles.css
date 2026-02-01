@@ -507,11 +507,15 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    9) METHOD — HERO (SHORTER THAN HOME)
+   Fix:
+   - add bottom padding so overlap doesn't "cut off" the hero image
+   - show a little more of the bottom of the photo
    ========================================================= */
 .method-hero{
   position: relative;
-  min-height: clamp(320px, 48vh, 520px);
+  min-height: clamp(420px, 56vh, 620px); /* taller so image still shows under cards */
   padding-top: var(--topbar-h);
+  padding-bottom: 96px; /* matches card overhang so hero isn't visually chopped */
   overflow: hidden;
   isolation: isolate;
 }
@@ -519,6 +523,7 @@ img{ max-width: 100%; height: auto; display: block; }
 .method-hero-bg{
   position: absolute;
   inset: 0;
+
   background-image:
     linear-gradient(
       180deg,
@@ -527,9 +532,12 @@ img{ max-width: 100%; height: auto; display: block; }
       var(--hero-bottom) 100%
     ),
     url("assets/images/method-hero.jpg");
-  background-position: center 65%;
+
+  /* show more of the lower part of the image */
+  background-position: center 78%;
   background-size: cover;
   background-repeat: no-repeat;
+
   pointer-events: none;
   z-index: 0;
 }
@@ -564,7 +572,7 @@ img{ max-width: 100%; height: auto; display: block; }
    - No grey blob (water painted on section)
    ========================================================= */
 .method-features{
-  --overhang: 96px;   /* how far cards rise into hero */
+  --overhang: 84px;   /* how far cards rise into hero */
   --band-h: 220px;    /* height of band behind cards */
   --gap: 28px;        /* card gap */
 
@@ -601,7 +609,7 @@ img{ max-width: 100%; height: auto; display: block; }
   right: 0;
 
   /* Because the section is pulled up, this reads as "under hero" */
-  top: var(--overhang);
+  top: 0;
 
   height: var(--band-h);
   background: rgba(60, 80, 105, 0.75);
