@@ -558,13 +558,13 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    10) METHOD — FEATURES (BAND BEHIND CARDS)
-   Fixes:
-   - Feature band starts immediately under hero
-   - Cards spill over ABOVE + BELOW (without layout gaps)
-   - No grey blob: water backdrop is painted on the section itself
+   Correct behavior:
+   - Band starts directly under hero
+   - Cards spill above + below
+   - No grey blob (water painted on section)
    ========================================================= */
 .method-features{
-  --overhang: 96px;   /* cards spill UP into hero */
+  --overhang: 96px;   /* how far cards rise into hero */
   --band-h: 220px;    /* height of band behind cards */
   --gap: 28px;        /* card gap */
 
@@ -573,13 +573,13 @@ img{ max-width: 100%; height: auto; display: block; }
   isolation: isolate;
   overflow: visible;
 
-  /* Pull the whole section up into the hero so the band sits right under it */
+  /* Pull the entire section up into the hero */
   margin-top: calc(-1 * var(--overhang));
 
-  /* Compensate so content doesn’t get chopped */
-  padding: calc(56px + var(--overhang)) 0 56px;
+  /* Normal padding (DO NOT add overhang here) */
+  padding: 56px 0 calc(56px + var(--overhang));
 
-  /* Paint the water background directly here (no z-index:-1 pseudo element) */
+  /* Water backdrop stays solid (no z-index:-1 tricks) */
   background-image:
     linear-gradient(
       180deg,
@@ -591,18 +591,17 @@ img{ max-width: 100%; height: auto; display: block; }
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: scroll;
 }
 
-/* Band behind cards (right under hero edge, not centered mid-section) */
+/* Band behind cards (sits right under hero edge visually) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
 
-  /* Put band near the top so it reads like “under the hero” */
-  top: 56px;
+  /* Because the section is pulled up, this reads as "under hero" */
+  top: var(--overhang);
 
   height: var(--band-h);
   background: rgba(60, 80, 105, 0.75);
@@ -627,8 +626,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
   overflow: visible; /* arrows + shadows */
 
-  /* IMPORTANT: remove the translateY lift */
-  transform: none;
+  /* Lift the cards so they spill into the hero */
+  transform: translateY(calc(-1 * var(--overhang)));
 }
 
 /* Feature card */
