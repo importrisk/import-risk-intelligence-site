@@ -533,8 +533,8 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Lower the image so it sits correctly at full viewport height */
-  background-position: center 84%;
+  /* Lower the ship (reduce the Y%) */
+  background-position: center 78%;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -542,16 +542,16 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Push the image further down on tall screens (no card changes) */
+/* Only a *small* adjustment on tall screens */
 @media (min-height: 900px){
   .method-hero-bg{
-    background-position: center 88%;
+    background-position: center 80%;
   }
 }
 
 @media (min-height: 1100px){
   .method-hero-bg{
-    background-position: center 92%;
+    background-position: center 82%;
   }
 }
 
