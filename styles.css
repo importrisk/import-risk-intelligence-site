@@ -699,6 +699,10 @@ transform: none;
   width: 22px;
   height: 22px;
   display: block;
+
+  /* optical normalization */
+  transform: scale(1.12);
+  transform-origin: center;
 }
 
 /* Title */
