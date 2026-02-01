@@ -533,12 +533,26 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  background-size: contain;
-  background-position: center bottom;
+  /* Base position: ship stays lower on normal screens */
+  background-position: center 78%;
+  background-size: cover;
   background-repeat: no-repeat;
 
   pointer-events: none;
   z-index: 0;
+}
+
+/* Wide screens: nudge the image DOWN so the ship doesn't climb */
+@media (min-aspect-ratio: 16/9){
+  .method-hero-bg{
+    background-position: center 84%;
+  }
+}
+
+@media (min-aspect-ratio: 21/9){
+  .method-hero-bg{
+    background-position: center 90%;
+  }
 }
 
 .method-hero > .container{
