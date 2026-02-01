@@ -588,18 +588,17 @@ img{ max-width: 100%; height: auto; display: block; }
   background: transparent;
 }
 
-/* Band behind cards (centered on the cards themselves) */
+/* Feature band (anchored directly under hero) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
 
-  /* Center band on the cards, not near the top */
-  top: calc(var(--overhang) + 140px);
-  transform: translateY(-50%);
+  top: 0;                 /* << was 50% */
+  transform: none;        /* << removes centering */
 
-  height: calc(var(--band-h) + 120px);
+  height: var(--band-h);  /* band height (you already control this) */
 
   background: rgba(60, 80, 105, 0.75);
   border-top: 1px solid rgba(255,255,255,.12);
