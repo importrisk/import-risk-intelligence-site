@@ -533,23 +533,35 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Default (most screens) */
-  background-repeat: no-repeat;
+  /* baseline crop */
   background-size: cover;
-  background-position: center 78%;
+  background-repeat: no-repeat;
+  background-position: center 80%;
 
   pointer-events: none;
   z-index: 0;
 }
 
-/* WIDE screens: "zoom out" so the ship stays small + keep it below the text */
-@media (min-width: 1200px){
+/* WIDE screens (the problem case) → push image DOWN so ship stays below the text */
+@media (min-aspect-ratio: 16/9){
   .method-hero-bg{
-    /* smaller than cover = zoom OUT; gradient fills any extra space */
-    background-size: 1600px auto;
     background-position: center 86%;
   }
 }
+
+@media (min-aspect-ratio: 21/9){
+  .method-hero-bg{
+    background-position: center 90%;
+  }
+}
+
+/* Optional: tall/narrow screens can pull it slightly back up */
+@media (max-aspect-ratio: 4/3){
+  .method-hero-bg{
+    background-position: center 78%;
+  }
+}
+
 
 /* VERY wide screens: zoom out a touch more */
 @media (min-width: 1600px){
