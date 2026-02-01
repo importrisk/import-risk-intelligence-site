@@ -506,27 +506,26 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   9) METHOD — HERO (SHORTER THAN HOME)
-   Fix:
-   - add bottom padding so overlap doesn't "cut off" the hero image
-   - keep ship BELOW the text on wide screens
+   METHOD — HERO BG (NO LETTERBOX, SHIP STAYS LOWER)
+   Technique:
+   - give bg extra bleed (bigger than hero)
+   - shift bg with transform on wide screens
    ========================================================= */
 
 .method-hero{
   position: relative;
-
-  /* IMPORTANT: fixed visual window so wide screens don't reframe upward */
-  height: clamp(460px, 55vh, 640px);
-
+  min-height: clamp(420px, 56vh, 620px);
   padding-top: var(--topbar-h);
-  padding-bottom: 96px; /* allows card overhang without chopping image */
+  padding-bottom: 96px;
   overflow: hidden;
   isolation: isolate;
 }
 
 .method-hero-bg{
   position: absolute;
-  inset: 0;
+
+  /* BLEED: makes the bg taller so we can move it without showing empty space */
+  inset: -10vh 0 -10vh 0;
 
   background-image:
     linear-gradient(
@@ -537,26 +536,30 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* CRITICAL FIX:
-     Anchor to bottom so wide screens crop UPWARD, not downward */
-  background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
+
+  /* Start reasonably low */
+  background-position: center 74%;
+
+  /* Default: no shift */
+  transform: translateY(0);
+  will-change: transform;
 
   pointer-events: none;
   z-index: 0;
 }
 
-/* Ultra-wide screens: gently push image DOWN without drift */
-@media (min-width: 1400px){
+/* Wide screens: push the whole image DOWN (ship stops climbing) */
+@media (min-width: 1200px){
   .method-hero-bg{
-    background-position: center calc(100% + 24px);
+    transform: translateY(6vh);
   }
 }
 
-@media (min-width: 1800px){
+@media (min-width: 1600px){
   .method-hero-bg{
-    background-position: center calc(100% + 48px);
+    transform: translateY(8vh);
   }
 }
 
