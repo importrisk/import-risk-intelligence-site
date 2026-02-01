@@ -280,6 +280,11 @@ img{ max-width: 100%; height: auto; display: block; }
     0 0 24px rgba(0,0,0,.25);
 }
 
+.hero-subtitle-muted{
+  font-size: 0.92em;
+  opacity: 0.78;
+}
+
 .hero-actions{ margin-top: 135px; }
 
 .hero-cta-note{
