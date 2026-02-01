@@ -738,9 +738,8 @@ img{ max-width: 100%; height: auto; display: block; }
    Applies to: <section class="below-fold method-content">
    ========================================================= */
 .below-fold.method-content{
-  padding: 0;
+  padding: 28px 0 36px;
 }
-
 
 /* =========================================================
    12) FOOTER
