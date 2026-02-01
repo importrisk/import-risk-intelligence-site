@@ -522,8 +522,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-hero-bg{
   position: absolute;
-  inset: -30% 0 0 0; /* pull image DOWN */
-  
+  inset: -28% 0 0 0;
+
   background-image:
     linear-gradient(
       180deg,
@@ -533,7 +533,7 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  background-position: center 70%;
+  background-position: center 58%;
   background-size: cover;
   background-repeat: no-repeat;
 
