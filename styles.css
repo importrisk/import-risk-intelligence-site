@@ -675,12 +675,12 @@ transform: none;
 .method-feature .mf-head::after{
   content: "";
   position: absolute;
-  left: calc(22px + 12px); /* icon width + gap */
+  left: 0;
+  right: 0;
   bottom: 0;
 
-  width: 44px;
   height: 1px;
-  background: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.18);
 }
 
 /* Icon */
