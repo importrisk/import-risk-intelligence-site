@@ -685,8 +685,8 @@ transform: none;
 
 /* Icon */
 .method-feature .mf-icon{
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -695,11 +695,11 @@ transform: none;
   flex: 0 0 auto;
 }
 
+/* SVG sizing + optical normalization */
 .method-feature .mf-icon svg{
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   display: block;
-}
 
   /* optical normalization */
   transform: scale(1.12);
