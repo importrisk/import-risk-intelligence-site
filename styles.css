@@ -581,24 +581,11 @@ img{ max-width: 100%; height: auto; display: block; }
   isolation: isolate;
   overflow: visible;
 
-  /* Pull the entire section up into the hero */
- padding: 56px 0 24px;
+  /* spacing only — no background responsibility */
+  padding: 56px 0 24px;
 
-  /* Normal padding (DO NOT add overhang here) */
-  padding: 56px 0 calc(56px + var(--overhang));
-
-  /* Water backdrop stays solid (no z-index:-1 tricks) */
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(20,42,68,.89) 0%,
-      rgba(16,34,56,.91) 55%,
-      rgba(12,26,44,.94) 100%
-    ),
-    url("assets/images/water-texture.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* IMPORTANT: method-features does NOT paint page background */
+  background: transparent;
 }
 
 /* Band behind cards (centered on the cards themselves) */
