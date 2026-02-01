@@ -533,27 +533,27 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Default framing (laptops, normal desktops) */
-  background-position: center 78%;
+  /* Default framing (most screens) */
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center 78%;
 
   pointer-events: none;
   z-index: 0;
 }
 
-/* Wide screens: prevent vertical zoom */
-@media (min-width: 1400px){
+/* Wide screens: stop cover from zooming + push ship DOWN under the text */
+@media (min-aspect-ratio: 16/9){
   .method-hero-bg{
     background-size: 100% auto;
-    background-position: center 88%;
+    background-position: center 92%;
   }
 }
 
-/* Very wide / ultrawide displays */
-@media (min-width: 1800px){
+/* Ultra-wide: push it down a bit more */
+@media (min-aspect-ratio: 21/9){
   .method-hero-bg{
-    background-position: center 92%;
+    background-position: center 96%;
   }
 }
 
