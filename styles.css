@@ -601,17 +601,19 @@ img{ max-width: 100%; height: auto; display: block; }
   background-repeat: no-repeat;
 }
 
-/* Band behind cards (sits right under hero edge visually) */
+/* Band behind cards (centered on the cards themselves) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
 
-  /* Because the section is pulled up, this reads as "under hero" */
-  top: 0;
+  /* Center band on the cards, not near the top */
+  top: calc(var(--overhang) + 140px);
+  transform: translateY(-50%);
 
-  height: var(--band-h);
+  height: calc(var(--band-h) + 120px);
+
   background: rgba(60, 80, 105, 0.75);
   border-top: 1px solid rgba(255,255,255,.12);
   border-bottom: 1px solid rgba(0,0,0,.22);
