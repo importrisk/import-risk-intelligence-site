@@ -533,10 +533,11 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* make ship feel distant/smaller */
-  background-size: 92%;            /* try 88–96 */
-  background-position: center 72%; /* try 68–78 */
+  background-size: cover;
   background-repeat: no-repeat;
+
+  /* move framing DOWN without zooming in */
+  background-position: center 78%; /* try 76–84 */
 
   pointer-events: none;
   z-index: 0;
