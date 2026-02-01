@@ -533,8 +533,8 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* 1) put emphasis on SKY, keep horizon/ship LOWER */
-  background-position: center 88%;
+  /* default crop (normal screens) */
+  background-position: center 78%;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -542,13 +542,20 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* 2) wide screens: zoom OUT a bit so ship stays small */
-@media (min-width: 1200px){
+/* WIDE screens: crop HIGHER so the ship sits LOWER (below the text) */
+@media (min-aspect-ratio: 16/9){
   .method-hero-bg{
-    background-size: 115%;
-    background-position: center 92%;
+    background-position: center 62%;
   }
 }
+
+/* ULTRA-wide: bump a touch more */
+@media (min-aspect-ratio: 21/9){
+  .method-hero-bg{
+    background-position: center 56%;
+  }
+}
+
 
 .method-hero > .container{
   position: relative;
