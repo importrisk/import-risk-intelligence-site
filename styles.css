@@ -509,13 +509,13 @@ img{ max-width: 100%; height: auto; display: block; }
    9) METHOD — HERO (SHORTER THAN HOME)
    Fix:
    - add bottom padding so overlap doesn't "cut off" the hero image
-   - show a little more of the bottom of the photo
+   - keep ship BELOW the text on wide screens
    ========================================================= */
 .method-hero{
   position: relative;
-  min-height: clamp(420px, 56vh, 620px); /* taller so image still shows under cards */
+  min-height: clamp(420px, 56vh, 620px);
   padding-top: var(--topbar-h);
-  padding-bottom: 96px; /* matches card overhang so hero isn't visually chopped */
+  padding-bottom: 96px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -533,7 +533,7 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Base position: ship stays lower on normal screens */
+  /* Base: looks good on typical screens */
   background-position: center 78%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -542,19 +542,20 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Wide screens: nudge the image DOWN so the ship doesn't climb */
-@media (min-aspect-ratio: 16/9){
+/* Wide screens: nudge DOWN a bit (don’t overdo it) */
+@media (min-width: 1200px){
   .method-hero-bg{
-    background-position: center 84%;
+    background-position: center 82%;
   }
 }
 
-@media (min-aspect-ratio: 21/9){
+@media (min-width: 1600px){
   .method-hero-bg{
-    background-position: center 90%;
+    background-position: center 86%;
   }
 }
 
+/* Container stays above background */
 .method-hero > .container{
   position: relative;
   z-index: 1;
@@ -563,9 +564,10 @@ img{ max-width: 100%; height: auto; display: block; }
 .method-hero-inner{
   padding-top: 100px;
   text-align: center;
-  margin: 0 auto;          /* ← THIS is the fix */
-  max-width: 720px;        /* keeps it visually tight like Home */
+  margin: 0 auto;
+  max-width: 720px;
 }
+
 
 /* METHOD HERO — match HOME hero hierarchy */
 .method-title{
