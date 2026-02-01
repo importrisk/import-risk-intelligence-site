@@ -665,16 +665,21 @@ transform: none;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-bottom: 10px;
+
+  /* space for the divider BELOW the header */
+  padding-bottom: 12px;
   margin-bottom: 12px;
 }
 
+/* Divider line sits under the header, aligned to the title start */
 .method-feature .mf-head::after{
   content: "";
-  display: block;
-  width: 32px;
+  position: absolute;
+  left: calc(22px + 12px); /* icon width + gap */
+  bottom: 0;
+
+  width: 44px;
   height: 1px;
-  margin-top: 10px;
   background: rgba(255,255,255,.22);
 }
 
