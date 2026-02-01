@@ -533,8 +533,8 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  background-position: center 55%; /* adjust 52–60 */
-  background-size: 115%;          /* <-- key */
+  background-position: center 58%; /* adjust 52–60 */
+  background-size: 100%;          /* <-- key */
   background-repeat: no-repeat;
 
   pointer-events: none;
