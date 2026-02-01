@@ -742,6 +742,25 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
+   METHOD — MAKE BELOW-FOLD START RIGHT UNDER THE CARDS
+   (Home-page behavior)
+   ========================================================= */
+.below-fold.method-content{
+  /* pull water section up behind the feature band/cards */
+  margin-top: -220px;
+  padding-top: calc(64px + 220px);
+
+  position: relative;
+  z-index: 1;
+}
+
+/* keep the cards above the below-fold when they overlap */
+.method-features{
+  position: relative;
+  z-index: 4;
+}
+
+/* =========================================================
    12) FOOTER
    ========================================================= */
 .site-footer{
