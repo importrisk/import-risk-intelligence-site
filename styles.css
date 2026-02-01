@@ -636,7 +636,8 @@ background-image:
   overflow: visible; /* arrows + shadows */
 
   /* Lift the cards so they spill into the hero */
-  transform: translateY(calc(-1 * var(--overhang)));
+ margin-top: calc(-1 * var(--overhang));
+transform: none;
 }
 
 /* Feature card */
