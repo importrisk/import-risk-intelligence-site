@@ -582,7 +582,7 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: visible;
 
   /* Pull the entire section up into the hero */
-  margin-top: calc(-1 * var(--overhang));
+ padding: 56px 0 24px;
 
   /* Normal padding (DO NOT add overhang here) */
   padding: 56px 0 calc(56px + var(--overhang));
