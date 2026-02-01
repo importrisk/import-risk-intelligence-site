@@ -573,7 +573,7 @@ img{ max-width: 100%; height: auto; display: block; }
    ========================================================= */
 .method-features{
   --overhang: 84px;   /* how far cards rise into hero */
-  --band-h: 220px;    /* height of band behind cards */
+  --band-h: 260px;    /* height of band behind cards */
   --gap: 28px;        /* card gap */
 
   position: relative;
