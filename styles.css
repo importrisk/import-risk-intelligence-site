@@ -559,6 +559,13 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
+.method-hero-inner{
+  padding-top: 130px;
+  text-align: center;
+  margin: 0 auto;          /* ← THIS is the fix */
+  max-width: 720px;        /* keeps it visually tight like Home */
+}
+
 /* METHOD HERO — match HOME hero hierarchy */
 .method-title{
   margin: 0;
