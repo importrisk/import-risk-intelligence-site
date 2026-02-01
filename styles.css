@@ -659,13 +659,26 @@ transform: none;
   min-height: 260px;
 }
 
+/* Header (icon + title + divider) */
 .method-feature .mf-head{
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 4px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+.method-feature .mf-head::after{
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.22);
+}
+
+/* Icon */
 .method-feature .mf-icon{
   width: 22px;
   height: 22px;
@@ -676,12 +689,14 @@ transform: none;
   opacity: .95;
   flex: 0 0 auto;
 }
+
 .method-feature .mf-icon svg{
   width: 22px;
   height: 22px;
   display: block;
 }
 
+/* Title */
 .method-feature .mf-title{
   margin: 0;
   font-size: 22px;
@@ -689,6 +704,7 @@ transform: none;
   color: rgba(255,255,255,.96);
 }
 
+/* Description */
 .method-feature .mf-description{
   margin: 0;
   font-size: 15px;
