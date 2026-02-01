@@ -522,8 +522,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-hero-bg{
   position: absolute;
-  inset: 0;
-
+  inset: -8% 0 0 0; /* pull image DOWN */
+  
   background-image:
     linear-gradient(
       180deg,
@@ -533,8 +533,7 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Lower the ship (reduce the Y%) */
-  background-position: center 78%;
+  background-position: center 70%;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -542,16 +541,16 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Only a *small* adjustment on tall screens */
+/* subtle correction for tall screens */
 @media (min-height: 900px){
   .method-hero-bg{
-    background-position: center 80%;
+    inset: -12% 0 0 0;
   }
 }
 
 @media (min-height: 1100px){
   .method-hero-bg{
-    background-position: center 82%;
+    inset: -16% 0 0 0;
   }
 }
 
