@@ -511,11 +511,15 @@ img{ max-width: 100%; height: auto; display: block; }
    - add bottom padding so overlap doesn't "cut off" the hero image
    - keep ship BELOW the text on wide screens
    ========================================================= */
+
 .method-hero{
   position: relative;
-  min-height: clamp(420px, 56vh, 620px);
+
+  /* IMPORTANT: fixed visual window so wide screens don't reframe upward */
+  height: clamp(460px, 55vh, 640px);
+
   padding-top: var(--topbar-h);
-  padding-bottom: 96px;
+  padding-bottom: 96px; /* allows card overhang without chopping image */
   overflow: hidden;
   isolation: isolate;
 }
@@ -533,8 +537,8 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Base: looks good on typical screens */
-  background-position: center 78%;
+  /* Base framing: ship stays small + below text */
+  background-position: center 72%;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -542,16 +546,16 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Wide screens: nudge DOWN a bit (don’t overdo it) */
-@media (min-width: 1200px){
+/* Wide screens: VERY gentle downward bias */
+@media (min-width: 1400px){
   .method-hero-bg{
-    background-position: center 82%;
+    background-position: center 76%;
   }
 }
 
-@media (min-width: 1600px){
+@media (min-width: 1800px){
   .method-hero-bg{
-    background-position: center 86%;
+    background-position: center 80%;
   }
 }
 
