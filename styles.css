@@ -585,7 +585,7 @@ img{ max-width: 100%; height: auto; display: block; }
   margin-top: -2px;
 
   /* Give enough space so cards can hang below the band */
-  padding: 56px 0 calc(56px + var(--overhang));
+  padding: 56px 0 0;
 
   /* IMPORTANT: method-features DOES paint the water now */
 background-image:
