@@ -575,24 +575,30 @@ a{ color: inherit; text-decoration: none; }
    - Water backdrop behind the whole section is ::after
    ========================================================= */
 .method-features{
-  --overhang: 96px;     /* how far cards extend above + below */
-  --band-h: 220px;      /* height of centered band behind cards */
-  --gap: 28px;          /* grid gap between cards */
+  --overhang: 96px;     /* how far cards extend above AND below */
+  --band-h: 220px;      /* centered band height */
+  --gap: 28px;
 
   position: relative;
   z-index: 4;
 
+  /* IMPORTANT: section itself is transparent */
   background: transparent;
-  padding: 56px 0;      /* band thickness feel */
-  overflow: visible;
+
+  /* just enough to give the band breathing room */
+  padding: 56px 0;
+
+  overflow: visible; /* allow card overhang + chevrons */
+}
+
+/* spacer so the section ends “normally” even though the grid is translated up */
+.method-features::after{
+  content: "";
+  display: block;
+  height: var(--overhang);
 }
 
 /* Water backdrop behind the whole features area (so it blends with below-fold) */
-.method-features::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-
   background-image:
     linear-gradient(
       180deg,
