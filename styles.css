@@ -558,6 +558,565 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
+   Import Risk Intelligence — Morning Steel Blue-Grey Theme
+   CLEAN + ORGANIZED (single file)
+   - Home hero locked
+   - Below-fold water texture
+   - Features band lighter
+   - Method page: clean hero + centered features band behind cards
+   - NO extra dark “blob” bands (method band only via ::before)
+   - Footer grouped + responsive
+   ========================================================= */
+
+
+/* =========================================================
+   0) TOKENS
+   ========================================================= */
+:root{
+  --container: 1080px;
+  --topbar-h: 72px;
+
+  /* Hero + Topbar */
+  --bg: #3a4a5f;
+  --text: rgba(255,255,255,.96);
+  --muted: rgba(255,255,255,.82);
+  --faint: rgba(255,255,255,.68);
+
+  --brand: #7fb1ea;
+  --brand-2:#5f94d8;
+
+  --divider: rgba(255,255,255,.60);
+
+  /* Hero overlay (LOCKED) */
+  --hero-top: rgba(38,54,77,.36);
+  --hero-mid: rgba(38,54,77,.52);
+  --hero-bottom: rgba(38,54,77,.70);
+
+  /* Below fold */
+  --ink: rgba(255,255,255,.92);
+  --ink-muted: rgba(255,255,255,.74);
+  --ink-faint: rgba(255,255,255,.60);
+
+  --mist-border: rgba(255,255,255,.10);
+  --mist-divider: rgba(255,255,255,.12);
+  --mist-shadow: 0 18px 44px rgba(0,0,0,.28);
+
+  /* Features band */
+  --band-border: rgba(255,255,255,.18);
+
+  /* Square edges */
+  --radius: 0px;
+}
+
+
+/* =========================================================
+   1) BASE / RESETS
+   ========================================================= */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.container{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; height: auto; display: block; }
+
+
+/* =========================================================
+   2) BUTTONS
+   ========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--radius);
+}
+
+.btn-primary{
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
+}
+.btn-primary:hover{ filter: brightness(1.05); }
+
+
+/* =========================================================
+   3) TOPBAR / NAV
+   ========================================================= */
+.topbar{
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
+}
+
+.topbar-inner{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* Brand */
+.brand{
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  column-gap: 12px;
+  white-space: nowrap;
+  color: rgba(255,255,255,.94);
+}
+
+.brand-ir{
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: opacity .18s ease;
+}
+
+.brand-divider{
+  width: 1px;
+  height: 20px;
+  background: var(--divider);
+  display: block;
+  opacity: .85;
+  transition: opacity .18s ease;
+}
+
+.brand-name{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: .92;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: opacity .18s ease, text-shadow .18s ease;
+}
+
+.brand:hover .brand-ir,
+.brand:hover .brand-name{
+  opacity: .75;
+  text-shadow: 0 1px 10px rgba(0,0,0,.35);
+}
+.brand:hover .brand-divider{ opacity: .5; }
+
+/* underline reveal (top brand only) */
+.brand-name::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: rgba(255,255,255,.35);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.brand-name:hover::after{ transform: scaleX(1); }
+
+/* Nav */
+.nav{
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 13px;
+  color: rgba(255,255,255,.86);
+}
+
+.nav-link{
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  opacity: .92;
+  transition: background .15s ease, opacity .15s ease;
+}
+.nav-link:hover{ background: rgba(255,255,255,.10); }
+.nav-link.is-active{ opacity: 1; }
+
+.nav-cta{
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  background: rgba(127,177,234,.55);
+  border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
+  box-shadow: none;
+}
+.nav-cta:hover{ background: rgba(127,177,234,.72); }
+
+
+/* =========================================================
+   4) HOME PAGE — HERO (LOCKED)
+   ========================================================= */
+.hero{
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--topbar-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg{
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("assets/images/hero-port-morning-steel.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(.96) contrast(.99) brightness(1.02);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-overlay{ display: none; }
+
+.hero-inner{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 120px 0 0;
+}
+
+.hero-title{
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-shadow: 0 12px 26px rgba(0,0,0,.30);
+}
+
+.hero-subtitle{
+  margin: 14px auto 0;
+  max-width: 680px;
+  font-size: 24px;
+  color: rgba(255,255,255,.78);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.35),
+    0 0 24px rgba(0,0,0,.25);
+}
+
+.hero-actions{ margin-top: 135px; }
+
+.hero-cta-note{
+  margin: 22px auto 0;
+  font-size: 18px;
+  color: rgba(255,255,255,.70);
+  text-shadow: 0 10px 20px rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   5) BELOW FOLD (GLOBAL) — WATER TEXTURE
+   ========================================================= */
+.below-fold{
+  position: relative;
+  color: var(--ink);
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  );
+}
+
+.below-fold::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.below-fold > *{
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   6) HOME PAGE — FEATURES BAND
+   ========================================================= */
+.features{
+  position: relative;
+  z-index: 2;
+  background: rgba(83,103,128,.72);
+  border-top: 1px solid var(--band-border);
+  border-bottom: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+}
+
+.feature-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  padding: 14px 0;
+}
+
+.feature{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  min-height: 140px;
+  padding: 18px 22px;
+  color: rgba(255,255,255,.92);
+}
+
+.feature svg{
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin-bottom: 14px;
+  opacity: .85;
+  color: rgba(255,255,255,.72);
+}
+.feature svg *{ stroke-width: 1.6; }
+
+.feature h3{
+  margin: 8px 0 6px;
+  letter-spacing: .10em;
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(255,255,255,.95);
+}
+
+.feature p{
+  margin: 0;
+  max-width: 260px;
+  line-height: 1.38;
+  font-size: 15px;
+  color: rgba(255,255,255,.78);
+}
+
+.feature:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
+}
+
+
+/* =========================================================
+   7) HOME PAGE — SPLIT SECTIONS
+   ========================================================= */
+.section-split{
+  position: relative;
+  padding: 48px 0 36px;
+  background: transparent;
+}
+
+.split-inner{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 80px;
+  align-items: start;
+}
+
+.section{ padding: 0; }
+
+.section-title{
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 34px;
+  letter-spacing: -0.01em;
+}
+
+.section-text{
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+.section + .section{ margin-top: 42px; }
+.request-box{ margin-top: 16px; }
+
+
+/* =========================================================
+   8) HOME PAGE — BIO CARD (IF PRESENT)
+   ========================================================= */
+.split-bio{
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid var(--mist-border);
+  box-shadow: var(--mist-shadow);
+}
+
+.bio-top{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.bio-photo{
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.bio-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.96) contrast(.98);
+}
+
+.bio-name{
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--ink);
+}
+
+.bio-role{
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+.bio-blurb{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.82);
+}
+
+.bio-links{
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  font-size: 13px;
+}
+
+.bio-links a{ color: rgba(180,210,255,.90); }
+.bio-links a:hover{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bio-cta{
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--mist-divider);
+}
+.bio-cta .btn{ width: 100%; }
+
+
+/* =========================================================
+   9) METHOD PAGE — HERO
+   ========================================================= */
+.method-hero{
+  position: relative;
+  min-height: clamp(320px, 48vh, 520px);
+  padding-top: var(--topbar-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.method-hero-bg{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("assets/images/method-hero.jpg");
+  background-position: center 65%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.method-hero > .container{
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional hero text (only if you add it) */
+.method-title{
+  margin: 0;
+  font-size: clamp(30px, 3.8vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-align: center;
+}
+
+.method-subtitle{
+  margin: 14px auto 0;
+  max-width: 640px;
+  font-size: 17px;
+  color: var(--muted);
+  text-align: center;
+}
+
+
+/* =========================================================
    10) METHOD PAGE — FEATURES (BAND BEHIND CARDS)
    IMPORTANT:
    - The ONLY “band” is ::before (centered behind cards)
@@ -718,6 +1277,194 @@ img{ max-width: 100%; height: auto; display: block; }
   padding: 64px 0 72px;
 }
 
+
+/* =========================================================
+   12) FOOTER (ALL FOOTER CSS IN ONE PLACE)
+   ========================================================= */
+.site-footer{
+  background: #0b1d2f;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 22px 0 20px;
+  margin-top: 0;
+  color: rgba(230,238,247,.75);
+}
+
+.site-footer .footer-inner{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.site-footer .footer-brandline{
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: .2px;
+  line-height: 1.2;
+}
+
+.site-footer .footer-home-link{
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255,255,255,.90);
+  text-decoration: none;
+}
+.site-footer .footer-home-link:hover{ color: rgba(255,255,255,.96); }
+
+.site-footer .footer-ir{ font-weight: 800; color: #ffffff; }
+.site-footer .footer-pipe{ padding: 0 6px; opacity: .5; }
+
+.site-footer .footer-desc{
+  margin: 0;
+  max-width: 560px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: rgba(210,222,236,.75);
+}
+
+.site-footer .footer-legal{
+  margin: 12px 0 0;
+  max-width: 560px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(180,195,214,.50);
+}
+
+.site-footer .footer-right{
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-align: right;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.site-footer .footer-nav{
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-footer .footer-nav a{
+  position: relative;
+  padding: 0 10px;
+  font-size: 12.5px;
+  color: rgba(200,218,245,.92);
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+.site-footer .footer-nav a:hover{ color: rgba(255,255,255,.96); }
+
+.site-footer .footer-nav a:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 3px;
+  bottom: 3px;
+  width: 1px;
+  background: rgba(255,255,255,.18);
+  opacity: .9;
+}
+
+.site-footer .footer-copy{
+  margin: 0;
+  font-size: 11px;
+  color: rgba(180,195,214,.50);
+}
+
+
+/* =========================================================
+   13) RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px){
+  .split-inner{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .bio-top{
+    grid-template-columns: 96px 1fr;
+  }
+
+  .bio-photo{
+    width: 96px;
+    height: 96px;
+  }
+
+  .bio-cta .btn{ width: auto; }
+
+  .site-footer{
+    padding: 18px 0 18px;
+  }
+
+  .site-footer .footer-inner{
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer .footer-right{
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Method cards stack + no chevrons */
+  .method-features{
+    --band-h: 240px;
+    --gap: 18px;
+    --overhang: 64px;
+    padding: 64px 0 calc(64px + var(--overhang));
+  }
+  .method-feature-grid{
+    grid-template-columns: 1fr;
+    transform: translateY(calc(-1 * var(--overhang)));
+  }
+  .method-feature::after{ display: none; }
+}
+
+@media (max-width: 720px){
+  .topbar{
+    height: auto;
+    padding: 10px 0;
+    align-items: flex-start;
+  }
+
+  .topbar-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .brand{ height: auto; }
+
+  .nav{
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .feature-grid{
+    grid-template-columns: 1fr;
+    padding: 18px 0;
+  }
+
+  .feature{
+    min-height: 160px;
+    padding: 18px 18px;
+  }
+
+  .feature:not(:last-child)::after{ display: none; }
+
+  .site-footer .footer-nav a{
+    padding: 0 10px 0 0;
+  }
+  .site-footer .footer-nav a:not(:last-child)::after{
+    display: none;
+  }
+}
 
 /* =========================================================
    12) FOOTER (ALL FOOTER CSS IN ONE PLACE)
