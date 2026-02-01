@@ -537,8 +537,9 @@ img{ max-width: 100%; height: auto; display: block; }
     ),
     url("assets/images/method-hero.jpg");
 
-  /* Base framing: ship stays small + below text */
-  background-position: center 72%;
+  /* CRITICAL FIX:
+     Anchor to bottom so wide screens crop UPWARD, not downward */
+  background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -546,16 +547,16 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Wide screens: VERY gentle downward bias */
+/* Ultra-wide screens: gently push image DOWN without drift */
 @media (min-width: 1400px){
   .method-hero-bg{
-    background-position: center 76%;
+    background-position: center calc(100% + 24px);
   }
 }
 
 @media (min-width: 1800px){
   .method-hero-bg{
-    background-position: center 80%;
+    background-position: center calc(100% + 48px);
   }
 }
 
@@ -571,7 +572,6 @@ img{ max-width: 100%; height: auto; display: block; }
   margin: 0 auto;
   max-width: 720px;
 }
-
 
 /* METHOD HERO — match HOME hero hierarchy */
 .method-title{
