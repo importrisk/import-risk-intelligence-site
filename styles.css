@@ -575,18 +575,23 @@ a{ color: inherit; text-decoration: none; }
    - Water backdrop behind the whole section is ::after
    ========================================================= */
 .method-features{
-  --overhang: 96px;     /* how far cards extend above AND below */
-  --band-h: 220px;      /* centered band height */
-  --gap: 28px;
+  /* how far cards extend above AND below the band */
+  --overhang: 96px;
+
+  /* thickness of the band behind the cards */
+  --band-pad: 56px;
+
+  /* IMPORTANT: define the actual band height */
+  --band-h: 220px;
 
   position: relative;
   z-index: 4;
 
-  /* IMPORTANT: section itself is transparent */
+  /* IMPORTANT: section itself is transparent (band is ::before) */
   background: transparent;
 
-  /* just enough to give the band breathing room */
-  padding: 56px 0;
+  /* band thickness only */
+  padding: var(--band-pad) 0;
 
   overflow: visible; /* allow card overhang + chevrons */
 }
