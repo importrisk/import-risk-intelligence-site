@@ -808,6 +808,114 @@ transform: none;
   position: relative;
   z-index: 4;
 }
+/* =========================================================
+   Method: How coverage works in practice (below cards)
+   ========================================================= */
+.method-practice{
+  padding: 56px 0 64px;
+}
+
+.method-practice .mp-head{
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+
+.method-practice .mp-title{
+  margin: 0 0 16px;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.95);
+}
+
+.method-practice .mp-lead{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+/* 3 columns */
+.method-practice .mp-cols{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.method-practice .mp-col{
+  position: relative;
+  padding: 10px 10px 10px 0;
+}
+
+/* vertical dividers between columns */
+.method-practice .mp-col:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: -14px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
+}
+
+.method-practice .mp-col-title{
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
+}
+
+.method-practice .mp-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.78);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+.method-practice .mp-list li{
+  margin: 10px 0;
+}
+
+/* quote + footer */
+.method-practice .mp-quote{
+  margin: 34px auto 18px;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(180, 215, 255, .72);
+}
+
+.method-practice .mp-foot{
+  margin: 0 auto;
+  text-align: center;
+  max-width: 900px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.74);
+}
+
+.method-practice .mp-actions{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .method-practice .mp-title{ font-size: 36px; }
+  .method-practice .mp-cols{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .method-practice .mp-col{
+    padding: 0;
+  }
+  .method-practice .mp-col:not(:last-child)::after{
+    display: none;
+  }
+}
 
 /* =========================================================
    12) FOOTER
