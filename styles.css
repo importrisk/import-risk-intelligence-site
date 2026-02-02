@@ -1,13 +1,11 @@
 /* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
    CLEAN + ORGANIZED (single file)
-   - No duplicates
    - Home hero locked
    - Below-fold water texture
-   - Home features band (lighter)
-   - Method page: hero + centered band behind cards
-   - Method “grey blob” removed (water backdrop continues behind features area)
-   - Footer grouped + responsive
+   - Home features band
+   - Method page: hero + band behind cards
+   - Method: below-fold uses water (no grey slab)
    ========================================================= */
 
 
@@ -302,6 +300,8 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   color: var(--ink);
   overflow: hidden;
+
+  /* base depth */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -511,12 +511,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   METHOD — HERO BG (NO LETTERBOX, SHIP STAYS LOWER)
-   Technique:
-   - give bg extra bleed (bigger than hero)
-   - shift bg with transform on wide screens
+   9) METHOD — HERO BG
    ========================================================= */
-
 .method-hero{
   position: relative;
   min-height: clamp(420px, 56vh, 620px);
@@ -528,8 +524,6 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-hero-bg{
   position: absolute;
-
-  /* BLEED: makes the bg taller so we can move it without showing empty space */
   inset: -10vh 0 -10vh 0;
 
   background-image:
@@ -543,11 +537,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
   background-size: cover;
   background-repeat: no-repeat;
-
-  /* Start reasonably low */
   background-position: center 74%;
 
-  /* Default: no shift */
   transform: translateY(0);
   will-change: transform;
 
@@ -555,20 +546,13 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Wide screens: push the whole image DOWN (ship stops climbing) */
 @media (min-width: 1200px){
-  .method-hero-bg{
-    transform: translateY(6vh);
-  }
+  .method-hero-bg{ transform: translateY(6vh); }
 }
-
 @media (min-width: 1600px){
-  .method-hero-bg{
-    transform: translateY(8vh);
-  }
+  .method-hero-bg{ transform: translateY(8vh); }
 }
 
-/* Container stays above background */
 .method-hero > .container{
   position: relative;
   z-index: 1;
@@ -581,10 +565,9 @@ img{ max-width: 100%; height: auto; display: block; }
   max-width: 720px;
 }
 
-/* METHOD HERO — match HOME hero hierarchy */
 .method-title{
   margin: 0;
-  font-size: clamp(34px, 4.2vw, 56px); /* SAME AS .hero-title */
+  font-size: clamp(34px, 4.2vw, 56px);
   line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -594,8 +577,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-subtitle{
   margin: 14px auto 0;
-  max-width: 680px; /* match Home */
-  font-size: 24px;  /* SAME AS .hero-subtitle */
+  max-width: 680px;
+  font-size: 24px;
   color: rgba(255,255,255,.78);
   text-align: center;
   text-shadow:
@@ -603,31 +586,25 @@ img{ max-width: 100%; height: auto; display: block; }
     0 0 24px rgba(0,0,0,.25);
 }
 
+
 /* =========================================================
    10) METHOD — FEATURES (BAND BEHIND CARDS)
-   Correct behavior:
-   - Band starts directly under hero
-   - Cards spill above + below
-   - No grey blob (water painted on section)
    ========================================================= */
 .method-features{
-  --overhang: 84px;   /* how far cards rise into hero */
-  --band-h: 260px;    /* height of band behind cards (tweak later) */
-  --gap: 28px;        /* card gap */
+  --overhang: 84px;
+  --band-h: 260px;
+  --gap: 28px;
 
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
-  /* Pull up to kiss the hero (kills the little seam) */
   margin-top: -2px;
-
-  /* Give enough space so cards can hang below the band */
   padding: 56px 0 0;
 
-  /* IMPORTANT: method-features DOES paint the water now */
-background-image:
+  /* water continues behind cards area */
+  background-image:
     linear-gradient(
       180deg,
       rgba(20,42,68,.72) 0%,
@@ -640,17 +617,16 @@ background-image:
   background-repeat: no-repeat;
 }
 
-/* Feature band (anchored directly under hero) */
+/* feature band behind cards */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
+  top: 0;
+  transform: none;
 
-  top: 0;                 /* << was 50% */
-  transform: none;        /* << removes centering */
-
-  height: var(--band-h);  /* band height (you already control this) */
+  height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.75);
   border-top: 1px solid rgba(255,255,255,.12);
@@ -658,11 +634,11 @@ background-image:
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.18);
+
   pointer-events: none;
   z-index: 0;
 }
 
-/* Feature grid */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -672,11 +648,10 @@ background-image:
   position: relative;
   z-index: 1;
 
-  overflow: visible; /* arrows + shadows */
+  overflow: visible;
 
-  /* Lift the cards so they spill into the hero */
- margin-top: calc(-1 * var(--overhang));
-transform: none;
+  margin-top: calc(-1 * var(--overhang));
+  transform: none;
 }
 
 /* Feature card */
@@ -704,20 +679,16 @@ transform: none;
   display: flex;
   align-items: center;
   gap: 8px;
-
-  /* space for the divider BELOW the header */
   padding-bottom: 12px;
   margin-bottom: 12px;
 }
 
-/* Divider line sits under the header, aligned to the title start */
 .method-feature .mf-head::after{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-
   height: 1px;
   background: rgba(255,255,255,.18);
 }
@@ -734,7 +705,6 @@ transform: none;
   flex: 0 0 auto;
 }
 
-/* SVG sizing */
 .method-feature .mf-icon svg{
   width: 24px;
   height: 24px;
@@ -749,7 +719,7 @@ transform: none;
   color: rgba(255,255,255,.96);
 }
 
-/* Description */
+/* Body */
 .method-feature .mf-description{
   margin: 0;
   font-size: 16px;
@@ -761,7 +731,7 @@ transform: none;
 .mf-subtle{
   margin-top: 8px;
   font-size: 0.9rem;
-  color: rgba(127, 177, 234, 0.75); /* brand blue, softened */
+  color: rgba(127, 177, 234, 0.75);
   line-height: 1.5;
 }
 
@@ -780,30 +750,43 @@ transform: none;
   z-index: 5;
 }
 
+
 /* =========================================================
-   11) METHOD — BELOW FOLD (WATER TEXTURE CONTINUES)
+   11) METHOD — BELOW FOLD (WATER CONTINUES; NO GREY SLAB)
    Applies to: <section class="below-fold method-content">
-   CLEAN + SINGLE SOURCE OF TRUTH
    ========================================================= */
 .below-fold.method-content{
-  /* pull water section up behind the feature band/cards */
+  /* geometry to start right under the cards */
   margin-top: -220px;
   padding-top: calc(64px + 220px);
   padding-bottom: 36px;
 
   position: relative;
   z-index: 1;
+
+  /* IMPORTANT: paint water here (don’t rely on global .below-fold haze) */
+  background: none;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(20,42,68,.86) 0%,
+      rgba(16,34,56,.90) 55%,
+      rgba(12,26,44,.94) 100%
+    ),
+    url("assets/images/water-texture.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-/* keep the cards above the below-fold when they overlap */
-.method-features{
-  position: relative;
-  z-index: 4;
+/* disable the global below-fold ::before on this section (prevents grey haze) */
+.below-fold.method-content::before{
+  display: none;
 }
+
 
 /* =========================================================
    Method: How coverage works in practice (below cards)
-   Uses the SAME dark water background (no solid slab)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -869,11 +852,8 @@ transform: none;
   font-size: 16px;
 }
 
-.method-practice .mp-list li{
-  margin: 10px 0;
-}
+.method-practice .mp-list li{ margin: 10px 0; }
 
-/* quote + footer */
 .method-practice .mp-quote{
   margin: 34px auto 18px;
   text-align: center;
@@ -897,20 +877,17 @@ transform: none;
   justify-content: center;
 }
 
-/* Responsive */
 @media (max-width: 900px){
   .method-practice .mp-title{ font-size: 36px; }
+
   .method-practice .mp-cols{
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .method-practice .mp-col{
-    padding: 0;
-  }
-  .method-practice .mp-col:not(:last-child)::after{
-    display: none;
-  }
+  .method-practice .mp-col{ padding: 0; }
+  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
+
 
 /* =========================================================
    12) FOOTER
@@ -1020,26 +997,15 @@ transform: none;
     gap: 28px;
   }
 
-  .bio-top{
-    grid-template-columns: 96px 1fr;
-  }
-
-  .bio-photo{
-    width: 96px;
-    height: 96px;
-  }
-
+  .bio-top{ grid-template-columns: 96px 1fr; }
+  .bio-photo{ width: 96px; height: 96px; }
   .bio-cta .btn{ width: auto; }
 
-  .site-footer{
-    padding: 18px 0 18px;
-  }
-
+  .site-footer{ padding: 18px 0 18px; }
   .site-footer .footer-inner{
     flex-direction: column;
     gap: 16px;
   }
-
   .site-footer .footer-right{
     align-items: flex-start;
     text-align: left;
@@ -1053,11 +1019,7 @@ transform: none;
     padding: 64px 0 64px;
   }
 
-  .method-feature-grid{
-    grid-template-columns: 1fr;
-    transform: translateY(calc(-1 * var(--overhang)));
-  }
-
+  .method-feature-grid{ grid-template-columns: 1fr; }
   .method-feature::after{ display: none; }
 }
 
@@ -1094,11 +1056,6 @@ transform: none;
 
   .feature:not(:last-child)::after{ display: none; }
 
-  .site-footer .footer-nav a{
-    padding: 0 10px 0 0;
-  }
-
-  .site-footer .footer-nav a:not(:last-child)::after{
-    display: none;
-  }
+  .site-footer .footer-nav a{ padding: 0 10px 0 0; }
+  .site-footer .footer-nav a:not(:last-child)::after{ display: none; }
 }
