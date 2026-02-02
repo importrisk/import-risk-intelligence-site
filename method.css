@@ -252,8 +252,8 @@
 .below-fold.method-content{
   position: relative;
   z-index: 1;
-  margin-top: calc(-1 * var(--overhang));
-  padding-top: var(--overhang);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 
