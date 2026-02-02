@@ -512,8 +512,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    METHOD PAGE — HERO + FEATURES + COVERAGE PRACTICE
-   CLEAN DROP-IN (no duplicates, no grey slab, no band bleed)
-   Works with your HTML exactly as pasted:
+   CLEAN DROP-IN (no duplicates, correct band math, no bleed)
+   Works with your HTML:
    .method-hero, .method-hero-bg, .method-features, .method-feature-grid,
    .method-feature, .method-practice, .mp-*
    ========================================================= */
@@ -534,7 +534,6 @@ img{ max-width: 100%; height: auto; display: block; }
 .method-hero-bg{
   position: absolute;
   inset: -10vh 0 -10vh 0;
-
   background-image:
     linear-gradient(
       180deg,
@@ -543,14 +542,11 @@ img{ max-width: 100%; height: auto; display: block; }
       var(--hero-bottom) 100%
     ),
     url("assets/images/method-hero.jpg");
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
-
   transform: translateY(0);
   will-change: transform;
-
   pointer-events: none;
   z-index: 0;
 }
@@ -607,45 +603,41 @@ img{ max-width: 100%; height: auto; display: block; }
    10) METHOD — FEATURES
    Goal:
    - Tinted band ONLY behind the cards
-   - Cards overhang equally top and bottom
-   - NO band/water slab extending below cards
+   - Cards overhang equally top and bottom (relative to the band)
+   - Water slab ONLY behind the full card zone (no strip below)
    ========================================================= */
-
 .method-features{
-  /* MUST match the card height math:
-     mf-inner min-height is 260px
-     overhang + band-h + overhang = 260
-     72 + 116 + 72 = 260  ✅ */
-  --overhang: 72px;
-  --band-h: 116px;
+  /* SOURCE OF TRUTH */
+  --card-h: 260px;      /* must match .mf-inner min-height */
+  --overhang: 72px;     /* equal top/bottom card overhang around the band */
+  --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* 260 - 144 = 116 */
   --gap: 28px;
+  --pad-top: 56px;      /* visual spacing under hero */
 
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
-  /* kiss the hero */
-  margin-top: -2px;
+  margin-top: -2px; /* kiss the hero */
+  padding: var(--pad-top) 0 0;
 
-  /* No extra area below cards. The grid provides the bottom overhang space. */
-  padding: 56px 0 0;
-
-  /* CRITICAL: do not paint any background on the whole section */
+  /* critical: section paints nothing so it can’t “bleed” */
   background: transparent;
 }
 
-/* Dark navy water ONLY for the exact "cards zone":
-   band height + bottom overhang (NOT beyond cards) */
+/* Dark navy water ONLY behind the actual card zone.
+   Cards top = pad-top - overhang
+   Cards bottom = (pad-top - overhang) + card-h
+   So: slab top = pad-top - overhang, slab height = card-h */
 .method-features::after{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
 
-  /* Ends exactly at the bottom of the cards */
-  height: calc(var(--band-h) + var(--overhang));
+  top: calc(var(--pad-top) - var(--overhang));
+  height: var(--card-h);
 
   background-image:
     linear-gradient(
@@ -664,14 +656,15 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* Tinted band: ONLY behind the band height */
+/* Tinted band sits behind the MIDDLE of the cards.
+   Band top = cards top + overhang = (pad-top - overhang) + overhang = pad-top */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
 
+  top: var(--pad-top);
   height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.75);
@@ -685,9 +678,7 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
-/* Grid controls the overhang:
-   - margin-top raises cards into hero
-   - padding-bottom creates equal bottom hang WITHOUT extending slab */
+/* Grid creates the overhang geometry */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -697,9 +688,13 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 2;
   overflow: visible;
 
+  /* cards rise into hero by overhang */
   margin-top: calc(-1 * var(--overhang));
+
+  /* and hang below the band by the same amount */
   padding-bottom: var(--overhang);
 }
+
 
 /* =========================================================
    FEATURE CARDS
@@ -719,7 +714,7 @@ img{ max-width: 100%; height: auto; display: block; }
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 260px;
+  min-height: var(--card-h);
 }
 
 /* Header row */
@@ -799,9 +794,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    11) METHOD — COVERAGE IN PRACTICE
-   Must match the SAME dark navy water feel as under cards.
+   Same dark navy water feel as under the cards
    ========================================================= */
-
 .method-practice{
   position: relative;
   padding: 56px 0 64px;
@@ -928,9 +922,9 @@ img{ max-width: 100%; height: auto; display: block; }
   /* Stack cards + remove chevrons */
   .method-features{
     --gap: 18px;
-    /* keep the math consistent with card height */
     --overhang: 56px;
-    --band-h: 148px; /* 56 + 148 + 56 = 260 */
+    --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* auto */
+    --pad-top: 64px; /* little more breathing room on mobile */
   }
 
   .method-feature-grid{
