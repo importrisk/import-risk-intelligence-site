@@ -91,15 +91,11 @@
    ========================================================= */
 .method-features{
   --card-h: 260px;
-
-  /* Set this to the amount you want the cards to overhang
-     into BOTH the hero (top) and water (bottom) */
-  --spill: 30px;
-
+  --spill: 30px;         /* doubled spill */
   --gap: 28px;
 
-  /* band height is the "seam zone" between hero and water */
-  --band-h: calc(var(--card-h) - (var(--spill) * 2));
+  /* band must grow when cards spill more */
+  --band-h: calc(var(--card-h) + var(--spill));
 
   position: relative;
   z-index: 4;
@@ -109,7 +105,7 @@
   margin: 0;
   padding: 0;
 
-  /* IMPORTANT: the section itself IS the band height */
+  /* section height IS the band */
   height: var(--band-h);
 
   background: transparent !important;
@@ -120,7 +116,7 @@
   content: none !important;
 }
 
-/* Paint ONLY the separator band (no extra area below) */
+/* Paint ONLY the separator band */
 .method-features::before{
   content: "";
   position: absolute;
@@ -142,7 +138,6 @@
   position: relative;
   z-index: 2;
 
-  /* Symmetric spill: same amount into hero + water */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
