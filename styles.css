@@ -590,26 +590,23 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   METHOD — FEATURES + COVERAGE PRACTICE
-   CLEAN + NO DUPLICATES
-   Fixes:
-   - Band only behind the middle of the cards (no “extra bands”)
-   - Water only behind the full card zone (no bleed below cards)
-   - No blur/mask tricks that create banding
-   - Seam to the next section is handled by matching water styling
+   METHOD — FEATURES + COVERAGE (CLEAN, SINGLE SYSTEM)
+   RULE: below-fold paints the water. Method sections do NOT.
    ========================================================= */
 
 
 /* =========================================================
-   10) METHOD — FEATURES (band behind cards)
+   METHOD — FEATURES
+   - No water slabs here (below-fold already provides it)
+   - Band ONLY behind the middle of the cards
+   - Cards overhang equally top/bottom
    ========================================================= */
 .method-features{
-  /* SOURCE OF TRUTH */
-  --card-h: 260px;       /* must match .mf-inner min-height */
-  --overhang: 72px;      /* equal rise into hero + hang below band */
-  --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* 116px */
+  --card-h: 260px;        /* must match .mf-inner min-height */
+  --overhang: 72px;       /* equal rise into hero + hang below */
+  --band-h: 116px;        /* 260 - (72*2) */
   --gap: 28px;
-  --pad-top: 56px;       /* breathing room under hero */
+  --pad-top: 56px;
 
   position: relative;
   z-index: 4;
@@ -617,76 +614,41 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: visible;
 
   margin-top: -2px;              /* kiss the hero */
-  padding: var(--pad-top) 0 0;   /* no bottom padding (grid creates overhang) */
-
-  /* IMPORTANT: don’t paint a section-wide slab */
-  background: transparent;
+  padding: var(--pad-top) 0 0;   /* no bottom padding */
+  background: transparent;       /* IMPORTANT */
 }
 
-/* Water slab ONLY behind the exact card zone */
-.method-features::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  /* cards top = pad-top - overhang */
-  top: calc(var(--pad-top) - var(--overhang));
-  height: var(--card-h);
-
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(20, 42, 68, .89) 0%,
-      rgba(16, 34, 56, .91) 55%,
-      rgba(12, 26, 44, .94) 100%
-    ),
-    url("assets/images/water-texture.jpg");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* no blur/masks -> avoids “banding” artifacts */
-  filter: saturate(.86) contrast(.95);
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Tinted band ONLY behind the middle slice of the cards */
+/* The ONLY “band” element.
+   No borders/shadows that read as extra bands. */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
 
-  /* band starts exactly where the cards enter the band zone */
+  /* band begins where the cards enter the band zone */
   top: var(--pad-top);
   height: var(--band-h);
 
-  background: rgba(60, 80, 105, 0.70);
-
-  /* keep it subtle; borders often read as “extra bands” */
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+  background: rgba(60, 80, 105, 0.68);
 
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
-/* Grid controls the overhang geometry */
+/* Grid creates the geometry:
+   - margin-top pulls cards up into hero
+   - padding-bottom creates equal bottom overhang */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
 
   position: relative;
-  z-index: 2;
+  z-index: 1;
   overflow: visible;
 
-  /* cards rise into hero */
   margin-top: calc(-1 * var(--overhang));
-
-  /* and hang below band by same amount */
   padding-bottom: var(--overhang);
 }
 
@@ -788,43 +750,99 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   11) METHOD — COVERAGE IN PRACTICE
-   Match the SAME water feel as under the cards (no extra gradient band)
+   METHOD — COVERAGE IN PRACTICE
+   IMPORTANT: NO background painting here.
+   below-fold already paints the water + gradient.
    ========================================================= */
 .method-practice{
   position: relative;
   padding: 56px 0 64px;
   background: transparent;
-  isolation: isolate;
 }
 
-.method-practice::before{
+/* Head */
+.method-practice .mp-head{
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+
+.method-practice .mp-title{
+  margin: 0 0 16px;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.95);
+}
+
+.method-practice .mp-lead{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+/* 3 columns */
+.method-practice .mp-cols{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.method-practice .mp-col{
+  position: relative;
+  padding: 10px 10px 10px 0;
+}
+
+/* Column dividers */
+.method-practice .mp-col:not(:last-child)::after{
   content: "";
   position: absolute;
-  inset: 0;
-
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(20, 42, 68, .89) 0%,
-      rgba(16, 34, 56, .91) 55%,
-      rgba(12, 26, 44, .94) 100%
-    ),
-    url("assets/images/water-texture.jpg");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* keep consistent with features slab */
-  filter: saturate(.86) contrast(.95);
-
-  pointer-events: none;
-  z-index: 0;
+  top: 6px;
+  right: -14px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
 }
 
-.method-practice > .container{
-  position: relative;
-  z-index: 1;
+.method-practice .mp-col-title{
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
+}
+
+.method-practice .mp-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.78);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+.method-practice .mp-list li{ margin: 10px 0; }
+
+.method-practice .mp-quote{
+  margin: 34px auto 18px;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(180, 215, 255, .72);
+}
+
+.method-practice .mp-foot{
+  margin: 0 auto;
+  text-align: center;
+  max-width: 900px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.74);
+}
+
+.method-practice .mp-actions{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -835,12 +853,22 @@ img{ max-width: 100%; height: auto; display: block; }
   .method-features{
     --gap: 18px;
     --overhang: 56px;
+    --band-h: 148px; /* 260 - (56*2) */
     --pad-top: 64px;
-    --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* stays consistent */
   }
 
   .method-feature-grid{ grid-template-columns: 1fr; }
   .method-feature::after{ display: none; }
+
+  .method-practice .mp-title{ font-size: 36px; }
+
+  .method-practice .mp-cols{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .method-practice .mp-col{ padding: 0; }
+  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
 
 /* =========================================================
