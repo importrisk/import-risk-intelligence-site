@@ -1,22 +1,101 @@
-.method-hero .hero-title { color: #ff4d4d !important; }
-
 /* =========================================================
    METHOD PAGE ONLY (method.css)
-   Goal:
-   - Top = hero image only
-   - Middle = ONE separator band (like home)
-   - Bottom = below-fold water texture only
-   - 4 cards straddle the seam (spill up + down)
+   - Hero image at top
+   - ONE separator band behind cards
+   - Below-fold water texture after hero
+   - Cards spill over hero + below fold
    ========================================================= */
 
-/* --- Tunables --- */
+
+/* =========================================================
+   1) METHOD HERO
+   (You removed these from global, so they MUST live here now)
+   ========================================================= */
+.method-hero{
+  position: relative;
+  min-height: clamp(420px, 56vh, 620px);
+  padding-top: var(--topbar-h);
+  padding-bottom: 96px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.method-hero-bg{
+  position: absolute;
+  inset: -10vh 0 -10vh 0;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("assets/images/method-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 74%;
+  transform: translateY(0);
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Wide screens: keep the ship from creeping upward */
+@media (min-width: 1200px){
+  .method-hero-bg{ transform: translateY(6vh); }
+}
+@media (min-width: 1600px){
+  .method-hero-bg{ transform: translateY(8vh); }
+}
+
+.method-hero > .container{
+  position: relative;
+  z-index: 1;
+}
+
+.method-hero-inner{
+  padding-top: 100px; /* THIS prevents overlap with topbar */
+  text-align: center;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* Uses shared .hero-title/.hero-subtitle classes from global */
+.method-hero .hero-title{
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.30);
+}
+
+.method-hero .hero-subtitle{
+  margin: 14px auto 0;
+  max-width: 680px;
+  font-size: 24px;
+  color: rgba(255,255,255,.78);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.35),
+    0 0 24px rgba(0,0,0,.25);
+}
+
+.method-hero .hero-subtitle-muted{
+  font-size: 0.98em;
+  opacity: 0.86;
+}
+
+
+/* =========================================================
+   2) METHOD FEATURES: band only + spill cards
+   ========================================================= */
 .method-features{
   --card-h: 260px;
   --overhang: 72px;
   --gap: 28px;
 
-  /* band is the strip behind the middle of the cards */
-  --band-h: 116px;     /* 260 - (72*2) */
+  /* band strip behind middle of cards */
+  --band-h: 116px;    /* 260 - (72*2) */
   --band-top: 56px;
 
   position: relative;
@@ -24,19 +103,19 @@
   isolation: isolate;
   overflow: visible;
 
-  margin-top: -2px;     /* kisses hero */
+  margin-top: -2px;
   padding: 0;
 
-  /* IMPORTANT: do NOT paint a background here */
+  /* IMPORTANT: no full background paint here */
   background: transparent !important;
 }
 
-/* Nuke the old "fake water" layer on method-features */
+/* If anything from global remains, nuke fake water layer */
 .method-features::after{
   content: none !important;
 }
 
-/* Paint ONLY the band */
+/* Paint ONLY the separator band */
 .method-features::before{
   content: "";
   position: absolute;
@@ -55,7 +134,6 @@
   z-index: 0;
 }
 
-/* Cards geometry: pull up into hero + hang into below-fold */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -64,11 +142,15 @@
   position: relative;
   z-index: 2;
 
-  margin-top: calc(-1 * var(--overhang));
-  padding-bottom: var(--overhang);
+  margin-top: calc(-1 * var(--overhang)); /* rise into hero */
+  padding-bottom: var(--overhang);        /* hang into water */
 }
 
-/* Cards (same look as your current) */
+
+/* =========================================================
+   3) CARDS
+   Fixes the GIANT icons + restores the nice header row
+   ========================================================= */
 .method-feature{
   position: relative;
   background: rgba(28, 47, 71, 0.92);
@@ -87,7 +169,68 @@
   min-height: var(--card-h);
 }
 
-/* Chevrons between cards */
+/* header row */
+.method-feature .mf-head{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.method-feature .mf-head::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.18);
+}
+
+/* icon sizing (this is the main fix for your screenshot) */
+.method-feature .mf-icon{
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.85);
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+.method-feature .mf-icon svg{
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.method-feature .mf-title{
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.96);
+}
+
+.method-feature .mf-description{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.82);
+  max-width: 36ch;
+}
+
+/* subtle line in muted blue */
+.mf-subtle{
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: rgba(127, 177, 234, 0.75);
+  line-height: 1.5;
+}
+
+/* chevrons */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -102,24 +245,132 @@
   z-index: 5;
 }
 
-/* Pull water up under the bottom half of the cards */
+
+/* =========================================================
+   4) BELOW-FOLD: pull water up under the cards
+   ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
-
   margin-top: calc(-1 * var(--overhang));
   padding-top: var(--overhang);
 }
 
-/* Responsive */
+
+/* =========================================================
+   5) COVERAGE IN PRACTICE
+   (You lost these styles too — restore them)
+   ========================================================= */
+.method-practice{
+  position: relative;
+  padding: 56px 0 64px;
+  background: transparent;
+}
+
+.method-practice .mp-head{
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+
+.method-practice .mp-title{
+  margin: 0 0 16px;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.95);
+}
+
+.method-practice .mp-lead{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+.method-practice .mp-cols{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.method-practice .mp-col{
+  position: relative;
+  padding: 10px 10px 10px 0;
+}
+
+.method-practice .mp-col:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: -14px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(255,255,255,.14);
+}
+
+.method-practice .mp-col-title{
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
+}
+
+.method-practice .mp-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.78);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+.method-practice .mp-list li{ margin: 10px 0; }
+
+.method-practice .mp-quote{
+  margin: 34px auto 18px;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(180, 215, 255, .72);
+}
+
+.method-practice .mp-foot{
+  margin: 0 auto;
+  text-align: center;
+  max-width: 900px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.74);
+}
+
+.method-practice .mp-actions{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   6) RESPONSIVE
+   ========================================================= */
 @media (max-width: 900px){
   .method-features{
     --overhang: 56px;
     --gap: 18px;
-    --band-h: 148px;  /* 260 - (56*2) */
+    --band-h: 148px;   /* 260 - (56*2) */
     --band-top: 64px;
   }
 
   .method-feature-grid{ grid-template-columns: 1fr; }
   .method-feature::after{ display: none; }
+
+  .method-practice .mp-title{ font-size: 36px; }
+
+  .method-practice .mp-cols{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .method-practice .mp-col{ padding: 0; }
+  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
