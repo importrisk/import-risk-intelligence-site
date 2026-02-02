@@ -54,7 +54,7 @@
 }
 
 .method-hero-inner{
-  padding-top: 100px; /* THIS prevents overlap with topbar */
+  padding-top: 100px; /* prevents overlap with topbar */
   text-align: center;
   margin: 0 auto;
   max-width: 720px;
@@ -90,7 +90,7 @@
    2) METHOD FEATURES: band only + spill cards
    ========================================================= */
 .method-features{
-  --spill: 15px;          /* how much the cards spill into hero + water */
+  --spill: 15px;          /* cards spill into hero + water */
   --gap: 28px;
 
   position: relative;
@@ -103,6 +103,7 @@
   background: transparent !important;
 }
 
+/* Nuke any global fake water layer */
 .method-features::after{
   content: none !important;
 }
@@ -129,16 +130,17 @@
   position: relative;
   z-index: 2;
 
-  /* this creates room so the water section doesn't collide */
+  /* room so below-fold content doesn't collide with the spill */
   padding-bottom: calc(var(--spill) + 24px);
 
-  /* this visually pulls the cards upward into the hero */
+  /* pull the whole row upward into hero */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
+
 /* =========================================================
    3) CARDS
-   Fixes the GIANT icons + restores the nice header row
+   Fixes the GIANT icons + restores the header row
    ========================================================= */
 .method-feature{
   position: relative;
@@ -150,12 +152,13 @@
     inset 0 1px 0 rgba(255,255,255,.07);
 }
 
+/* IMPORTANT: define card height here since global may no longer */
 .method-feature .mf-inner{
   padding: 22px 22px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: var(--card-h);
+  min-height: 260px; /* was var(--card-h); keep stable in method.css */
 }
 
 /* header row */
@@ -178,7 +181,7 @@
   background: rgba(255,255,255,.18);
 }
 
-/* icon sizing (this is the main fix for your screenshot) */
+/* icon sizing */
 .method-feature .mf-icon{
   width: 24px;
   height: 24px;
@@ -236,19 +239,18 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD: pull water up under the cards
+   4) BELOW-FOLD: keep water seam fixed, add top cushion for spill
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
-  padding-top: calc(var(--spill) + 10px) !important;
   margin-top: 0 !important;
+  padding-top: calc(var(--spill) + 10px) !important;
 }
 
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
-   (You lost these styles too — restore them)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -344,7 +346,7 @@
    ========================================================= */
 @media (max-width: 900px){
   .method-features{
-    --spill: 12px;   /* slightly smaller overlap on mobile */
+    --spill: 12px;
     --gap: 18px;
   }
 
@@ -355,18 +357,21 @@
   .method-feature::after{
     display: none;
   }
-}
 
-  .method-feature-grid{ grid-template-columns: 1fr; }
-  .method-feature::after{ display: none; }
-
-  .method-practice .mp-title{ font-size: 36px; }
+  .method-practice .mp-title{
+    font-size: 36px;
+  }
 
   .method-practice .mp-cols{
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
+  .method-practice .mp-col{
+    padding: 0;
+  }
+
+  .method-practice .mp-col:not(:last-child)::after{
+    display: none;
+  }
 }
