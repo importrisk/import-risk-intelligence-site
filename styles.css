@@ -752,7 +752,7 @@ transform: none;
 /* Description */
 .method-feature .mf-description{
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.45;
   color: rgba(255,255,255,.82);
   max-width: 36ch;
@@ -761,7 +761,7 @@ transform: none;
 .mf-subtle{
   margin-top: 8px;
   font-size: 0.9rem;
-  color: var(--faint);
+  color: rgba(127, 177, 234, 0.75); /* brand blue, softened */
   line-height: 1.5;
 }
 
