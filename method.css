@@ -87,19 +87,27 @@
 
 
 /* =========================================================
-   2) METHOD FEATURES: band only + spill cards
+   2) METHOD FEATURES: band ONLY (fixed height) + spill cards
    ========================================================= */
 .method-features{
-  --spill: 15px;          /* cards spill into hero + water */
+  --card-h: 260px;
+  --spill: 15px;         /* how much cards spill into hero + water */
   --gap: 28px;
+
+  /* band height is the "seam zone" between hero and water */
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
-  margin-top: 0;
+  margin: 0;
   padding: 0;
+
+  /* IMPORTANT: the section itself IS the band height */
+  height: var(--band-h);
+
   background: transparent !important;
 }
 
@@ -108,11 +116,11 @@
   content: none !important;
 }
 
-/* Band fills the whole section so no body-bg shows */
+/* Paint ONLY the separator band (no extra area below) */
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /* fills only the band (because the section height is band-h) */
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
@@ -130,13 +138,9 @@
   position: relative;
   z-index: 2;
 
-  /* room so below-fold content doesn't collide with the spill */
-  padding-bottom: calc(var(--spill) + 24px);
-
-  /* pull the whole row upward into hero */
+  /* Cards rise into hero; the overflow below becomes the spill into water */
   transform: translateY(calc(-1 * var(--spill)));
 }
-
 
 /* =========================================================
    3) CARDS
