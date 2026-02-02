@@ -588,24 +588,30 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   10) METHOD — FEATURES (BAND BEHIND CARDS)
+   METHOD — FEATURES (band behind cards, cards overhang equally)
+   Drop-in replacement for:
+   .method-features
+   .method-features::before
+   .method-feature-grid
    ========================================================= */
+
 .method-features{
-  --overhang: 84px;
-  --card-h: 260px;   /* matches .mf-inner min-height */
-  --band-h: 176px;   /* the strip behind the middle of cards */
-  --gap: 28px;
+  --overhang: 84px;     /* how far cards rise into hero AND hang below band */
+  --band-h: 176px;      /* height of the tinted band behind cards */
+  --gap: 28px;          /* card gap */
 
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
+  /* kiss the hero */
   margin-top: -2px;
-  padding: 56px 0 0; /* IMPORTANT: remove bottom padding that creates a slab */
-}
 
-  /* water continues behind cards area */
+  /* IMPORTANT: no extra background area below cards */
+  padding: 56px 0 0;
+
+  /* water texture continues behind the whole features area */
   background-image:
     linear-gradient(
       180deg,
@@ -619,15 +625,14 @@ img{ max-width: 100%; height: auto; display: block; }
   background-repeat: no-repeat;
 }
 
-/* feature band behind cards */
+/* tinted feature band sits directly under hero and ends above the next section */
 .method-features::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 
-  /* start the band lower so it sits behind the middle of the cards */
-  top: calc(var(--overhang) + ((var(--card-h) - var(--band-h)) / 2));
   height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.75);
@@ -637,10 +642,11 @@ img{ max-width: 100%; height: auto; display: block; }
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.18);
 
-  pointer-events:none;
-  z-index:0;
+  pointer-events: none;
+  z-index: 0;
 }
 
+/* grid is what creates the bottom space (so the section ends right under cards) */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -650,11 +656,14 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 1;
 
-  overflow: visible;
+  overflow: visible; /* arrows + shadows */
 
+  /* cards rise into hero */
   margin-top: calc(-1 * var(--overhang));
-  padding-bottom: var(--overhang); /* cards extend below band */
-  transform: none;
+
+  /* cards hang below band by the same amount,
+     without making the band/background extend */
+  padding-bottom: var(--overhang);
 }
 
 /* Feature card */
