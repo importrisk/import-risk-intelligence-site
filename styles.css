@@ -783,21 +783,13 @@ transform: none;
 /* =========================================================
    11) METHOD — BELOW FOLD (WATER TEXTURE CONTINUES)
    Applies to: <section class="below-fold method-content">
-   ========================================================= */
-.below-fold.method-content{
-  margin-top: calc(-1 * var(--overhang));
-  padding-top: calc(28px + var(--overhang));
-  padding-bottom: 36px;
-}
-
-/* =========================================================
-   METHOD — MAKE BELOW-FOLD START RIGHT UNDER THE CARDS
-   (Home-page behavior)
+   CLEAN + SINGLE SOURCE OF TRUTH
    ========================================================= */
 .below-fold.method-content{
   /* pull water section up behind the feature band/cards */
   margin-top: -220px;
   padding-top: calc(64px + 220px);
+  padding-bottom: 36px;
 
   position: relative;
   z-index: 1;
@@ -808,11 +800,34 @@ transform: none;
   position: relative;
   z-index: 4;
 }
+
 /* =========================================================
    Method: How coverage works in practice (below cards)
+   Uses the SAME dark water background (no solid slab)
    ========================================================= */
 .method-practice{
+  position: relative;
   padding: 56px 0 64px;
+}
+
+/* subtle readability layer without killing the water */
+.method-practice::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 30, 46, 0.35) 0%,
+    rgba(18, 30, 46, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* lift content above overlay */
+.method-practice .container{
+  position: relative;
+  z-index: 1;
 }
 
 .method-practice .mp-head{
