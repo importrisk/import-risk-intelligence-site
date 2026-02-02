@@ -764,46 +764,235 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   11) METHOD — BELOW FOLD (LET GLOBAL WATER SHOW THROUGH)
-   Applies to: <section class="below-fold method-content">
+   METHOD — FEATURES (band behind cards, cards overhang equally)
+   Drop-in replacement for:
+   .method-features
+   .method-features::before
+   .method-feature-grid
    ========================================================= */
-.below-fold.method-content{
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 36px;
+
+.method-features{
+  --overhang: 84px;     /* cards rise into hero AND hang below band */
+  --band-h: 176px;      /* height of tinted band behind cards */
+  --gap: 28px;          /* card gap */
 
   position: relative;
-  z-index: 1;
+  z-index: 4;
+  isolation: isolate;
+  overflow: visible;
+
+  /* kiss the hero */
+  margin-top: -2px;
+
+  /* IMPORTANT: no extra background area below cards */
+  padding: 56px 0 0;
+
+  /* CRITICAL: do NOT paint water on the whole section */
   background: transparent;
 }
 
-/* key: ensure the water texture layer is ON for this section */
-.below-fold.method-content::before{
-  display: block !important;
-  opacity: 0.28; /* bump if needed: 0.22 -> 0.28 */
-  filter: blur(1px) saturate(.85) contrast(.92);
+/* Water slab ONLY for the “cards zone”
+   (band height + bottom overhang). This prevents a strip below cards. */
+.method-features::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  /* slab ends exactly where the cards end */
+  height: calc(var(--band-h) + var(--overhang));
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(20,42,68,.78) 0%,
+      rgba(16,34,56,.88) 60%,
+      rgba(12,26,44,.94) 100%
+    ),
+    url("assets/images/water-texture.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tinted band behind cards (ONLY behind band height) */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  height: var(--band-h);
+
+  background: rgba(60, 80, 105, 0.75);
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(0,0,0,.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.18);
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* grid creates the bottom overhang space WITHOUT extending the band */
+.method-feature-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  width: 100%;
+
+  position: relative;
+  z-index: 2;
+
+  overflow: visible; /* arrows + shadows */
+
+  /* cards rise into hero */
+  margin-top: calc(-1 * var(--overhang));
+
+  /* cards hang below band by the same amount */
+  padding-bottom: var(--overhang);
 }
 
 /* =========================================================
-   Method: How coverage works in practice (below cards)
+   FEATURE CARDS
    ========================================================= */
+
+.method-feature{
+  position: relative;
+  background: rgba(28, 47, 71, 0.92);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 0;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.method-feature .mf-inner{
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 260px;
+}
+
+/* Header (icon + title + divider) */
+.method-feature .mf-head{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.method-feature .mf-head::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.18);
+}
+
+/* Icon */
+.method-feature .mf-icon{
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.85);
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+.method-feature .mf-icon svg{
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Title */
+.method-feature .mf-title{
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.96);
+}
+
+/* Body */
+.method-feature .mf-description{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.82);
+  max-width: 36ch;
+}
+
+.mf-subtle{
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: rgba(127, 177, 234, 0.75);
+  line-height: 1.5;
+}
+
+/* Chevron arrows between cards */
+.method-feature:not(:last-child)::after{
+  content: "›";
+  position: absolute;
+  left: calc(100% + (var(--gap) / 2));
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 300;
+  color: rgba(255,255,255,.28);
+  pointer-events: none;
+  z-index: 5;
+}
+
+
+/* =========================================================
+   METHOD — COVERAGE IN PRACTICE (dark navy water, matches under cards)
+   ========================================================= */
+
 .method-practice{
   position: relative;
   padding: 56px 0 64px;
-  background: transparent !important;
+  background: transparent;
+  isolation: isolate;
 }
+
+/* Paint the SAME dark navy water feel as under cards */
 .method-practice::before{
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(18, 34, 54, .55) 0%,
-    rgba(14, 28, 46, .65) 55%,
-    rgba(10, 22, 38, .75) 100%
-  );
-  z-index: 0;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(20,42,68,.88) 0%,
+      rgba(16,34,56,.92) 55%,
+      rgba(12,26,44,.95) 100%
+    ),
+    url("assets/images/water-texture.jpg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: 1;
+  filter: blur(1px) saturate(.82) contrast(.92);
+
   pointer-events: none;
+  z-index: 0;
 }
 
 .method-practice > *{
@@ -811,100 +1000,7 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
-.method-practice .mp-head{
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 34px;
-}
-
-.method-practice .mp-title{
-  margin: 0 0 16px;
-  font-size: 44px;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.95);
-}
-
-.method-practice .mp-lead{
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.78);
-}
-
-/* 3 columns */
-.method-practice .mp-cols{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 18px;
-}
-
-.method-practice .mp-col{
-  position: relative;
-  padding: 10px 10px 10px 0;
-}
-
-/* vertical dividers between columns */
-.method-practice .mp-col:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: -14px;
-  bottom: 6px;
-  width: 1px;
-  background: rgba(255,255,255,.14);
-}
-
-.method-practice .mp-col-title{
-  margin: 0 0 14px;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.92);
-}
-
-.method-practice .mp-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.78);
-  line-height: 1.65;
-  font-size: 16px;
-}
-
-.method-practice .mp-list li{ margin: 10px 0; }
-
-.method-practice .mp-quote{
-  margin: 34px auto 18px;
-  text-align: center;
-  font-style: italic;
-  font-size: 18px;
-  color: rgba(180, 215, 255, .72);
-}
-
-.method-practice .mp-foot{
-  margin: 0 auto;
-  text-align: center;
-  max-width: 900px;
-  font-size: 16px;
-  line-height: 1.65;
-  color: rgba(255,255,255,.74);
-}
-
-.method-practice .mp-actions{
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-}
-
-@media (max-width: 900px){
-  .method-practice .mp-title{ font-size: 36px; }
-
-  .method-practice .mp-cols{
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
-}
+/* (Your existing mp-* typography/cols can stay as-is below this) */
 
 
 /* =========================================================
