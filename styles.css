@@ -703,7 +703,7 @@ transform: none;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 
   /* space for the divider BELOW the header */
   padding-bottom: 12px;
