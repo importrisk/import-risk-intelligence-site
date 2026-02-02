@@ -358,24 +358,15 @@
     grid-template-columns: 1fr;
   }
 
-  .method-feature::after{
-    display: none;
-  }
+  .method-feature::after{ display: none; }
 
-  .method-practice .mp-title{
-    font-size: 36px;
-  }
+  .method-practice .mp-title{ font-size: 36px; }
 
   .method-practice .mp-cols{
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .method-practice .mp-col{
-    padding: 0;
-  }
-
-  .method-practice .mp-col:not(:last-child)::after{
-    display: none;
-  }
+  .method-practice .mp-col{ padding: 0; }
+  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
