@@ -5,7 +5,7 @@
    - Below-fold water texture
    - Home features band
    - Method page: hero + band behind cards
-   - Method: below-fold uses water (no grey slab)
+   - Method: coverage section uses water (no grey slab)
    ========================================================= */
 
 
@@ -301,7 +301,6 @@ img{ max-width: 100%; height: auto; display: block; }
   color: var(--ink);
   overflow: hidden;
 
-  /* base depth */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -511,104 +510,6 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   METHOD PAGE — HERO + FEATURES + COVERAGE PRACTICE
-   CLEAN DROP-IN (no duplicates, correct band math, no bleed)
-   Works with your HTML:
-   .method-hero, .method-hero-bg, .method-features, .method-feature-grid,
-   .method-feature, .method-practice, .mp-*
-   ========================================================= */
-
-
-/* =========================================================
-   9) METHOD — HERO BG
-   ========================================================= */
-.method-hero{
-  position: relative;
-  min-height: clamp(420px, 56vh, 620px);
-  padding-top: var(--topbar-h);
-  padding-bottom: 96px;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.method-hero-bg{
-  position: absolute;
-  inset: -10vh 0 -10vh 0;
-  background-image:
-    linear-gradient(
-      180deg,
-      var(--hero-top) 0%,
-      var(--hero-mid) 58%,
-      var(--hero-bottom) 100%
-    ),
-    url("assets/images/method-hero.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center 74%;
-  transform: translateY(0);
-  will-change: transform;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Wide screens: keep the ship from creeping upward */
-@media (min-width: 1200px){
-  .method-hero-bg{ transform: translateY(6vh); }
-}
-@media (min-width: 1600px){
-  .method-hero-bg{ transform: translateY(8vh); }
-}
-
-.method-hero > .container{
-  position: relative;
-  z-index: 1;
-}
-
-.method-hero-inner{
-  padding-top: 100px;
-  text-align: center;
-  margin: 0 auto;
-  max-width: 720px;
-}
-
-/* Your HTML uses .hero-title/.hero-subtitle inside method hero */
-.method-hero .hero-title,
-.method-title{
-  margin: 0;
-  font-size: clamp(34px, 4.2vw, 56px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.96);
-  text-shadow: 0 12px 26px rgba(0,0,0,.30);
-}
-
-.method-hero .hero-subtitle,
-.method-subtitle{
-  margin: 14px auto 0;
-  max-width: 680px;
-  font-size: 24px;
-  color: rgba(255,255,255,.78);
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.35),
-    0 0 24px rgba(0,0,0,.25);
-}
-
-.method-hero .hero-subtitle-muted{
-  font-size: 0.98em;
-  opacity: 0.86;
-}
-
-
-/* =========================================================
-   METHOD PAGE — HERO + FEATURES + COVERAGE PRACTICE
-   CLEAN DROP-IN (no duplicates, correct band math, no bleed)
-   Works with your HTML:
-   .method-hero, .method-hero-bg, .method-features, .method-feature-grid,
-   .method-feature, .method-practice, .mp-*
-   ========================================================= */
-
-
-/* =========================================================
    9) METHOD — HERO BG
    ========================================================= */
 .method-hero{
@@ -690,35 +591,29 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    10) METHOD — FEATURES
-   Goal:
-   - Tinted band ONLY behind the cards
-   - Cards overhang equally top and bottom (relative to the band)
-   - Water slab ONLY behind the full card zone (no strip below)
+   - Tinted band ONLY behind cards
+   - Equal overhang above/below band
+   - Water slab ONLY behind card zone, with soft fade to avoid seams
    ========================================================= */
 .method-features{
-  /* SOURCE OF TRUTH */
-  --card-h: 260px;      /* must match .mf-inner min-height */
-  --overhang: 72px;     /* equal top/bottom card overhang around the band */
-  --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* 260 - 144 = 116 */
+  --card-h: 260px;       /* must match .mf-inner min-height */
+  --overhang: 72px;
+  --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* 116px */
   --gap: 28px;
-  --pad-top: 56px;      /* visual spacing under hero */
+  --pad-top: 56px;
 
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
-  margin-top: -2px; /* kiss the hero */
+  margin-top: -2px;
   padding: var(--pad-top) 0 0;
 
-  /* critical: section paints nothing so it can’t “bleed” */
   background: transparent;
 }
 
-/* Dark navy water ONLY behind the actual card zone.
-   Cards top = pad-top - overhang
-   Cards bottom = (pad-top - overhang) + card-h
-   So: slab top = pad-top - overhang, slab height = card-h */
+/* Water behind the card zone (no blur = no extra banding) */
 .method-features::after{
   content: "";
   position: absolute;
@@ -726,27 +621,31 @@ img{ max-width: 100%; height: auto; display: block; }
   right: 0;
 
   top: calc(var(--pad-top) - var(--overhang));
-  height: var(--card-h);
+  height: calc(var(--card-h) + 24px); /* slightly taller to avoid cutoff */
 
   background-image:
     linear-gradient(
       180deg,
-      rgba(20,42,68,.88) 0%,
-      rgba(16,34,56,.92) 55%,
-      rgba(12,26,44,.95) 100%
+      rgba(14, 28, 46, .92) 0%,
+      rgba(12, 24, 40, .94) 55%,
+      rgba(10, 20, 34, .96) 100%
     ),
     url("assets/images/water-texture.jpg");
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
 
-  filter: blur(1px) saturate(.82) contrast(.92);
+  filter: saturate(.88) contrast(.96);
+
+  /* soft fade-out prevents a hard slab edge */
+  -webkit-mask-image: linear-gradient(#000 0%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(#000 0%, #000 82%, transparent 100%);
+
   pointer-events: none;
   z-index: 0;
 }
 
-/* Tinted band sits behind the MIDDLE of the cards.
-   Band top = cards top + overhang = (pad-top - overhang) + overhang = pad-top */
+/* Tinted band ONLY behind middle of cards */
 .method-features::before{
   content: "";
   position: absolute;
@@ -757,17 +656,14 @@ img{ max-width: 100%; height: auto; display: block; }
   height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.75);
-  border-top: 1px solid rgba(255,255,255,.12);
-  border-bottom: 1px solid rgba(0,0,0,.22);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 -1px 0 rgba(0,0,0,.18);
+  border-top: 1px solid rgba(255,255,255,.10);
+  border-bottom: 0; /* avoid a “second band” line */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
 
   pointer-events: none;
   z-index: 1;
 }
 
-/* Grid creates the overhang geometry */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -777,10 +673,7 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 2;
   overflow: visible;
 
-  /* cards rise into hero by overhang */
   margin-top: calc(-1 * var(--overhang));
-
-  /* and hang below the band by the same amount */
   padding-bottom: var(--overhang);
 }
 
@@ -806,7 +699,6 @@ img{ max-width: 100%; height: auto; display: block; }
   min-height: var(--card-h);
 }
 
-/* Header row */
 .method-feature .mf-head{
   position: relative;
   display: flex;
@@ -865,7 +757,6 @@ img{ max-width: 100%; height: auto; display: block; }
   line-height: 1.5;
 }
 
-/* Chevrons between cards */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -919,7 +810,6 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 1;
 }
 
-/* Typography */
 .method-practice .mp-head{
   text-align: center;
   max-width: 900px;
@@ -940,7 +830,6 @@ img{ max-width: 100%; height: auto; display: block; }
   color: rgba(255,255,255,.78);
 }
 
-/* 3 columns */
 .method-practice .mp-cols{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1003,283 +892,6 @@ img{ max-width: 100%; height: auto; display: block; }
   justify-content: center;
 }
 
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width: 900px){
-  /* Stack cards + remove chevrons */
-  .method-features{
-    --gap: 18px;
-    --overhang: 56px;
-    --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* auto */
-    --pad-top: 64px; /* little more breathing room on mobile */
-  }
-
-  .method-feature-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .method-feature::after{ display: none; }
-
-  .method-practice .mp-title{ font-size: 36px; }
-
-  .method-practice .mp-cols{
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
-}
-
-/* =========================================================
-   FEATURE CARDS
-   ========================================================= */
-.method-feature{
-  position: relative;
-  background: rgba(28, 47, 71, 0.92);
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 0;
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.07);
-}
-
-.method-feature .mf-inner{
-  padding: 22px 22px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-height: var(--card-h);
-}
-
-/* Header row */
-.method-feature .mf-head{
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-}
-
-.method-feature .mf-head::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: rgba(255,255,255,.18);
-}
-
-.method-feature .mf-icon{
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,.85);
-  opacity: .95;
-  flex: 0 0 auto;
-}
-
-.method-feature .mf-icon svg{
-  width: 24px;
-  height: 24px;
-  display: block;
-}
-
-.method-feature .mf-title{
-  margin: 0;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.96);
-}
-
-.method-feature .mf-description{
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.82);
-  max-width: 36ch;
-}
-
-.mf-subtle{
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: rgba(127, 177, 234, 0.75);
-  line-height: 1.5;
-}
-
-/* Chevrons between cards */
-.method-feature:not(:last-child)::after{
-  content: "›";
-  position: absolute;
-  left: calc(100% + (var(--gap) / 2));
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 300;
-  color: rgba(255,255,255,.28);
-  pointer-events: none;
-  z-index: 5;
-}
-
-
-/* =========================================================
-   11) METHOD — COVERAGE IN PRACTICE
-   Same dark navy water feel as under the cards
-   ========================================================= */
-.method-practice{
-  position: relative;
-  padding: 56px 0 64px;
-  background: transparent;
-  isolation: isolate;
-}
-
-.method-practice::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(20,42,68,.88) 0%,
-      rgba(16,34,56,.92) 55%,
-      rgba(12,26,44,.95) 100%
-    ),
-    url("assets/images/water-texture.jpg");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  filter: blur(1px) saturate(.82) contrast(.92);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.method-practice > .container{
-  position: relative;
-  z-index: 1;
-}
-
-/* Typography */
-.method-practice .mp-head{
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 34px;
-}
-
-.method-practice .mp-title{
-  margin: 0 0 16px;
-  font-size: 44px;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.95);
-}
-
-.method-practice .mp-lead{
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.78);
-}
-
-/* 3 columns */
-.method-practice .mp-cols{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 18px;
-}
-
-.method-practice .mp-col{
-  position: relative;
-  padding: 10px 10px 10px 0;
-}
-
-.method-practice .mp-col:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: -14px;
-  bottom: 6px;
-  width: 1px;
-  background: rgba(255,255,255,.14);
-}
-
-.method-practice .mp-col-title{
-  margin: 0 0 14px;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.92);
-}
-
-.method-practice .mp-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.78);
-  line-height: 1.65;
-  font-size: 16px;
-}
-
-.method-practice .mp-list li{ margin: 10px 0; }
-
-.method-practice .mp-quote{
-  margin: 34px auto 18px;
-  text-align: center;
-  font-style: italic;
-  font-size: 18px;
-  color: rgba(180, 215, 255, .72);
-}
-
-.method-practice .mp-foot{
-  margin: 0 auto;
-  text-align: center;
-  max-width: 900px;
-  font-size: 16px;
-  line-height: 1.65;
-  color: rgba(255,255,255,.74);
-}
-
-.method-practice .mp-actions{
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width: 900px){
-  /* Stack cards + remove chevrons */
-  .method-features{
-    --gap: 18px;
-    --overhang: 56px;
-    --band-h: calc(var(--card-h) - (var(--overhang) * 2)); /* auto */
-    --pad-top: 64px; /* little more breathing room on mobile */
-  }
-
-  .method-feature-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .method-feature::after{ display: none; }
-
-  .method-practice .mp-title{ font-size: 36px; }
-
-  .method-practice .mp-cols{
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
-}
 
 /* =========================================================
    12) FOOTER
@@ -1405,10 +1017,10 @@ img{ max-width: 100%; height: auto; display: block; }
 
   /* Method cards stack + no chevrons */
   .method-features{
-    --band-h: 240px;
     --gap: 18px;
-    --overhang: 64px;
-    padding: 64px 0 64px;
+    --overhang: 56px;
+    --band-h: calc(var(--card-h) - (var(--overhang) * 2));
+    --pad-top: 64px;
   }
 
   .method-feature-grid{ grid-template-columns: 1fr; }
