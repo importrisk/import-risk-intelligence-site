@@ -588,16 +588,17 @@ img{ max-width: 100%; height: auto; display: block; }
   opacity: 0.86;
 }
 
-
 /* =========================================================
-   METHOD — FEATURES + COVERAGE (CLEAN, SINGLE SYSTEM)
-   RULE: below-fold paints the water. Method sections do NOT.
+   METHOD — FEATURES + COVERAGE (WORKS WITH YOUR CURRENT HTML)
+   Key: .method-features is OUTSIDE .below-fold, so it must paint
+   the SAME water system to avoid the grey slab / band seams.
+   No slabs, no borders, no extra band lines.
    ========================================================= */
 
 
 /* =========================================================
    METHOD — FEATURES
-   - No water slabs here (below-fold already provides it)
+   - Paints the SAME water as .below-fold (because it's outside it)
    - Band ONLY behind the middle of the cards
    - Cards overhang equally top/bottom
    ========================================================= */
@@ -615,28 +616,46 @@ img{ max-width: 100%; height: auto; display: block; }
 
   margin-top: -2px;              /* kiss the hero */
   padding: var(--pad-top) 0 0;   /* no bottom padding */
-  background: transparent;       /* IMPORTANT */
+
+  /* IMPORTANT: match the below-fold base water gradient */
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  );
 }
 
-/* The ONLY “band” element.
-   No borders/shadows that read as extra bands. */
+/* Water texture (same as .below-fold::before) */
+.method-features::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The ONLY “band” element (no borders/shadows = no fake extra bands) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
 
-  /* band begins where the cards enter the band zone */
+  /* band begins where cards enter the band zone */
   top: var(--pad-top);
   height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.68);
 
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
-/* Grid creates the geometry:
+/* Grid creates geometry:
    - margin-top pulls cards up into hero
    - padding-bottom creates equal bottom overhang */
 .method-feature-grid{
@@ -645,7 +664,7 @@ img{ max-width: 100%; height: auto; display: block; }
   gap: var(--gap);
 
   position: relative;
-  z-index: 1;
+  z-index: 2;
   overflow: visible;
 
   margin-top: calc(-1 * var(--overhang));
@@ -751,8 +770,8 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    METHOD — COVERAGE IN PRACTICE
-   IMPORTANT: NO background painting here.
-   below-fold already paints the water + gradient.
+   IMPORTANT: this section IS inside .below-fold already,
+   so it should not paint any background at all.
    ========================================================= */
 .method-practice{
   position: relative;
@@ -760,7 +779,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background: transparent;
 }
 
-/* Head */
+/* mp typography + layout */
 .method-practice .mp-head{
   text-align: center;
   max-width: 900px;
@@ -781,7 +800,6 @@ img{ max-width: 100%; height: auto; display: block; }
   color: rgba(255,255,255,.78);
 }
 
-/* 3 columns */
 .method-practice .mp-cols{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -794,7 +812,6 @@ img{ max-width: 100%; height: auto; display: block; }
   padding: 10px 10px 10px 0;
 }
 
-/* Column dividers */
 .method-practice .mp-col:not(:last-child)::after{
   content: "";
   position: absolute;
