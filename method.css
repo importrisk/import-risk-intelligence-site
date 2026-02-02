@@ -94,6 +94,9 @@
   --spill: 15px;         /* how much cards spill into hero + water */
   --gap: 28px;
 
+  /* NEW: how far the cards lift into the hero */
+  --lift: calc(var(--spill) * 2);
+
   /* band height is the "seam zone" between hero and water */
   --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
@@ -138,8 +141,8 @@
   position: relative;
   z-index: 2;
 
-  /* Cards rise into hero; the overflow below becomes the spill into water */
-  transform: translateY(calc(-1 * var(--spill)));
+  /* CHANGED: cards lift DOUBLE the spill amount */
+  transform: translateY(calc(-1 * var(--lift)));
 }
 
 /* =========================================================
