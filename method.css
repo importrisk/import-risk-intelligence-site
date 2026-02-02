@@ -1,0 +1,123 @@
+/* =========================================================
+   METHOD PAGE ONLY (method.css)
+   Goal:
+   - Top = hero image only
+   - Middle = ONE separator band (like home)
+   - Bottom = below-fold water texture only
+   - 4 cards straddle the seam (spill up + down)
+   ========================================================= */
+
+/* --- Tunables --- */
+.method-features{
+  --card-h: 260px;
+  --overhang: 72px;
+  --gap: 28px;
+
+  /* band is the strip behind the middle of the cards */
+  --band-h: 116px;     /* 260 - (72*2) */
+  --band-top: 56px;
+
+  position: relative;
+  z-index: 4;
+  isolation: isolate;
+  overflow: visible;
+
+  margin-top: -2px;     /* kisses hero */
+  padding: 0;
+
+  /* IMPORTANT: do NOT paint a background here */
+  background: transparent !important;
+}
+
+/* Nuke the old "fake water" layer on method-features */
+.method-features::after{
+  content: none !important;
+}
+
+/* Paint ONLY the band */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--band-top);
+  height: var(--band-h);
+
+  background: rgba(83,103,128,.72);
+  border-top: 1px solid var(--band-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cards geometry: pull up into hero + hang into below-fold */
+.method-feature-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+
+  position: relative;
+  z-index: 2;
+
+  margin-top: calc(-1 * var(--overhang));
+  padding-bottom: var(--overhang);
+}
+
+/* Cards (same look as your current) */
+.method-feature{
+  position: relative;
+  background: rgba(28, 47, 71, 0.92);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 0;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.method-feature .mf-inner{
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: var(--card-h);
+}
+
+/* Chevrons between cards */
+.method-feature:not(:last-child)::after{
+  content: "›";
+  position: absolute;
+  left: calc(100% + (var(--gap) / 2));
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 300;
+  color: rgba(255,255,255,.28);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Pull water up under the bottom half of the cards */
+.below-fold.method-content{
+  position: relative;
+  z-index: 1;
+
+  margin-top: calc(-1 * var(--overhang));
+  padding-top: var(--overhang);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .method-features{
+    --overhang: 56px;
+    --gap: 18px;
+    --band-h: 148px;  /* 260 - (56*2) */
+    --band-top: 64px;
+  }
+
+  .method-feature-grid{ grid-template-columns: 1fr; }
+  .method-feature::after{ display: none; }
+}
