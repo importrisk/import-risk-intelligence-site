@@ -592,7 +592,8 @@ img{ max-width: 100%; height: auto; display: block; }
    ========================================================= */
 .method-features{
   --overhang: 84px;
-  --band-h: 232px;
+  --card-h: 260px;   /* matches .mf-inner min-height */
+  --band-h: 176px;   /* the strip behind the middle of cards */
   --gap: 28px;
 
   position: relative;
@@ -601,7 +602,8 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: visible;
 
   margin-top: -2px;
-  padding: 56px 0 64px;
+  padding: 56px 0 0; /* IMPORTANT: remove bottom padding that creates a slab */
+}
 
   /* water continues behind cards area */
   background-image:
@@ -619,13 +621,13 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* feature band behind cards */
 .method-features::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  transform: none;
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
 
+  /* start the band lower so it sits behind the middle of the cards */
+  top: calc(var(--overhang) + ((var(--card-h) - var(--band-h)) / 2));
   height: var(--band-h);
 
   background: rgba(60, 80, 105, 0.75);
@@ -635,8 +637,8 @@ img{ max-width: 100%; height: auto; display: block; }
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.18);
 
-  pointer-events: none;
-  z-index: 0;
+  pointer-events:none;
+  z-index:0;
 }
 
 .method-feature-grid{
@@ -651,6 +653,7 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: visible;
 
   margin-top: calc(-1 * var(--overhang));
+  padding-bottom: var(--overhang); /* cards extend below band */
   transform: none;
 }
 
@@ -756,15 +759,13 @@ img{ max-width: 100%; height: auto; display: block; }
    Applies to: <section class="below-fold method-content">
    ========================================================= */
 .below-fold.method-content{
-  margin-top: -220px;
-  padding-top: calc(64px + 220px);
+  margin-top: 0;
+  padding-top: 0;
   padding-bottom: 36px;
 
   position: relative;
   z-index: 1;
-
-  /* key: do NOT paint any slab here */
-  background: transparent !important;
+  background: transparent;
 }
 
 /* key: ensure the water texture layer is ON for this section */
