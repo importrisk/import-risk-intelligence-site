@@ -758,6 +758,13 @@ transform: none;
   max-width: 36ch;
 }
 
+.mf-subtle{
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--faint);
+  line-height: 1.5;
+}
+
 /* Chevron arrows between cards */
 .method-feature:not(:last-child)::after{
   content: "›";
