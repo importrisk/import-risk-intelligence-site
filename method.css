@@ -143,7 +143,7 @@
   z-index: 2;
 
   margin-top: calc(-1 * var(--overhang)); /* rise into hero */
-  padding-bottom: var(--overhang);        /* hang into water */
+  padding-bottom: 0;      
 }
 
 
