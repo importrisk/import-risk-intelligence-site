@@ -90,8 +90,7 @@
    2) METHOD FEATURES: band only + spill cards
    ========================================================= */
 .method-features{
-  --card-h: 260px;
-  --overhang: 72px;
+  --spill: 15px;          /* how much the cards spill into hero + water */
   --gap: 28px;
 
   position: relative;
@@ -101,28 +100,23 @@
 
   margin-top: 0;
   padding: 0;
-
-  /* IMPORTANT: no full background paint here */
   background: transparent !important;
 }
 
-/* If anything from global remains, nuke fake water layer */
 .method-features::after{
   content: none !important;
 }
 
-/* Band: cover the FULL method-features height so no body-bg shows through */
+/* Band fills the whole section so no body-bg shows */
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0; /* top/right/bottom/left = 0 */
-
+  inset: 0;
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
-
   pointer-events: none;
   z-index: 0;
 }
@@ -135,10 +129,12 @@
   position: relative;
   z-index: 2;
 
-  margin-top: calc(-1 * var(--overhang)); /* rise into hero */
-  padding-bottom: 0;      
-}
+  /* this creates room so the water section doesn't collide */
+  padding-bottom: calc(var(--spill) + 24px);
 
+  /* this visually pulls the cards upward into the hero */
+  transform: translateY(calc(-1 * var(--spill)));
+}
 
 /* =========================================================
    3) CARDS
@@ -245,8 +241,8 @@
 .below-fold.method-content{
   position: relative;
   z-index: 1;
+  padding-top: calc(var(--spill) + 10px) !important;
   margin-top: 0 !important;
-  padding-top: 0 !important;
 }
 
 
@@ -348,11 +344,18 @@
    ========================================================= */
 @media (max-width: 900px){
   .method-features{
-    --overhang: 56px;
+    --spill: 12px;   /* slightly smaller overlap on mobile */
     --gap: 18px;
-    --band-h: 148px;   /* 260 - (56*2) */
-    --band-top: 64px;
   }
+
+  .method-feature-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .method-feature::after{
+    display: none;
+  }
+}
 
   .method-feature-grid{ grid-template-columns: 1fr; }
   .method-feature::after{ display: none; }
