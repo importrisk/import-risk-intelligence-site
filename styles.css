@@ -592,7 +592,7 @@ img{ max-width: 100%; height: auto; display: block; }
    ========================================================= */
 .method-features{
   --overhang: 84px;
-  --band-h: 176px;
+  --band-h: 232px;
   --gap: 28px;
 
   position: relative;
