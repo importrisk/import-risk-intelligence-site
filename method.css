@@ -252,12 +252,10 @@
 .below-fold.method-content{
   position: relative;
   z-index: 1;
-
-  /* do NOT move the seam */
   margin-top: 0 !important;
 
-  /* bottom spill amount + visual breathing room */
-  padding-top: calc(var(--spill) + 36px) !important;
+  /* IMPORTANT: --spill is defined on .method-features, so we must provide a fallback here */
+  padding-top: calc(var(--spill, 30px) + 36px) !important;
 }
 
 /* =========================================================
