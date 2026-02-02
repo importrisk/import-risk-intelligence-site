@@ -91,11 +91,12 @@
    ========================================================= */
 .method-features{
   --card-h: 260px;
-  --spill: 15px;         /* how much cards spill into hero + water */
-  --gap: 28px;
 
-  /* NEW: how far the cards lift into the hero */
-  --lift: calc(var(--spill) * 2);
+  /* Set this to the amount you want the cards to overhang
+     into BOTH the hero (top) and water (bottom) */
+  --spill: 30px;
+
+  --gap: 28px;
 
   /* band height is the "seam zone" between hero and water */
   --band-h: calc(var(--card-h) - (var(--spill) * 2));
@@ -123,7 +124,7 @@
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0; /* fills only the band (because the section height is band-h) */
+  inset: 0;
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
@@ -141,8 +142,8 @@
   position: relative;
   z-index: 2;
 
-  /* CHANGED: cards lift DOUBLE the spill amount */
-  transform: translateY(calc(-1 * var(--lift)));
+  /* Symmetric spill: same amount into hero + water */
+  transform: translateY(calc(-1 * var(--spill)));
 }
 
 /* =========================================================
@@ -251,10 +252,13 @@
 .below-fold.method-content{
   position: relative;
   z-index: 1;
-  margin-top: 0 !important;
-  padding-top: calc(var(--spill) + 10px) !important;
-}
 
+  /* do NOT move the seam */
+  margin-top: 0 !important;
+
+  /* bottom spill amount + visual breathing room */
+  padding-top: calc(var(--spill) + 36px) !important;
+}
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
