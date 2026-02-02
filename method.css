@@ -94,16 +94,12 @@
   --overhang: 72px;
   --gap: 28px;
 
-  /* band strip behind middle of cards */
-  --band-h: 116px;    /* 260 - (72*2) */
-  --band-top: 56px;
-
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
 
-  margin-top: 0px;
+  margin-top: 0;
   padding: 0;
 
   /* IMPORTANT: no full background paint here */
@@ -115,14 +111,11 @@
   content: none !important;
 }
 
-/* Paint ONLY the separator band */
+/* Band: cover the FULL method-features height so no body-bg shows through */
 .method-features::before{
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  top: var(--band-top);
-  height: var(--band-h);
+  inset: 0; /* top/right/bottom/left = 0 */
 
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
