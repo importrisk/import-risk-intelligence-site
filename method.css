@@ -273,7 +273,8 @@
 /* =========================================================
    5) COVERAGE IN PRACTICE
    - Updated layout: Goal + price, Includes, FAQ
-   - Drop-in replacement for this section only
+   - COMPLETE DROP-IN REPLACEMENT (correct)
+   - Note: includes + checkmarks are forced so older rules can’t override
    ========================================================= */
 .method-practice{
   position: relative;
@@ -334,17 +335,17 @@
 }
 
 /* --- Includes list (clean, centered, check bullets) --- */
-.method-practice .mp-includes{
-  list-style: none;
-  padding: 0;
-  margin: 14px auto 0;
+.method-practice ul.mp-includes{
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 14px auto 0 !important;
   max-width: 720px;
 
   display: grid;
   gap: 10px;
 }
 
-.method-practice .mp-includes li{
+.method-practice ul.mp-includes > li{
   position: relative;
   padding-left: 28px;
   font-size: 16px;
@@ -352,8 +353,8 @@
   color: rgba(255,255,255,.80);
 }
 
-.method-practice .mp-includes li::before{
-  content: "✓";
+.method-practice ul.mp-includes > li::before{
+  content: "✓" !important;
   position: absolute;
   left: 0;
   top: 0;
@@ -410,7 +411,7 @@
   color: rgba(255,255,255,.76);
 }
 
-/* --- Footer + CTA (kept from your original) --- */
+/* --- Footer + CTA (kept) --- */
 .method-practice .mp-foot{
   margin: 18px auto 0;
   text-align: center;
@@ -429,10 +430,7 @@
 /* --- Responsive --- */
 @media (max-width: 640px){
   .method-practice .mp-title{ font-size: 36px; }
-
-  .method-practice .mp-goal-price{
-    font-size: 26px;
-  }
+  .method-practice .mp-goal-price{ font-size: 26px; }
 
   .method-practice .mp-faq-grid{
     grid-template-columns: 1fr;
