@@ -531,6 +531,23 @@
   color: rgba(180, 215, 255, .86);
 }
 
+/* Force Delivery + Price to share the same center column */
+.method-practice .mp-includes,
+.method-practice .mp-goal-price,
+.method-practice .mp-price-note{
+  width: min(560px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure price is centered text-wise */
+.method-practice .mp-goal-price{
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+}
+
+
 /* Divider: make it more “designed” (subtle gradient line) */
 .method-practice .mp-divider{
   height: 1px;
