@@ -110,7 +110,7 @@
   padding: 0;
 
   /* EXTEND BOTTOM so bottom spill matches top + pushes Coverage down */
-  height: calc(var(--band-h) + var(--spill));
+  height: calc(var(--band-h) + (var(--spill) / 2));
 
   background: transparent !important;
 }
