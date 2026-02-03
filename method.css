@@ -1,17 +1,128 @@
 /* =========================================================
-   2) METHOD FEATURES: band only + symmetric card spill
-   - Band top stays locked to the hero seam (section top)
-   - Cards spill up into hero AND down into water equally
-   - Adds real layout space so Coverage doesn’t collide
+   METHOD PAGE ONLY (method.css)
+   - Hero image at top (LOCKED)
+   - ONE fixed-height separator band at hero seam
+   - Below-fold water starts exactly at the seam
+   - Cards spill equally up into hero and down into water
+   - Coverage gets its own top cushion (NOT by moving seam)
+   ========================================================= */
+
+
+/* =========================================================
+   0) LOCAL TOKENS (safe defaults if global vars missing)
+   ========================================================= */
+:root{
+  /* tune this one number */
+  --method-spill: 18px;
+
+  /* seam band thickness */
+  --method-band-h: 116px;
+
+  /* fallbacks if global tokens are absent */
+  --topbar-h: var(--topbar-h, 72px);
+  --band-border: var(--band-border, rgba(255,255,255,.18));
+
+  /* hero overlay fallbacks */
+  --hero-top: var(--hero-top, rgba(38,54,77,.36));
+  --hero-mid: var(--hero-mid, rgba(38,54,77,.46));
+  --hero-bottom: var(--hero-bottom, rgba(38,54,77,.62));
+}
+
+
+/* =========================================================
+   1) METHOD HERO (must exist here)
+   ========================================================= */
+.method-hero{
+  position: relative;
+  min-height: clamp(420px, 56vh, 620px);
+  padding-top: var(--topbar-h);
+  padding-bottom: 96px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* hero background layer */
+.method-hero-bg{
+  position: absolute;
+  inset: -10vh 0 -10vh 0;
+  z-index: 0;
+  pointer-events: none;
+
+  /* IMPORTANT: keep URL correct for your site structure
+     If this file is /assets/css/method.css then use ../images/
+     If it sits at site root, keep as assets/images/ */
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("../images/method-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 74%;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+/* Wide screens: keep ship from creeping upward */
+@media (min-width: 1200px){
+  .method-hero-bg{ transform: translateY(6vh); }
+}
+@media (min-width: 1600px){
+  .method-hero-bg{ transform: translateY(8vh); }
+}
+
+.method-hero > .container{
+  position: relative;
+  z-index: 1;
+}
+
+.method-hero-inner{
+  padding-top: 100px; /* prevents overlap with topbar */
+  text-align: center;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* If you already have global .hero-title/.hero-subtitle, these will just reinforce */
+.method-hero .hero-title{
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.30);
+}
+
+.method-hero .hero-subtitle{
+  margin: 14px auto 0;
+  max-width: 680px;
+  font-size: 24px;
+  color: rgba(255,255,255,.78);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.35),
+    0 0 24px rgba(0,0,0,.25);
+}
+
+.method-hero .hero-subtitle-muted{
+  font-size: 0.98em;
+  opacity: 0.86;
+}
+
+
+/* =========================================================
+   2) METHOD FEATURES: fixed-height band at seam + spill cards
    ========================================================= */
 .method-features{
   --card-h: 260px;
-  --spill: 30px;          /* card spill into hero AND into water */
+  --spill: var(--method-spill);
   --gap: 28px;
 
-  /* visual band behind the middle */
-  --band-top: 0px;        /* 0 = exactly at hero/below-fold seam */
-  --band-h: 120px;        /* <-- increase this if the band feels too short */
+  /* band thickness at seam (fixed, does not extend below cards) */
+  --band-h: var(--method-band-h);
+  --band-top: 0px; /* LOCK band top to hero seam */
 
   position: relative;
   z-index: 4;
@@ -21,19 +132,18 @@
   margin: 0;
   padding: 0;
 
-  /* IMPORTANT: reserve real space for the downward spill
-     (transform doesn't affect layout) */
-  padding-bottom: var(--spill);
+  /* band is exactly this tall */
+  height: var(--band-h);
 
   background: transparent !important;
 }
 
-/* Kill any global fake layer */
+/* Nuke any global fake layer */
 .method-features::after{
   content: none !important;
 }
 
-/* Paint ONLY the separator band */
+/* Paint only the band */
 .method-features::before{
   content: "";
   position: absolute;
@@ -60,73 +170,14 @@
   position: relative;
   z-index: 2;
 
-  /* Symmetric spill */
+  /* Cards spill upward into hero by --spill
+     Bottom overhang into water is automatic (cards are taller than the band) */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
-/* =========================================================
-   2) METHOD FEATURES: band ONLY (fixed height) + spill cards
-   - Band stays locked to the hero seam
-   - Cards can be raised independently (more spill) without moving the band
-   ========================================================= */
-.method-features{
-  --card-h: 260px;
-
-  --seam: 23px;          /* LOCKED: seam overlap zone (controls band height) */
-  --raise: 30px;         /* ONLY: how far the cards move up into the hero */
-  --gap: 28px;
-
-  /* band height is the seam zone behind the middle of the cards */
-  --band-h: calc(var(--card-h) - (var(--seam) * 2));
-
-  position: relative;
-  z-index: 4;
-  isolation: isolate;
-  overflow: visible;
-
-  margin: 0;
-  padding: 0;
-
-  /* IMPORTANT: the section itself IS the band height */
-  height: var(--band-h);
-
-  background: transparent !important;
-}
-
-/* Nuke any global fake water layer */
-.method-features::after{
-  content: none !important;
-}
-
-/* Paint ONLY the separator band */
-.method-features::before{
-  content: "";
-  position: absolute;
-  inset: 0; /* fills only the band */
-  background: rgba(83,103,128,.72);
-  border-top: 1px solid var(--band-border);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 -1px 0 rgba(0,0,0,.22);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.method-feature-grid{
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--gap);
-
-  position: relative;
-  z-index: 2;
-
-  /* Raise cards WITHOUT moving the band */
-  transform: translateY(calc(-1 * var(--raise)));
-}
 
 /* =========================================================
    3) CARDS
-   Fixes the GIANT icons + restores the header row
    ========================================================= */
 .method-feature{
   position: relative;
@@ -138,7 +189,6 @@
     inset 0 1px 0 rgba(255,255,255,.07);
 }
 
-/* IMPORTANT: define card height here since global may no longer */
 .method-feature .mf-inner{
   padding: 22px 22px 20px;
   display: flex;
@@ -223,31 +273,29 @@
   z-index: 5;
 }
 
+
 /* =========================================================
-   4) BELOW-FOLD: pull water up under the band + keep content clear
+   4) BELOW-FOLD: water must start exactly at the seam
    ========================================================= */
 .below-fold.method-content{
-  /* Must match the values used in .method-features */
-  --card-h: 260px;
-  --spill: 30px;
-  --band-h: calc(var(--card-h) - (var(--spill) * 2));
-
   position: relative;
   z-index: 1;
-
-  /* Pull the WATER background up so it starts at the seam */
-  margin-top: calc(-1 * var(--band-h)) !important;
-
-  /* But keep the CONTENT pushed down below the cards */
-  padding-top: calc(var(--band-h) + var(--spill) + 28px) !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important; /* DO NOT cushion here */
 }
+
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
+   Add cushion here so cards don't crush the heading
    ========================================================= */
 .method-practice{
   position: relative;
-  padding: 86px 0 64px;
+
+  /* THIS is the cushion:
+     - spill amount + a bit of breathing room */
+  padding: calc(var(--method-spill) + 64px) 0 64px;
+
   background: transparent;
 }
 
@@ -338,16 +386,19 @@
    6) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
-  .method-features{
-    --spill: 12px;
-    --gap: 18px;
+  :root{
+    --method-spill: 14px;
+    --method-band-h: 128px;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .method-feature::after{ display: none; }
+  .method-feature::after{
+    display: none;
+  }
 
   .method-practice .mp-title{ font-size: 36px; }
 
