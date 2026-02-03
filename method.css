@@ -272,9 +272,8 @@
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
-   - Updated layout: Goal + price, Includes, FAQ
-   - COMPLETE DROP-IN REPLACEMENT (correct)
-   - Note: includes + checkmarks are forced so older rules can’t override
+   - Corrected layout: price under goal, includes centered + aligned
+   - Drop-in replacement for this section only
    ========================================================= */
 .method-practice{
   position: relative;
@@ -302,11 +301,11 @@
   color: rgba(255,255,255,.78);
 }
 
-/* --- Goal + price (centered value anchor) --- */
+/* --- Goal + price --- */
 .method-practice .mp-goal{
   text-align: center;
   max-width: 860px;
-  margin: 22px auto 18px;
+  margin: 22px auto 10px;
 }
 
 .method-practice .mp-goal-label{
@@ -326,7 +325,7 @@
 }
 
 .method-practice .mp-goal-price{
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 30px;
   letter-spacing: -0.01em;
   font-weight: 600;
@@ -334,20 +333,30 @@
   text-shadow: 0 10px 22px rgba(0,0,0,.22);
 }
 
-/* --- Includes list (clean, centered, check bullets) --- */
+/* --- Includes list (FIXED: checkmark stays with the line) --- */
 .method-practice ul.mp-includes{
   list-style: none !important;
   padding: 0 !important;
   margin: 14px auto 0 !important;
   max-width: 720px;
 
-  display: grid;
+  /* center the block, but keep text nicely aligned */
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+  align-items: center;
 }
 
 .method-practice ul.mp-includes > li{
-  position: relative;
-  padding-left: 28px;
+  /* each line becomes a small row: ✓ + text */
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+
+  /* keeps the text column neat and consistent */
+  width: min(560px, 100%);
+  text-align: left;
+
   font-size: 16px;
   line-height: 1.6;
   color: rgba(255,255,255,.80);
@@ -355,15 +364,13 @@
 
 .method-practice ul.mp-includes > li::before{
   content: "✓" !important;
-  position: absolute;
-  left: 0;
-  top: 0;
+  flex: 0 0 auto;
   transform: translateY(1px);
   font-size: 18px;
   color: rgba(180, 215, 255, .82);
 }
 
-/* --- Divider between includes and FAQ --- */
+/* --- Divider --- */
 .method-practice .mp-divider{
   width: min(860px, 100%);
   height: 1px;
@@ -411,7 +418,7 @@
   color: rgba(255,255,255,.76);
 }
 
-/* --- Footer + CTA (kept) --- */
+/* --- Footer + CTA --- */
 .method-practice .mp-foot{
   margin: 18px auto 0;
   text-align: center;
@@ -435,6 +442,10 @@
   .method-practice .mp-faq-grid{
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .method-practice ul.mp-includes > li{
+    width: 100%;
   }
 }
 
