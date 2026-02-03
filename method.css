@@ -1,36 +1,11 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
-   - Hero image at top (LOCKED)
-   - ONE fixed-height separator band at hero seam
-   - Below-fold water starts exactly at the seam
-   - Cards spill equally up into hero and down into water
-   - Coverage gets its own top cushion (NOT by moving seam)
+   Stable baseline — hero locked, band fixed, cards spill
    ========================================================= */
 
 
 /* =========================================================
-   0) LOCAL TOKENS (safe defaults if global vars missing)
-   ========================================================= */
-:root{
-  /* tune this one number */
-  --method-spill: 18px;
-
-  /* seam band thickness */
-  --method-band-h: 116px;
-
-  /* fallbacks if global tokens are absent */
-  --topbar-h: var(--topbar-h, 72px);
-  --band-border: var(--band-border, rgba(255,255,255,.18));
-
-  /* hero overlay fallbacks */
-  --hero-top: var(--hero-top, rgba(38,54,77,.36));
-  --hero-mid: var(--hero-mid, rgba(38,54,77,.46));
-  --hero-bottom: var(--hero-bottom, rgba(38,54,77,.62));
-}
-
-
-/* =========================================================
-   1) METHOD HERO (must exist here)
+   1) METHOD HERO (RESTORED, UNTOUCHED)
    ========================================================= */
 .method-hero{
   position: relative;
@@ -41,16 +16,9 @@
   isolation: isolate;
 }
 
-/* hero background layer */
 .method-hero-bg{
   position: absolute;
   inset: -10vh 0 -10vh 0;
-  z-index: 0;
-  pointer-events: none;
-
-  /* IMPORTANT: keep URL correct for your site structure
-     If this file is /assets/css/method.css then use ../images/
-     If it sits at site root, keep as assets/images/ */
   background-image:
     linear-gradient(
       180deg,
@@ -58,15 +26,15 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    url("../images/method-hero.jpg");
+    url("assets/images/method-hero.jpg"); /* ORIGINAL, DO NOT CHANGE */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
-  transform: translateY(0);
-  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Wide screens: keep ship from creeping upward */
+/* Wide screens: keep ship low */
 @media (min-width: 1200px){
   .method-hero-bg{ transform: translateY(6vh); }
 }
@@ -80,13 +48,12 @@
 }
 
 .method-hero-inner{
-  padding-top: 100px; /* prevents overlap with topbar */
+  padding-top: 100px;
   text-align: center;
-  margin: 0 auto;
   max-width: 720px;
+  margin: 0 auto;
 }
 
-/* If you already have global .hero-title/.hero-subtitle, these will just reinforce */
 .method-hero .hero-title{
   margin: 0;
   font-size: clamp(34px, 4.2vw, 56px);
@@ -106,307 +73,147 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
-.method-hero .hero-subtitle-muted{
-  font-size: 0.98em;
-  opacity: 0.86;
-}
-
 
 /* =========================================================
-   2) METHOD FEATURES: fixed-height band at seam + spill cards
+   2) METHOD FEATURES — SINGLE BAND, NO HEIGHT HACKS
    ========================================================= */
 .method-features{
-  --card-h: 260px;
-  --spill: var(--method-spill);
-  --gap: 28px;
-
-  /* band thickness at seam (fixed, does not extend below cards) */
-  --band-h: var(--method-band-h);
-  --band-top: 0px; /* LOCK band top to hero seam */
-
   position: relative;
   z-index: 4;
   isolation: isolate;
   overflow: visible;
-
   margin: 0;
   padding: 0;
-
-  /* band is exactly this tall */
-  height: var(--band-h);
-
   background: transparent !important;
 }
 
-/* Nuke any global fake layer */
+/* Kill any global overlays */
 .method-features::after{
   content: none !important;
 }
 
-/* Paint only the band */
+/* The band lives here — exactly at the seam */
 .method-features::before{
   content: "";
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: var(--band-top);
-  height: var(--band-h);
-
+  height: 160px; /* VISUAL BAND HEIGHT — adjust safely */
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
-
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
 }
 
+
+/* =========================================================
+   3) FEATURE GRID — CONTROL SPILL HERE ONLY
+   ========================================================= */
 .method-feature-grid{
+  --spill: 32px;   /* ONLY knob you touch */
+  --gap: 28px;
+
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0,1fr));
   gap: var(--gap);
 
   position: relative;
   z-index: 2;
 
-  /* Cards spill upward into hero by --spill
-     Bottom overhang into water is automatic (cards are taller than the band) */
   transform: translateY(calc(-1 * var(--spill)));
+  margin-bottom: var(--spill);
 }
 
 
 /* =========================================================
-   3) CARDS
+   4) FEATURE CARDS (STABLE)
    ========================================================= */
 .method-feature{
-  position: relative;
-  background: rgba(28, 47, 71, 0.92);
+  background: rgba(28,47,71,.92);
   border: 1px solid rgba(255,255,255,.16);
-  border-radius: 0;
   box-shadow:
     0 18px 40px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.07);
 }
 
 .method-feature .mf-inner{
-  padding: 22px 22px 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: var(--card-h);
 }
 
-/* header row */
 .method-feature .mf-head{
-  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
   padding-bottom: 12px;
   margin-bottom: 12px;
-}
-
-.method-feature .mf-head::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: rgba(255,255,255,.18);
-}
-
-/* icon sizing */
-.method-feature .mf-icon{
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,.85);
-  opacity: .95;
-  flex: 0 0 auto;
+  border-bottom: 1px solid rgba(255,255,255,.18);
 }
 
 .method-feature .mf-icon svg{
   width: 24px;
   height: 24px;
-  display: block;
 }
 
 .method-feature .mf-title{
   margin: 0;
   font-size: 22px;
-  letter-spacing: -0.01em;
   color: rgba(255,255,255,.96);
 }
 
 .method-feature .mf-description{
-  margin: 0;
   font-size: 16px;
   line-height: 1.45;
   color: rgba(255,255,255,.82);
-  max-width: 36ch;
 }
 
-/* subtle line in muted blue */
 .mf-subtle{
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: rgba(127, 177, 234, 0.75);
-  line-height: 1.5;
-}
-
-/* chevrons */
-.method-feature:not(:last-child)::after{
-  content: "›";
-  position: absolute;
-  left: calc(100% + (var(--gap) / 2));
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 300;
-  color: rgba(255,255,255,.28);
-  pointer-events: none;
-  z-index: 5;
+  font-size: .9rem;
+  color: rgba(127,177,234,.75);
 }
 
 
 /* =========================================================
-   4) BELOW-FOLD: water must start exactly at the seam
+   5) BELOW-FOLD — LEAVE IT ALONE
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
   margin-top: 0 !important;
-  padding-top: 0 !important; /* DO NOT cushion here */
+  padding-top: 56px; /* natural breathing room */
 }
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE
-   Add cushion here so cards don't crush the heading
+   6) COVERAGE IN PRACTICE (RESTORED)
    ========================================================= */
 .method-practice{
-  position: relative;
-
-  /* THIS is the cushion:
-     - spill amount + a bit of breathing room */
-  padding: calc(var(--method-spill) + 64px) 0 64px;
-
-  background: transparent;
-}
-
-.method-practice .mp-head{
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 34px;
+  padding: 64px 0;
 }
 
 .method-practice .mp-title{
-  margin: 0 0 16px;
   font-size: 44px;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.95);
-}
-
-.method-practice .mp-lead{
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.78);
-}
-
-.method-practice .mp-cols{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 18px;
-}
-
-.method-practice .mp-col{
-  position: relative;
-  padding: 10px 10px 10px 0;
-}
-
-.method-practice .mp-col:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: -14px;
-  bottom: 6px;
-  width: 1px;
-  background: rgba(255,255,255,.14);
-}
-
-.method-practice .mp-col-title{
-  margin: 0 0 14px;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.92);
-}
-
-.method-practice .mp-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.78);
-  line-height: 1.65;
-  font-size: 16px;
-}
-
-.method-practice .mp-list li{ margin: 10px 0; }
-
-.method-practice .mp-quote{
-  margin: 34px auto 18px;
   text-align: center;
-  font-style: italic;
-  font-size: 18px;
-  color: rgba(180, 215, 255, .72);
-}
-
-.method-practice .mp-foot{
-  margin: 0 auto;
-  text-align: center;
-  max-width: 900px;
-  font-size: 16px;
-  line-height: 1.65;
-  color: rgba(255,255,255,.74);
-}
-
-.method-practice .mp-actions{
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
 }
 
 
 /* =========================================================
-   6) RESPONSIVE
+   7) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
-  :root{
-    --method-spill: 14px;
-    --method-band-h: 128px;
-  }
-
   .method-feature-grid{
     grid-template-columns: 1fr;
-    gap: 18px;
+    transform: none;
+    margin-bottom: 0;
   }
 
-  .method-feature::after{
-    display: none;
+  .method-features::before{
+    height: 120px;
   }
-
-  .method-practice .mp-title{ font-size: 36px; }
-
-  .method-practice .mp-cols{
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
