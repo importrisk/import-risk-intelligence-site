@@ -1,9 +1,9 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
-   - Hero image at top (RESTORED)
-   - ONE separator band behind cards (does NOT extend below)
-   - Below-fold water texture (RESTORED)
-   - Cards spill over hero + below fold (controlled via --spill)
+   - Hero image at top (RESTORED, stable URL)
+   - ONE separator band behind cards
+   - Below-fold water texture (DO NOT BREAK GLOBAL)
+   - Cards spill over hero + below fold
    ========================================================= */
 
 
@@ -22,8 +22,6 @@
 .method-hero-bg{
   position: absolute;
   inset: -10vh 0 -10vh 0;
-
-  /* IMPORTANT: ROOT-RELATIVE URL so it never "disappears" */
   background-image:
     linear-gradient(
       180deg,
@@ -31,8 +29,8 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
+    /* stable regardless of where method.css lives */
     url("/assets/images/method-hero.jpg");
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
@@ -56,7 +54,7 @@
 }
 
 .method-hero-inner{
-  padding-top: 100px; /* keeps title clear of topbar */
+  padding-top: 100px;
   text-align: center;
   margin: 0 auto;
   max-width: 720px;
@@ -81,26 +79,24 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
-/* The smaller third line */
+/* smaller third line (RESTORED) */
 .method-hero .hero-subtitle-muted{
-  margin-top: 10px;
+  margin: 10px auto 0;
   font-size: 16px;
-  opacity: 0.82;
+  color: rgba(255,255,255,.68);
+  text-shadow: 0 2px 8px rgba(0,0,0,.28);
 }
 
 
 /* =========================================================
-   2) METHOD FEATURES: band ONLY (fixed height) + symmetric spill
-   - This block does NOT touch the hero seam position.
-   - It only controls how far cards overlap into hero/water.
+   2) METHOD FEATURES
+   - Keep it simple: band sits behind cards
+   - Cards spill using translateY
+   - No fixed-height band (that was causing the “seam” fight)
    ========================================================= */
 .method-features{
-  --card-h: 260px;
-  --spill: 24px;         /* start here; bump to 28 if you want more overlap */
+  --spill: 24px;     /* adjust this ONLY if needed */
   --gap: 28px;
-
-  /* band zone behind the middle slice of the cards */
-  --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
   z-index: 4;
@@ -110,23 +106,25 @@
   margin: 0;
   padding: 0;
 
-  /* Section height = band only (prevents it from extending below cards) */
-  height: var(--band-h);
-
   background: transparent !important;
 }
 
-/* IMPORTANT: do NOT kill global water on below-fold anymore.
-   Only remove any "fake layer" that was applied to method-features itself. */
+/* remove any fake overlay that some global styles may add here */
 .method-features::after{
   content: none !important;
 }
 
-/* Paint ONLY the separator band */
+/* band behind the cards only */
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0;
+
+  /* Band height is visually the “card zone”; this avoids stretching below */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(260px - (var(--spill) * 2) + 140px);
+
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
@@ -144,15 +142,16 @@
   position: relative;
   z-index: 2;
 
-  /* Symmetric spill:
-     - up into hero = spill
-     - down into water = spill */
+  /* Pull cards up into hero */
   transform: translateY(calc(-1 * var(--spill)));
+
+  /* Create breathing room so Coverage doesn’t collide */
+  padding-bottom: calc(var(--spill) + 56px);
 }
 
 
 /* =========================================================
-   3) CARDS (restore your header row + sane icon sizing)
+   3) CARDS
    ========================================================= */
 .method-feature{
   position: relative;
@@ -169,10 +168,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: var(--card-h);
+  min-height: 260px;
 }
 
-/* header row */
 .method-feature .mf-head{
   position: relative;
   display: flex;
@@ -192,7 +190,6 @@
   background: rgba(255,255,255,.18);
 }
 
-/* icon sizing */
 .method-feature .mf-icon{
   width: 24px;
   height: 24px;
@@ -203,7 +200,6 @@
   opacity: .95;
   flex: 0 0 auto;
 }
-
 .method-feature .mf-icon svg{
   width: 24px;
   height: 24px;
@@ -225,7 +221,6 @@
   max-width: 36ch;
 }
 
-/* subtle line in muted blue */
 .mf-subtle{
   margin-top: 8px;
   font-size: 0.9rem;
@@ -233,7 +228,6 @@
   line-height: 1.5;
 }
 
-/* chevrons */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -250,30 +244,20 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD: restore water texture + add clearance for spill
-   - DO NOT change seam position
-   - Just add breathing room so Coverage doesn't collide
+   4) BELOW-FOLD
+   - DO NOT overwrite water here.
+   - Just keep it tight so water shows through as intended.
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
   margin-top: 0 !important;
-
-  /* room above Coverage to clear the bottom spill */
-  padding-top: calc(var(--spill) + 44px) !important;
-
-  /* RESTORE WATER TEXTURE (root-relative; change filename if needed) */
-  background-image:
-    linear-gradient(180deg, rgba(10,18,30,.55), rgba(10,18,30,.70)),
-    url("/assets/images/water.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
+  padding-top: 0 !important;
 }
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE (restore spacing/typography)
+   5) COVERAGE IN PRACTICE (restore spacing)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -295,8 +279,7 @@
 }
 
 .method-practice .mp-lead{
-  margin: 0 auto;
-  max-width: 900px;
+  margin: 0;
   font-size: 18px;
   line-height: 1.6;
   color: rgba(255,255,255,.78);
@@ -376,10 +359,11 @@
 
   .method-feature-grid{
     grid-template-columns: 1fr;
-    transform: translateY(calc(-1 * var(--spill)));
   }
 
-  .method-feature::after{ display: none; }
+  .method-feature::after{
+    display: none;
+  }
 
   .method-practice .mp-title{ font-size: 36px; }
 
