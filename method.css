@@ -470,9 +470,20 @@
 }
 
 .method-practice .mp-goal-label{
-  font-size: 13px;
-  letter-spacing: .18em;
-  opacity: .92;
+  font-size: 14.5px;        /* up from 13 */
+  letter-spacing: .16em;   /* slightly tighter */
+  font-weight: 600;        /* adds presence without shouting */
+  color: rgba(255,255,255,.72);
+}
+
+.method-practice .mp-includes-label{
+  margin: 16px auto 10px;
+  text-align: center;
+  font-size: 14.5px;
+  letter-spacing: .16em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.68);
 }
 
 .method-practice .mp-goal-text{
