@@ -347,6 +347,15 @@
   align-items: center;
 }
 
+.method-practice .mp-includes-label{
+  margin: 14px auto 8px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.58);
+}
+
 .method-practice ul.mp-includes > li{
   /* each line becomes a small row: ✓ + text */
   display: flex;
