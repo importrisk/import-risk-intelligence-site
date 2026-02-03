@@ -333,6 +333,15 @@
   text-shadow: 0 10px 22px rgba(0,0,0,.22);
 }
 
+.method-practice .mp-price-note{
+  margin: 6px auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.60);
+}
+
 /* --- Includes list (FIXED: checkmark stays with the line) --- */
 .method-practice ul.mp-includes{
   list-style: none !important;
