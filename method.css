@@ -93,7 +93,7 @@
 .method-features{
   --card-h: 260px;
 
-  --seam: 15px;          /* LOCKED: seam overlap zone (controls band height) */
+  --seam: 23px;          /* LOCKED: seam overlap zone (controls band height) */
   --raise: 30px;         /* ONLY: how far the cards move up into the hero */
   --gap: 28px;
 
@@ -269,7 +269,7 @@
    ========================================================= */
 .method-practice{
   position: relative;
-  padding: 56px 0 64px;
+  padding: 86px 0 64px;
   background: transparent;
 }
 
