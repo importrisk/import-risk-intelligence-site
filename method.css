@@ -87,14 +87,19 @@
 
 /* =========================================================
    2) METHOD FEATURES: band ONLY (fixed height) + spill cards
+   - Top of band stays on hero seam
+   - Bottom of band extends downward for clearance
    ========================================================= */
 .method-features{
   --card-h: 260px;
-  --spill: 20px;         /* keep this sane; 30 makes the band too short */
+  --spill: 20px;         /* symmetric card spill up/down */
   --gap: 28px;
 
-  /* band height is the seam zone behind the middle of the cards */
+  /* seam band behind the middle of the cards */
   --band-h: calc(var(--card-h) - (var(--spill) * 2));
+
+  /* EXTRA: extend the band downward without moving its top */
+  --band-extra: var(--spill);   /* tweak 10–24px if you want */
 
   position: relative;
   z-index: 4;
@@ -104,11 +109,8 @@
   margin: 0;
   padding: 0;
 
-  /* IMPORTANT: the section itself IS the band height */
-  height: var(--band-h);
-
-  /* KEY FIX: drop the band down without moving layout flow */
-  top: var(--spill);
+  /* IMPORTANT: height grows DOWN only (top stays at seam) */
+  height: calc(var(--band-h) + var(--band-extra));
 
   background: transparent !important;
 }
@@ -118,11 +120,11 @@
   content: none !important;
 }
 
-/* Paint ONLY the separator band */
+/* Paint ONLY the separator band area */
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0; /* fills only the band */
+  inset: 0;
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
@@ -140,7 +142,7 @@
   position: relative;
   z-index: 2;
 
-  /* Cards rise into hero; bottom spill stays symmetric */
+  /* Cards spill up into hero by --spill; down into water by --spill */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
