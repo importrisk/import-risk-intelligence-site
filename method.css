@@ -1,9 +1,9 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
-   - Hero image at top (RESTORED, stable URL)
-   - ONE separator band behind cards
-   - Below-fold water texture (DO NOT BREAK GLOBAL)
-   - Cards spill over hero + below fold
+   - Hero image at top (local to this file)
+   - ONE separator band behind cards (fixed height strip)
+   - Below-fold water texture comes from global .below-fold
+   - Cards spill over hero + below fold (symmetric)
    ========================================================= */
 
 
@@ -29,8 +29,8 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    /* stable regardless of where method.css lives */
-    url("/assets/images/method-hero.jpg");
+    /* IMPORTANT: method.css is in assets/css/, image is in assets/images/ */
+    url("../images/method-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
@@ -54,12 +54,13 @@
 }
 
 .method-hero-inner{
-  padding-top: 100px;
+  padding-top: 100px; /* prevents overlap with topbar */
   text-align: center;
   margin: 0 auto;
   max-width: 720px;
 }
 
+/* Uses shared .hero-title/.hero-subtitle classes from global */
 .method-hero .hero-title{
   margin: 0;
   font-size: clamp(34px, 4.2vw, 56px);
@@ -79,24 +80,24 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
-/* smaller third line (RESTORED) */
 .method-hero .hero-subtitle-muted{
-  margin: 10px auto 0;
-  font-size: 16px;
-  color: rgba(255,255,255,.68);
-  text-shadow: 0 2px 8px rgba(0,0,0,.28);
+  font-size: 0.98em;
+  opacity: 0.86;
 }
 
 
 /* =========================================================
    2) METHOD FEATURES
-   - Keep it simple: band sits behind cards
-   - Cards spill using translateY
-   - No fixed-height band (that was causing the “seam” fight)
+   - band is a fixed-height STRIP (prevents “grey slab”)
+   - cards spill up into hero + down into water (symmetric)
    ========================================================= */
 .method-features{
-  --spill: 24px;     /* adjust this ONLY if needed */
+  --card-h: 260px;
+  --spill: 24px;  /* start sane; change ONLY this to tune spill */
   --gap: 28px;
+
+  /* strip height behind the middle of the cards */
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
   z-index: 4;
@@ -106,27 +107,27 @@
   margin: 0;
   padding: 0;
 
+  /* The section itself is ONLY the band height (strip) */
+  height: var(--band-h);
+
   background: transparent !important;
 }
 
-/* remove any fake overlay that some global styles may add here */
+/* Kill any global pseudo layers that might be attached */
 .method-features::after{
   content: none !important;
 }
 
-/* band behind the cards only */
+/* Paint ONLY the strip behind the cards (NOT full height) */
 .method-features::before{
   content: "";
   position: absolute;
-
-  /* Band height is visually the “card zone”; this avoids stretching below */
-  top: 0;
   left: 0;
   right: 0;
-  height: calc(260px - (var(--spill) * 2) + 140px);
-
+  top: 0;
+  height: var(--band-h);
   background: rgba(83,103,128,.72);
-  border-top: 1px solid var(--band-border);
+  border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
     inset 0 -1px 0 rgba(0,0,0,.22);
@@ -142,16 +143,15 @@
   position: relative;
   z-index: 2;
 
-  /* Pull cards up into hero */
+  /* Cards rise into hero; bottom overhang goes into water */
   transform: translateY(calc(-1 * var(--spill)));
-
-  /* Create breathing room so Coverage doesn’t collide */
-  padding-bottom: calc(var(--spill) + 56px);
 }
 
 
 /* =========================================================
    3) CARDS
+   - fixes giant icons
+   - restores header row divider
    ========================================================= */
 .method-feature{
   position: relative;
@@ -168,9 +168,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 260px;
+  min-height: var(--card-h);
 }
 
+/* header row */
 .method-feature .mf-head{
   position: relative;
   display: flex;
@@ -190,6 +191,7 @@
   background: rgba(255,255,255,.18);
 }
 
+/* icon sizing */
 .method-feature .mf-icon{
   width: 24px;
   height: 24px;
@@ -200,6 +202,7 @@
   opacity: .95;
   flex: 0 0 auto;
 }
+
 .method-feature .mf-icon svg{
   width: 24px;
   height: 24px;
@@ -221,6 +224,7 @@
   max-width: 36ch;
 }
 
+/* subtle line in muted blue */
 .mf-subtle{
   margin-top: 8px;
   font-size: 0.9rem;
@@ -228,6 +232,7 @@
   line-height: 1.5;
 }
 
+/* chevrons */
 .method-feature:not(:last-child)::after{
   content: "›";
   position: absolute;
@@ -244,20 +249,31 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD
-   - DO NOT overwrite water here.
-   - Just keep it tight so water shows through as intended.
+   4) BELOW-FOLD (water)
+   - do NOT move the seam
+   - ONLY add enough top padding so Coverage doesn't collide
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
+
   margin-top: 0 !important;
-  padding-top: 0 !important;
+
+  /* This is the ONLY control you need for “space above Coverage” */
+  padding-top: calc(var(--spill) + 72px) !important;
+}
+
+/* Also kill any method-page-only weird slab layers if they exist globally */
+.below-fold.method-content::before,
+.below-fold.method-content::after{
+  /* leave global water alone; this only prevents extra overlays */
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE (restore spacing)
+   5) COVERAGE IN PRACTICE
+   (restore lost styles)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -353,25 +369,39 @@
    ========================================================= */
 @media (max-width: 900px){
   .method-features{
-    --spill: 16px;
+    --spill: 18px;
     --gap: 18px;
+    height: auto; /* allow flow on mobile */
+  }
+
+  .method-features::before{
+    height: auto;
+    inset: 0;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
+    transform: translateY(calc(-1 * var(--spill)));
   }
 
   .method-feature::after{
     display: none;
   }
 
-  .method-practice .mp-title{ font-size: 36px; }
+  .method-practice .mp-title{
+    font-size: 36px;
+  }
 
   .method-practice .mp-cols{
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .method-practice .mp-col{ padding: 0; }
-  .method-practice .mp-col:not(:last-child)::after{ display: none; }
+  .method-practice .mp-col{
+    padding: 0;
+  }
+
+  .method-practice .mp-col:not(:last-child)::after{
+    display: none;
+  }
 }
