@@ -450,6 +450,122 @@
 }
 
 /* =========================================================
+   COVERAGE polish — sharper module rhythm
+   Paste AFTER your existing Coverage CSS
+   ========================================================= */
+
+/* Tighten the goal stack + give it a crisp center column */
+.method-practice .mp-goal{
+  margin: 22px auto 12px;
+  max-width: 720px;              /* tighter than before = sharper */
+}
+
+.method-practice .mp-goal-label{
+  font-size: 13px;
+  letter-spacing: .18em;
+  opacity: .92;
+}
+
+.method-practice .mp-goal-text{
+  max-width: 44ch;
+  font-size: 18px;
+  line-height: 1.55;             /* slightly tighter */
+  color: rgba(255,255,255,.88);
+}
+
+/* Price: crisper, slightly more “designed” */
+.method-practice .mp-goal-price{
+  margin: 14px 0 0;
+  font-size: 32px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgba(127, 177, 234, 0.95);
+  text-shadow: 0 12px 26px rgba(0,0,0,.28);
+}
+
+/* Includes: lock to a clean column so it feels intentional */
+.method-practice ul.mp-includes{
+  margin-top: 14px !important;
+  gap: 12px;
+}
+
+.method-practice ul.mp-includes > li{
+  width: min(520px, 100%);       /* narrower = sharper */
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.84);
+}
+
+.method-practice ul.mp-includes > li::before{
+  font-size: 17px;
+  transform: translateY(2px);
+  color: rgba(180, 215, 255, .86);
+}
+
+/* Divider: make it more “designed” (subtle gradient line) */
+.method-practice .mp-divider{
+  height: 1px;
+  margin: 28px auto 20px;
+  width: min(980px, 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.18) 18%,
+    rgba(255,255,255,.18) 82%,
+    rgba(255,255,255,0) 100%
+  );
+  box-shadow: none;              /* removes blur softness */
+}
+
+/* FAQ: slightly tighter + more defined */
+.method-practice .mp-faq-title{
+  margin: 0 0 16px;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+}
+
+.method-practice .mp-faq-grid{
+  gap: 16px 40px;                /* more intentional spacing */
+  align-items: start;
+}
+
+.method-practice .mp-faq-item{
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(255,255,255,.10); /* crisp structure */
+}
+
+.method-practice .mp-q{
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.method-practice .mp-a{
+  margin-top: 2px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+/* CTA spacing: keep breathing room but crisp */
+.method-practice .mp-foot{
+  margin-top: 20px;
+  color: rgba(255,255,255,.76);
+}
+
+.method-practice .mp-actions{
+  margin-top: 16px;
+}
+
+@media (max-width: 640px){
+  .method-practice .mp-goal{ max-width: 92vw; }
+  .method-practice .mp-goal-price{ font-size: 28px; }
+  .method-practice ul.mp-includes > li{ width: 100%; }
+  .method-practice .mp-faq-item{ border-top-color: rgba(255,255,255,.12); }
+}
+
+
+/* =========================================================
    6) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
    - Only apply the “strip math” when grid is 4-up
    ========================================================= */
