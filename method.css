@@ -109,8 +109,8 @@
   margin: 0;
   padding: 0;
 
-  /* The section itself is ONLY the band height (strip) */
-  height: var(--band-h);
+  /* EXTEND BOTTOM so bottom spill matches top + pushes Coverage down */
+  height: calc(var(--band-h) + var(--spill));
 
   background: transparent !important;
 }
@@ -127,7 +127,8 @@
   left: 0;
   right: 0;
   top: 0;
-  height: var(--band-h);
+  bottom: 0;      /* NEW */
+  height: auto;   /* NEW */
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
   box-shadow:
@@ -148,7 +149,6 @@
   /* Cards rise into hero; bottom overhang goes into water */
   transform: translateY(calc(-1 * var(--spill)));
 }
-
 
 /* =========================================================
    3) CARDS
