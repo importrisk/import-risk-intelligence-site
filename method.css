@@ -380,12 +380,22 @@
   color: rgba(255,255,255,.80);
 }
 
-.method-practice ul.mp-includes > li::before{
-  content: "✓" !important;
-  flex: 0 0 auto;
-  transform: translateY(1px);
-  font-size: 18px;
-  color: rgba(180, 215, 255, .82);
+.method-practice .mp-includes li::before{
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid rgba(180, 215, 255, .65);
+  border-radius: 50%;
+
+  color: rgba(180, 215, 255, .9);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 /* --- Divider --- */
