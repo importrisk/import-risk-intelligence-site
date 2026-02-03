@@ -1,9 +1,9 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
    - Hero image at top (local to this file)
-   - ONE separator band behind cards (fixed height strip)
+   - ONE separator band behind cards (fixed-height strip)
    - Below-fold water texture comes from global .below-fold
-   - Cards spill over hero + below fold (symmetric)
+   - Cards spill over hero + below fold (controlled + stable)
    ========================================================= */
 
 
@@ -33,7 +33,8 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    url("assets/images/method-hero.jpg");
+    url("assets/images/method-hero.jpg") !important;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
@@ -88,16 +89,18 @@
   opacity: 0.86;
 }
 
+
 /* =========================================================
    2) METHOD FEATURES
    - band is a fixed-height STRIP (prevents “grey slab”)
    - cards spill up into hero + down into water (controlled)
+   - responsive-safe: prevents Coverage sliding under cards
    ========================================================= */
 .method-features{
   /* Card + layout tuning */
   --card-h: 260px;
-  --spill: 24px;          /* equal visual spill top & bottom */
-  --band-extra: 54px;     /* extends band downward ONLY */
+  --spill: 24px;          /* visual spill top */
+  --band-extra: 60px;     /* extends band downward ONLY (pushes Coverage down) */
   --gap: 28px;
 
   /* Base strip height behind middle of cards */
@@ -130,6 +133,7 @@
   right: 0;
   top: 0;
   height: calc(var(--band-h) + var(--band-extra));
+
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
   box-shadow:
@@ -139,7 +143,7 @@
   z-index: 0;
 }
 
-/* Feature cards */
+/* Feature cards grid */
 .method-feature-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -152,10 +156,12 @@
   transform: translateY(calc(-1 * var(--spill)));
 }
 
+
 /* =========================================================
    3) CARDS
    - fixes giant icons
    - restores header row divider
+   - locks layout so cards don’t grow and collide with Coverage
    ========================================================= */
 .method-feature{
   position: relative;
@@ -167,11 +173,13 @@
     inset 0 1px 0 rgba(255,255,255,.07);
 }
 
+/* Keep inner content locked to card height so band math stays true */
 .method-feature .mf-inner{
   padding: 22px 22px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  height: var(--card-h);
   min-height: var(--card-h);
 }
 
@@ -226,14 +234,26 @@
   line-height: 1.45;
   color: rgba(255,255,255,.82);
   max-width: 36ch;
+
+  /* Prevent “cards get taller on narrower screens” */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
 }
 
-/* subtle line in muted blue */
+/* subtle line in muted blue (pins to bottom) */
 .mf-subtle{
-  margin-top: 8px;
+  margin-top: auto;
+  padding-top: 8px;
   font-size: 0.9rem;
   color: rgba(127, 177, 234, 0.75);
   line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 /* chevrons */
@@ -263,21 +283,19 @@
 
   margin-top: 0 !important;
 
-  /* This is the ONLY control you need for “space above Coverage” */
-  padding-top: calc(var(--spill) + 72px) !important;
+  /* Space above Coverage (leave seam alone; just padding) */
+  padding-top: calc(var(--spill) + var(--band-extra) + 18px) !important;
 }
 
-/* Also kill any method-page-only weird slab layers if they exist globally */
+/* Prevent any extra method-only overlays without touching global water */
 .below-fold.method-content::before,
 .below-fold.method-content::after{
-  /* leave global water alone; this only prevents extra overlays */
-  pointer-events: none;
+  content: none !important;
 }
 
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
-   (restore lost styles)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -370,25 +388,48 @@
 
 /* =========================================================
    6) RESPONSIVE
+   - fixes the “narrow screen makes cards taller and Coverage overlaps”
    ========================================================= */
-@media (max-width: 900px){
+
+/* As width shrinks, keep cards comfortable by increasing fixed height
+   AND switching grid before copy wrapping creates runaway height. */
+@media (max-width: 1180px){
   .method-features{
-    --spill: 18px;
-    --gap: 18px;
-    height: auto; /* allow flow on mobile */
+    --card-h: 280px;
+    --gap: 22px;
+  }
+}
+
+@media (max-width: 980px){
+  .method-features{
+    --card-h: 300px;
+    --gap: 20px;
+    --spill: 22px;
+    --band-extra: 58px;
   }
 
-  .method-features::before{
-    height: auto;
-    inset: 0;
+  .method-feature-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .method-feature:not(:last-child)::after{
+    display: none;
+  }
+}
+
+@media (max-width: 640px){
+  .method-features{
+    --card-h: 320px;
+    --gap: 18px;
+    --spill: 18px;
+    --band-extra: 54px;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
-    transform: translateY(calc(-1 * var(--spill)));
   }
 
-  .method-feature::after{
+  .method-feature:not(:last-child)::after{
     display: none;
   }
 
