@@ -85,16 +85,12 @@
   opacity: 0.86;
 }
 
-
 /* =========================================================
    2) METHOD FEATURES: band ONLY (fixed height) + spill cards
    ========================================================= */
 .method-features{
   --card-h: 260px;
-
-  /* tuned spill: enough to read as “spill” without crushing the band */
-  --spill: 20px;
-
+  --spill: 20px;         /* keep this sane; 30 makes the band too short */
   --gap: 28px;
 
   /* band height is the seam zone behind the middle of the cards */
@@ -108,11 +104,11 @@
   margin: 0;
   padding: 0;
 
-  /* IMPORTANT: the section itself IS the band height (do NOT grow this) */
+  /* IMPORTANT: the section itself IS the band height */
   height: var(--band-h);
 
-  /* prevents any stray line-height / font-size from affecting the band box */
-  line-height: 0;
+  /* KEY FIX: drop the band down without moving layout flow */
+  top: var(--spill);
 
   background: transparent !important;
 }
@@ -144,9 +140,7 @@
   position: relative;
   z-index: 2;
 
-  /* Symmetric spill:
-     - up into hero = spill
-     - down into water = spill */
+  /* Cards rise into hero; bottom spill stays symmetric */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
