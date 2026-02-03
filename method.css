@@ -91,7 +91,10 @@
    ========================================================= */
 .method-features{
   --card-h: 260px;
-  --spill: 30px;         /* your “double spill” amount */
+
+  /* tuned spill: enough to read as “spill” without crushing the band */
+  --spill: 20px;
+
   --gap: 28px;
 
   /* band height is the seam zone behind the middle of the cards */
@@ -107,6 +110,9 @@
 
   /* IMPORTANT: the section itself IS the band height (do NOT grow this) */
   height: var(--band-h);
+
+  /* prevents any stray line-height / font-size from affecting the band box */
+  line-height: 0;
 
   background: transparent !important;
 }
