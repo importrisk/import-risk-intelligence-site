@@ -422,14 +422,16 @@
 
 /* ---------- Price ---------- */
 .method-practice .mp-goal-price{
-  margin: 52px auto 0;
-  width: var(--mp-col);
+  display: block;
   text-align: center;
+
+  /* THIS is the spacing you want */
+  margin: 44px auto 0 !important;
 
   font-size: 32px;
   font-weight: 650;
   letter-spacing: -0.02em;
-  color: rgba(127,177,234,.95);
+  color: rgba(127, 177, 234, 0.95);
   text-shadow: 0 12px 26px rgba(0,0,0,.28);
 }
 
