@@ -309,13 +309,32 @@
 
 /* ---------- Core: Goal + Delivery ---------- */
 .method-practice .mp-core{
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
 
   max-width: 980px;
-  margin: 0 auto 18px;
+  margin: 28px auto 22px;
+}
+
+.method-practice .mp-core::after{
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.18),
+    rgba(255,255,255,0)
+  );
 }
 
 /* ---------- Goal ---------- */
