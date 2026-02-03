@@ -97,7 +97,7 @@
   /* Card + layout tuning */
   --card-h: 260px;
   --spill: 24px;          /* equal visual spill top & bottom */
-  --band-extra: 24px;     /* extends band downward ONLY */
+  --band-extra: 34px;     /* extends band downward ONLY */
   --gap: 28px;
 
   /* Base strip height behind middle of cards */
