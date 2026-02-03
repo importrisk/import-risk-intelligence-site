@@ -91,11 +91,11 @@
    ========================================================= */
 .method-features{
   --card-h: 260px;
-  --spill: 30px;         /* doubled spill */
+  --spill: 30px;         /* your “double spill” amount */
   --gap: 28px;
 
-  /* band must grow when cards spill more */
-  --band-h: calc(var(--card-h) + var(--spill));
+  /* band height is the seam zone behind the middle of the cards */
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
   z-index: 4;
@@ -105,7 +105,7 @@
   margin: 0;
   padding: 0;
 
-  /* section height IS the band */
+  /* IMPORTANT: the section itself IS the band height (do NOT grow this) */
   height: var(--band-h);
 
   background: transparent !important;
@@ -120,7 +120,7 @@
 .method-features::before{
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /* fills only the band */
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border);
   box-shadow:
@@ -138,6 +138,9 @@
   position: relative;
   z-index: 2;
 
+  /* Symmetric spill:
+     - up into hero = spill
+     - down into water = spill */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
@@ -242,15 +245,22 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD: keep water seam fixed, add top cushion for spill
+   4) BELOW-FOLD: pull water up under the band + keep content clear
    ========================================================= */
 .below-fold.method-content{
+  /* Must match the values used in .method-features */
+  --card-h: 260px;
+  --spill: 30px;
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
+
   position: relative;
   z-index: 1;
-  margin-top: 0 !important;
 
-  /* IMPORTANT: --spill is defined on .method-features, so we must provide a fallback here */
-  padding-top: calc(var(--spill, 30px) + 36px) !important;
+  /* Pull the WATER background up so it starts at the seam */
+  margin-top: calc(-1 * var(--band-h)) !important;
+
+  /* But keep the CONTENT pushed down below the cards */
+  padding-top: calc(var(--band-h) + var(--spill) + 28px) !important;
 }
 
 /* =========================================================
