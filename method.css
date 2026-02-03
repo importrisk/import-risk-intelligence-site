@@ -84,11 +84,10 @@
   opacity: 0.86;
 }
 
-
 /* =========================================================
    2) METHOD FEATURES (band behind cards)
-   - Mobile-first: flow layout (no overlap issues)
-   - Wide: fixed-height STRIP (prevents grey slab)
+   - ONLY background paint changes
+   - NO spacing, height, or layout changes
    ========================================================= */
 .method-features{
   --card-h: 260px;
@@ -109,24 +108,42 @@
   /* Default = flow (responsive-safe) */
   height: auto;
 
-  background: transparent !important;
+  /* Paint base water gradient ONLY (no layout impact) */
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  ) !important;
 }
 
-/* Kill any global pseudo layers that might be attached */
+/* Water texture layer (matches global below-fold exactly) */
 .method-features::after{
-  content: none !important;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Default: no slab (we only paint the strip on wide screens below) */
+/* Feature band strip (unchanged geometry, now over water) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 0; /* becomes active on wide screens */
+  height: 0; /* becomes active on wide screens elsewhere */
+  background: rgba(83,103,128,.72);
+  border-top: 1px solid var(--band-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .method-feature-grid{
@@ -139,7 +156,6 @@
 
   transform: translateY(calc(-1 * var(--spill)));
 }
-
 
 /* =========================================================
    3) CARDS (no clamping, no hidden text)
