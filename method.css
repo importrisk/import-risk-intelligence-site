@@ -272,22 +272,25 @@
 
 /* =========================================================
    5) COVERAGE IN PRACTICE
-   - Delivery list centered (as a block) with aligned icon+text
-   - Smaller check-in-circle w/ thinner stroke
+   - Goal + Delivery in two columns
+   - Delivery list truly centered as a block
+   - Smaller check-in-circle with thinner stroke
    ========================================================= */
+
 .method-practice{
   position: relative;
   padding: 56px 0 64px;
   background: transparent;
 
-  /* one shared column width for delivery + price */
+  /* shared column width for delivery + price */
   --mp-col: 560px;
 }
 
+/* ---------- Header ---------- */
 .method-practice .mp-head{
   text-align: center;
   max-width: 900px;
-  margin: -32px auto 30px;
+  margin: -32px auto 36px;
 }
 
 .method-practice .mp-title{
@@ -304,11 +307,20 @@
   color: rgba(255,255,255,.78);
 }
 
-/* --- Goal --- */
+/* ---------- Core: Goal + Delivery ---------- */
+.method-practice .mp-core{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+
+  max-width: 980px;
+  margin: 0 auto 18px;
+}
+
+/* ---------- Goal ---------- */
 .method-practice .mp-goal{
   text-align: center;
-  max-width: 860px;
-  margin: 22px auto 10px;
 }
 
 .method-practice .mp-goal-label{
@@ -321,18 +333,14 @@
 }
 
 .method-practice .mp-goal-text{
-  margin: 0 auto 0;
+  margin: 0 auto;
   max-width: 46ch;
   font-size: 18px;
   line-height: 1.55;
   color: rgba(255,255,255,.88);
 }
 
-/* =========================================================
-   COVERAGE IN PRACTICE — DELIVERY (REPLACE THIS WHOLE BLOCK)
-   ========================================================= */
-
-/* Delivery label (more space above) */
+/* ---------- Delivery ---------- */
 .method-practice .mp-includes-label{
   margin: 32px auto 10px;
   text-align: center;
@@ -343,30 +351,29 @@
   color: rgba(255,255,255,.68);
 }
 
-/* Delivery list (TRUE centered: list shrinks to content) */
+/* Delivery list — TRUE centered as a visual block */
 .method-practice ul.mp-includes{
   list-style: none;
   padding: 0;
   margin: 0 auto;
 
-  /* this is the key: shrink-wrap the list so it visually centers */
+  /* shrink-wraps list so it actually centers */
   width: fit-content;
-  max-width: min(560px, 100%);
+  max-width: min(var(--mp-col), 100%);
 
   display: grid;
   gap: 14px;
 }
 
-/* Each row: fixed icon column + flexible text column */
+/* Each delivery row */
 .method-practice ul.mp-includes > li{
   display: grid;
   grid-template-columns: 22px 1fr;
   column-gap: 12px;
   align-items: center;
 
-  /* keeps rows the same width as the list */
   width: 100%;
-  max-width: min(560px, 100%);
+  max-width: min(var(--mp-col), 100%);
 
   text-align: left;
   font-size: 16px;
@@ -374,7 +381,7 @@
   color: rgba(255,255,255,.84);
 }
 
-/* Circle check (smaller + thinner stroke) */
+/* Check-in-circle (small, thin, restrained) */
 .method-practice ul.mp-includes > li::before{
   content: "✓";
   display: grid;
@@ -390,6 +397,37 @@
   font-size: 12px;
   font-weight: 450;
   line-height: 1;
+}
+
+/* ---------- Price ---------- */
+.method-practice .mp-goal-price{
+  margin: 22px auto 0;
+  width: var(--mp-col);
+  text-align: center;
+
+  font-size: 32px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgba(127,177,234,.95);
+  text-shadow: 0 12px 26px rgba(0,0,0,.28);
+}
+
+.method-practice .mp-price-note{
+  margin: 8px auto 0;
+  width: var(--mp-col);
+  text-align: center;
+
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.60);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px){
+  .method-practice .mp-core{
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 /* --- Price + note (locked to same center column) --- */
