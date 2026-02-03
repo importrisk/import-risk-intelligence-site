@@ -33,8 +33,7 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    url("../images/method-hero.jpg");
-
+    url("assets/images/method-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
