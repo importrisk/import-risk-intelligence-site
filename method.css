@@ -389,12 +389,12 @@
   width: 20px;
   height: 20px;
 
-  border: 1px solid rgba(180, 215, 255, .65);
+  border: 0.75px solid rgba(180, 215, 255, .6); /* thinner stroke */
   border-radius: 50%;
 
   color: rgba(180, 215, 255, .9);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500; /* slightly lighter check */
   line-height: 1;
 }
 
