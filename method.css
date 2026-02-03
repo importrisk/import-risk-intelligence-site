@@ -30,7 +30,7 @@
       var(--hero-bottom) 100%
     ),
     /* IMPORTANT: method.css is in assets/css/, image is in assets/images/ */
-    url("../images/method-hero.jpg");
+    url("/assets/images/method-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
