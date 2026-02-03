@@ -1,30 +1,10 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
-   - Hero image at top (restored)
-   - ONE fixed-height separator band behind cards
-   - Below-fold water texture begins immediately after band
-   - Cards spill over hero + below fold symmetrically
-   - Coverage section spacing restored
+   - Hero image at top (RESTORED)
+   - ONE separator band behind cards (does NOT extend below)
+   - Below-fold water texture (RESTORED)
+   - Cards spill over hero + below fold (controlled via --spill)
    ========================================================= */
-
-
-/* =========================================================
-   0) METHOD-SPECIFIC VARS
-   ========================================================= */
-:root{
-  /* Change THIS in one place if your hero path differs */
-  --method-hero-url: url("/assets/images/method-hero.jpg");
-
-  /* Feature cards */
-  --method-card-h: 260px;
-  --method-gap: 28px;
-
-  /* Spill amount (up into hero, down into water) */
-  --method-spill: 30px;
-
-  /* Band height = visible seam zone behind middle of cards */
-  --method-band-h: calc(var(--method-card-h) - (var(--method-spill) * 2));
-}
 
 
 /* =========================================================
@@ -42,6 +22,8 @@
 .method-hero-bg{
   position: absolute;
   inset: -10vh 0 -10vh 0;
+
+  /* IMPORTANT: ROOT-RELATIVE URL so it never "disappears" */
   background-image:
     linear-gradient(
       180deg,
@@ -49,7 +31,7 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    var(--method-hero-url);
+    url("/assets/images/method-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -74,13 +56,12 @@
 }
 
 .method-hero-inner{
-  padding-top: 100px; /* prevents overlap with topbar */
+  padding-top: 100px; /* keeps title clear of topbar */
   text-align: center;
   margin: 0 auto;
   max-width: 720px;
 }
 
-/* Uses shared .hero-title/.hero-subtitle classes from global */
 .method-hero .hero-title{
   margin: 0;
   font-size: clamp(34px, 4.2vw, 56px);
@@ -100,22 +81,26 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
+/* The smaller third line */
 .method-hero .hero-subtitle-muted{
-  font-size: 0.98em;
-  opacity: 0.86;
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.82;
 }
 
 
 /* =========================================================
-   2) METHOD FEATURES: fixed-height band + symmetric spill
-   - IMPORTANT: band TOP stays exactly at the hero seam
-   - Cards are moved up via transform; band itself does NOT move
+   2) METHOD FEATURES: band ONLY (fixed height) + symmetric spill
+   - This block does NOT touch the hero seam position.
+   - It only controls how far cards overlap into hero/water.
    ========================================================= */
 .method-features{
-  --card-h: var(--method-card-h);
-  --spill: var(--method-spill);
-  --gap: var(--method-gap);
-  --band-h: var(--method-band-h);
+  --card-h: 260px;
+  --spill: 24px;         /* start here; bump to 28 if you want more overlap */
+  --gap: 28px;
+
+  /* band zone behind the middle slice of the cards */
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
   z-index: 4;
@@ -125,18 +110,19 @@
   margin: 0;
   padding: 0;
 
-  /* the section itself is ONLY the band height */
+  /* Section height = band only (prevents it from extending below cards) */
   height: var(--band-h);
 
   background: transparent !important;
 }
 
-/* Nuke any global fake water layer on this section */
+/* IMPORTANT: do NOT kill global water on below-fold anymore.
+   Only remove any "fake layer" that was applied to method-features itself. */
 .method-features::after{
   content: none !important;
 }
 
-/* Paint ONLY the separator band (no extra slab below) */
+/* Paint ONLY the separator band */
 .method-features::before{
   content: "";
   position: absolute;
@@ -158,13 +144,15 @@
   position: relative;
   z-index: 2;
 
-  /* Move the CARDS up; band stays fixed at seam */
+  /* Symmetric spill:
+     - up into hero = spill
+     - down into water = spill */
   transform: translateY(calc(-1 * var(--spill)));
 }
 
 
 /* =========================================================
-   3) FEATURE CARDS (restored spacing + icon sizing)
+   3) CARDS (restore your header row + sane icon sizing)
    ========================================================= */
 .method-feature{
   position: relative;
@@ -262,27 +250,30 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD: keep seam fixed, but make room for bottom spill
-   - We DO NOT move the water background
-   - We add a spacer BEFORE content so the heading sits below cards
+   4) BELOW-FOLD: restore water texture + add clearance for spill
+   - DO NOT change seam position
+   - Just add breathing room so Coverage doesn't collide
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
   margin-top: 0 !important;
-  padding-top: 0 !important;
-}
 
-/* Spacer that equals (spill + breathing room) */
-.below-fold.method-content::before{
-  content: "";
-  display: block;
-  height: calc(var(--method-spill) + 44px);
+  /* room above Coverage to clear the bottom spill */
+  padding-top: calc(var(--spill) + 44px) !important;
+
+  /* RESTORE WATER TEXTURE (root-relative; change filename if needed) */
+  background-image:
+    linear-gradient(180deg, rgba(10,18,30,.55), rgba(10,18,30,.70)),
+    url("/assets/images/water.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE (restored layout)
+   5) COVERAGE IN PRACTICE (restore spacing/typography)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -304,7 +295,8 @@
 }
 
 .method-practice .mp-lead{
-  margin: 0;
+  margin: 0 auto;
+  max-width: 900px;
   font-size: 18px;
   line-height: 1.6;
   color: rgba(255,255,255,.78);
@@ -377,34 +369,25 @@
    6) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
-  :root{
-    --method-gap: 18px;
-    --method-spill: 18px; /* smaller on mobile */
-    --method-band-h: calc(var(--method-card-h) - (var(--method-spill) * 2));
+  .method-features{
+    --spill: 16px;
+    --gap: 18px;
   }
 
   .method-feature-grid{
     grid-template-columns: 1fr;
+    transform: translateY(calc(-1 * var(--spill)));
   }
 
-  .method-feature::after{
-    display: none;
-  }
+  .method-feature::after{ display: none; }
 
-  .method-practice .mp-title{
-    font-size: 36px;
-  }
+  .method-practice .mp-title{ font-size: 36px; }
 
   .method-practice .mp-cols{
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .method-practice .mp-col{
-    padding: 0;
-  }
-
-  .method-practice .mp-col:not(:last-child)::after{
-    display: none;
-  }
+  .method-practice .mp-col{ padding: 0; }
+  .method-practice .mp-col:not(:last-child)::after{ display: none; }
 }
