@@ -328,7 +328,11 @@
   color: rgba(255,255,255,.88);
 }
 
-/* --- Delivery label (more space above) --- */
+/* =========================================================
+   COVERAGE IN PRACTICE — DELIVERY (REPLACE THIS WHOLE BLOCK)
+   ========================================================= */
+
+/* Delivery label (more space above) */
 .method-practice .mp-includes-label{
   margin: 32px auto 10px;
   text-align: center;
@@ -339,52 +343,52 @@
   color: rgba(255,255,255,.68);
 }
 
-/* --- Delivery list (CENTERED as a block, clean rows) --- */
+/* Delivery list (TRUE centered: list shrinks to content) */
 .method-practice ul.mp-includes{
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
 
-  width: min(var(--mp-col), 520px);
+  /* this is the key: shrink-wrap the list so it visually centers */
+  width: fit-content;
+  max-width: min(560px, 100%);
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 14px;
-
-  /* centers the list under DELIVERY */
-  align-items: center;
 }
 
+/* Each row: fixed icon column + flexible text column */
 .method-practice ul.mp-includes > li{
-  /* fixed icon column + text column */
   display: grid;
   grid-template-columns: 22px 1fr;
   column-gap: 12px;
   align-items: center;
 
+  /* keeps rows the same width as the list */
   width: 100%;
-  text-align: left;
+  max-width: min(560px, 100%);
 
+  text-align: left;
   font-size: 16px;
   line-height: 1.55;
   color: rgba(255,255,255,.84);
 }
 
+/* Circle check (smaller + thinner stroke) */
 .method-practice ul.mp-includes > li::before{
   content: "✓";
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
   width: 20px;
   height: 20px;
 
   border-radius: 50%;
-  border: 0.75px solid rgba(180,215,255,.55); /* thinner stroke */
-  color: rgba(180,215,255,.9);
+  border: 0.75px solid rgba(180,215,255,.50);
 
-  font-size: 12px;   /* smaller check */
-  font-weight: 450;  /* lighter */
+  color: rgba(180,215,255,.90);
+  font-size: 12px;
+  font-weight: 450;
   line-height: 1;
 }
 
