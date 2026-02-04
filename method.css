@@ -537,26 +537,35 @@ margin: 10px auto 18px; /* top | left-right | bottom */
 .method-practice .mp-faq-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 26px;
+  gap: 34px 60px;
 }
 
 .method-practice .mp-faq-item{
-  padding: 10px 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.10);
 }
 
 .method-practice .mp-q{
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  color: rgba(255,255,255,.90);
-  letter-spacing: -0.005em;
+  color: rgba(255,255,255,.92);
+  letter-spacing: -0.01em;
 }
 
 .method-practice .mp-a{
   margin: 0;
-  font-size: 15.5px;
-  line-height: 1.65;
-  color: rgba(255,255,255,.76);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+}
+
+/* Stack on mobile */
+@media (max-width: 820px){
+  .method-practice .mp-faq-grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 /* --- Footer + CTA --- */
@@ -574,7 +583,6 @@ margin: 10px auto 18px; /* top | left-right | bottom */
   display: flex;
   justify-content: center;
 }
-
 
 /* =========================================================
    6) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
