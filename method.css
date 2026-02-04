@@ -563,22 +563,21 @@ margin: 10px auto 18px; /* top | left-right | bottom */
 /* question: slightly larger + tighter + clearer */
 .method-practice .mp-q{
   margin: 0 0 8px;
-  padding-left: 14px;   /* makes room for the accent bar */
-  font-size: 18px;
-  font-weight: 650;
-  line-height: 1.22;
-  color: rgba(255,255,255,.94);
-  letter-spacing: -0.012em;
+  padding-left: 14px;
+  font-size: 16.75px;   /* was 18px */
+  font-weight: 600;
+  line-height: 1.28;
+  color: rgba(255,255,255,.93);
+  letter-spacing: -0.01em;
 }
 
-/* answer: more readable, less "thin" */
 .method-practice .mp-a{
   margin: 0;
   padding-left: 14px;
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(255,255,255,.78);
-  max-width: 52ch;      /* keeps answers from feeling wide/flat */
+  color: rgba(255,255,255,.80); /* slightly stronger */
+  max-width: 52ch;
 }
 
 /* hover: tiny lift so it feels interactive but not "clicky" */
