@@ -1,160 +1,60 @@
 ---
 layout: default
 title: Contact
-description: Request an Import Risk Intelligence briefing or ask a question.
+description: Contact Import Risk Intelligence.
 ---
 
 <main>
 
-  <!-- =========================================================
-       CONTACT HERO
-       ========================================================= -->
-  <section class="contact-hero" aria-label="Contact hero">
-    <div class="contact-hero-bg" aria-hidden="true"></div>
-
-    <div class="container">
-      <div class="contact-hero-inner">
-        <h1 class="hero-title">Contact</h1>
-        <p class="hero-subtitle">Request a briefing or ask a question.</p>
-        <p class="hero-subtle">Short, async, and focused on decision support.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =========================================================
-       CONTACT BODY
-       ========================================================= -->
-  <section class="contact-body" aria-label="Contact content" id="request">
+  <section class="contact-simple" aria-label="Contact">
     <div class="container">
 
-      <div class="contact-grid">
+      <header class="contact-simple-head">
+        <h1 class="contact-simple-title">Contact</h1>
+        <p class="contact-simple-subtitle">Send a message and I’ll reply by email.</p>
+      </header>
 
-        <!-- LEFT: FORM -->
-        <section class="contact-panel" aria-label="Request form">
-          <h2 class="contact-h">Request a briefing</h2>
-          <p class="contact-p">
-            Tell me what you import, where it enters the U.S., and what would materially disrupt timing or cost.
-            I will reply with next steps and what I can cover.
-          </p>
+      <!-- Swap action/method for your form provider (Netlify/Formspree/etc.) -->
+      <form class="contact-simple-form" action="#" method="post">
 
-          <!-- If you use Formspree/Netlify forms, adapt action/method accordingly -->
-          <form class="contact-form" action="#" method="post">
+        <div class="cs-row">
+          <label class="cs-label" for="name">Name</label>
+          <input class="cs-input" id="name" name="name" type="text" autocomplete="name" required />
+        </div>
 
-            <div class="cf-row">
-              <label class="cf-label" for="name">Name</label>
-              <input class="cf-input" id="name" name="name" type="text" autocomplete="name" />
-            </div>
+        <div class="cs-row">
+          <label class="cs-label" for="email">Email</label>
+          <input class="cs-input" id="email" name="email" type="email" autocomplete="email" required />
+        </div>
 
-            <div class="cf-row">
-              <label class="cf-label" for="email">Email</label>
-              <input class="cf-input" id="email" name="email" type="email" autocomplete="email" required />
-            </div>
+        <div class="cs-row">
+          <label class="cs-label" for="company">Company</label>
+          <input class="cs-input" id="company" name="company" type="text" autocomplete="organization" />
+        </div>
 
-            <div class="cf-row cf-split">
-              <div>
-                <label class="cf-label" for="company">Company</label>
-                <input class="cf-input" id="company" name="company" type="text" autocomplete="organization" />
-              </div>
-              <div>
-                <label class="cf-label" for="role">Role</label>
-                <input class="cf-input" id="role" name="role" type="text" autocomplete="organization-title" />
-              </div>
-            </div>
+       <div class="cs-row">
+  <label class="cs-label" for="revenue">Annual Revenue</label>
+  <select class="cs-input" id="revenue" name="annual_revenue">
+    <option value="">Select…</option>
+    <option value="under_10m">Under $10M</option>
+    <option value="10m_50m">$10M–$50M</option>
+    <option value="50m_250m">$50M–$250M</option>
+    <option value="250m_500m">$250M–$500M</option>
+    <option value="over_500m">Over $500M</option>
+  </select>
+</div>
 
-            <div class="cf-row cf-split">
-              <div>
-                <label class="cf-label" for="products">Products (short)</label>
-                <input class="cf-input" id="products" name="products" type="text" placeholder="e.g., furniture, apparel, consumer goods" />
-              </div>
-              <div>
-                <label class="cf-label" for="origin">Primary origin(s)</label>
-                <input class="cf-input" id="origin" name="origin" type="text" placeholder="e.g., China, Vietnam, Mexico" />
-              </div>
-            </div>
+        <div class="cs-row">
+          <label class="cs-label" for="message">Message</label>
+          <textarea class="cs-textarea" id="message" name="message" rows="7" required></textarea>
+        </div>
 
-            <div class="cf-row">
-              <label class="cf-label" for="ports">Primary U.S. ports / gateways</label>
-              <input class="cf-input" id="ports" name="ports" type="text" placeholder="e.g., LA/LB, NY/NJ, Savannah, rail ramps" />
-            </div>
+        <div class="cs-actions">
+          <button class="cs-button" type="submit">Send</button>
+        </div>
 
-            <div class="cf-row">
-              <label class="cf-label" for="whatmatters">What would materially disrupt you?</label>
-              <textarea class="cf-textarea" id="whatmatters" name="whatmatters" rows="6"
-                placeholder="Examples: port congestion, labor actions, customs holds, tariff changes, geopolitical disruptions, carrier issues, chokepoints."></textarea>
-              <p class="cf-help">
-                Optional: add suppliers, HS codes, carriers, or lanes you care about.
-              </p>
-            </div>
+      </form>
 
-            <div class="cf-actions">
-              <button class="btn-primary" type="submit">Send request</button>
-              <p class="cf-note">
-                Prefer email? <a class="link" href="mailto:info@importriskreport.com">info@importriskreport.com</a>
-              </p>
-            </div>
-
-            <p class="contact-legal">
-              Informational purposes only. Not legal advice. No warranties, express or implied.
-            </p>
-
-          </form>
-        </section>
-
-
-        <!-- RIGHT: WHAT YOU GET + HOW IT WORKS -->
-        <aside class="contact-side" aria-label="Contact details">
-
-          <div class="contact-card">
-            <h3 class="contact-card-h">What you get</h3>
-            <ul class="contact-list">
-              <li><strong>Weekly briefing</strong> focused on developments that can move cost, timing, or execution.</li>
-              <li><strong>Event notes</strong> when something changes fast and judgment matters.</li>
-              <li><strong>Decision framing</strong> impact, confidence, and what to watch next.</li>
-            </ul>
-          </div>
-
-          <div class="contact-card">
-            <h3 class="contact-card-h">How it works</h3>
-            <ol class="contact-steps">
-              <li><strong>Scope</strong> the lanes and failure modes that matter.</li>
-              <li><strong>Monitor</strong> external signals across ports, policy, labor, carriers, and chokepoints.</li>
-              <li><strong>Filter</strong> out noise and translate into operational impact.</li>
-            </ol>
-          </div>
-
-          <div class="contact-card">
-            <h3 class="contact-card-h">Contact</h3>
-            <p class="contact-mini">
-              Email: <a class="link" href="mailto:info@importriskreport.com">info@importriskreport.com</a><br />
-              Response: typically within 1 business day
-            </p>
-          </div>
-
-          <div class="contact-card">
-            <h3 class="contact-card-h">Common questions</h3>
-            <div class="contact-faq">
-              <p class="contact-q">Why should I believe you?</p>
-              <p class="contact-a">
-                I cite sources, separate facts from judgment, and explain the “so what” in terms of cost, timing, and execution.
-                If something is uncertain, I say so plainly.
-              </p>
-
-              <p class="contact-q">Do you replace dashboards or alerts?</p>
-              <p class="contact-a">
-                No. Dashboards surface activity. I apply judgment to what matters for your lanes and translate it into decision support.
-              </p>
-
-              <p class="contact-q">Can you cover internal supply chain issues?</p>
-              <p class="contact-a">
-                No. I focus on external developments that can disrupt U.S. import operations.
-              </p>
-            </div>
-          </div>
-
-        </aside>
-
-      </div>
     </div>
   </section>
 
