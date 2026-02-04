@@ -477,10 +477,16 @@
 }
 
 .method-practice .mp-divider{
-  width: min(860px, 100%);
   height: 1px;
-  margin: 26px auto 22px;
-  background: rgba(255,255,255,.14);
+  margin: 56px auto 48px;
+  max-width: 900px;
+
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.28),
+    rgba(255,255,255,0)
+  );
 }
 
 /* --- FAQ --- */
