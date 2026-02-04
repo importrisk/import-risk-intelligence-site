@@ -488,6 +488,32 @@
     rgba(255,255,255,0)
   );
 }
+.mp-pricing{
+  text-align: center;
+  margin: 64px auto 80px;
+  max-width: 720px;
+}
+
+.mp-goal-price{
+  margin-bottom: 16px;
+}
+
+.mp-cta-lead{
+  margin: 0 auto 26px;
+  color: rgba(255,255,255,.82);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.mp-actions{
+  margin-bottom: 18px;
+}
+
+.mp-price-note{
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+}
 
 /* --- FAQ --- */
 .method-practice .mp-faq{
