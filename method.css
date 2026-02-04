@@ -478,7 +478,7 @@
 
 .method-practice .mp-divider{
   height: 1px;
-  margin: 56px auto 48px;
+  margin: 44px auto 26px; /* tighter above Common */
   max-width: 900px;
 
   background: linear-gradient(
@@ -488,11 +488,13 @@
     rgba(255,255,255,0)
   );
 }
+
 .mp-pricing{
   text-align: center;
-  margin: 64px auto 80px;
+  margin: 56px auto 56px; /* was 64 auto 80 (too much bottom air) */
   max-width: 720px;
 }
+
 
 .mp-goal-price{
   margin-bottom: 16px;
