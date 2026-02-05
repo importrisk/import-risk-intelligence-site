@@ -6,13 +6,26 @@ description: Contact Import Risk Intelligence.
 
 <main>
 
-  <section class="contact-simple" aria-label="Contact">
-    <div class="container">
+  <!-- =========================================================
+       CONTACT HERO (uses /assets/img/contact-hero.jpg)
+       ========================================================= -->
+  <section class="contact-hero-simple" aria-label="Contact hero">
+    <div class="contact-hero-simple-bg" aria-hidden="true"></div>
 
+    <div class="container">
       <header class="contact-simple-head">
         <h1 class="contact-simple-title">Contact</h1>
         <p class="contact-simple-subtitle">Send a message and I’ll reply by email.</p>
       </header>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       CONTACT FORM
+       ========================================================= -->
+  <section class="contact-simple" aria-label="Contact form">
+    <div class="container">
 
       <!-- Swap action/method for your form provider (Netlify/Formspree/etc.) -->
       <form class="contact-simple-form" action="#" method="post">
@@ -31,29 +44,30 @@ description: Contact Import Risk Intelligence.
           <label class="cs-label" for="company">Company</label>
           <input class="cs-input" id="company" name="company" type="text" autocomplete="organization" />
         </div>
-<div class="cs-row">
-  <label class="cs-label" for="website">Website (optional)</label>
-  <input
-    class="cs-input"
-    id="website"
-    name="website"
-    type="url"
-    autocomplete="url"
-    placeholder="https://"
-  />
-</div>
 
-       <div class="cs-row">
-  <label class="cs-label" for="revenue">Annual Revenue</label>
-  <select class="cs-input" id="revenue" name="annual_revenue">
-    <option value="">Select…</option>
-    <option value="under_10m">Under $10M</option>
-    <option value="10m_50m">$10M–$50M</option>
-    <option value="50m_250m">$50M–$250M</option>
-    <option value="250m_500m">$250M–$500M</option>
-    <option value="over_500m">Over $500M</option>
-  </select>
-</div>
+        <div class="cs-row">
+          <label class="cs-label" for="website">Website (optional)</label>
+          <input
+            class="cs-input"
+            id="website"
+            name="website"
+            type="url"
+            autocomplete="url"
+            placeholder="https://"
+          />
+        </div>
+
+        <div class="cs-row">
+          <label class="cs-label" for="revenue">Annual Revenue</label>
+          <select class="cs-input" id="revenue" name="annual_revenue">
+            <option value="">Select…</option>
+            <option value="under_10m">Under $10M</option>
+            <option value="10m_50m">$10M–$50M</option>
+            <option value="50m_250m">$50M–$250M</option>
+            <option value="250m_500m">$250M–$500M</option>
+            <option value="over_500m">Over $500M</option>
+          </select>
+        </div>
 
         <div class="cs-row">
           <label class="cs-label" for="message">Message</label>
