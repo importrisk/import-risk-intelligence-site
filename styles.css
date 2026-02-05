@@ -705,19 +705,32 @@ img{ max-width: 100%; height: auto; display: block; }
    SIMPLE CONTACT PAGE (square corners, minimal)
    ========================================================= */
 
+.contact-hero-simple{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 56px 0 22px;
+}
+
 .contact-hero-simple-bg{
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
   background:
     linear-gradient(180deg,
-      rgba(0,0,0,.50) 0%,
-      rgba(0,0,0,.26) 55%,
-      rgba(0,0,0,.14) 100%),
-    url("/assets/img/contact-hero.jpg");
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.30) 55%,
+      rgba(0,0,0,.18) 100%),
+    url('/assets/images/contact-hero.jpg');
+
   background-size: cover;
   background-position: center 35%;
 }
 
+/* pull the form up so the page doesn't feel empty */
 .contact-simple{
-  padding: 84px 0 72px;
+  padding: 18px 0 64px;
 }
 
 .contact-simple-head{
