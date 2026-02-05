@@ -741,10 +741,9 @@ img{ max-width: 100%; height: auto; display: block; }
   background-size: cover !important;
   background-repeat: no-repeat !important;
 
-  /* More water = smaller % */
-  background-position: center 38% !important;
-  background-position-x: center !important;
-  background-position-y: 38% !important;
+  /* MORE WATER = move image UP (smaller %) */
+  background-position: center 32% !important;
+  background-position-y: 32% !important;
 
   filter: saturate(.94) brightness(1.04);
 }
