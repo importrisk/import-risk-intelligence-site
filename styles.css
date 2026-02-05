@@ -738,7 +738,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background-position: center 30%;
 }
 
-/* Overlay layer (gradients only) */
+/* Hero background layer — FRAMING FIX (more water = bigger %) */
 .contact-hero-simple > .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
@@ -753,7 +753,16 @@ img{ max-width: 100%; height: auto; display: block; }
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
       rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%);
+      rgba(58,74,95,.22) 100%),
+    url("assets/images/contact-hero.jpg") !important;
+
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  /* ✅ MORE WATER = BIGGER % */
+  background-position: center 78% !important;
+  background-position-x: center !important;
+  background-position-y: 78% !important;
 
   filter: saturate(.94) brightness(1.04);
 }
