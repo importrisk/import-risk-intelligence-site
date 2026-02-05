@@ -705,6 +705,17 @@ img{ max-width: 100%; height: auto; display: block; }
    SIMPLE CONTACT PAGE (square corners, minimal)
    ========================================================= */
 
+.contact-hero-simple-bg{
+  background:
+    linear-gradient(180deg,
+      rgba(0,0,0,.50) 0%,
+      rgba(0,0,0,.26) 55%,
+      rgba(0,0,0,.14) 100%),
+    url('/assets/img/contact-hero.jpg');
+  background-size: cover;
+  background-position: center 35%;
+}
+
 .contact-simple{
   padding: 84px 0 72px;
 }
