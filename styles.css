@@ -701,18 +701,9 @@ img{ max-width: 100%; height: auto; display: block; }
   .site-footer .footer-nav a{ padding: 0 10px 0 0; }
   .site-footer .footer-nav a:not(:last-child)::after{ display: none; }
 }
-
 /* =========================================================
    CONTACT PAGE — FINAL (hero + spill + seam + water)
-   - Hero image stays intact even if a global "background: var(--bg)" reset exists
-   - Hero is taller + framed to show more water
-   - Form panel spills into hero
-   - Seam cover band hides the join
-   Works with:
-   - .contact-hero-simple (hero)
-   - .contact-hero-simple-bg (hero bg layer)
-   - .contact-simple (water section)
-   - .contact-simple-form (panel)
+   FIX: Put hero image on the SECTION (avoids global div background resets)
    ========================================================= */
 
 
@@ -728,17 +719,31 @@ img{ max-width: 100%; height: auto; display: block; }
   height: 72vh;
   min-height: 560px;
   max-height: 860px;
+
+  /* HERO IMAGE LIVES HERE (not on the div) */
+  background-image: url("assets/images/contact-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* More water = smaller % */
+  background-position: center 38%;
+
+  /* matches your prior treatment */
+  filter: saturate(.94) brightness(1.04);
 }
 
-/* Hero background layer
-   NOTE: Declared with background-image so global "background:" shorthands
-   are less likely to stomp it. We'll also add a tiny safety override below. */
-.contact-hero-simple-bg{
+/* Disable the bg div so it cannot interfere */
+.contact-hero-simple-bg{ display: none; }
+
+/* Gradient overlays for readability + blend */
+.contact-hero-simple::before{
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 
-  background-image:
+  background:
     /* readability */
     linear-gradient(180deg,
       rgba(0,0,0,.20) 0%,
@@ -749,37 +754,10 @@ img{ max-width: 100%; height: auto; display: block; }
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
       rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%),
-
-    url("assets/images/contact-hero.jpg");
-
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* More water = smaller % (moves image UP within the hero) */
-  background-position: center 38%;
-
-  transform: none;
-  filter: saturate(.94) brightness(1.04);
-  pointer-events: none;
+      rgba(58,74,95,.22) 100%);
 }
 
-/* Safety: if any later/global rule uses background: var(--bg) and wipes the image,
-   this reasserts the image stack at the end of the cascade for this element only. */
-.contact-hero-simple .contact-hero-simple-bg{
-  background-image:
-    linear-gradient(180deg,
-      rgba(0,0,0,.20) 0%,
-      rgba(0,0,0,.12) 60%,
-      rgba(0,0,0,.10) 100%),
-    linear-gradient(180deg,
-      rgba(58,74,95,0) 0%,
-      rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%),
-    url("assets/images/contact-hero.jpg");
-}
-
-/* Hairline at bottom of hero (ok to keep; seam is covered below) */
+/* Seam hairline at bottom of hero */
 .contact-hero-simple::after{
   content: "";
   position: absolute;
@@ -788,7 +766,7 @@ img{ max-width: 100%; height: auto; display: block; }
   bottom: 0;
   height: 1px;
   background: rgba(255,255,255,.14);
-  z-index: 50;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -831,10 +809,7 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 10;
 
-  /* pull up into hero */
   margin-top: -80px;
-
-  /* reclaim space + allow panel to float */
   padding: 160px 0 76px;
 
   background: linear-gradient(
@@ -845,7 +820,7 @@ img{ max-width: 100%; height: auto; display: block; }
   );
 }
 
-/* Seam cover band */
+/* Seam cover band (hides join) */
 .contact-simple::before{
   content: "";
   position: absolute;
@@ -885,8 +860,6 @@ img{ max-width: 100%; height: auto; display: block; }
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
-
-  /* panel spill into hero */
   margin-top: -120px;
 
   padding: 24px 24px 20px;
@@ -959,10 +932,8 @@ img{ max-width: 100%; height: auto; display: block; }
     height: 520px;
     min-height: 520px;
     max-height: none;
-  }
 
-  /* Keep “more water” intent on smaller screens */
-  .contact-hero-simple-bg{
+    /* keep “more water” intent */
     background-position: center 42%;
   }
 
@@ -993,35 +964,8 @@ img{ max-width: 100%; height: auto; display: block; }
   .contact-hero-simple{
     height: 74vh;
     max-height: 920px;
-  }
 
-  /* Slightly more water on wide monitors */
-  .contact-hero-simple-bg{
-    background-position: center 38%;
+    /* a touch more water on wide monitors */
+    background-position: center 36%;
   }
 }
-
-/* CONTACT HERO — FINAL OVERRIDE (wins against any reset / shorthand / initial) */
-.contact-hero-simple > .contact-hero-simple-bg{
-  background-image:
-    linear-gradient(180deg,
-      rgba(0,0,0,.20) 0%,
-      rgba(0,0,0,.12) 60%,
-      rgba(0,0,0,.10) 100%),
-    linear-gradient(180deg,
-      rgba(58,74,95,0) 0%,
-      rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%),
-    url("assets/images/contact-hero.jpg") !important;
-
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-
-  /* THE PART YOU CARE ABOUT */
-  background-position: center 38% !important;
-
-  /* if something is resetting X/Y separately, this forces both */
-  background-position-x: center !important;
-  background-position-y: 38% !important;
-}
-
