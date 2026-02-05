@@ -233,10 +233,8 @@
   max-width: 36ch;
 }
 
-/* Anchor the subtle line to the bottom of the card */
 .method-feature .mf-subtle{
-  margin-top: auto;          /* pushes it to the bottom */
-  padding-top: 8px;          /* keeps a little breathing room above it */
+margin-top: 8px;
   font-size: 0.9rem;
   color: rgba(127, 177, 234, 0.75);
   line-height: 1.5;
