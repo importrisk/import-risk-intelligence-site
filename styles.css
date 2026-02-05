@@ -739,7 +739,7 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 10;
 
   /* pull up into hero */
-  margin-top: -80px;
+  margin-top: 0 !important;
   padding: 160px 0 76px;
 
   background: linear-gradient(
