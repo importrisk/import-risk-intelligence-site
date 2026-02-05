@@ -779,9 +779,10 @@ img{ max-width: 100%; height: auto; display: block; }
 
   border-radius: 0;
 
-  /* slightly more solid so it reads against the photo */
-  background: rgba(58,74,95,.92);
+  /* darker, closer to method cards */
+  background: rgba(18,28,40,.72);
   border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 18px 46px rgba(0,0,0,.32);
 }
 
 .cs-row{
