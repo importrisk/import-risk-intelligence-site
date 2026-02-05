@@ -703,51 +703,45 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   CONTACT PAGE — FINAL DROP-IN (HEROIC + OVERLAP + WATER)
-   Use with your HTML:
-   - <section class="contact-hero-simple"> ... </section>
-   - <section class="contact-simple below-fold"> ... </section>
-
-   Fixes:
-   - Hero will NOT "shrink" (hard locked)
-   - Form overlaps hero (controlled)
-   - Seam line always visible
-   - Panel is readable (not too translucent)
-   - No over-zoom on hero image
+   CONTACT PAGE — HERO + OVERLAP + SEAM (DROP-IN)
+   Requires:
+   - Hero section: .contact-hero-simple with .contact-hero-simple-bg
+   - Form section: .contact-simple below-fold
    ========================================================= */
 
 
 /* =========================
-   HERO
+   HERO (tall, stable)
    ========================= */
 .contact-hero-simple{
   position: relative;
   isolation: isolate;
+  overflow: visible;          /* allow overlap illusion */
+  padding-top: var(--topbar-h);
 
-  /* CRITICAL: allow overlap to show */
-  overflow: visible;
-
-  /* HARD LOCK (prevents any collapse/override) */
-  min-height: 640px !important;
-  padding: 160px 0 140px !important;
+  /* HERO HEIGHT: this is the main fix */
+  min-height: 78vh;           /* scales on big screens */
+  height: 78vh;               /* ensures it does not collapse */
+  max-height: 760px;          /* keep it tasteful */
 }
 
+/* background image */
 .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
   z-index: 0;
 
   background:
-    /* soften for headline readability */
+    /* readable headline */
     linear-gradient(180deg,
-      rgba(0,0,0,.32) 0%,
-      rgba(0,0,0,.20) 55%,
-      rgba(0,0,0,.14) 100%),
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,.18) 55%,
+      rgba(0,0,0,.12) 100%),
 
-    /* blend into below fold */
+    /* blend into below-fold */
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
-      rgba(58,74,95,.22) 78%,
+      rgba(58,74,95,.20) 78%,
       rgba(58,74,95,.42) 100%),
 
     url("assets/images/contact-hero.jpg");
@@ -755,24 +749,28 @@ img{ max-width: 100%; height: auto; display: block; }
   background-size: cover;
   background-repeat: no-repeat;
 
-  /* less “cropped in” */
-  background-position: center 58%;
-
-  /* no artificial zoom */
+  /* reduce “zoomed” feel on wide screens */
+  background-position: center 60%;
   transform: none;
 
-  /* subtle lift */
   filter: saturate(.92) brightness(1.02);
   pointer-events: none;
 }
 
-/* hero content above background */
+/* hero content above bg */
 .contact-hero-simple .container{
   position: relative;
   z-index: 2;
+
+  /* center the heading in the hero */
+  min-height: inherit;
+  height: inherit;
+  display: grid;
+  place-items: center;
+  padding: 0;
 }
 
-/* seam line: must sit above overlap */
+/* seam line ALWAYS visible */
 .contact-hero-simple::after{
   content: "";
   position: absolute;
@@ -780,9 +778,8 @@ img{ max-width: 100%; height: auto; display: block; }
   right: 0;
   bottom: 0;
   height: 1px;
-
   background: rgba(255,255,255,.14);
-  z-index: 40;
+  z-index: 50; /* above the overlapping form section */
 }
 
 
@@ -812,20 +809,20 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================
-   FORM SECTION
-   (expects .below-fold on this section in HTML)
+   FORM SECTION (overlaps hero)
+   Use: <section class="contact-simple below-fold">
    ========================= */
 .contact-simple{
   position: relative;
   z-index: 20;
 
-  /* controlled overlap */
-  margin-top: -120px !important;
+  /* OVERLAP CONTROL: increase if you want more spill */
+  margin-top: -140px;
 
   padding: 0 0 72px;
 }
 
-/* panel */
+/* panel: more solid (not see-through) */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
@@ -833,8 +830,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
   border-radius: 0;
 
-  /* readable over hero + water */
-  background: rgba(20, 32, 48, .74);
+  background: rgba(20, 32, 48, .78);
   border: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 18px 44px rgba(0,0,0,.28);
 
@@ -898,12 +894,13 @@ img{ max-width: 100%; height: auto; display: block; }
    ========================= */
 @media (max-width: 920px){
   .contact-hero-simple{
-    min-height: 460px !important;
-    padding: 125px 0 95px !important;
+    min-height: 520px;
+    height: 520px;
+    max-height: none;
   }
 
   .contact-simple{
-    margin-top: -74px !important;
+    margin-top: -84px;
   }
 
   .contact-simple-form{
@@ -916,9 +913,10 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* very wide screens: reduce perceived crop */
-@media (min-width: 1200px){
+/* Very wide: show more scene (less crop) */
+@media (min-width: 1300px){
   .contact-hero-simple-bg{
-    background-position: center 62%;
+    background-position: center 64%;
   }
 }
+
