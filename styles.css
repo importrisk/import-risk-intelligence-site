@@ -880,4 +880,27 @@ img{ max-width: 100%; height: auto; display: block; }
   .contact-simple-title{
     font-size: 36px;
   }
+   /* FORCE hero to stay heroic */
+.contact-hero-simple{
+  min-height: 600px !important;   /* was 520 */
+  padding: 150px 0 110px !important;
+}
+
+/* seam line MUST be visible (above overlap) */
+.contact-hero-simple::after{
+  background: rgba(255,255,255,.16) !important;
+  z-index: 50 !important;
+}
+
+/* FORCE the form to overlap the hero */
+.contact-simple{
+  margin-top: -140px !important;  /* stronger overlap */
+  z-index: 40 !important;         /* below seam line, above hero bg */
+}
+
+/* nudge the panel down slightly so the seam line is not hidden by the panel edge */
+.contact-simple-form{
+  margin-top: 10px !important;
+}
+
 }
