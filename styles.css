@@ -969,3 +969,14 @@ img{ max-width: 100%; height: auto; display: block; }
     background-position: center 36%;
   }
 }
+/* KILL-SWITCH TEST — if you don't see this, your rules are NOT winning */
+.contact-hero-simple{
+  height: 90vh !important;
+  background: #ff00ff !important;
+  outline: 10px solid #00ff00 !important;
+}
+
+.contact-hero-simple-bg{
+  display: none !important;
+}
+
