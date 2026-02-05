@@ -711,12 +711,13 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-top: var(--topbar-h);
+  padding-top: 110px !important;
 
-  /* heroic height */
-  height: 72vh;
-  min-height: 600px;
-  max-height: 780px;
+ /* heroic height (tightened) */
+.contact-hero-simple{
+  height: 58vh;
+  min-height: 460px;
+  max-height: 640px;
 }
 
 .contact-hero-simple-bg{
@@ -743,7 +744,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background-repeat: no-repeat;
 
   /* LESS SKY = move image UP (smaller %) */
-  background-position: center 38%;
+  background-position: center 68%;
 
   transform: none;
   filter: saturate(.94) brightness(1.04);
