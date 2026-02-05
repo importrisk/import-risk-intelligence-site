@@ -703,16 +703,23 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 /* =========================================================
    CONTACT PAGE — FINAL (hero + spill + seam + water)
+   - Keep hero height the same
+   - Move image UP inside hero to show more water
+   - Form panel spills into hero
+   - Seam cover band hides the join
    ========================================================= */
 
 
-/* ---------- HERO ---------- */
+/* =========================================================
+   HERO
+   ========================================================= */
 .contact-hero-simple{
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding-top: var(--topbar-h);
 
+  /* keep hero container height the same */
   height: 72vh;
   min-height: 560px;
   max-height: 860px;
@@ -720,7 +727,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background: transparent;
 }
 
-/* Hero background layer (bulletproof + correct paths) */
+/* Hero background layer */
 .contact-hero-simple > .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
@@ -741,9 +748,10 @@ img{ max-width: 100%; height: auto; display: block; }
   background-size: cover !important;
   background-repeat: no-repeat !important;
 
-  /* MORE WATER = move image UP (smaller %) */
-  background-position: center 32% !important;
-  background-position-y: 32% !important;
+  /* ✅ This is the only framing control you need */
+  background-position: center 30% !important;
+  background-position-x: center !important;
+  background-position-y: 30% !important;
 
   filter: saturate(.94) brightness(1.04);
 }
@@ -793,7 +801,9 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* ---------- FORM SECTION (WATER BG) ---------- */
+/* =========================================================
+   FORM SECTION (WATER BG)
+   ========================================================= */
 .contact-simple{
   position: relative;
   z-index: 10;
@@ -825,7 +835,7 @@ img{ max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
-/* Water texture overlay (correct path) */
+/* Water texture overlay */
 .contact-simple::after{
   content: "";
   position: absolute;
@@ -843,7 +853,9 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* ---------- PANEL ---------- */
+/* =========================================================
+   PANEL
+   ========================================================= */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
@@ -861,7 +873,9 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* ---------- FIELDS ---------- */
+/* =========================================================
+   FIELDS
+   ========================================================= */
 .cs-row{ margin: 0 0 14px; }
 
 .cs-label{
@@ -905,7 +919,9 @@ img{ max-width: 100%; height: auto; display: block; }
 .cs-button:hover{ background: rgba(127,177,234,.30); }
 
 
-/* ---------- RESPONSIVE ---------- */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 920px){
   .contact-hero-simple{
     height: 520px;
@@ -913,9 +929,10 @@ img{ max-width: 100%; height: auto; display: block; }
     max-height: none;
   }
 
+  /* keep similar framing */
   .contact-hero-simple > .contact-hero-simple-bg{
-    background-position: center 42% !important;
-    background-position-y: 42% !important;
+    background-position: center 32% !important;
+    background-position-y: 32% !important;
   }
 
   .contact-simple{
@@ -944,8 +961,10 @@ img{ max-width: 100%; height: auto; display: block; }
     max-height: 920px;
   }
 
+  /* slightly more water */
   .contact-hero-simple > .contact-hero-simple-bg{
-    background-position: center 36% !important;
-    background-position-y: 36% !important;
+    background-position: center 28% !important;
+    background-position-y: 28% !important;
   }
 }
+
