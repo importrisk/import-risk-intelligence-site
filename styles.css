@@ -703,23 +703,28 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   CONTACT PAGE — FINAL (hero tall + spill + seam + water)
+   CONTACT PAGE — FINAL (hero + spill + seam + water)
+   Works with your updated HTML structure:
+   - .contact-hero-simple (hero)
+   - .contact-simple (water section)
+   - .contact-simple-form (panel)
    ========================================================= */
+
 
 /* ---------- HERO ---------- */
 .contact-hero-simple{
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-top: 110px !important;
+  padding-top: var(--topbar-h);
 
- /* heroic height (tightened) */
-.contact-hero-simple{
+  /* Controlled “heroic” height */
   height: 58vh;
   min-height: 460px;
   max-height: 640px;
 }
 
+/* Hero background layer */
 .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
@@ -728,30 +733,43 @@ img{ max-width: 100%; height: auto; display: block; }
   background:
     /* readability */
     linear-gradient(180deg,
-      rgba(0,0,0,.22) 0%,
-      rgba(0,0,0,.14) 60%,
+      rgba(0,0,0,.20) 0%,
+      rgba(0,0,0,.12) 60%,
       rgba(0,0,0,.10) 100%),
 
-    /* gentle blend toward bottom */
+    /* gentle blend at bottom */
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
       rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.26) 100%),
+      rgba(58,74,95,.22) 100%),
 
     url("assets/images/contact-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
 
-  /* LESS SKY = move image UP (smaller %) */
-  background-position: center 68%;
+  /* LESS SKY = move image DOWN (bigger %) */
+  background-position: center 56%;
 
   transform: none;
   filter: saturate(.94) brightness(1.04);
   pointer-events: none;
 }
 
-/* hero content centered */
+/* Seam line at bottom of hero (ALWAYS visible) */
+.contact-hero-simple::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.14);
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Hero content: place a bit higher than dead center */
 .contact-hero-simple .container{
   position: relative;
   z-index: 2;
@@ -764,6 +782,9 @@ img{ max-width: 100%; height: auto; display: block; }
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
+
+  /* Move the heading UP (above cranes) */
+  transform: translateY(-34px);
 }
 
 .contact-simple-title{
@@ -782,24 +803,27 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* ---------- FORM SECTION (water bg lives here) ---------- */
+/* ---------- FORM SECTION (WATER BG LIVES HERE) ---------- */
 .contact-simple{
   position: relative;
-  z-index: 5;
+  z-index: 10;
 
-  /* water background (self contained — no need for .below-fold class) */
+  /* This is the spill: pull the entire section up into the hero */
+  margin-top: -140px;
+
+  /* Reclaim the space so content doesn’t get clipped */
+  padding: 140px 0 76px;
+
+  /* Water base */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
     rgba(16, 34, 56, .91) 55%,
     rgba(12, 26, 44, .94) 100%
   );
-
-  /* spacing for page */
-  padding: 0 0 76px;
 }
 
-/* water texture overlay */
+/* Water texture overlay */
 .contact-simple::after{
   content: "";
   position: absolute;
@@ -811,50 +835,28 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-/* seam line ALWAYS visible, drawn above the overlap */
-.contact-simple::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: rgba(255,255,255,.14);
-  z-index: 50;
-  pointer-events: none;
-}
-
-/* keep actual content above the water overlay */
+/* Keep real content above overlay */
 .contact-simple > .container{
   position: relative;
   z-index: 2;
 }
 
-/* ---------- PANEL (THIS creates the spill reliably) ---------- */
+
+/* ---------- PANEL ---------- */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
-
-  /* THIS is the spill: panel moves up into the hero */
-  transform: translateY(-140px);
-
-  /* reclaim space so footer doesn’t jump up */
-  margin-bottom: -140px;
-
   padding: 24px 24px 20px;
 
   border-radius: 0;
 
-  /* not translucent */
-  background: rgba(20, 32, 48, .84);
+  /* NOT translucent */
+  background: rgba(20, 32, 48, .88);
   border: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 18px 44px rgba(0,0,0,.28);
 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
-  position: relative;
-  z-index: 10;
 }
 
 
@@ -909,30 +911,35 @@ img{ max-width: 100%; height: auto; display: block; }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 920px){
   .contact-hero-simple{
-    height: 520px;
-    min-height: 520px;
+    height: 460px;
+    min-height: 460px;
     max-height: none;
   }
 
   .contact-hero-simple-bg{
-    background-position: center 42%;
+    background-position: center 58%;
+  }
+
+  .contact-simple{
+    margin-top: -86px;
+    padding: 86px 0 62px;
   }
 
   .contact-simple-form{
-    transform: translateY(-86px);
-    margin-bottom: -86px;
     max-width: 720px;
     padding: 20px 18px 18px;
   }
 
-  .contact-simple-title{
-    font-size: 36px;
+  .contact-simple-title{ font-size: 36px; }
+
+  .contact-simple-head{
+    transform: translateY(-18px);
   }
 }
 
+/* Huge screens: slightly less “cropped” */
 @media (min-width: 1300px){
-  /* slightly less “cropped” feeling on huge monitors */
   .contact-hero-simple-bg{
-    background-position: center 44%;
+    background-position: center 60%;
   }
 }
