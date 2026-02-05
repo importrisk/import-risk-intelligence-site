@@ -711,7 +711,7 @@ img{ max-width: 100%; height: auto; display: block; }
       rgba(0,0,0,.50) 0%,
       rgba(0,0,0,.26) 55%,
       rgba(0,0,0,.14) 100%),
-    url('/assets/img/contact-hero.jpg');
+    url("/assets/img/contact-hero.jpg");
   background-size: cover;
   background-position: center 35%;
 }
