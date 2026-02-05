@@ -704,7 +704,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    SIMPLE CONTACT PAGE (square corners, minimal) — HEROIC
-   Drop-in replacement (adds seam line + dark water below-fold)
+   FULL DROP-IN (hero stays heroic, overlap restored, water lightened)
    ========================================================= */
 
 .contact-hero-simple{
@@ -716,7 +716,7 @@ img{ max-width: 100%; height: auto; display: block; }
   padding: 140px 0 90px;
 }
 
-/* light seam line under hero */
+/* subtle seam line under hero */
 .contact-hero-simple::after{
   content: "";
   position: absolute;
@@ -724,7 +724,7 @@ img{ max-width: 100%; height: auto; display: block; }
   right: 0;
   bottom: 0;
   height: 1px;
-  background: rgba(255,255,255,.10);
+  background: rgba(255,255,255,.08);
   z-index: 3;
 }
 
@@ -743,8 +743,8 @@ img{ max-width: 100%; height: auto; display: block; }
     /* extra fade near bottom so it blends into the page */
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
-      rgba(58,74,95,.55) 78%,
-      rgba(58,74,95,.85) 100%),
+      rgba(58,74,95,.45) 78%,
+      rgba(58,74,95,.70) 100%),
 
     url("assets/images/contact-hero.jpg");
 
@@ -755,18 +755,27 @@ img{ max-width: 100%; height: auto; display: block; }
   filter: saturate(.85) brightness(.92);
 }
 
-/* below-fold = dark water background */
+/* BELOW-FOLD: lighter water treatment (keeps your steel palette) */
 .contact-simple{
   padding: 0 0 72px;
-  margin-top: -70px;
+  margin-top: -78px; /* overlap restored */
   position: relative;
   z-index: 2;
 
   background:
+    /* steel-blue base (keeps it from going black) */
     linear-gradient(180deg,
-      rgba(10,16,26,.96) 0%,
-      rgba(6,10,18,.98) 100%),
+      rgba(58,74,95,.92) 0%,
+      rgba(58,74,95,.98) 55%,
+      rgba(58,74,95,1) 100%),
+
+    /* slight veil to soften water texture */
+    linear-gradient(180deg,
+      rgba(0,0,0,.10) 0%,
+      rgba(0,0,0,.06) 100%),
+
     url("assets/images/water-texture.jpg");
+
   background-size: cover;
   background-position: center;
 }
@@ -790,6 +799,7 @@ img{ max-width: 100%; height: auto; display: block; }
   color: rgba(255,255,255,.82);
 }
 
+/* FORM PANEL: readable again (not overly translucent) */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
@@ -797,9 +807,9 @@ img{ max-width: 100%; height: auto; display: block; }
 
   border-radius: 0;
 
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
-  box-shadow: none;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 44px rgba(0,0,0,.22);
 }
 
 .cs-row{
@@ -861,7 +871,7 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 
   .contact-simple{
-    margin-top: -46px;
+    margin-top: -52px;
   }
 
   .contact-simple-form{
