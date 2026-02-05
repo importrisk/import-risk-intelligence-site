@@ -979,10 +979,16 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* DEBUG: prove we're targeting the right layer */
-.contact-hero-simple-bg{
-  outline: 6px solid hotpink !important;
+/* DEBUG: drag the bg layer to the TOP so we can actually see it */
+.contact-hero-simple .contact-hero-simple-bg{
+  z-index: 9999 !important;
+  outline: 8px solid hotpink !important;
+
+  /* add a visible tint so we know we're looking at this layer */
+  background-color: rgba(255, 0, 255, .18) !important;
+
   background-position: center 20% !important;
 }
+
 
 
