@@ -689,7 +689,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background-repeat: no-repeat;
   background-position: center var(--contact-hero-y);
 
-  filter: saturate(.94) brightness(1.04);
+ filter: opacity(.86) brightness(1.08) saturate(.92);
 }
 
 /* hairline at bottom of hero */
