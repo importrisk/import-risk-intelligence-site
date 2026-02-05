@@ -705,13 +705,17 @@ img{ max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
-/* hero content */
 .contact-hero .container{
   position: relative;
   z-index: 2;
   height: 100%;
   display: grid;
-  place-items: center;
+
+  /* was: place-items: center; */
+  place-items: start center;
+
+  /* controls how high the heading sits */
+  padding-top: 140px;
 }
 
 .contact-hero-head{
