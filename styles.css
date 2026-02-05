@@ -1,4 +1,4 @@
-/* =========================================================
+   /* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
    CLEAN + ORGANIZED (single file)
    - Home hero locked
@@ -655,9 +655,9 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: hidden;
   padding-top: var(--topbar-h);
 
-  height: 72vh;
-  min-height: 560px;
-  max-height: 860px;
+ height: 62vh;
+  min-height: 480px;
+  max-height: 760px;
 
   background: transparent;
 }
