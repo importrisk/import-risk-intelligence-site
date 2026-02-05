@@ -703,13 +703,10 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 /* =========================================================
    CONTACT PAGE — FINAL (hero + spill + seam + water)
-   FIX: Put hero image on the SECTION (avoids global div background resets)
    ========================================================= */
 
 
-/* =========================================================
-   1) HERO
-   ========================================================= */
+/* ---------- HERO ---------- */
 .contact-hero-simple{
   position: relative;
   isolation: isolate;
@@ -720,44 +717,39 @@ img{ max-width: 100%; height: auto; display: block; }
   min-height: 560px;
   max-height: 860px;
 
-  /* HERO IMAGE LIVES HERE (not on the div) */
-  background-image: url("assets/images/contact-hero.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* More water = smaller % */
-  background-position: center 38%;
-
-  /* matches your prior treatment */
-  filter: saturate(.94) brightness(1.04);
+  background: transparent;
 }
 
-/* Disable the bg div so it cannot interfere */
-.contact-hero-simple-bg{ display: none; }
-
-/* Gradient overlays for readability + blend */
-.contact-hero-simple::before{
-  content: "";
+/* Hero background layer (bulletproof + correct paths) */
+.contact-hero-simple > .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 
   background:
-    /* readability */
     linear-gradient(180deg,
       rgba(0,0,0,.20) 0%,
       rgba(0,0,0,.12) 60%,
       rgba(0,0,0,.10) 100%),
-
-    /* gentle blend at bottom */
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
       rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%);
+      rgba(58,74,95,.22) 100%),
+    url("/assets/images/contact-hero.jpg") !important;
+
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  /* More water = smaller % */
+  background-position: center 38% !important;
+  background-position-x: center !important;
+  background-position-y: 38% !important;
+
+  filter: saturate(.94) brightness(1.04);
 }
 
-/* Seam hairline at bottom of hero */
+/* Seam hairline */
 .contact-hero-simple::after{
   content: "";
   position: absolute;
@@ -766,7 +758,7 @@ img{ max-width: 100%; height: auto; display: block; }
   bottom: 0;
   height: 1px;
   background: rgba(255,255,255,.14);
-  z-index: 3;
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -802,9 +794,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* =========================================================
-   2) FORM SECTION (WATER)
-   ========================================================= */
+/* ---------- FORM SECTION (WATER BG) ---------- */
 .contact-simple{
   position: relative;
   z-index: 10;
@@ -820,7 +810,7 @@ img{ max-width: 100%; height: auto; display: block; }
   );
 }
 
-/* Seam cover band (hides join) */
+/* Seam cover band */
 .contact-simple::before{
   content: "";
   position: absolute;
@@ -836,12 +826,12 @@ img{ max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
-/* Water texture overlay */
+/* Water texture overlay (correct path) */
 .contact-simple::after{
   content: "";
   position: absolute;
   inset: 0;
-  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  background: url("/assets/images/water-texture.jpg") center / cover no-repeat;
   opacity: 0.22;
   filter: blur(1px) saturate(.8) contrast(.90);
   pointer-events: none;
@@ -854,9 +844,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* =========================================================
-   3) PANEL (SPILL)
-   ========================================================= */
+/* ---------- PANEL ---------- */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
@@ -874,9 +862,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 
-/* =========================================================
-   4) FIELDS
-   ========================================================= */
+/* ---------- FIELDS ---------- */
 .cs-row{ margin: 0 0 14px; }
 
 .cs-label{
@@ -890,10 +876,8 @@ img{ max-width: 100%; height: auto; display: block; }
 .cs-textarea{
   width: 100%;
   padding: 11px 12px;
-
   border-radius: 0;
   border: 1px solid rgba(255,255,255,.14);
-
   background: rgba(0,0,0,.18);
   color: rgba(255,255,255,.94);
   outline: none;
@@ -910,11 +894,9 @@ img{ max-width: 100%; height: auto; display: block; }
 .cs-button{
   height: 44px;
   padding: 0 18px;
-
   border-radius: 0;
   border: 1px solid rgba(127,177,234,.65);
   background: rgba(127,177,234,.22);
-
   color: rgba(255,255,255,.94);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -924,17 +906,17 @@ img{ max-width: 100%; height: auto; display: block; }
 .cs-button:hover{ background: rgba(127,177,234,.30); }
 
 
-/* =========================================================
-   5) RESPONSIVE
-   ========================================================= */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 920px){
   .contact-hero-simple{
     height: 520px;
     min-height: 520px;
     max-height: none;
+  }
 
-    /* keep “more water” intent */
-    background-position: center 42%;
+  .contact-hero-simple > .contact-hero-simple-bg{
+    background-position: center 42% !important;
+    background-position-y: 42% !important;
   }
 
   .contact-simple{
@@ -954,29 +936,17 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 
   .contact-simple-title{ font-size: 36px; }
-
-  .contact-simple-head{
-    transform: translateY(-18px);
-  }
+  .contact-simple-head{ transform: translateY(-18px); }
 }
 
 @media (min-width: 1300px){
   .contact-hero-simple{
     height: 74vh;
     max-height: 920px;
+  }
 
-    /* a touch more water on wide monitors */
-    background-position: center 36%;
+  .contact-hero-simple > .contact-hero-simple-bg{
+    background-position: center 36% !important;
+    background-position-y: 36% !important;
   }
 }
-/* KILL-SWITCH TEST — if you don't see this, your rules are NOT winning */
-.contact-hero-simple{
-  height: 90vh !important;
-  background: #ff00ff !important;
-  outline: 10px solid #00ff00 !important;
-}
-
-.contact-hero-simple-bg{
-  display: none !important;
-}
-
