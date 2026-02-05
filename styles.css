@@ -655,9 +655,9 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: hidden;
   padding-top: var(--topbar-h);
 
- height: 62vh;
-  min-height: 480px;
-  max-height: 760px;
+ height: 72vh;
+  min-height: 500px;
+  max-height: 860px;
 
   background: transparent;
 }
