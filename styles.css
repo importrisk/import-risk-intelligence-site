@@ -4,8 +4,8 @@
    - Home hero locked
    - Below-fold water texture
    - Home features band
-   - Method page: hero + band behind cards
-   - Method: coverage section uses water (no grey slab)
+   - Method page: coverage section uses water (no grey slab)
+   - Contact page: hero + spill + seam + water (single source of truth)
    ========================================================= */
 
 
@@ -47,6 +47,10 @@
 
   /* Shape */
   --radius: 0px;
+
+  /* CONTACT hero framing control
+     Bigger % = show more bottom of photo = more water */
+  --contact-hero-y: 88%;
 }
 
 
@@ -434,14 +438,11 @@ img{ max-width: 100%; height: auto; display: block; }
 .inline-learn-more{
   display: inline-block;
   margin-top: 14px;
-
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0;
-
   color: rgba(127,177,234,.9);
   text-decoration: none;
-
   transition: color .15s ease, transform .15s ease;
 }
 
@@ -454,6 +455,7 @@ img{ max-width: 100%; height: auto; display: block; }
   outline: none;
   text-decoration: underline;
 }
+
 
 /* =========================================================
    8) HOME — BIO CARD (IF PRESENT)
@@ -530,6 +532,7 @@ img{ max-width: 100%; height: auto; display: block; }
   border-top: 1px solid var(--mist-divider);
 }
 .bio-cta .btn{ width: 100%; }
+
 
 /* =========================================================
    12) FOOTER
@@ -631,6 +634,224 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
+   CONTACT PAGE — FINAL (single, correct, no duplicates)
+   Works with your HTML:
+   - .contact-hero-simple
+   - .contact-hero-simple-bg
+   - .contact-simple-head / title / subtitle
+   - .contact-simple / .contact-simple-form / .cs-*
+   ========================================================= */
+
+/* =========================
+   HERO
+   ========================= */
+.contact-hero-simple{
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: var(--topbar-h);
+
+  /* keep hero container height the same */
+  height: 72vh;
+  min-height: 560px;
+  max-height: 860px;
+
+  background: transparent;
+}
+
+/* ONLY place the photo exists */
+.contact-hero-simple > .contact-hero-simple-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(180deg,
+      rgba(0,0,0,.20) 0%,
+      rgba(0,0,0,.12) 60%,
+      rgba(0,0,0,.10) 100%),
+    linear-gradient(180deg,
+      rgba(58,74,95,0) 0%,
+      rgba(58,74,95,.10) 72%,
+      rgba(58,74,95,.22) 100%),
+    url("assets/images/contact-hero.jpg");
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* SINGLE SOURCE OF TRUTH */
+  background-position: center var(--contact-hero-y);
+
+  filter: saturate(.94) brightness(1.04);
+}
+
+/* hero hairline */
+.contact-hero-simple::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.14);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* hero content */
+.contact-hero-simple .container{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.contact-simple-head{
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  transform: translateY(-34px);
+}
+
+.contact-simple-title{
+  margin: 0 0 10px;
+  font-size: 46px;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.20);
+}
+
+.contact-simple-subtitle{
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,.82);
+  text-shadow: 0 8px 20px rgba(0,0,0,.16);
+}
+
+
+/* =========================
+   FORM SECTION (WATER BG)
+   ========================= */
+.contact-simple{
+  position: relative;
+  z-index: 10;
+
+  /* pull up into hero */
+  margin-top: -80px;
+  padding: 160px 0 76px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  );
+}
+
+/* seam cover band */
+.contact-simple::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -18px;
+  height: 18px;
+
+  background: rgba(12, 26, 44, .94);
+  box-shadow: 0 1px 0 rgba(255,255,255,.14);
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* water texture overlay */
+.contact-simple::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-simple > .container{
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================
+   PANEL (spills into hero)
+   ========================= */
+.contact-simple-form{
+  max-width: 820px;
+  margin: 0 auto;
+
+  margin-top: -120px;
+
+  padding: 24px 24px 20px;
+  border-radius: 0;
+
+  background: rgba(20, 32, 48, .88);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 18px 44px rgba(0,0,0,.28);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+
+/* =========================
+   FIELDS
+   ========================= */
+.cs-row{ margin: 0 0 14px; }
+
+.cs-label{
+  display: block;
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,.86);
+}
+
+.cs-input,
+.cs-textarea{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  color: rgba(255,255,255,.94);
+  outline: none;
+}
+
+.cs-input:focus,
+.cs-textarea:focus{
+  border-color: rgba(127,177,234,.55);
+  box-shadow: 0 0 0 3px rgba(127,177,234,.18);
+}
+
+.cs-actions{ margin-top: 16px; }
+
+.cs-button{
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 0;
+  border: 1px solid rgba(127,177,234,.65);
+  background: rgba(127,177,234,.22);
+  color: rgba(255,255,255,.94);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+}
+
+.cs-button:hover{ background: rgba(127,177,234,.30); }
+
+
+/* =========================================================
    13) RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
@@ -702,266 +923,18 @@ img{ max-width: 100%; height: auto; display: block; }
   .site-footer .footer-nav a:not(:last-child)::after{ display: none; }
 }
 
-/* =========================================================
-   CONTACT PAGE — COMPLETE DROP-IN (CLEAN, SINGLE BLOCK)
-   Works with:
-   - HERO:  .contact-hero / .contact-hero-bg / .contact-hero-head / title/subtitle
-   - FORM:  .contact-simple / .contact-simple-form / .cs-*
-   Features:
-   - One control for hero framing: --contact-hero-y
-   - Panel spills into hero
-   - Seam cover band hides join
-   ========================================================= */
-
-/* ---------- HERO FRAMING CONTROL ----------
-   Bigger % = show more bottom of photo = more water
-*/
-:root{
-  --contact-hero-y: 88%;
-}
-
-/* =========================================================
-   HERO
-   ========================================================= */
-.contact-hero{
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding-top: var(--topbar-h);
-
-  /* keep your established hero height */
-  height: 72vh;
-  min-height: 560px;
-  max-height: 860px;
-
-  background: transparent;
-}
-
-.contact-hero-bg{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  background-image:
-    /* readability */
-    linear-gradient(180deg,
-      rgba(0,0,0,.20) 0%,
-      rgba(0,0,0,.12) 60%,
-      rgba(0,0,0,.10) 100%),
-
-    /* gentle blend at bottom */
-    linear-gradient(180deg,
-      rgba(58,74,95,0) 0%,
-      rgba(58,74,95,.10) 72%,
-      rgba(58,74,95,.22) 100%),
-
-    /* photo */
-    url("assets/images/contact-hero.jpg");
-
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* single source of truth */
-  background-position: center var(--contact-hero-y);
-
-  filter: saturate(.94) brightness(1.04);
-}
-
-/* hairline at bottom of hero */
-.contact-hero::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: rgba(255,255,255,.14);
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* hero content */
-.contact-hero .container{
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: grid;
-  place-items: center;
-}
-
-.contact-hero-head{
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
-  transform: translateY(-34px);
-}
-
-.contact-hero-title{
-  margin: 0 0 10px;
-  font-size: 46px;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.96);
-  text-shadow: 0 12px 26px rgba(0,0,0,.20);
-}
-
-.contact-hero-subtitle{
-  margin: 0;
-  font-size: 15px;
-  color: rgba(255,255,255,.82);
-  text-shadow: 0 8px 20px rgba(0,0,0,.16);
-}
-
-
-/* =========================================================
-   FORM SECTION (WATER BG)
-   ========================================================= */
-.contact-simple{
-  position: relative;
-  z-index: 10;
-
-  /* pull the section up into the hero */
-  margin-top: -80px;
-
-  /* reclaim spacing so content doesn’t get clipped */
-  padding: 160px 0 76px;
-
-  /* water base */
-  background: linear-gradient(
-    180deg,
-    rgba(20, 42, 68, .89) 0%,
-    rgba(16, 34, 56, .91) 55%,
-    rgba(12, 26, 44, .94) 100%
-  );
-}
-
-/* seam cover band (hides join between hero and water section) */
-.contact-simple::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -18px;
-  height: 18px;
-
-  background: rgba(12, 26, 44, .94);
-  box-shadow: 0 1px 0 rgba(255,255,255,.14);
-
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* water texture overlay */
-.contact-simple::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
-  opacity: 0.22;
-  filter: blur(1px) saturate(.8) contrast(.90);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* keep real content above overlay */
-.contact-simple > .container{
-  position: relative;
-  z-index: 2;
-}
-
-
-/* =========================================================
-   PANEL (spills into hero)
-   ========================================================= */
-.contact-simple-form{
-  max-width: 820px;
-  margin: 0 auto;
-
-  /* spill upward into hero */
-  margin-top: -120px;
-
-  padding: 24px 24px 20px;
-
-  border-radius: 0;
-
-  background: rgba(20, 32, 48, .88);
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 18px 44px rgba(0,0,0,.28);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-
-/* =========================================================
-   FIELDS
-   ========================================================= */
-.cs-row{ margin: 0 0 14px; }
-
-.cs-label{
-  display: block;
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: rgba(255,255,255,.86);
-}
-
-.cs-input,
-.cs-textarea{
-  width: 100%;
-  padding: 11px 12px;
-
-  border-radius: 0;
-  border: 1px solid rgba(255,255,255,.14);
-
-  background: rgba(0,0,0,.18);
-  color: rgba(255,255,255,.94);
-  outline: none;
-}
-
-.cs-input:focus,
-.cs-textarea:focus{
-  border-color: rgba(127,177,234,.55);
-  box-shadow: 0 0 0 3px rgba(127,177,234,.18);
-}
-
-.cs-actions{ margin-top: 16px; }
-
-.cs-button{
-  height: 44px;
-  padding: 0 18px;
-
-  border-radius: 0;
-  border: 1px solid rgba(127,177,234,.65);
-  background: rgba(127,177,234,.22);
-
-  color: rgba(255,255,255,.94);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-}
-
-.cs-button:hover{ background: rgba(127,177,234,.30); }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* CONTACT responsive */
 @media (max-width: 920px){
   :root{ --contact-hero-y: 90%; }
 
-  .contact-hero{
+  .contact-hero-simple{
     height: 520px;
     min-height: 520px;
     max-height: none;
   }
 
-  .contact-hero-head{
-    transform: translateY(-18px);
-  }
-
-  .contact-hero-title{
-    font-size: 36px;
-  }
+  .contact-simple-head{ transform: translateY(-18px); }
+  .contact-simple-title{ font-size: 36px; }
 
   .contact-simple{
     margin-top: -54px;
@@ -983,7 +956,7 @@ img{ max-width: 100%; height: auto; display: block; }
 @media (min-width: 1300px){
   :root{ --contact-hero-y: 86%; }
 
-  .contact-hero{
+  .contact-hero-simple{
     height: 74vh;
     max-height: 920px;
   }
