@@ -655,7 +655,8 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: hidden;
   padding-top: var(--topbar-h);
 
- height: 72vh;
+  /* ~50px less hero height (less water showing) */
+  height: calc(72vh - 50px);
   min-height: 500px;
   max-height: 860px;
 
