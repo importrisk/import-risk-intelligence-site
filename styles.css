@@ -752,7 +752,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background-repeat: no-repeat;
 
   /* Show more water by pushing image DOWN */
-  background-position: center 24%;
+  background-position: center 20%;
 
   transform: none;
   filter: saturate(.94) brightness(1.04);
@@ -967,15 +967,15 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* Huge screens: show a bit more water (move image UP slightly) */
-@media (min-width: 1300px){
-  .contact-hero-simple{
-    height: 74vh;
-    max-height: 920px;
-  }
-
-  /* More water = smaller % */
+@media (max-width: 920px){
   .contact-hero-simple-bg{
-    background-position: center 42%;
+    background-position: center 42% !important;
   }
 }
+
+@media (min-width: 1300px){
+  .contact-hero-simple-bg{
+    background-position: center 38% !important;
+  }
+}
+
