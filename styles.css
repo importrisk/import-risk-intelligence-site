@@ -634,24 +634,27 @@ img{ max-width: 100%; height: auto; display: block; }
 
 
 /* =========================================================
-   CONTACT PAGE — FINAL (single, correct, no duplicates)
-   Works with your HTML:
-   - .contact-hero-simple
-   - .contact-hero-simple-bg
-   - .contact-simple-head / title / subtitle
-   - .contact-simple / .contact-simple-form / .cs-*
+   CONTACT PAGE — FINAL (MATCHES CURRENT HTML)
+   HTML:
+   .contact-hero / .contact-hero-bg / .contact-hero-head
+   .contact-hero-title / .contact-hero-subtitle
+   .contact-simple / .contact-simple-form / .cs-*
    ========================================================= */
 
-/* =========================
-   HERO
-   ========================= */
-.contact-hero-simple{
+/* HERO FRAMING CONTROL
+   Bigger % = show more bottom of photo = more water
+*/
+:root{
+  --contact-hero-y: 88%;
+}
+
+/* ---------- HERO ---------- */
+.contact-hero{
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding-top: var(--topbar-h);
 
-  /* keep hero container height the same */
   height: 72vh;
   min-height: 560px;
   max-height: 860px;
@@ -659,35 +662,38 @@ img{ max-width: 100%; height: auto; display: block; }
   background: transparent;
 }
 
-/* ONLY place the photo exists */
-.contact-hero-simple > .contact-hero-simple-bg{
+/* The ONLY place the photo lives */
+.contact-hero > .contact-hero-bg{
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 
   background-image:
+    /* readability */
     linear-gradient(180deg,
       rgba(0,0,0,.20) 0%,
       rgba(0,0,0,.12) 60%,
       rgba(0,0,0,.10) 100%),
+
+    /* gentle blend at bottom */
     linear-gradient(180deg,
       rgba(58,74,95,0) 0%,
       rgba(58,74,95,.10) 72%,
       rgba(58,74,95,.22) 100%),
+
+    /* photo */
     url("assets/images/contact-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
-
-  /* SINGLE SOURCE OF TRUTH */
   background-position: center var(--contact-hero-y);
 
   filter: saturate(.94) brightness(1.04);
 }
 
-/* hero hairline */
-.contact-hero-simple::after{
+/* hairline at bottom of hero */
+.contact-hero::after{
   content: "";
   position: absolute;
   left: 0;
@@ -700,7 +706,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* hero content */
-.contact-hero-simple .container{
+.contact-hero .container{
   position: relative;
   z-index: 2;
   height: 100%;
@@ -708,14 +714,14 @@ img{ max-width: 100%; height: auto; display: block; }
   place-items: center;
 }
 
-.contact-simple-head{
+.contact-hero-head{
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
   transform: translateY(-34px);
 }
 
-.contact-simple-title{
+.contact-hero-title{
   margin: 0 0 10px;
   font-size: 46px;
   letter-spacing: -0.02em;
@@ -723,23 +729,22 @@ img{ max-width: 100%; height: auto; display: block; }
   text-shadow: 0 12px 26px rgba(0,0,0,.20);
 }
 
-.contact-simple-subtitle{
+.contact-hero-subtitle{
   margin: 0;
   font-size: 15px;
   color: rgba(255,255,255,.82);
   text-shadow: 0 8px 20px rgba(0,0,0,.16);
 }
 
-
-/* =========================
-   FORM SECTION (WATER BG)
-   ========================= */
+/* ---------- FORM SECTION (WATER BG) ---------- */
 .contact-simple{
   position: relative;
   z-index: 10;
 
-  /* pull up into hero */
-  margin-top: 0 !important;
+  /* pull the section up into the hero */
+  margin-top: -80px;
+
+  /* reclaim spacing so content doesn’t get clipped */
   padding: 160px 0 76px;
 
   background: linear-gradient(
@@ -783,14 +788,12 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 2;
 }
 
-
-/* =========================
-   PANEL (spills into hero)
-   ========================= */
+/* ---------- PANEL ---------- */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
 
+  /* spill upward into hero */
   margin-top: -120px;
 
   padding: 24px 24px 20px;
@@ -804,10 +807,7 @@ img{ max-width: 100%; height: auto; display: block; }
   -webkit-backdrop-filter: blur(6px);
 }
 
-
-/* =========================
-   FIELDS
-   ========================= */
+/* ---------- FIELDS ---------- */
 .cs-row{ margin: 0 0 14px; }
 
 .cs-label{
@@ -850,91 +850,18 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .cs-button:hover{ background: rgba(127,177,234,.30); }
 
-
-/* =========================================================
-   13) RESPONSIVE
-   ========================================================= */
-@media (max-width: 900px){
-  .split-inner{
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .bio-top{ grid-template-columns: 96px 1fr; }
-  .bio-photo{ width: 96px; height: 96px; }
-  .bio-cta .btn{ width: auto; }
-
-  .site-footer{ padding: 18px 0 18px; }
-  .site-footer .footer-inner{
-    flex-direction: column;
-    gap: 16px;
-  }
-  .site-footer .footer-right{
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  /* Method cards stack + no chevrons */
-  .method-features{
-    --gap: 18px;
-    --overhang: 56px;
-    --band-h: calc(var(--card-h) - (var(--overhang) * 2));
-    --pad-top: 64px;
-  }
-
-  .method-feature-grid{ grid-template-columns: 1fr; }
-  .method-feature::after{ display: none; }
-}
-
-@media (max-width: 720px){
-  .topbar{
-    height: auto;
-    padding: 10px 0;
-    align-items: flex-start;
-  }
-
-  .topbar-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .brand{ height: auto; }
-
-  .nav{
-    height: auto;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .feature-grid{
-    grid-template-columns: 1fr;
-    padding: 18px 0;
-  }
-
-  .feature{
-    min-height: 160px;
-    padding: 18px 18px;
-  }
-
-  .feature:not(:last-child)::after{ display: none; }
-
-  .site-footer .footer-nav a{ padding: 0 10px 0 0; }
-  .site-footer .footer-nav a:not(:last-child)::after{ display: none; }
-}
-
-/* CONTACT responsive */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 920px){
   :root{ --contact-hero-y: 90%; }
 
-  .contact-hero-simple{
+  .contact-hero{
     height: 520px;
     min-height: 520px;
     max-height: none;
   }
 
-  .contact-simple-head{ transform: translateY(-18px); }
-  .contact-simple-title{ font-size: 36px; }
+  .contact-hero-head{ transform: translateY(-18px); }
+  .contact-hero-title{ font-size: 36px; }
 
   .contact-simple{
     margin-top: -54px;
@@ -956,7 +883,7 @@ img{ max-width: 100%; height: auto; display: block; }
 @media (min-width: 1300px){
   :root{ --contact-hero-y: 86%; }
 
-  .contact-hero-simple{
+  .contact-hero{
     height: 74vh;
     max-height: 920px;
   }
