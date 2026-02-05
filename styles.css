@@ -707,11 +707,6 @@ img{ max-width: 100%; height: auto; display: block; }
    - Move image UP inside hero to show more water
    - Form panel spills into hero
    - Seam cover band hides the join
-   Works with:
-   - .contact-hero-simple (hero section)
-   - .contact-hero-simple-bg (overlay layer)
-   - .contact-simple (water section)
-   - .contact-simple-form (panel)
    ========================================================= */
 
 
@@ -724,21 +719,15 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: hidden;
   padding-top: var(--topbar-h);
 
-  /* keep hero container height the same */
   height: 72vh;
   min-height: 560px;
   max-height: 860px;
 
-  /* Photo lives here (reliable framing control) */
-  background-image: url("assets/images/contact-hero.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /* ✅ More water = smaller % (cranes/city move up) */
-  background-position: center 30%;
+  /* IMPORTANT: no background image here (prevents conflicts) */
+  background: transparent;
 }
 
-/* HERO BG — single source of truth */
+/* Hero background layer (single source of truth: gradients + photo) */
 .contact-hero-simple > .contact-hero-simple-bg{
   position: absolute;
   inset: 0;
@@ -756,11 +745,14 @@ img{ max-width: 100%; height: auto; display: block; }
       rgba(58,74,95,.22) 100%),
     url("assets/images/contact-hero.jpg");
 
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover, cover, cover;
+  background-repeat: no-repeat, no-repeat, no-repeat;
 
-  /* ✅ MORE WATER = BIGGER % */
-  background-position: center 92%;
+  /* ✅ More water = smaller % (move photo UP) — 3rd value is the photo */
+  background-position:
+    center,
+    center,
+    center 26%;
 
   filter: saturate(.94) brightness(1.04);
 }
@@ -936,9 +928,13 @@ img{ max-width: 100%; height: auto; display: block; }
     height: 520px;
     min-height: 520px;
     max-height: none;
+  }
 
-    /* slightly different framing on mobile */
-    background-position: center 32%;
+  .contact-hero-simple > .contact-hero-simple-bg{
+    background-position:
+      center,
+      center,
+      center 30%;
   }
 
   .contact-simple{
@@ -965,8 +961,12 @@ img{ max-width: 100%; height: auto; display: block; }
   .contact-hero-simple{
     height: 74vh;
     max-height: 920px;
+  }
 
-    /* more water on huge screens */
-    background-position: center 28%;
+  .contact-hero-simple > .contact-hero-simple-bg{
+    background-position:
+      center,
+      center,
+      center 22%;
   }
 }
