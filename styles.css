@@ -704,7 +704,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* =========================================================
    SIMPLE CONTACT PAGE (square corners, minimal) — HEROIC
-   Drop-in replacement for your current block
+   Drop-in replacement (adds seam line + dark water below-fold)
    ========================================================= */
 
 .contact-hero-simple{
@@ -712,9 +712,20 @@ img{ max-width: 100%; height: auto; display: block; }
   overflow: hidden;
   isolation: isolate;
 
-  /* make it feel like a real hero */
   min-height: 520px;
   padding: 140px 0 90px;
+}
+
+/* light seam line under hero */
+.contact-hero-simple::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  z-index: 3;
 }
 
 .contact-hero-simple-bg{
@@ -741,16 +752,23 @@ img{ max-width: 100%; height: auto; display: block; }
   background-position: center 55%;
   transform: scale(1.03);
 
-  /* take the “pretty” edge off */
   filter: saturate(.85) brightness(.92);
 }
 
-/* pull the form up so it overlaps the hero */
+/* below-fold = dark water background */
 .contact-simple{
   padding: 0 0 72px;
   margin-top: -70px;
   position: relative;
   z-index: 2;
+
+  background:
+    linear-gradient(180deg,
+      rgba(10,16,26,.96) 0%,
+      rgba(6,10,18,.98) 100%),
+    url("assets/images/water-texture.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .contact-simple-head{
