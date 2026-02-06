@@ -1233,34 +1233,20 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   MOBILE MENU — ensure menu scrolls (iPhone safe)
-   Paste at VERY bottom of CSS
+   HARD RESET (safer): ensure PAGE scrolls + topbar is not sticky
+   Paste at VERY bottom (last lines of file)
    ========================================================= */
-@media (max-width: 720px){
 
-  /* Make absolutely sure the MENU is above the backdrop */
-  .nav{ z-index: 10000 !important; }
-  .nav-backdrop{ z-index: 9999 !important; }
+html, body{
+  overflow-y: auto !important;
+  height: auto !important;
+}
 
-  /* Make the menu the scroll container */
-  .nav{
-    position: fixed !important;
-    top: var(--topbar-h) !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: auto !important;
-
-    max-height: calc(100dvh - var(--topbar-h)) !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-y;
-  }
-
-  /* Backdrop should not try to scroll */
-  .nav-backdrop{
-    touch-action: none;
-  }
-
-  /* IMPORTANT: do NOT lock page scroll unless menu is open */
-  html, body{ overflow-y: auto !important; }
+/* keep any earlier overflow-x hidden rules you already have */
+header.topbar,
+.topbar{
+  position: absolute !important;
+  inset: 0 0 auto 0 !important; /* top:0; left:0; right:0 */
+  transform: none !important;
+  will-change: auto !important;
 }
