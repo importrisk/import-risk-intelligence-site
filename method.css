@@ -675,4 +675,19 @@ margin: 10px auto 18px; /* top | left-right | bottom */
     grid-template-columns: 1fr;
     gap: 14px;
   }
+   /* Centered capstone FAQ item */
+.mp-faq-centered{
+  max-width: 620px;
+  margin: 36px auto 0;
+  text-align: center;
+}
+
+.mp-faq-centered .mp-q,
+.mp-faq-centered .mp-a{
+  padding-left: 0;
+}
+
+.mp-faq-centered::before{
+  display: none;
+}
 }
