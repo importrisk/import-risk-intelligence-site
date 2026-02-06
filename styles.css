@@ -1201,35 +1201,34 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   MOBILE — Feature cards stacked: kill vertical dividers
-   + use horizontal separators instead
+   MOBILE — Feature dividers (controlled length, stacked)
    ========================================================= */
 @media (max-width: 720px){
 
-  /* ensure stack */
+  /* Ensure single-column stack */
   .feature-grid{
     grid-template-columns: 1fr !important;
   }
 
-  /* kill any “column divider” borders from desktop */
+  /* Kill desktop vertical dividers completely */
+  .feature:not(:last-child)::after{
+    content: none !important;
+  }
+
+  /* Remove any leftover borders */
   .feature{
-    border-left: none !important;
-    border-right: none !important;
+    border: none !important;
+    position: relative;
   }
 
-  /* common desktop pattern: dividers on all but last */
-  .feature:not(:last-child){
-    border-right: none !important;
-  }
-
-  /* sometimes the divider is on the element AFTER the first */
-  .feature + .feature{
-    border-left: none !important;
-  }
-
-  /* replace with horizontal dividers between stacked cards */
-  .feature + .feature{
-    border-top: 1px solid rgba(255,255,255,.12) !important;
-    margin-top: 0 !important;
+  /* Add horizontal divider with controlled width */
+  .feature + .feature::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 24px;          /* ← adjust this */
+    right: 24px;         /* ← adjust this */
+    height: 1px;
+    background: rgba(255,255,255,.12);
   }
 }
