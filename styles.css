@@ -1173,7 +1173,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   HERO → FEATURES spacing on mobile
+   HERO → FEATURES spacing on mobile (no extra tile padding)
    ========================================================= */
 @media (max-width: 520px){
   /* add space BELOW the hero content */
@@ -1181,10 +1181,9 @@ img{ max-width: 100%; height: auto; display: block; }
     padding-bottom: 22px;
   }
 
-  /* and/or add space ABOVE the feature tiles */
+  /* add space BEFORE the features section (outside, not inside) */
   .below-fold .features{
-    padding-top: 18px;
+    margin-top: 18px;
+    padding-top: 0; /* guard against earlier tweaks */
   }
 }
-
-
