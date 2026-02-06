@@ -1201,22 +1201,33 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   MOBILE — FIX HERO → FEATURES GAP (REAL SOURCE)
+   MOBILE — FEATURES STACK + TIGHTEN ICON→HEADING
    ========================================================= */
-@media (max-width: 520px){
+@media (max-width: 720px){
 
-  /* Control spacing ONLY at the seam */
-  .hero-cta-note{
-    margin-bottom: 16px !important; /* your chosen value */
+  /* Stack the 3 feature tiles */
+  .feature-grid{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
-  /* Kill the stacked padding causing the gap */
-  .below-fold{
-    padding-top: 0 !important;
+  /* Make each tile feel like a neat card */
+  .feature{
+    padding: 18px 16px !important;
+    text-align: center;
   }
 
-  .below-fold .features{
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  /* Tighten icon → heading spacing (this is your “gap”) */
+  .feature svg{
+    margin: 0 auto 10px !important; /* was larger somewhere */
+    display: block;
+  }
+
+  .feature h3{
+    margin: 0 0 8px !important;
+  }
+
+  .feature p{
+    margin: 0 !important;
   }
 }
