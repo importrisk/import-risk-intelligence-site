@@ -1184,3 +1184,20 @@ img{ max-width: 100%; height: auto; display: block; }
 @media (max-width: 560px){
   .brand-name{ display: none; }
 }
+/* =========================================================
+   FIX — Force mobile menu to be a SHEET (not full screen)
+   Paste at VERY bottom of CSS
+   ========================================================= */
+@media (max-width: 720px){
+  .nav{
+    inset: auto !important;     /* kills any old "inset:0" */
+    bottom: auto !important;    /* kills any old "bottom:0" */
+    height: auto !important;    /* kills any old "height:100vh" */
+    top: var(--topbar-h) !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: calc(100vh - var(--topbar-h)) !important;
+    overflow: auto !important;
+  }
+}
+
