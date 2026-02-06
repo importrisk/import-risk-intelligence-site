@@ -1137,3 +1137,29 @@ img{ max-width: 100%; height: auto; display: block; }
     padding-bottom: calc(22px + env(safe-area-inset-bottom));
   }
 }
+/* =========================================================
+   MOBILE HOTFIX — Stop nav overlay from going full-height
+   Paste at VERY bottom of CSS
+   ========================================================= */
+@media (max-width: 720px){
+  .nav{
+    /* kill any old “full screen” rules */
+    inset: auto !important;
+    bottom: auto !important;
+
+    /* force the panel to size to its content */
+    height: auto !important;
+    min-height: 0 !important;
+
+    /* keep it a sheet below the topbar */
+    position: fixed !important;
+    top: var(--topbar-h) !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    /* still allow scrolling if links ever exceed viewport */
+    max-height: calc(100vh - var(--topbar-h)) !important;
+    overflow: auto !important;
+  }
+}
+
