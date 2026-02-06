@@ -1232,3 +1232,12 @@ img{ max-width: 100%; height: auto; display: block; }
     background: rgba(255,255,255,.12);
   }
 }
+/* =========================================================
+   FIX — topbar must scroll normally on mobile
+   ========================================================= */
+@media (max-width: 720px){
+  .topbar{
+    position: absolute !important;
+  }
+}
+
