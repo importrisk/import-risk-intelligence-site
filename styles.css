@@ -1123,4 +1123,15 @@ img{ max-width: 100%; height: auto; display: block; }
   .nav-toggle:checked + .hamburger span:nth-child(3){
     transform: translateY(-7px) rotate(-45deg);
   }
+     /* Lock page scroll when menu is open (Chrome/Safari modern) */
+  body:has(.nav-toggle:checked){
+    overflow: hidden;
+  }
+
+  /* Make the overlay scroll nicely instead */
+  .nav{
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  }
 }
