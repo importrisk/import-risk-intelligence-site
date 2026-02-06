@@ -1224,3 +1224,20 @@ img{ max-width: 100%; height: auto; display: block; }
     display: block;
   }
 }
+/* =========================================================
+   iPhone/Safari — keep brand hard-left, hamburger hard-right
+   ========================================================= */
+@media (max-width: 720px){
+  .topbar-inner{
+    justify-content: flex-start !important;
+  }
+
+  .brand{
+    margin-left: 0 !important;
+  }
+
+  .hamburger{
+    margin-left: auto !important;
+  }
+}
+
