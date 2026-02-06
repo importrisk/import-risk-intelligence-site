@@ -1173,17 +1173,21 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   HERO → FEATURES spacing on mobile (no extra tile padding)
+   MOBILE — tighten Hero → Features (no gap)
    ========================================================= */
 @media (max-width: 520px){
-  /* add space BELOW the hero content */
-  .hero{
-    padding-bottom: 22px;
+
+  /* kill any extra space we introduced above features */
+  .below-fold .features{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
-  /* add space BEFORE the features section (outside, not inside) */
-  .below-fold .features{
-    margin-top: 18px;
-    padding-top: 0; /* guard against earlier tweaks */
+  /* (optional) if you still want a tiny breathing room, use THIS instead:
+     .hero-cta-note{ margin-bottom: 14px; }
+     but keep features margin/padding at 0
+  */
+  .hero-cta-note{
+    margin-bottom: 0; /* or 10px if you want a touch of space */
   }
 }
