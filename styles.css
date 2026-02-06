@@ -974,23 +974,39 @@ img{ max-width: 100%; height: auto; display: block; }
   .brand-name{ display: none; }
 }
 
-/* STEP 3: topbar layout (CTA row + links row) */
+/* STEP 3: topbar layout (grid: brand | CTA, links below) */
 @media (max-width: 640px){
   .topbar-inner{
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "links links";
     align-items: center;
-    gap: 8px 12px;
+    row-gap: 10px;
+    column-gap: 12px;
   }
 
-  .brand{ order: 1; }
+  .brand{ grid-area: brand; }
 
+  /* nav becomes a grid container too */
   .nav{
-    order: 2;
-    margin-left: auto;
-    gap: 10px;
+    grid-area: links;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
   }
 
-  .nav-cta{ order: 1; }
-  .nav-link:not(.nav-cta){ order: 3; }
+  /* place CTA in the top-right cell */
+  .nav-cta{
+    grid-area: cta;
+    justify-self: end;
+  }
+
+  /* keep the CTA styled like a button */
+  .nav-cta{
+    height: 36px;
+    padding: 0 12px;
+  }
 }
