@@ -605,10 +605,11 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .site-footer .footer-right{
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;     /* right align everything in the right column */
+  align-items: flex-end;
   gap: 10px;
   text-align: right;
   font-size: 12.5px;
