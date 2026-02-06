@@ -949,3 +949,25 @@ img{ max-width: 100%; height: auto; display: block; }
     max-height: 920px;
   }
 }
+
+/* =========================================================
+   MOBILE STEP 1 — Fix horizontal overflow (Home split section)
+   Paste at VERY bottom of the CSS file
+   ========================================================= */
+@media (max-width: 820px){
+  /* prevent any sideways scroll caused by fixed/2-col layouts */
+  html, body{ overflow-x: hidden; }
+
+  /* Home: stack the split section into one column */
+  .split-inner{
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  /* keep the bio card from feeling “too wide” once stacked */
+  .split-bio{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
