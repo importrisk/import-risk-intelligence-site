@@ -1233,11 +1233,19 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   FIX — topbar must scroll normally on mobile
+   iOS SAFARI — force topbar to scroll away (never fixed/sticky)
    ========================================================= */
 @media (max-width: 720px){
-  .topbar{
+  header.topbar{
     position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+  }
+
+  /* if any old rule used fixed inset */
+  header.topbar{
+    inset: auto 0 auto 0 !important;
   }
 }
-
