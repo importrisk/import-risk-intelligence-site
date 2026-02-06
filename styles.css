@@ -456,7 +456,6 @@ img{ max-width: 100%; height: auto; display: block; }
   text-decoration: underline;
 }
 
-
 /* =========================================================
    8) HOME — BIO CARD (IF PRESENT)
    ========================================================= */
@@ -500,17 +499,32 @@ img{ max-width: 100%; height: auto; display: block; }
   color: var(--ink);
 }
 
+/* Primary line */
 .bio-role{
   margin: 6px 0 0;
   font-size: 14px;
   color: var(--ink-faint);
 }
 
+/* Second line (Founder) — same size, slightly clearer, tighter spacing */
+.bio-role + .bio-role{
+  margin-top: 3px;
+  color: rgba(255,255,255,.78);
+}
+
 .bio-blurb{
   margin: 0;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: rgba(255,255,255,.82);
+}
+
+/* Paragraph rhythm (prevents big blocks) */
+.bio-blurb p{
+  margin: 0 0 16px;
+}
+.bio-blurb p:last-child{
+  margin-bottom: 0;
 }
 
 .bio-links{
@@ -520,7 +534,10 @@ img{ max-width: 100%; height: auto; display: block; }
   font-size: 13px;
 }
 
-.bio-links a{ color: rgba(180,210,255,.90); }
+.bio-links a{
+  color: rgba(180,210,255,.90);
+  text-decoration: none;
+}
 .bio-links a:hover{
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -532,7 +549,6 @@ img{ max-width: 100%; height: auto; display: block; }
   border-top: 1px solid var(--mist-divider);
 }
 .bio-cta .btn{ width: 100%; }
-
 
 /* =========================================================
    12) FOOTER
