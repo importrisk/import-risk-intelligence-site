@@ -503,13 +503,12 @@ img{ max-width: 100%; height: auto; display: block; }
 .bio-role{
   margin: 6px 0 0;
   font-size: 14px;
+  line-height: 1.25;
   color: var(--ink-faint);
 }
 
-/* Second line (Founder) — same size, slightly clearer, tighter spacing */
 .bio-role + .bio-role{
   margin-top: 3px;
-  color: rgba(255,255,255,.78);
 }
 
 .bio-founder{ white-space: nowrap; }
