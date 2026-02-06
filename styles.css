@@ -950,10 +950,13 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   MOBILE — CORE FIXES (FINAL, STABLE)
+   MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
+   Paste at VERY bottom of CSS
    ========================================================= */
 
-/* ---------- 1. Stack home split section ---------- */
+/* ---------------------------------------------------------
+   STEP 1: prevent horizontal overflow + stack home split section
+   --------------------------------------------------------- */
 @media (max-width: 1100px){
   html, body{ overflow-x: hidden; }
 
@@ -968,7 +971,9 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* ---------- 2. Hero headline control ---------- */
+/* ---------------------------------------------------------
+   STEP 2: keep "Tracking for" together + force break after Independent on phones
+   --------------------------------------------------------- */
 .nowrap{ white-space: nowrap; }
 .br-mobile{ display: none; }
 
@@ -976,47 +981,96 @@ img{ max-width: 100%; height: auto; display: block; }
   .br-mobile{ display: inline; }
 }
 
-/* ---------- 3. Hero → Features spacing (iPhone verified) ---------- */
+/* ---------------------------------------------------------
+   STEP 3: iPhone — spacing between hero note and features band
+   (You said 16px looks good; adjust if needed)
+   --------------------------------------------------------- */
 @media (max-width: 520px){
   .hero-cta-note{
-    margin-bottom: 16px;
+    margin-bottom: 16px !important;
   }
 
+  /* keep features from adding extra space */
   .below-fold .features{
-    margin-top: 0;
-    padding-top: 0;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
 
-/* =========================================================
-   MOBILE NAV — FULL SCREEN (KNOWN GOOD VERSION)
-   ========================================================= */
+/* ---------------------------------------------------------
+   STEP 4: “non-hamburger” layout ONLY for 641–720px
+   (prevents fighting with hamburger <=720)
+   --------------------------------------------------------- */
+@media (min-width: 641px) and (max-width: 720px){
+  .topbar-inner{
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .nav-cta{
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    height: 36px;
+    padding: 0 12px;
+  }
+
+  .nav-link:not(.nav-cta){
+    grid-row: 2;
+    justify-self: center;
+  }
+
+  .nav-link[href*="#home"]{ grid-column: 1; }
+  .nav-link[href*="method"]{ grid-column: 2; }
+}
+
+/* ---------------------------------------------------------
+   STEP 5: Hamburger menu (CSS-only “sheet” overlay) <=720px
+   Requires sibling order:
+   input.nav-toggle + label.hamburger + a.brand + nav.nav + label.nav-backdrop
+   --------------------------------------------------------- */
 .nav-toggle{ display: none; }
 .hamburger{ display: none; }
 .nav-backdrop{ display: none; }
 
 @media (max-width: 720px){
 
-  /* Keep nav above hero */
+  /* Keep overlay above hero */
   .topbar{ z-index: 9999; }
 
-  /* Topbar layout */
+  /* Layout (Safari-safe): brand hard-left, hamburger hard-right */
   .topbar-inner{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* important for iPhone */
     gap: 14px;
   }
 
-  /* Brand left, hamburger right */
   .brand{
+    order: 1;
     white-space: nowrap;
+    margin-left: 0 !important;
   }
 
-  .brand-name{
-    display: inline;
+  /* show full name again (overrides <=560px hide if present above) */
+  .brand-name{ display: inline !important; }
+
+  .hamburger{
+    order: 2;
+    margin-left: auto !important;
   }
 
+  /* Hamburger button */
   .hamburger{
     display: inline-flex;
     width: 44px;
@@ -1028,7 +1082,7 @@ img{ max-width: 100%; height: auto; display: block; }
     position: relative;
   }
 
-  /* Hamburger bars */
+  /* Fixed bars */
   .hamburger span{
     position: absolute;
     left: 11px;
@@ -1042,7 +1096,63 @@ img{ max-width: 100%; height: auto; display: block; }
   .hamburger span:nth-child(2){ top: 21px; }
   .hamburger span:nth-child(3){ top: 28px; }
 
-  /* Animate to X */
+  /* Menu panel: sheet below topbar */
+  .nav{
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    right: 0;
+
+    bottom: auto;
+    max-height: calc(100vh - var(--topbar-h));
+    overflow: auto;
+
+    display: none !important; /* override desktop inline-flex */
+    z-index: 9998;
+
+    padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
+    background: rgba(11, 29, 47, .94);
+    border-top: 1px solid rgba(255,255,255,.10);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Open state */
+  .nav-toggle:checked ~ .nav{
+    display: block !important;
+  }
+
+  /* Menu items */
+  .nav-link{
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 0 14px;
+    font-size: 16px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+  }
+  .nav-link + .nav-link{ margin-top: 14px; }
+
+  .nav-cta{
+    background: rgba(127,177,234,.18);
+    border-color: rgba(127,177,234,.45);
+  }
+
+  /* Animate hamburger into X */
   .nav-toggle:checked + .hamburger span:nth-child(1){
     transform: translateY(7px) rotate(45deg);
   }
@@ -1053,59 +1163,24 @@ img{ max-width: 100%; height: auto; display: block; }
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* FULL SCREEN MENU (INTENTIONAL) */
-  .nav{
-    position: fixed;
-    inset: 0;
-    display: none;
-    z-index: 9998;
-    overflow: auto;
-
-    padding: calc(var(--topbar-h) + 18px) 16px 28px;
-    background: rgba(11, 29, 47, .92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .nav-toggle:checked ~ .nav{
-    display: block;
-  }
-
-  /* Menu items */
-  .nav-link{
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    padding: 0 14px;
-    font-size: 16px;
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.05);
-  }
-
-  .nav-link + .nav-link{
-    margin-top: 14px;
-  }
-
-  .nav-cta{
-    background: rgba(127,177,234,.22);
-    border-color: rgba(127,177,234,.45);
-  }
-
-  /* Backdrop for tap-outside */
+  /* Backdrop: tap outside to close */
   .nav-backdrop{
     position: fixed;
     inset: 0;
-    z-index: 9997;
+    z-index: 9997; /* below nav */
     background: rgba(0,0,0,.35);
     display: none;
   }
-
   .nav-toggle:checked ~ .nav-backdrop{
     display: block;
   }
 }
 
-
+/* ---------------------------------------------------------
+   STEP 6: optionally hide brand-name on VERY small screens
+   (If you still want this, keep it. If not, delete it.)
+   NOTE: hamburger block forces it back on <=720.
+   --------------------------------------------------------- */
+@media (max-width: 560px){
+  .brand-name{ display: none; }
+}
