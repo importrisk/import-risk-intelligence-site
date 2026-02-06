@@ -1233,13 +1233,20 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   FORCE TOPBAR TO SCROLL (GLOBAL)
-   Paste at VERY bottom of CSS
+   HARD RESET: allow page to scroll + make topbar non-sticky
+   Paste at VERY bottom (last lines of file)
    ========================================================= */
-header.topbar{
+
+html, body{
+  overflow: auto !important;
+  position: static !important;
+  height: auto !important;
+}
+
+header.topbar,
+.topbar{
   position: absolute !important;
-  inset: 0 0 auto 0 !important; /* top:0 left:0 right:0 */
+  inset: 0 0 auto 0 !important; /* top:0; left:0; right:0 */
   transform: none !important;
   will-change: auto !important;
 }
-
