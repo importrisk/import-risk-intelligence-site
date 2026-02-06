@@ -950,99 +950,35 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   FINAL MOBILE FIXES — Home + Topbar (MATCHES YOUR HTML)
-   Paste at VERY bottom of CSS
+   MOBILE NAV + HERO — FINAL CLEAN FIX
    ========================================================= */
 
-/* ---------------------------------------------------------
-   1) Prevent horizontal overflow + stack Home split section
-   --------------------------------------------------------- */
-@media (max-width: 1100px){
-  html, body{ overflow-x: hidden; }
-
-  .split-inner{
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .split-bio{
-    max-width: 520px;
-    margin: 0 auto;
-  }
-}
-
-/* ---------------------------------------------------------
-   2) Hero title helpers (you already used these in HTML)
-   - keep "Tracking for" together
-   - only show <br class="br-mobile"> on phones
-   --------------------------------------------------------- */
-.nowrap{ white-space: nowrap; }
-.br-mobile{ display: none; }
-
-@media (max-width: 520px){
-  .br-mobile{ display: inline; }
-}
-
-/* ---------------------------------------------------------
-   3) iPhone — spacing between hero note and features band
-   --------------------------------------------------------- */
-@media (max-width: 520px){
-  .hero-cta-note{
-    margin-bottom: 16px !important; /* your chosen value */
-  }
-
-  /* ensure the features band doesn't create its own extra gap */
-  .below-fold .features{
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-/* ---------------------------------------------------------
-   4) Optional: shorten brand on VERY small screens
-   NOTE: hamburger rules below force the full name back on at <=720px
-   --------------------------------------------------------- */
-@media (max-width: 560px){
-  .brand-name{ display: none; }
-}
-
-/* ---------------------------------------------------------
-   5) Hamburger menu — CSS-only sheet overlay (<=720px)
-   Matches your HTML order:
-   input.nav-toggle
-   label.hamburger
-   a.brand
-   nav.nav
-   label.nav-backdrop
-   --------------------------------------------------------- */
+/* ---------- Base hidden controls ---------- */
 .nav-toggle{ display: none; }
 .hamburger{ display: none; }
 .nav-backdrop{ display: none; }
 
+/* =========================================================
+   MOBILE (<=720px)
+   ========================================================= */
 @media (max-width: 720px){
 
-  /* Keep overlay above hero */
-  .topbar{ z-index: 9999; }
+  /* Top bar layout: brand left, hamburger right */
+  .topbar{
+    z-index: 9999;
+  }
 
-  /* iPhone/Safari safe layout:
-     brand pinned left, hamburger pinned right */
   .topbar-inner{
     display: flex;
     align-items: center;
-    justify-content: flex-start !important; /* critical for iPhone */
-    gap: 14px;
+    justify-content: space-between;
   }
 
-  /* Ensure brand is visible and hard-left */
   .brand{
     white-space: nowrap;
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 
-  /* Override <=560 hide: show full company name in hamburger mode */
-  .brand-name{ display: inline !important; }
-
-  /* Show hamburger and pin it right */
   .hamburger{
     display: inline-flex;
     width: 44px;
@@ -1050,12 +986,9 @@ img{ max-width: 100%; height: auto; display: block; }
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    user-select: none;
     position: relative;
-    margin-left: auto !important;
   }
 
-  /* Hamburger bars */
   .hamburger span{
     position: absolute;
     left: 11px;
@@ -1069,48 +1002,34 @@ img{ max-width: 100%; height: auto; display: block; }
   .hamburger span:nth-child(2){ top: 21px; }
   .hamburger span:nth-child(3){ top: 28px; }
 
-  /* Menu sheet below topbar */
+  /* ---------- Menu sheet ---------- */
   .nav{
     position: fixed;
     top: var(--topbar-h);
     left: 0;
     right: 0;
-    bottom: auto;
-
-    max-height: calc(100vh - var(--topbar-h));
-    overflow: auto;
-
-    display: none !important; /* override desktop inline-flex */
     z-index: 9998;
 
-    padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
-    background: rgba(11, 29, 47, .94);
-    border-top: 1px solid rgba(255,255,255,.10);
-    border-bottom: 1px solid rgba(255,255,255,.10);
-    box-shadow: 0 18px 44px rgba(0,0,0,.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    padding: 18px 16px 22px;
 
-    overscroll-behavior: contain;
+    background: rgba(11,29,47,.94);
+    border-top: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+
+    max-height: calc(100vh - var(--topbar-h));
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Open state */
-  .nav-toggle:checked ~ .nav{
-    display: block !important;
-  }
-
-  /* Menu items */
   .nav-link{
     width: 100%;
     max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: 0 auto;
     height: 54px;
+
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 
     padding: 0 14px;
     font-size: 16px;
@@ -1118,15 +1037,35 @@ img{ max-width: 100%; height: auto; display: block; }
     border: 1px solid rgba(255,255,255,.14);
     background: rgba(255,255,255,.05);
   }
-  .nav-link + .nav-link{ margin-top: 14px; }
 
-  /* CTA inside sheet */
+  .nav-link + .nav-link{
+    margin-top: 14px;
+  }
+
   .nav-cta{
     background: rgba(127,177,234,.18);
     border-color: rgba(127,177,234,.45);
   }
 
-  /* Animate hamburger into X */
+  /* ---------- Backdrop (tap outside to close) ---------- */
+  .nav-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: rgba(0,0,0,.35);
+    display: none;
+  }
+
+  /* ---------- Open state ---------- */
+  .nav-toggle:checked ~ .nav{
+    display: block;
+  }
+
+  .nav-toggle:checked ~ .nav-backdrop{
+    display: block;
+  }
+
+  /* Hamburger → X */
   .nav-toggle:checked + .hamburger span:nth-child(1){
     transform: translateY(7px) rotate(45deg);
   }
@@ -1136,17 +1075,29 @@ img{ max-width: 100%; height: auto; display: block; }
   .nav-toggle:checked + .hamburger span:nth-child(3){
     transform: translateY(-7px) rotate(-45deg);
   }
-
-  /* Backdrop for tap-outside-to-close */
-  .nav-backdrop{
-    position: fixed;
-    inset: 0;
-    z-index: 9997; /* below .nav */
-    background: rgba(0,0,0,.35);
-    display: none;
-  }
-  .nav-toggle:checked ~ .nav-backdrop{
-    display: block;
-  }
 }
 
+/* =========================================================
+   HERO TEXT LINE CONTROL
+   ========================================================= */
+.nowrap{ white-space: nowrap; }
+.br-mobile{ display: none; }
+
+@media (max-width: 520px){
+  .br-mobile{ display: inline; }
+}
+
+/* =========================================================
+   HERO → FEATURES SPACING (iPhone)
+   ========================================================= */
+@media (max-width: 520px){
+
+  .hero-cta-note{
+    margin-bottom: 16px;
+  }
+
+  .below-fold .features{
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
