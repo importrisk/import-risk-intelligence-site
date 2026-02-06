@@ -1200,4 +1200,34 @@ img{ max-width: 100%; height: auto; display: block; }
     overflow: auto !important;
   }
 }
+/* =========================================================
+   MOBILE — FEATURES BAND TUNING (drop-in)
+   Paste at VERY bottom of CSS
+   ========================================================= */
+@media (max-width: 520px){
+
+  /* Overall band spacing */
+  .features{
+    padding-top: 20px !important;     /* tighter top */
+    padding-bottom: 28px !important;  /* keep breathing room */
+  }
+
+  /* Bring the icon closer to the heading */
+  .feature svg{
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Optional: soften dividers on small screens
+     (If your dividers are done with borders) */
+  .feature{
+    border-left: none !important;
+  }
+
+  /* Optional: tighten paragraph rhythm slightly */
+  .feature p{
+    line-height: 1.45 !important;
+  }
+}
+
 
