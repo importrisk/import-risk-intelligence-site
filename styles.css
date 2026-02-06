@@ -1233,19 +1233,12 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   iOS SAFARI — force topbar to scroll away (never fixed/sticky)
+   FORCE TOPBAR TO SCROLL (GLOBAL)
    ========================================================= */
-@media (max-width: 720px){
-  header.topbar{
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: auto !important;
-  }
-
-  /* if any old rule used fixed inset */
-  header.topbar{
-    inset: auto 0 auto 0 !important;
-  }
+header.topbar{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
 }
