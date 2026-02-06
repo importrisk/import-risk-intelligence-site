@@ -1021,6 +1021,9 @@ img{ max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 720px){
 
+  /* Ensure the dropdown sits above the hero */
+  .topbar{ z-index: 9999; }
+
   /* Layout */
   .topbar-inner{
     display: flex;
@@ -1066,6 +1069,10 @@ img{ max-width: 100%; height: auto; display: block; }
     left: 0;
     right: 0;
     display: none;
+
+    z-index: 9998;
+    max-height: calc(100vh - var(--topbar-h));
+    overflow: auto;
 
     padding: 10px 14px 14px;
     background: rgba(11, 29, 47, .92);
