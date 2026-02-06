@@ -861,6 +861,22 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .cs-button:hover{ background: rgba(127,177,234,.30); }
 
+.cs-direct{
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.70);
+}
+
+.cs-direct a{
+  color: rgba(180,210,255,.92);
+  text-decoration: none;
+}
+
+.cs-direct a:hover{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 920px){
   :root{ --contact-hero-y: 90%; }
