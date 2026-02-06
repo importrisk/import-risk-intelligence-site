@@ -1162,4 +1162,14 @@ img{ max-width: 100%; height: auto; display: block; }
     overflow: auto !important;
   }
 }
+/* keep "Tracking for" together */
+.nowrap{ white-space: nowrap; }
+
+/* only force the break after "Independent" on phones */
+.br-mobile{ display: none; }
+
+@media (max-width: 520px){
+  .br-mobile{ display: inline; }
+}
+
 
