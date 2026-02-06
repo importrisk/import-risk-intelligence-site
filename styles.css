@@ -1196,7 +1196,7 @@ img{ max-width: 100%; height: auto; display: block; }
    (paste at VERY bottom of CSS)
    ========================================================= */
 @media (max-width: 520px){
-  .hero-cta-note{ margin-bottom: 10px !important; }
+  .hero-cta-note{ margin-bottom: 14px !important; }
 
   /* keep features from adding extra on its own */
   .below-fold .features{
