@@ -1,24 +1,29 @@
 /* =========================================================
    METHOD PAGE ONLY (method.css)
+   - Hero image defined ONLY here
+   - Features = ONE strip behind cards on wide screens
+   - Below-fold water texture comes from global .below-fold (DO NOT OVERRIDE)
+   - Responsive: cards can grow; Coverage never overlaps
    ========================================================= */
 
-/* ===============================
-   HARD SAFETY RESET (METHOD ONLY)
-   =============================== */
 
-/* Prevent stray range sliders / UI controls from bleeding through */
+/* =========================================================
+   FIX: Prevent stray sliders/range inputs from bleeding through
+   (only affects Method page sections if something injects them)
+   ========================================================= */
 .method-hero input[type="range"],
 .method-features input[type="range"],
-.method-content input[type="range"]{
+.below-fold.method-content input[type="range"],
+.method-practice input[type="range"]{
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
 
-/* ===============================
-   1) METHOD HERO
-   =============================== */
 
+/* =========================================================
+   1) METHOD HERO (LOCKED POSITION)
+   ========================================================= */
 .method-hero{
   position: relative;
   min-height: clamp(420px, 56vh, 620px);
@@ -31,6 +36,7 @@
 .method-hero-bg{
   position: absolute;
   inset: -10vh 0 -10vh 0;
+
   background-image:
     linear-gradient(
       180deg,
@@ -38,12 +44,22 @@
       var(--hero-mid) 58%,
       var(--hero-bottom) 100%
     ),
-    url("assets/images/method-hero.jpg");
+    url("assets/images/method-hero.jpg") !important;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 74%;
+  transform: translateY(0);
+  will-change: transform;
   pointer-events: none;
   z-index: 0;
+}
+
+@media (min-width: 1200px){
+  .method-hero-bg{ transform: translateY(6vh); }
+}
+@media (min-width: 1600px){
+  .method-hero-bg{ transform: translateY(8vh); }
 }
 
 .method-hero > .container{
@@ -54,20 +70,27 @@
 .method-hero-inner{
   padding-top: 100px;
   text-align: center;
-  max-width: 720px;
   margin: 0 auto;
+  max-width: 720px;
 }
 
 .method-hero .hero-title{
+  margin: 0;
   font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: rgba(255,255,255,.96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.30);
 }
 
 .method-hero .hero-subtitle{
+  margin: 14px auto 0;
+  max-width: 680px;
   font-size: 24px;
-  margin-top: 14px;
   color: rgba(255,255,255,.78);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.35),
+    0 0 24px rgba(0,0,0,.25);
 }
 
 .method-hero .hero-subtitle-muted{
@@ -75,187 +98,614 @@
   opacity: 0.86;
 }
 
-/* ===============================
-   2) METHOD FEATURES
-   =============================== */
 
+/* =========================================================
+   2) METHOD FEATURES (band behind cards)
+   - ONLY background paint changes
+   - NO spacing, height, or layout changes
+   ========================================================= */
 .method-features{
+  --card-h: 260px;
+  --spill: 24px;
+  --gap: 28px;
+
+  /* strip height behind the middle of the cards */
+  --band-h: calc(var(--card-h) - (var(--spill) * 2));
+
   position: relative;
   z-index: 4;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(20, 42, 68, .89) 0%,
-      rgba(16, 34, 56, .91) 55%,
-      rgba(12, 26, 44, .94) 100%
-    );
+  isolation: isolate;
+  overflow: visible;
+
+  margin: 0;
+  padding: 0;
+
+  /* Default = flow (responsive-safe) */
+  height: auto;
+
+  /* Paint base water gradient ONLY (no layout impact) */
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  ) !important;
 }
 
+/* Water texture layer (matches global below-fold exactly) */
 .method-features::after{
   content: "";
   position: absolute;
   inset: 0;
   background: url("assets/images/water-texture.jpg") center / cover no-repeat;
   opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
   pointer-events: none;
   z-index: 0;
 }
 
-.method-feature-grid{
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 28px;
-  transform: translateY(-24px);
+/* Feature band strip (unchanged geometry, now over water) */
+.method-features::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0; /* becomes active on wide screens elsewhere */
+  background: rgba(83,103,128,.72);
+  border-top: 1px solid var(--band-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* ===============================
-   3) FEATURE CARDS
-   =============================== */
+.method-feature-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
 
+  position: relative;
+  z-index: 2;
+
+  transform: translateY(calc(-1 * var(--spill)));
+}
+
+
+/* =========================================================
+   3) CARDS (no clamping, no hidden text)
+   ========================================================= */
 .method-feature{
-  background: rgba(28,47,71,.97);
+  position: relative;
+  background: rgba(28, 47, 71, 0.97);
   border: 1px solid rgba(255,255,255,.16);
-  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  border-radius: 0;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.07);
 }
 
 .method-feature .mf-inner{
-  padding: 22px;
+  padding: 22px 22px 20px;
   display: flex;
   flex-direction: column;
-  min-height: 260px;
+  gap: 12px;
+
+  min-height: var(--card-h);
+  height: auto;
 }
 
-.mf-head{
+.method-feature .mf-head{
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 10px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,.18);
+  margin-bottom: 12px;
 }
 
-.mf-title{
+.method-feature .mf-head::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.18);
+}
+
+.method-feature .mf-icon{
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.85);
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+.method-feature .mf-icon svg{
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.method-feature .mf-title{
+  margin: 0;
   font-size: 22px;
+  letter-spacing: -0.01em;
   color: rgba(255,255,255,.96);
 }
 
-.mf-description{
+.method-feature .mf-description{
+  margin: 0;
   font-size: 16px;
-  color: rgba(255,255,255,.82);
   line-height: 1.45;
+  color: rgba(255,255,255,.82);
+  max-width: 36ch;
 }
 
-.mf-subtle{
+.method-feature .mf-subtle{
   margin-top: 8px;
-  font-size: .9rem;
-  color: rgba(127,177,234,.75);
+  font-size: 0.9rem;
+  color: rgba(127, 177, 234, 0.75);
+  line-height: 1.5;
 }
 
-/* ===============================
-   4) BELOW FOLD
-   =============================== */
+.method-feature:not(:last-child)::after{
+  content: "›";
+  position: absolute;
+  left: calc(100% + (var(--gap) / 2));
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 300;
+  color: rgba(255,255,255,.28);
+  pointer-events: none;
+  z-index: 5;
+}
 
+
+/* =========================================================
+   4) BELOW-FOLD (water)
+   - DO NOT disable ::before/::after (that kills the water)
+   - Only provide spacing so Coverage never collides
+   ========================================================= */
 .below-fold.method-content{
-  padding-top: 88px;
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+
+  /* space above Coverage (safe; does NOT affect water render) */
+  padding-top: 88px !important;
 }
 
-/* ===============================
+
+/* =========================================================
    5) COVERAGE IN PRACTICE
-   =============================== */
+   - Goal + Delivery in two columns
+   - Delivery list truly centered as a block
+   - Smaller check-in-circle with thinner stroke
+   ========================================================= */
 
 .method-practice{
+  position: relative;
   padding: 56px 0 64px;
+  background: transparent;
+
+  /* shared column width for delivery + price */
+  --mp-col: 560px;
 }
 
-.mp-head{
+/* ---------- Header ---------- */
+.method-practice .mp-head{
   text-align: center;
   max-width: 900px;
-  margin: 0 auto 36px;
+  margin: -32px auto 36px;
 }
 
-.mp-title{
+.method-practice .mp-title{
+  margin: 0 0 16px;
   font-size: 44px;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.95);
 }
 
-.mp-core{
-  max-width: 980px;
-  margin: 28px auto;
+.method-practice .mp-lead{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
+/* ---------- Core: Goal + Delivery ---------- */
+.method-practice .mp-core{
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-}
+  align-items: start;
 
-.mp-goal,
-.mp-delivery{
-  text-align: center;
-}
-
-.mp-goal-text{
-  max-width: 46ch;
-  margin: 0 auto;
-}
-
-/* ===============================
-   6) FAQ
-   =============================== */
-
-.mp-faq{
   max-width: 980px;
-  margin: 0 auto;
+  margin: 28px auto 22px;
 }
 
-.mp-faq-title{
+.method-practice .mp-core::after{
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.18),
+    rgba(255,255,255,0)
+  );
+}
+
+/* ---------- Goal ---------- */
+.method-practice .mp-goal{
+  text-align: center;
+  max-width: 860px;
+  margin: 32px auto 10px; /* pushed down to align with DELIVERY */
+}
+
+.method-practice .mp-goal-label{
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  letter-spacing: .16em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.72);
+}
+
+.method-practice .mp-goal-text{
+  margin: 0 auto;
+  max-width: 46ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.88);
+}
+
+/* ---------- Delivery ---------- */
+.method-practice .mp-includes-label{
+  margin: 32px auto 10px;
+  text-align: center;
+  font-size: 14.5px;
+  letter-spacing: .16em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.68);
+}
+
+/* Delivery list — TRUE centered as a visual block */
+.method-practice ul.mp-includes{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+
+  /* shrink-wraps list so it actually centers */
+  width: fit-content;
+  max-width: min(var(--mp-col), 100%);
+
+  display: grid;
+  gap: 14px;
+}
+
+/* Each delivery row */
+.method-practice ul.mp-includes > li{
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  column-gap: 12px;
+  align-items: center;
+
+  width: 100%;
+  max-width: min(var(--mp-col), 100%);
+
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.84);
+}
+
+/* Check-in-circle (small, thin, restrained) */
+.method-practice ul.mp-includes > li::before{
+  content: "✓";
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  border: 0.75px solid rgba(180,215,255,.50);
+
+  color: rgba(180,215,255,.90);
+  font-size: 12px;
+  font-weight: 450;
+  line-height: 1;
+}
+
+/* ---------- Price ---------- */
+.method-practice .mp-goal-price{
+  display: block;
+  text-align: center;
+
+  /* THIS is the spacing you want */
+  margin: 44px auto 0 !important;
+
+  font-size: 32px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgba(127, 177, 234, 0.95);
+  text-shadow: 0 12px 26px rgba(0,0,0,.28);
+}
+
+.method-practice .mp-price-note{
+  margin: 8px auto 0;
+  width: var(--mp-col);
+  text-align: center;
+
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.60);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px){
+  .method-practice .mp-core{
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* --- Price + note (locked to same center column) --- */
+.method-practice .mp-goal-price{
+  width: min(var(--mp-col), 520px);
+  margin: 18px auto 0;
+  text-align: center;
+
+  font-size: 32px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgba(127, 177, 234, 0.95);
+  text-shadow: 0 12px 26px rgba(0,0,0,.28);
+}
+
+.method-practice .mp-price-note{
+  width: min(var(--mp-col), 520px);
+  margin: 8px auto 0;
+  text-align: center;
+
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.60);
+}
+
+.method-practice .mp-divider{
+  height: 1px;
+  margin: 44px auto 26px; /* tighter above Common */
+  max-width: 900px;
+
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.28),
+    rgba(255,255,255,0)
+  );
+}
+
+.mp-pricing{
+  text-align: center;
+  margin: 56px auto 56px; /* was 64 auto 80 (too much bottom air) */
+  max-width: 720px;
+}
+
+.mp-goal-price{
+  margin-bottom: 16px;
+}
+
+.mp-cta-lead{
+  margin: 10px auto 18px;
+  max-width: 620px;
+  text-align: center;
+
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.72);
+}
+
+.mp-actions{
+  margin-bottom: 18px;
+}
+
+.mp-price-note{
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+}
+
+/* --- FAQ (refined) --- */
+.method-practice .mp-faq{
+  max-width: 980px;
+  margin: 0 auto 26px;
+}
+
+.method-practice .mp-faq-title{
+  margin: 0 0 22px;
   text-align: center;
   font-size: 28px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
 }
 
-.mp-faq-grid{
+/* grid: a little more breathing room + stability */
+.method-practice .mp-faq-grid{
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px 72px;
 }
 
-.mp-faq-item{
+/* give each item a "shape" without looking like SaaS cards */
+.method-practice .mp-faq-item{
+  padding: 16px 0 0;
   border-top: 1px solid rgba(255,255,255,.10);
-  padding-top: 16px;
+  position: relative;
 }
 
-.mp-q{
+/* subtle left accent to make scanning easier */
+.method-practice .mp-faq-item::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  height: 18px;
+  width: 2px;
+  background: rgba(127,177,234,.45);
+  border-radius: 2px;
+}
+
+/* question: slightly larger + tighter + clearer */
+.method-practice .mp-q{
+  margin: 0 0 8px;
+  padding-left: 14px;
   font-size: 16.75px;
   font-weight: 600;
+  line-height: 1.28;
+  color: rgba(255,255,255,.93);
+  letter-spacing: -0.01em;
 }
 
-.mp-a{
+.method-practice .mp-a{
+  margin: 0;
+  padding-left: 14px;
   font-size: 15px;
   line-height: 1.65;
+  color: rgba(255,255,255,.80);
+  max-width: 52ch;
 }
 
-/* Centered capstone */
-.mp-faq-centered{
+/* hover: tiny lift so it feels interactive but not "clicky" */
+@media (hover:hover){
+  .method-practice .mp-faq-item:hover::before{
+    background: rgba(127,177,234,.70);
+  }
+  .method-practice .mp-faq-item:hover .mp-q{
+    color: rgba(255,255,255,.98);
+  }
+}
+
+/* FIX: Centered capstone FAQ item (ALL screen sizes, not just mobile) */
+.method-practice .mp-faq .mp-faq-item.mp-faq-centered{
   max-width: 620px;
   margin: 36px auto 0;
   text-align: center;
 }
-
-.mp-faq-centered::before{
+.method-practice .mp-faq .mp-faq-item.mp-faq-centered::before{
   display: none;
 }
+.method-practice .mp-faq .mp-faq-item.mp-faq-centered .mp-q,
+.method-practice .mp-faq .mp-faq-item.mp-faq-centered .mp-a{
+  padding-left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.method-practice .mp-faq .mp-faq-item.mp-faq-centered .mp-a{
+  max-width: 62ch;
+}
 
-/* ===============================
-   RESPONSIVE
-   =============================== */
+/* Stack on mobile */
+@media (max-width: 820px){
+  .method-practice .mp-faq-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .method-practice .mp-a{
+    max-width: 60ch;
+  }
+}
 
+
+/* =========================================================
+   6) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
+   - Only apply the “strip math” when grid is 4-up
+   ========================================================= */
+@media (min-width: 981px){
+  .method-features{
+    --spill: 24px;
+    --band-extra: 54px;
+
+    height: calc(var(--band-h) + var(--band-extra));
+  }
+
+  .method-features::before{
+    height: calc(var(--band-h) + var(--band-extra));
+    background: rgba(83,103,128,.72);
+    border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.08),
+      inset 0 -1px 0 rgba(0,0,0,.22);
+  }
+
+  .method-feature .mf-inner{
+    min-height: var(--card-h);
+  }
+}
+
+/* FIX: this was incorrectly nested before */
+@media (max-width: 720px){
+  .method-practice .mp-core::after{
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   7) RESPONSIVE
+   ========================================================= */
 @media (max-width: 980px){
+  .method-features{
+    --gap: 20px;
+    --spill: 18px;
+  }
+
   .method-feature-grid{
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .method-feature:not(:last-child)::after{
+    display: none;
   }
 }
 
 @media (max-width: 640px){
   .method-feature-grid{
     grid-template-columns: 1fr;
+    gap: 18px;
   }
-  .mp-core{
+
+  .method-practice .mp-title{
+    font-size: 36px;
+  }
+
+  .method-practice{
+    --mp-col: 92vw;
+  }
+
+  .method-practice .mp-goal-price{
+    font-size: 28px;
+  }
+
+  .method-practice .mp-faq-grid{
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
