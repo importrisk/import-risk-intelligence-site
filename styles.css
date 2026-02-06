@@ -1032,7 +1032,7 @@ img{ max-width: 100%; height: auto; display: block; }
     gap: 14px;
   }
 
-  /* Put brand left, hamburger right */
+  /* Brand left, hamburger right */
   .brand{ order: 1; white-space: nowrap; }
   .brand-name{ display: inline; }
   .hamburger{ order: 3; }
@@ -1062,39 +1062,49 @@ img{ max-width: 100%; height: auto; display: block; }
   .hamburger span:nth-child(2){ top: 21px; }
   .hamburger span:nth-child(3){ top: 28px; }
 
-  /* Hide the inline nav by default; make it a dropdown panel */
-  
-   .nav{
-  position: fixed;
-  top: var(--topbar-h);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
+  /* Full-screen menu panel below topbar */
+  .nav{
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
 
-  z-index: 9998;
-  overflow: auto;
+    z-index: 9998;
+    overflow: auto;
 
-  padding: 14px 14px 18px;
-  background: rgba(11, 29, 47, .92);
-  border-top: 1px solid rgba(255,255,255,.10);
-  box-shadow: 0 18px 44px rgba(0,0,0,.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-  .nav-link{
-    height: 42px;
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0 12px;
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.06);
+    padding: 18px 16px 28px;
+    background: rgba(11, 29, 47, .92);
+    border-top: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  .nav-link + .nav-link{ margin-top: 10px; }
 
+  /* Menu items as centered “buttons” */
+  .nav-link{
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 0 14px;
+    font-size: 16px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+  }
+  .nav-link + .nav-link{ margin-top: 14px; }
+
+  /* CTA styling inside overlay */
   .nav-cta{
-    background: rgba(127,177,234,.22);
+    background: rgba(127,177,234,.18);
     border-color: rgba(127,177,234,.45);
   }
 
