@@ -1226,8 +1226,8 @@ img{ max-width: 100%; height: auto; display: block; }
     content: "";
     position: absolute;
     top: 0;
-    left: 48px;          /* ← adjust this */
-    right: 48px;         /* ← adjust this */
+    left: 72px;          /* ← adjust this */
+    right: 72px;         /* ← adjust this */
     height: 1px;
     background: rgba(255,255,255,.12);
   }
