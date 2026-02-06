@@ -608,15 +608,16 @@ img{ max-width: 100%; height: auto; display: block; }
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  align-items: flex-end;     /* right align everything in the right column */
+  gap: 10px;
   text-align: right;
   font-size: 12.5px;
   line-height: 1.35;
 }
 
 .site-footer .footer-nav{
-  display: inline-flex;
+  display: flex;
+  justify-content: flex-end; /* RIGHT align the menu */
   align-items: center;
 }
 
@@ -641,36 +642,32 @@ img{ max-width: 100%; height: auto; display: block; }
   opacity: .9;
 }
 
-.site-footer .footer-copy{
+/* Email line (right column) */
+.site-footer .footer-meta{
   margin: 0;
-  font-size: 11px;
-  color: rgba(180,195,214,.50);
-}
-.footer-contact{
-  margin: 10px 0 0;
-  font-size: 13px;
-  color: rgba(255,255,255,.70);
+  font-size: 12.5px;
+  color: rgba(230,238,247,.75);
 }
 
-.footer-meta{
-  margin-top: 12px;
-  font-size: 13px;
-  color: rgba(255,255,255,.70);
-}
-
-.footer-label{
+.site-footer .footer-label{
   color: rgba(255,255,255,.62);
   margin-right: 6px;
 }
 
-.footer-email{
+.site-footer .footer-email{
   color: rgba(180,210,255,.92);
   text-decoration: none;
 }
 
-.footer-email:hover{
+.site-footer .footer-email:hover{
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.site-footer .footer-copy{
+  margin: 0;
+  font-size: 11px;
+  color: rgba(180,195,214,.50);
 }
 
 /* =========================================================
