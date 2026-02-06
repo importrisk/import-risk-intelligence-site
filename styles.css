@@ -1013,4 +1013,99 @@ img{ max-width: 100%; height: auto; display: block; }
   .nav-link[href*="#home"]{ grid-column: 1; }
   .nav-link[href*="method"]{ grid-column: 2; }
 }
+/* =========================================================
+   MOBILE STEP 2 — Hamburger menu (CSS-only)
+   ========================================================= */
+.nav-toggle{ display: none; }
+.hamburger{ display: none; }
+
+@media (max-width: 720px){
+
+  /* Layout: hamburger left, brand right */
+  .topbar-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  /* Show hamburger */
+  .hamburger{
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  .hamburger span{
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255,255,255,.86);
+    border-radius: 2px;
+    position: relative;
+  }
+   
+  .hamburger span + span{ margin-top: 5px; }
+
+  /* Brand on the right (keep full name visible again) */
+  .brand{
+    white-space: nowrap;
+  }
+  .brand-name{
+    display: inline;
+  }
+
+  /* Hide the inline nav by default; make it a dropdown panel */
+  .nav{
+    position: absolute;
+    top: var(--topbar-h);
+    left: 0;
+    right: 0;
+    display: none;
+
+    padding: 10px 14px 14px;
+    background: rgba(11, 29, 47, .92);
+    border-top: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .nav-link{
+    height: 42px;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 12px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+  }
+  .nav-link + .nav-link{ margin-top: 10px; }
+
+  .nav-cta{
+    background: rgba(127,177,234,.22);
+    border-color: rgba(127,177,234,.45);
+  }
+
+  /* Open state */
+  .nav-toggle:checked ~ .nav{
+    display: block;
+  }
+
+  /* Optional: animate hamburger into an X when open */
+  .nav-toggle:checked + .hamburger span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle:checked + .hamburger span:nth-child(2){
+    opacity: 0;
+  }
+  .nav-toggle:checked + .hamburger span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .hamburger span{
+    transition: transform .18s ease, opacity .18s ease;
+  }
+}
 
