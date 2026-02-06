@@ -1172,4 +1172,19 @@ img{ max-width: 100%; height: auto; display: block; }
   .br-mobile{ display: inline; }
 }
 
+/* =========================================================
+   HERO → FEATURES spacing on mobile
+   ========================================================= */
+@media (max-width: 520px){
+  /* add space BELOW the hero content */
+  .hero{
+    padding-bottom: 22px;
+  }
+
+  /* and/or add space ABOVE the feature tiles */
+  .below-fold .features{
+    padding-top: 18px;
+  }
+}
+
 
