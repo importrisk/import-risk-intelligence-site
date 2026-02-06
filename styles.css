@@ -951,22 +951,30 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   MOBILE STEP 1 — Fix horizontal overflow (Home split section)
-   Paste at VERY bottom of the CSS file
+   MOBILE FIXES — Home + Topbar (clean, non-nested)
    ========================================================= */
+
+/* STEP 1: prevent horizontal overflow + stack home split section */
 @media (max-width: 1100px){
-  /* prevent any sideways scroll caused by fixed/2-col layouts */
   html, body{ overflow-x: hidden; }
-  
-   /* =========================================================
-   MOBILE STEP 2 — Topbar overflow fix (shorten brand)
-   ========================================================= */
+
+  .split-inner{
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .split-bio{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* STEP 2: topbar overflow fix (shorten brand on small screens) */
 @media (max-width: 560px){
   .brand-name{ display: none; }
 }
-   /* =========================================================
-   MOBILE STEP 3 — Topbar layout: CTA row + links row
-   ========================================================= */
+
+/* STEP 3: topbar layout (CTA row + links row) */
 @media (max-width: 640px){
   .topbar-inner{
     flex-wrap: wrap;
@@ -974,44 +982,15 @@ img{ max-width: 100%; height: auto; display: block; }
     gap: 8px 12px;
   }
 
-  /* Brand left */
-  .brand{
-    order: 1;
-  }
+  .brand{ order: 1; }
 
-  /* CTA right (same row as brand) */
   .nav{
     order: 2;
     margin-left: auto;
     gap: 10px;
-  }
-
-  /* Put Home/Method onto their own line */
-  .nav-link:not(.nav-cta){
-    order: 3;
-  }
-
-  /* Make nav wrap so Home/Method drop under */
-  .nav{
     flex-wrap: wrap;
   }
 
-  /* Force the CTA to stay on the first row */
-  .nav-cta{
-    order: 1;
-  }
+  .nav-cta{ order: 1; }
+  .nav-link:not(.nav-cta){ order: 3; }
 }
-
-  /* Home: stack the split section into one column */
-  .split-inner{
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  /* keep the bio card from feeling “too wide” once stacked */
-  .split-bio{
-    max-width: 520px;
-    margin: 0 auto;
-  }
-}
-
