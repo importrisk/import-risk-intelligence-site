@@ -1205,5 +1205,18 @@ img{ max-width: 100%; height: auto; display: block; }
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
-}
+   .nav-backdrop{ display: none; }
 
+@media (max-width: 720px){
+  .nav-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 9997;              /* below .nav (9998), above page */
+    background: rgba(0,0,0,.35);
+    display: none;
+  }
+
+  .nav-toggle:checked ~ .nav-backdrop{
+    display: block;
+  }
+}
