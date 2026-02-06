@@ -1193,11 +1193,10 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 /* =========================================================
    iPhone — add a little space between note and features
-   (paste at VERY bottom of CSS)
    ========================================================= */
 @media (max-width: 520px){
   .hero-cta-note{
-    margin-bottom: 18px !important; /* try 14–20 */
+    margin-bottom: 18px !important;
     outline: none !important;
   }
 
@@ -1205,13 +1204,18 @@ img{ max-width: 100%; height: auto; display: block; }
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
-   .nav-backdrop{ display: none; }
+}
+
+/* =========================================================
+   MOBILE — tap-outside-to-close backdrop
+   ========================================================= */
+.nav-backdrop{ display: none; }
 
 @media (max-width: 720px){
   .nav-backdrop{
     position: fixed;
     inset: 0;
-    z-index: 9997;              /* below .nav (9998), above page */
+    z-index: 9997; /* below .nav (9998), above page */
     background: rgba(0,0,0,.35);
     display: none;
   }
