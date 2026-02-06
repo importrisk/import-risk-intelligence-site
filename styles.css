@@ -1191,3 +1191,19 @@ img{ max-width: 100%; height: auto; display: block; }
     margin-bottom: 10; /* or 10px if you want a touch of space */
   }
 }
+/* =========================================================
+   iPhone — add a little space between note and features
+   (paste at VERY bottom of CSS)
+   ========================================================= */
+@media (max-width: 520px){
+  /* add space under the note */
+  .hero-cta-note{
+    margin-bottom: 16px !important; /* try 12–22px */
+  }
+
+  /* keep features from adding extra on its own */
+  .below-fold .features{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
