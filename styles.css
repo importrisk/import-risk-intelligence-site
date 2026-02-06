@@ -1188,6 +1188,6 @@ img{ max-width: 100%; height: auto; display: block; }
      but keep features margin/padding at 0
   */
   .hero-cta-note{
-    margin-bottom: 0; /* or 10px if you want a touch of space */
+    margin-bottom: 10; /* or 10px if you want a touch of space */
   }
 }
