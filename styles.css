@@ -1021,7 +1021,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 720px){
 
-  /* Layout: hamburger left, brand right */
+  /* Layout */
   .topbar-inner{
     display: flex;
     align-items: center;
@@ -1029,7 +1029,12 @@ img{ max-width: 100%; height: auto; display: block; }
     gap: 14px;
   }
 
-  /* Show hamburger */
+  /* Put brand left, hamburger right */
+  .brand{ order: 1; white-space: nowrap; }
+  .brand-name{ display: inline; }
+  .hamburger{ order: 3; }
+
+  /* Show hamburger (fixed bars) */
   .hamburger{
     display: inline-flex;
     width: 44px;
@@ -1038,25 +1043,21 @@ img{ max-width: 100%; height: auto; display: block; }
     justify-content: center;
     cursor: pointer;
     user-select: none;
+    position: relative;
   }
+
   .hamburger span{
-    display: block;
-    width: 22px;
+    position: absolute;
+    left: 11px;
+    right: 11px;
     height: 2px;
     background: rgba(255,255,255,.86);
     border-radius: 2px;
-    position: relative;
+    transition: transform .18s ease, opacity .18s ease;
   }
-   
-  .hamburger span + span{ margin-top: 5px; }
-
-  /* Brand on the right (keep full name visible again) */
-  .brand{
-    white-space: nowrap;
-  }
-  .brand-name{
-    display: inline;
-  }
+  .hamburger span:nth-child(1){ top: 14px; }
+  .hamburger span:nth-child(2){ top: 21px; }
+  .hamburger span:nth-child(3){ top: 28px; }
 
   /* Hide the inline nav by default; make it a dropdown panel */
   .nav{
@@ -1094,7 +1095,7 @@ img{ max-width: 100%; height: auto; display: block; }
     display: block;
   }
 
-  /* Optional: animate hamburger into an X when open */
+  /* Animate hamburger into an X when open */
   .nav-toggle:checked + .hamburger span:nth-child(1){
     transform: translateY(7px) rotate(45deg);
   }
@@ -1104,8 +1105,4 @@ img{ max-width: 100%; height: auto; display: block; }
   .nav-toggle:checked + .hamburger span:nth-child(3){
     transform: translateY(-7px) rotate(-45deg);
   }
-  .hamburger span{
-    transition: transform .18s ease, opacity .18s ease;
-  }
 }
-
