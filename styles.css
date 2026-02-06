@@ -964,6 +964,43 @@ img{ max-width: 100%; height: auto; display: block; }
 @media (max-width: 560px){
   .brand-name{ display: none; }
 }
+   /* =========================================================
+   MOBILE STEP 3 — Topbar layout: CTA row + links row
+   ========================================================= */
+@media (max-width: 640px){
+  .topbar-inner{
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+  }
+
+  /* Brand left */
+  .brand{
+    order: 1;
+  }
+
+  /* CTA right (same row as brand) */
+  .nav{
+    order: 2;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  /* Put Home/Method onto their own line */
+  .nav-link:not(.nav-cta){
+    order: 3;
+  }
+
+  /* Make nav wrap so Home/Method drop under */
+  .nav{
+    flex-wrap: wrap;
+  }
+
+  /* Force the CTA to stay on the first row */
+  .nav-cta{
+    order: 1;
+  }
+}
 
   /* Home: stack the split section into one column */
   .split-inner{
