@@ -949,12 +949,14 @@ img{ max-width: 100%; height: auto; display: block; }
     max-height: 920px;
   }
 }
-
 /* =========================================================
-   MOBILE FIXES — Home + Topbar (clean, non-nested)
+   FINAL MOBILE FIXES — Home + Topbar (MATCHES YOUR HTML)
+   Paste at VERY bottom of CSS
    ========================================================= */
 
-/* STEP 1: prevent horizontal overflow + stack home split section */
+/* ---------------------------------------------------------
+   1) Prevent horizontal overflow + stack Home split section
+   --------------------------------------------------------- */
 @media (max-width: 1100px){
   html, body{ overflow-x: hidden; }
 
@@ -969,75 +971,78 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* STEP 2: topbar overflow fix (shorten brand on very small screens)
-   NOTE: hamburger overlay overrides this at <=720px to show full name again */
+/* ---------------------------------------------------------
+   2) Hero title helpers (you already used these in HTML)
+   - keep "Tracking for" together
+   - only show <br class="br-mobile"> on phones
+   --------------------------------------------------------- */
+.nowrap{ white-space: nowrap; }
+.br-mobile{ display: none; }
+
+@media (max-width: 520px){
+  .br-mobile{ display: inline; }
+}
+
+/* ---------------------------------------------------------
+   3) iPhone — spacing between hero note and features band
+   --------------------------------------------------------- */
+@media (max-width: 520px){
+  .hero-cta-note{
+    margin-bottom: 16px !important; /* your chosen value */
+  }
+
+  /* ensure the features band doesn't create its own extra gap */
+  .below-fold .features{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   4) Optional: shorten brand on VERY small screens
+   NOTE: hamburger rules below force the full name back on at <=720px
+   --------------------------------------------------------- */
 @media (max-width: 560px){
   .brand-name{ display: none; }
 }
 
-/* STEP 3: “non-hamburger” mobile layout for the band between 641–720px only
-   (Prevents fighting with the hamburger rules at <=720px) */
-@media (min-width: 641px) and (max-width: 720px){
-  .topbar-inner{
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav{
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    row-gap: 10px;
-    column-gap: 12px;
-    align-items: center;
-  }
-
-  .nav-cta{
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    height: 36px;
-    padding: 0 12px;
-  }
-
-  .nav-link:not(.nav-cta){
-    grid-row: 2;
-    justify-self: center;
-  }
-
-  .nav-link[href*="#home"]{ grid-column: 1; }
-  .nav-link[href*="method"]{ grid-column: 2; }
-}
-
-/* =========================================================
-   STEP 4 — Hamburger menu (CSS-only “sheet” overlay)
-   Requires HTML sibling order:
-   <input class="nav-toggle" type="checkbox" id="nav-toggle">
-   <label class="hamburger" for="nav-toggle"><span></span><span></span><span></span></label>
-   <nav class="nav">...</nav>
-   ========================================================= */
+/* ---------------------------------------------------------
+   5) Hamburger menu — CSS-only sheet overlay (<=720px)
+   Matches your HTML order:
+   input.nav-toggle
+   label.hamburger
+   a.brand
+   nav.nav
+   label.nav-backdrop
+   --------------------------------------------------------- */
 .nav-toggle{ display: none; }
 .hamburger{ display: none; }
+.nav-backdrop{ display: none; }
 
 @media (max-width: 720px){
 
   /* Keep overlay above hero */
   .topbar{ z-index: 9999; }
 
-  /* Layout: brand left, hamburger right */
+  /* iPhone/Safari safe layout:
+     brand pinned left, hamburger pinned right */
   .topbar-inner{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start !important; /* critical for iPhone */
     gap: 14px;
   }
 
-  .brand{ order: 1; white-space: nowrap; }
-  .brand-name{ display: inline; } /* override the <=560px hide */
-  .hamburger{ order: 2; }
+  /* Ensure brand is visible and hard-left */
+  .brand{
+    white-space: nowrap;
+    margin-left: 0 !important;
+  }
 
-  /* Hamburger button */
+  /* Override <=560 hide: show full company name in hamburger mode */
+  .brand-name{ display: inline !important; }
+
+  /* Show hamburger and pin it right */
   .hamburger{
     display: inline-flex;
     width: 44px;
@@ -1047,9 +1052,10 @@ img{ max-width: 100%; height: auto; display: block; }
     cursor: pointer;
     user-select: none;
     position: relative;
+    margin-left: auto !important;
   }
 
-  /* Fixed bars */
+  /* Hamburger bars */
   .hamburger span{
     position: absolute;
     left: 11px;
@@ -1063,30 +1069,30 @@ img{ max-width: 100%; height: auto; display: block; }
   .hamburger span:nth-child(2){ top: 21px; }
   .hamburger span:nth-child(3){ top: 28px; }
 
-  /* MENU PANEL: “sheet” below topbar (NOT full screen) */
+  /* Menu sheet below topbar */
   .nav{
     position: fixed;
     top: var(--topbar-h);
     left: 0;
     right: 0;
-
-    /* Key: don't pin to bottom */
     bottom: auto;
 
     max-height: calc(100vh - var(--topbar-h));
     overflow: auto;
 
-    /* Override any earlier layout (inline-flex/grid) */
-    display: none !important;
+    display: none !important; /* override desktop inline-flex */
     z-index: 9998;
 
-    padding: 18px 16px 22px;
+    padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
     background: rgba(11, 29, 47, .94);
     border-top: 1px solid rgba(255,255,255,.10);
     border-bottom: 1px solid rgba(255,255,255,.10);
     box-shadow: 0 18px 44px rgba(0,0,0,.35);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Open state */
@@ -1114,12 +1120,13 @@ img{ max-width: 100%; height: auto; display: block; }
   }
   .nav-link + .nav-link{ margin-top: 14px; }
 
+  /* CTA inside sheet */
   .nav-cta{
     background: rgba(127,177,234,.18);
     border-color: rgba(127,177,234,.45);
   }
 
-  /* Animate hamburger into an X when open */
+  /* Animate hamburger into X */
   .nav-toggle:checked + .hamburger span:nth-child(1){
     transform: translateY(7px) rotate(45deg);
   }
@@ -1130,114 +1137,16 @@ img{ max-width: 100%; height: auto; display: block; }
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Optional: keep sheet scrolling nice */
-  .nav{
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: calc(22px + env(safe-area-inset-bottom));
-  }
-}
-/* =========================================================
-   MOBILE HOTFIX — Stop nav overlay from going full-height
-   Paste at VERY bottom of CSS
-   ========================================================= */
-@media (max-width: 720px){
-  .nav{
-    /* kill any old “full screen” rules */
-    inset: auto !important;
-    bottom: auto !important;
-
-    /* force the panel to size to its content */
-    height: auto !important;
-    min-height: 0 !important;
-
-    /* keep it a sheet below the topbar */
-    position: fixed !important;
-    top: var(--topbar-h) !important;
-    left: 0 !important;
-    right: 0 !important;
-
-    /* still allow scrolling if links ever exceed viewport */
-    max-height: calc(100vh - var(--topbar-h)) !important;
-    overflow: auto !important;
-  }
-}
-/* keep "Tracking for" together */
-.nowrap{ white-space: nowrap; }
-
-/* only force the break after "Independent" on phones */
-.br-mobile{ display: none; }
-
-@media (max-width: 520px){
-  .br-mobile{ display: inline; }
-}
-
-/* =========================================================
-   MOBILE — tighten Hero → Features (no gap)
-   ========================================================= */
-@media (max-width: 520px){
-
-  /* kill any extra space we introduced above features */
-  .below-fold .features{
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* (optional) if you still want a tiny breathing room, use THIS instead:
-     .hero-cta-note{ margin-bottom: 14px; }
-     but keep features margin/padding at 0
-  */
-  .hero-cta-note{
-    margin-bottom: 10; /* or 10px if you want a touch of space */
-  }
-}
-/* =========================================================
-   iPhone — add a little space between note and features
-   ========================================================= */
-@media (max-width: 520px){
-  .hero-cta-note{
-    margin-bottom: 18px !important;
-    outline: none !important;
-  }
-
-  .below-fold .features{
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-/* =========================================================
-   MOBILE — tap-outside-to-close backdrop
-   ========================================================= */
-.nav-backdrop{ display: none; }
-
-@media (max-width: 720px){
+  /* Backdrop for tap-outside-to-close */
   .nav-backdrop{
     position: fixed;
     inset: 0;
-    z-index: 9997; /* below .nav (9998), above page */
+    z-index: 9997; /* below .nav */
     background: rgba(0,0,0,.35);
     display: none;
   }
-
   .nav-toggle:checked ~ .nav-backdrop{
     display: block;
-  }
-}
-/* =========================================================
-   iPhone/Safari — keep brand hard-left, hamburger hard-right
-   ========================================================= */
-@media (max-width: 720px){
-  .topbar-inner{
-    justify-content: flex-start !important;
-  }
-
-  .brand{
-    margin-left: 0 !important;
-  }
-
-  .hamburger{
-    margin-left: auto !important;
   }
 }
 
