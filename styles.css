@@ -1201,33 +1201,35 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 }
 /* =========================================================
-   MOBILE — FEATURES STACK + TIGHTEN ICON→HEADING
+   MOBILE — Feature cards stacked: kill vertical dividers
+   + use horizontal separators instead
    ========================================================= */
 @media (max-width: 720px){
 
-  /* Stack the 3 feature tiles */
+  /* ensure stack */
   .feature-grid{
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
   }
 
-  /* Make each tile feel like a neat card */
+  /* kill any “column divider” borders from desktop */
   .feature{
-    padding: 18px 16px !important;
-    text-align: center;
+    border-left: none !important;
+    border-right: none !important;
   }
 
-  /* Tighten icon → heading spacing (this is your “gap”) */
-  .feature svg{
-    margin: 0 auto 10px !important; /* was larger somewhere */
-    display: block;
+  /* common desktop pattern: dividers on all but last */
+  .feature:not(:last-child){
+    border-right: none !important;
   }
 
-  .feature h3{
-    margin: 0 0 8px !important;
+  /* sometimes the divider is on the element AFTER the first */
+  .feature + .feature{
+    border-left: none !important;
   }
 
-  .feature p{
-    margin: 0 !important;
+  /* replace with horizontal dividers between stacked cards */
+  .feature + .feature{
+    border-top: 1px solid rgba(255,255,255,.12) !important;
+    margin-top: 0 !important;
   }
 }
