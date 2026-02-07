@@ -1398,7 +1398,7 @@ header.topbar,
 .policy-hero{
   position: relative;
   padding-top: var(--topbar-h);
-  min-height: clamp(340px, 48vh, 520px);
+  min-height: 260px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -1424,7 +1424,7 @@ header.topbar,
 .policy-hero-inner{
   position: relative;
   z-index: 2;
-  padding: 86px 0 56px;
+  padding: 56px 0 28px;
   max-width: 900px;
 }
 
