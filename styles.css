@@ -1250,3 +1250,71 @@ header.topbar,
   transform: none !important;
   will-change: auto !important;
 }
+/* =========================================================
+   FOOTER — MOBILE STACK FIX
+   Paste at VERY bottom of CSS
+   ========================================================= */
+
+@media (max-width: 760px){
+
+  .site-footer{
+    padding: 20px 0 18px;
+  }
+
+  .site-footer .footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Left side: let text breathe */
+  .site-footer .footer-left{
+    width: 100%;
+  }
+
+  .site-footer .footer-desc,
+  .site-footer .footer-legal{
+    max-width: 620px;
+  }
+
+  /* Right side becomes full-width and LEFT aligned */
+  .site-footer .footer-right{
+    width: 100%;
+    margin-left: 0;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+  }
+
+  /* Nav: allow wrapping + remove the desktop separators */
+  .site-footer .footer-nav{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .site-footer .footer-nav a{
+    padding: 0;
+  }
+
+  .site-footer .footer-nav a:not(:last-child)::after{
+    content: none;
+  }
+
+  /* Email line: allow wrapping without pushing layout */
+  .site-footer .footer-meta{
+    width: 100%;
+  }
+
+  .site-footer .footer-email{
+    overflow-wrap: anywhere; /* prevents clipping on small widths */
+    word-break: break-word;
+  }
+
+  /* Copyright: keep it visible and aligned */
+  .site-footer .footer-copy{
+    width: 100%;
+    margin-top: 2px;
+  }
+}
