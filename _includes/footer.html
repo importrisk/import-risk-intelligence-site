@@ -31,7 +31,12 @@
 
       <div class="footer-meta">
         <span class="footer-label">Email:</span>
-        <a class="footer-email" href="mailto:coverage@importriskreport.com">coverage@importriskreport.com</a>
+        <a class="footer-email js-email"
+           data-user="coverage"
+           data-domain="importriskreport.com"
+           href="#">
+          coverage@importriskreport.com
+        </a>
       </div>
 
       <div class="footer-copy">
@@ -41,3 +46,18 @@
 
   </div>
 </footer>
+
+<!-- Email obfuscation: render mailto via JS -->
+<script>
+  (function () {
+    document.querySelectorAll(".js-email").forEach((a) => {
+      const user = a.getAttribute("data-user");
+      const domain = a.getAttribute("data-domain");
+      if (!user || !domain) return;
+      const email = `${user}@${domain}`;
+      a.textContent = email;
+      a.href = `mailto:${email}`;
+      a.rel = "nofollow";
+    });
+  })();
+</script>
