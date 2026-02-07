@@ -1327,11 +1327,11 @@ header.topbar,
 
   /* Move hero copy up (gets subtitle off busy background) */
   .contact-hero .container{
-    padding-top: 90px !important; /* was 140px */
+    padding-top: 100px !important; /* was 140px */
   }
 
   .contact-hero-head{
-    transform: translateY(-60px) !important; /* was -18px */
+    transform: translateY(-50px) !important; /* was -18px */
     padding: 0 !important;
     background: transparent !important;
     border: 0 !important;
