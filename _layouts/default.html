@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}" />
- <link rel="stylesheet" href="/import-risk-intelligence-site/styles.css?v=88" />
-{% if page.css %}
-<link rel="stylesheet" href="/import-risk-intelligence-site{{ page.css }}" />
-{% endif %}
+  <link rel="stylesheet" href="/import-risk-intelligence-site/styles.css?v=88" />
+  {% if page.css %}
+  <link rel="stylesheet" href="/import-risk-intelligence-site{{ page.css }}" />
+  {% endif %}
 </head>
 
 <body>
@@ -18,9 +18,25 @@
 
   {% include footer.html %}
 
+  <!-- Footer year -->
   <script>
     const y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Email obfuscation: render mailto via JS -->
+  <script>
+    (function () {
+      document.querySelectorAll(".js-email").forEach((a) => {
+        const user = a.getAttribute("data-user");
+        const domain = a.getAttribute("data-domain");
+        if (!user || !domain) return;
+        const email = `${user}@${domain}`;
+        a.textContent = email;
+        a.href = `mailto:${email}`;
+        a.rel = "nofollow";
+      });
+    })();
   </script>
 </body>
 </html>
