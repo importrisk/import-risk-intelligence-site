@@ -709,3 +709,22 @@
     gap: 14px;
   }
 }
+/* =========================================================
+   METHOD — icon opacity + micro-gap fix
+   ========================================================= */
+.method-feature .mf-icon{
+  opacity: 1 !important;                  /* kills see-through overlaps */
+  color: rgba(255,255,255,.92) !important;/* slightly cleaner */
+}
+
+.method-feature .mf-icon svg,
+.method-feature .mf-icon svg *{
+  opacity: 1 !important;
+  stroke-opacity: 1 !important;
+  fill-opacity: 1 !important;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  shape-rendering: geometricPrecision;
+}
+
