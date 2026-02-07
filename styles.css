@@ -1319,20 +1319,22 @@ header.topbar,
   }
 }
 /* =========================================================
-   CONTACT — mobile readability + restore hero overlap
-   Paste at VERY bottom of main CSS
+   CONTACT — MOBILE HERO READABILITY + FORM OVERLAP (DROP-IN)
+   Paste at VERY BOTTOM of your main CSS file
    ========================================================= */
+
 @media (max-width: 920px){
 
-  /* Move headline/subtitle up a bit */
+  /* --- Move hero copy up (gets subtitle off busy background) --- */
   .contact-hero .container{
     padding-top: 110px !important; /* was 140px */
   }
+
   .contact-hero-head{
     transform: translateY(-40px) !important; /* was -18px */
   }
 
-  /* Make subtitle easier to read without changing layout */
+  /* --- Subtitle readability (no global darkening) --- */
   .contact-hero-subtitle{
     color: rgba(255,255,255,.90) !important;
     text-shadow:
@@ -1340,14 +1342,26 @@ header.topbar,
       0 10px 26px rgba(0,0,0,.30) !important;
   }
 
-  /* Restore the form overlap into the hero */
-  .contact-simple{
-    margin-top: -54px !important;         /* keep your seam pull */
-    padding-top: 150px !important;        /* give room so nothing clips */
+  /* Optional: subtle text-only backdrop for bulletproof readability */
+  .contact-hero-head{
+    padding: 10px 14px;
+    background: rgba(11,29,47,.18);
+    border: 1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
+  /* --- Restore the form spill into the hero on mobile --- */
+  .contact-simple{
+    margin-top: -54px !important;  /* keep your seam pull */
+    padding-top: 150px !important; /* ensures nothing clips above panel */
+  }
+
+  /* Adjust overlap amount:
+     -220 = stronger overlap
+     -200 = a touch more breathing room under subtitle
+  */
   .contact-simple-form{
-    margin-top: -220px !important;        /* was -86px (too small) */
+    margin-top: -200px !important; /* change to -220px if you want more overlap */
   }
 }
-
