@@ -1358,3 +1358,35 @@ header.topbar,
     margin-top: -200px !important;
   }
 }
+/* =========================================================
+   HOME SPLIT — keep 2 columns longer (bio stays on right)
+   Paste at VERY bottom of main CSS
+   ========================================================= */
+
+/* 901–1100px: stay 2-col, just tighten spacing and let left "squish" */
+@media (min-width: 901px) and (max-width: 1100px){
+  .split-inner{
+    grid-template-columns: minmax(0, 1fr) 300px !important; /* was 1fr stack */
+    gap: 44px !important;                                  /* was 34px */
+  }
+
+  /* undo the mobile centering/max-width behavior */
+  .split-bio{
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+/* <=900px: true mobile stack */
+@media (max-width: 900px){
+  .split-inner{
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .split-bio{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
