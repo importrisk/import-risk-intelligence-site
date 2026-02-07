@@ -1392,4 +1392,104 @@ header.topbar,
     margin: 0 auto;
   }
 }
+/* =========================================================
+   PRIVACY POLICY / POLICY PAGES
+   ========================================================= */
+.policy-hero{
+  position: relative;
+  padding-top: var(--topbar-h);
+  min-height: clamp(340px, 48vh, 520px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.policy-hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,.14) 58%,
+      rgba(0,0,0,.10) 100%),
+    radial-gradient(1200px 500px at 15% 15%,
+      rgba(127,177,234,.20) 0%,
+      rgba(127,177,234,0) 60%),
+    linear-gradient(180deg,
+      rgba(58,74,95,.55) 0%,
+      rgba(58,74,95,.20) 70%,
+      rgba(58,74,95,0) 100%);
+}
+
+.policy-hero-inner{
+  position: relative;
+  z-index: 2;
+  padding: 86px 0 56px;
+  max-width: 900px;
+}
+
+.policy-title{
+  margin: 0 0 10px;
+  font-size: clamp(40px, 5vw, 54px);
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 14px 34px rgba(0,0,0,.22);
+}
+
+.policy-subtitle{
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,.82);
+  text-shadow: 0 10px 24px rgba(0,0,0,.18);
+  max-width: 62ch;
+}
+
+.policy-meta{
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.70);
+}
+
+.policy-body{
+  position: relative;
+  padding: 54px 0 72px;
+}
+
+.policy-inner{
+  max-width: 900px;
+}
+
+.policy-inner h2{
+  margin: 28px 0 10px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
+}
+
+.policy-inner p{
+  margin: 0 0 14px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.55;
+}
+
+.policy-inner ul{
+  margin: 0 0 14px 18px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.55;
+}
+
+.policy-inner a{
+  color: rgba(127,177,234,.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(127,177,234,.22);
+}
+.policy-inner a:hover{
+  border-bottom-color: rgba(127,177,234,.55);
+}
+
+/* Mobile spacing */
+@media (max-width: 760px){
+  .policy-hero-inner{ padding: 78px 0 44px; }
+  .policy-body{ padding: 44px 0 60px; }
+}
 
