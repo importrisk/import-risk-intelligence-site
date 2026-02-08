@@ -324,7 +324,7 @@
    ========================================================= */
 
 .method-practice .mp-delivery-block{
-  margin: 28px auto 0;
+  margin: 28px auto 8px; /* was 16px */
   text-align: center;
 }
 
@@ -456,7 +456,7 @@
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
-  margin: 24px auto 0; /* was 44px */
+  margin: 28px auto 0; /* was 44px */
   max-width: 720px;
 }
 
@@ -553,9 +553,3 @@
     font-size: 28px;
   }
 }
-/* STEP 1: Delivery section has .method-practice too — remove that padding */
-.method-practice.mp-delivery-block{
-  padding: 0 !important;
-  background: transparent !important;
-}
-
