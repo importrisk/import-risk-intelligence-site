@@ -317,8 +317,15 @@
 .method-practice .mp-lead{
   margin: 0;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.35; /* was 1.4 */
   color: rgba(255,255,255,.78);
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+/* add space between stacked lead paragraphs */
+.method-practice .mp-head .mp-lead + .mp-lead{
+  margin-top: 14px;
 }
 
 /* ---------- Core: Goal + Delivery ---------- */
