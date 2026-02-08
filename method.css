@@ -320,19 +320,19 @@
 
 
 /* =========================================================
-   6) DELIVERY — stacked, balanced, executive
+   6) DELIVERY — polished, executive
    ========================================================= */
 
 .method-practice .mp-delivery-block{
-  margin: 36px auto 12px;
+  margin: 28px auto 16px;
   text-align: center;
 }
 
 /* Section title */
 .method-practice .mp-delivery-title{
-  margin: 0 0 26px;
+  margin: 0 0 22px;
   font-size: 14px;
-  letter-spacing: .32em;
+  letter-spacing: .34em;
   font-weight: 760;
   text-transform: uppercase;
   color: rgba(255,255,255,.82);
@@ -340,26 +340,24 @@
 
 /* Two-card layout */
 .method-practice .mp-delivery-cards{
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(18px, 2.5vw, 24px);
+  gap: clamp(20px, 3vw, 26px);
 
   align-items: stretch;
 }
 
 /* Individual card */
 .method-practice .mp-card{
-  min-width: 0;
-  height: 100%;
   position: relative;
-  padding: clamp(20px, 2.4vw, 26px);
+  padding: clamp(22px, 2.6vw, 30px);
 
-  text-align: left;
   display: flex;
   flex-direction: column;
+  text-align: left;
 
   background:
     linear-gradient(180deg,
@@ -378,10 +376,10 @@
   text-align: center;
 
   font-size: 12px;
-  letter-spacing: .26em;
+  letter-spacing: .28em;
   font-weight: 740;
   text-transform: uppercase;
-  color: rgba(255,255,255,.65);
+  color: rgba(255,255,255,.66);
 }
 
 /* List */
@@ -401,7 +399,6 @@
 .method-practice .mp-card-list li{
   position: relative;
   padding-left: 34px;
-  min-width: 0;
 }
 
 /* Check icon */
@@ -427,7 +424,7 @@
 }
 
 /* Item heading */
-.method-practice .mp-card-list li strong{
+.method-practice .mp-card-list strong{
   display: block;
   margin-bottom: 4px;
 
@@ -438,7 +435,7 @@
 }
 
 /* Item description */
-.method-practice .mp-card-list li span{
+.method-practice .mp-card-list span{
   display: block;
   max-width: 46ch;
 
