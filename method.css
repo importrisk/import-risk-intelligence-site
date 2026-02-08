@@ -324,7 +324,7 @@
    ========================================================= */
 
 .method-practice .mp-delivery-block{
-  margin: 28px auto 8px; /* was 16px */
+  margin: 28px auto 0; /* was 16px */
   text-align: center;
 }
 
