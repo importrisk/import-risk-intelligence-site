@@ -370,7 +370,8 @@
 
 .method-practice .mp-delivery-col{
   padding-top: 18px;
-  min-width: 0; /* critical for grid children */
+  min-width: 0;
+  width: 100%;
 }
 
 .method-practice .mp-delivery-label{
@@ -382,37 +383,42 @@
   color: rgba(255,255,255,.68);
 }
 
-/* IMPORTANT: Delivery lists must never shrink-wrap */
+/* FIXED: list never collapses */
 .method-practice .mp-delivery-col ul.mp-includes{
   list-style: none;
   padding: 0;
   margin: 0;
 
-  width: 100%;
-  max-width: 100%;
-
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
+
+  width: 100%;
+  min-width: 0;
 }
 
+/* bullet row = icon + text */
 .method-practice .mp-delivery-col ul.mp-includes > li{
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
-  column-gap: 12px;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
 
   font-size: 16px;
   line-height: 1.55;
   color: rgba(255,255,255,.84);
 
-  /* sane wrapping even if something global gets spicy */
-  word-break: normal;
   overflow-wrap: break-word;
+  word-break: normal;
   hyphens: none;
 }
 
 .method-practice .mp-delivery-col ul.mp-includes > li::before{
   content: "✓";
+  flex: 0 0 20px;
+
   display: grid;
   place-items: center;
 
