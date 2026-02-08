@@ -501,10 +501,21 @@
 }
 /* =========================================================
    FAQ (Method page) — Common Questions + centered capstone
+   Works with your current HTML:
+   .mp-faq > .mp-faq-title + .mp-faq-grid(.mp-faq-item...) + .mp-faq-centered
    ========================================================= */
+
 .method-practice .mp-faq{
   max-width: 980px;
   margin: 52px auto 26px;
+}
+
+/* Make the grid container a positioned context so we can draw a center divider */
+.method-practice .mp-faq-grid{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px 72px;
 }
 
 .method-practice .mp-faq-title{
@@ -515,16 +526,29 @@
   color: rgba(255,255,255,.92);
 }
 
-.method-practice .mp-faq-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px 72px;
+/* Optional: subtle center divider that matches your Delivery divider vibe */
+.method-practice .mp-faq-grid::after{
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.12),
+    rgba(255,255,255,0)
+  );
+  pointer-events: none;
 }
 
 .method-practice .mp-faq-item{
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,.10);
   position: relative;
+  min-width: 0; /* prevents weird wrapping in grid children */
 }
 
 .method-practice .mp-faq-item::before{
@@ -555,6 +579,10 @@
   line-height: 1.65;
   color: rgba(255,255,255,.80);
   max-width: 52ch;
+
+  /* safe wrapping */
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 /* hover polish (desktop only) */
@@ -567,11 +595,13 @@
   }
 }
 
-/* Centered capstone item */
+/* Centered capstone item (your last standalone .mp-faq-item) */
 .method-practice .mp-faq-item.mp-faq-centered{
   max-width: 620px;
   margin: 36px auto 0;
   text-align: center;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 16px;
 }
 .method-practice .mp-faq-item.mp-faq-centered::before{
   display: none;
@@ -591,6 +621,9 @@
   .method-practice .mp-faq-grid{
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+  .method-practice .mp-faq-grid::after{
+    display: none;
   }
   .method-practice .mp-a{
     max-width: 60ch;
