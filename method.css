@@ -649,3 +649,21 @@
     font-size: 28px;
   }
 }
+/* Safety: neutralize global h4/p/section rules that can break layout */
+.method-practice .mp-faq,
+.method-practice .mp-faq *{
+  min-width: 0;
+}
+
+.method-practice .mp-q{
+  max-width: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.method-practice .mp-a{
+  max-width: 52ch; /* keep your intended measure */
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
