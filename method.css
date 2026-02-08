@@ -320,33 +320,42 @@
 
 
 /* =========================================================
-   6) DELIVERY (polished panel — aligned rows)
-   - DELIVERY title inside panel
-   - Column headers centered (lists stay left-aligned)
-   - Rows align across columns via consistent min-height
-   - Layout: icon | label | description
+   6) DELIVERY (Option A — two cards, stacked rows)
+   - Headline + underline
+   - Two cards on desktop, one column on mobile
+   - Each row: check + title + description (stacked)
    ========================================================= */
 
 .method-practice .mp-delivery-block{
   max-width: 1100px;
-  margin: 28px auto 8px;
+  margin: 28px auto 18px;
   text-align: center;
 }
 
-/* PANEL */
-.method-practice .mp-delivery-grid{
-  position: relative;
+.method-practice .mp-delivery-title{
+  margin: 0 0 18px;
+  font-size: 14px;
+  letter-spacing: .28em;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.84);
+}
+
+/* Two-card layout */
+.method-practice .mp-delivery-cards{
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(44px, 5vw, 72px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 26px);
   align-items: start;
-
-  max-width: 1100px;
-  margin: 0 auto 26px;
-  padding: clamp(22px, 2.6vw, 34px);
-
   text-align: left;
+}
 
+/* Card */
+.method-practice .mp-card{
+  position: relative;
+  min-width: 0;
+
+  padding: clamp(18px, 2.3vw, 26px);
   background: linear-gradient(
     180deg,
     rgba(10, 20, 32, .30) 0%,
@@ -359,47 +368,8 @@
   backdrop-filter: blur(7px);
 }
 
-/* DELIVERY title (inside panel) */
-.method-practice .mp-delivery-title{
-  grid-column: 1 / -1;
-  text-align: center;
-
-  margin: 0 0 20px;
-  padding-bottom: 14px;
-
-  font-size: 14px;
-  letter-spacing: .28em;
-  font-weight: 750;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.84);
-
-  border-bottom: 1px solid rgba(255,255,255,.10);
-}
-
-/* Vertical divider (starts below title) */
-.method-practice .mp-delivery-grid::after{
-  content: "";
-  position: absolute;
-  top: 66px;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0),
-    rgba(255,255,255,.10),
-    rgba(255,255,255,0)
-  );
-}
-
-.method-practice .mp-delivery-col{
-  padding-top: 0;
-  min-width: 0;
-}
-
-/* Column headers centered */
-.method-practice .mp-delivery-label{
+/* Card title */
+.method-practice .mp-card-title{
   margin: 0 0 16px;
   text-align: center;
 
@@ -408,10 +378,13 @@
   font-weight: 750;
   text-transform: uppercase;
   color: rgba(255,255,255,.66);
+
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-/* Lists */
-.method-practice .mp-delivery-col ul.mp-includes{
+/* List */
+.method-practice .mp-card-list{
   list-style: none;
   padding: 0;
   margin: 0;
@@ -419,49 +392,30 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-
-  width: 100%;
-  min-width: 0;
 }
 
-/* Rows: icon | label | description */
-.method-practice .mp-delivery-col ul.mp-includes > li{
+.method-practice .mp-card-list > li{
   display: grid;
-  grid-template-columns: 22px minmax(150px, 210px) minmax(0, 1fr);
+  grid-template-columns: 24px minmax(0, 1fr);
   column-gap: 14px;
-  row-gap: 6px;
   align-items: start;
 
-  /* key: unify row heights so both columns feel “one panel” */
-  min-height: 82px;
-
-  padding: 14px 0;
+  padding-top: 14px;
   border-top: 1px solid rgba(255,255,255,.045);
-
-  font-size: 16px;
-  line-height: 1.55;
-  color: rgba(255,255,255,.76);
-
-  overflow-wrap: break-word;
-  word-break: normal;
-  hyphens: none;
 }
 
-.method-practice .mp-delivery-col ul.mp-includes > li:first-child{
+.method-practice .mp-card-list > li:first-child{
   border-top: 0;
   padding-top: 0;
 }
 
-/* Check icon */
-.method-practice .mp-delivery-col ul.mp-includes > li::before{
-  content: "✓";
-  grid-column: 1;
-  margin-top: 2px;
-
+/* Check badge */
+.method-practice .mp-check{
   display: grid;
   place-items: center;
   width: 20px;
   height: 20px;
+  margin-top: 2px;
 
   border-radius: 50%;
   border: 1px solid rgba(160,205,255,.28);
@@ -473,52 +427,39 @@
   line-height: 1;
 }
 
-/* Label (strong) */
-.method-practice .mp-delivery-col ul.mp-includes > li strong{
-  grid-column: 2;
-  display: block;
+/* Row content */
+.method-practice .mp-item{
+  min-width: 0;
+}
 
-  font-size: 17.5px;
+.method-practice .mp-item-title{
+  margin: 0;
+  font-size: 18px;
   font-weight: 650;
   letter-spacing: -0.012em;
   line-height: 1.22;
   color: rgba(255,255,255,.92);
 }
 
-/* Description column */
-.method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
-  grid-column: 3;
-  max-width: 44ch; /* tighter = more consistent wrapping across both columns */
+.method-practice .mp-item-desc{
+  margin-top: 6px;
+  max-width: 52ch;
+
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.76);
+
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
-/* Mobile */
+/* Responsive */
 @media (max-width: 820px){
-  .method-practice .mp-delivery-grid{
+  .method-practice .mp-delivery-cards{
     grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 22px 18px;
   }
-  .method-practice .mp-delivery-grid::after{
-    display: none;
-  }
-
-  .method-practice .mp-delivery-title{
-    margin-bottom: 18px;
-    padding-bottom: 14px;
-  }
-
-  .method-practice .mp-delivery-col ul.mp-includes > li{
-    grid-template-columns: 22px minmax(0, 1fr);
-    min-height: 0;   /* don’t force equal-height rows on mobile */
-    padding: 12px 0;
-  }
-
-  .method-practice .mp-delivery-col ul.mp-includes > li strong{
-    grid-column: 2;
-  }
-
-  .method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
-    grid-column: 2;
+  .method-practice .mp-item-desc{
     max-width: none;
   }
 }
