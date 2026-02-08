@@ -553,3 +553,9 @@
     font-size: 28px;
   }
 }
+/* STEP 1: Delivery section has .method-practice too — remove that padding */
+.method-practice.mp-delivery-block{
+  padding: 0 !important;
+  background: transparent !important;
+}
+
