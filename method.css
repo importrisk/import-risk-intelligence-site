@@ -3,7 +3,7 @@
    - Hero image defined ONLY here
    - Features = ONE strip behind cards on wide screens
    - Below-fold water texture comes from global .below-fold (DO NOT OVERRIDE)
-   - Responsive: cards can grow; Coverage never overlaps
+   - Below fold: Coverage header + Delivery (two columns) + Pricing
    ========================================================= */
 
 
@@ -95,12 +95,14 @@
 
 /* =========================================================
    2) METHOD FEATURES (band behind cards)
+   - Paint only; layout is controlled with wide-screen lock below
    ========================================================= */
 .method-features{
   --card-h: 260px;
   --spill: 24px;
   --gap: 28px;
 
+  /* strip height behind the middle of the cards */
   --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
@@ -112,6 +114,7 @@
   padding: 0;
   height: auto;
 
+  /* water gradient to match global below-fold */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -120,6 +123,7 @@
   ) !important;
 }
 
+/* water texture layer */
 .method-features::after{
   content: "";
   position: absolute;
@@ -131,13 +135,14 @@
   z-index: 0;
 }
 
+/* band strip behind cards (activated on wide screens) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 0; /* activated on wide screens */
+  height: 0;
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
   box-shadow:
@@ -208,6 +213,7 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+
   opacity: 1 !important;
   color: rgba(255,255,255,.92) !important;
 }
@@ -266,7 +272,7 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD
+   4) BELOW-FOLD (spacing only; water comes from global .below-fold)
    ========================================================= */
 .below-fold.method-content{
   position: relative;
@@ -277,7 +283,7 @@
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE (Header + Delivery + Pricing)
+   5) COVERAGE IN PRACTICE — HEADER
    ========================================================= */
 .method-practice{
   position: relative;
@@ -314,8 +320,8 @@
 
 
 /* =========================================================
-   DELIVERY (center title + two columns)
-   - Fixes “one word per line” wrapping
+   6) DELIVERY (center title + two columns)
+   - Clean, scoped, and prevents “one word per line”
    ========================================================= */
 .method-practice .mp-delivery-block{
   max-width: 980px;
@@ -345,6 +351,7 @@
   text-align: left;
 }
 
+/* vertical divider */
 .method-practice .mp-delivery-grid::after{
   content: "";
   position: absolute;
@@ -363,7 +370,7 @@
 
 .method-practice .mp-delivery-col{
   padding-top: 18px;
-  min-width: 0;
+  min-width: 0; /* critical for grid children */
 }
 
 .method-practice .mp-delivery-label{
@@ -375,13 +382,15 @@
   color: rgba(255,255,255,.68);
 }
 
-/* Lists (scoped to Delivery only) */
+/* IMPORTANT: Delivery lists must never shrink-wrap */
 .method-practice .mp-delivery-col ul.mp-includes{
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100% !important;
-  max-width: none !important;
+
+  width: 100%;
+  max-width: 100%;
+
   display: grid;
   gap: 14px;
 }
@@ -396,22 +405,28 @@
   line-height: 1.55;
   color: rgba(255,255,255,.84);
 
+  /* sane wrapping even if something global gets spicy */
   word-break: normal;
   overflow-wrap: break-word;
+  hyphens: none;
 }
 
 .method-practice .mp-delivery-col ul.mp-includes > li::before{
   content: "✓";
   display: grid;
   place-items: center;
+
   width: 20px;
   height: 20px;
+
   border-radius: 50%;
   border: 0.75px solid rgba(180,215,255,.50);
+
   color: rgba(180,215,255,.90);
   font-size: 12px;
   font-weight: 450;
   line-height: 1;
+
   margin-top: 1px;
 }
 
@@ -427,7 +442,7 @@
 
 
 /* =========================================================
-   PRICING (centered)
+   7) PRICING (centered)
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
@@ -477,7 +492,7 @@
 
 
 /* =========================================================
-   6) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
+   8) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
    ========================================================= */
 @media (min-width: 981px){
   .method-features{
@@ -497,7 +512,7 @@
 
 
 /* =========================================================
-   7) RESPONSIVE
+   9) RESPONSIVE
    ========================================================= */
 @media (max-width: 980px){
   .method-features{
