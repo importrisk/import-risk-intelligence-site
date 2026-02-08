@@ -499,7 +499,103 @@
     rgba(255,255,255,0)
   );
 }
+/* =========================================================
+   FAQ (Method page) — Common Questions + centered capstone
+   ========================================================= */
+.method-practice .mp-faq{
+  max-width: 980px;
+  margin: 52px auto 26px;
+}
 
+.method-practice .mp-faq-title{
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.92);
+}
+
+.method-practice .mp-faq-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px 72px;
+}
+
+.method-practice .mp-faq-item{
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  position: relative;
+}
+
+.method-practice .mp-faq-item::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 2px;
+  height: 18px;
+  background: rgba(127,177,234,.45);
+  border-radius: 2px;
+}
+
+.method-practice .mp-q{
+  margin: 0 0 8px;
+  padding-left: 14px;
+  font-size: 16.75px;
+  font-weight: 600;
+  line-height: 1.28;
+  color: rgba(255,255,255,.93);
+  letter-spacing: -0.01em;
+}
+
+.method-practice .mp-a{
+  margin: 0;
+  padding-left: 14px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.80);
+  max-width: 52ch;
+}
+
+/* hover polish (desktop only) */
+@media (hover:hover){
+  .method-practice .mp-faq-item:hover::before{
+    background: rgba(127,177,234,.70);
+  }
+  .method-practice .mp-faq-item:hover .mp-q{
+    color: rgba(255,255,255,.98);
+  }
+}
+
+/* Centered capstone item */
+.method-practice .mp-faq-item.mp-faq-centered{
+  max-width: 620px;
+  margin: 36px auto 0;
+  text-align: center;
+}
+.method-practice .mp-faq-item.mp-faq-centered::before{
+  display: none;
+}
+.method-practice .mp-faq-item.mp-faq-centered .mp-q,
+.method-practice .mp-faq-item.mp-faq-centered .mp-a{
+  padding-left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.method-practice .mp-faq-item.mp-faq-centered .mp-a{
+  max-width: 62ch;
+}
+
+/* responsive */
+@media (max-width: 820px){
+  .method-practice .mp-faq-grid{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .method-practice .mp-a{
+    max-width: 60ch;
+  }
+}
 
 /* =========================================================
    8) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
