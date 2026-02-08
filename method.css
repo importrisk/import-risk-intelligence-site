@@ -352,6 +352,8 @@
 
 /* Individual card */
 .method-practice .mp-card{
+  min-width: 0;
+  height: 100%;
   position: relative;
   padding: clamp(22px, 2.6vw, 30px);
 
@@ -399,6 +401,7 @@
 .method-practice .mp-card-list li{
   position: relative;
   padding-left: 34px;
+  min-width: 0;
 }
 
 /* Check icon */
@@ -424,7 +427,7 @@
 }
 
 /* Item heading */
-.method-practice .mp-card-list strong{
+.method-practice .mp-card-list li strong{
   display: block;
   margin-bottom: 4px;
 
@@ -435,7 +438,7 @@
 }
 
 /* Item description */
-.method-practice .mp-card-list span{
+.method-practice .mp-card-list li span{
   display: block;
   max-width: 46ch;
 
