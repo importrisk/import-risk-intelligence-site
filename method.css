@@ -426,6 +426,25 @@
   margin-top: 1px;
 }
 
+/* =========================================================
+   PATCH: fix “one word per line” wrapping in Delivery lists
+   ========================================================= */
+
+/* Let grid children shrink correctly without collapsing text */
+.method-practice .mp-delivery-grid > *{
+  min-width: 0;
+}
+
+/* Keep each column at a readable width and centered */
+.method-practice .mp-delivery-col{
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Prevent the text column from collapsing */
+.method-practice ul.mp-includes > li{
+  grid-template-columns: 22px minmax(0, 1fr);
+}
 
 /* ---------- Pricing ---------- */
 .method-practice .mp-pricing{
