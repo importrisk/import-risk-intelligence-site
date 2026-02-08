@@ -321,7 +321,7 @@
 
 /* =========================================================
    6) DELIVERY (polished panel)
-   - DELIVERY title inside frame + stronger
+   - DELIVERY title inside panel + stronger
    - Column headers centered
    - Rows align: icon | label | description
    ========================================================= */
@@ -361,14 +361,14 @@
   grid-column: 1 / -1;
   text-align: center;
 
-  margin: 0 0 22px;
-  padding-bottom: 16px;
+  margin: 0 0 20px;
+  padding-bottom: 14px;
 
   font-size: 14px;
   letter-spacing: .28em;
   font-weight: 750;
   text-transform: uppercase;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.84);
 
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
@@ -377,8 +377,8 @@
 .method-practice .mp-delivery-grid::after{
   content: "";
   position: absolute;
-  top: 70px;              /* keeps it below the DELIVERY line */
-  bottom: 24px;
+  top: 66px;              /* slightly tighter */
+  bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
@@ -424,7 +424,10 @@
 /* Row layout: icon | label | description */
 .method-practice .mp-delivery-col ul.mp-includes > li{
   display: grid;
-  grid-template-columns: 22px minmax(190px, 240px) minmax(0, 1fr);
+
+  /* tighter label column (better for 2–3 word strong labels) */
+  grid-template-columns: 22px minmax(150px, 210px) minmax(0, 1fr);
+
   column-gap: 14px;
   row-gap: 6px;
   align-items: start;
@@ -482,15 +485,9 @@
 /* Description column */
 .method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
   grid-column: 3;
-  max-width: 46ch;
-}
 
-/* Hide any accidental leading “:” in the description column */
-.method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
-  position: relative;
-}
-.method-practice .mp-delivery-col ul.mp-includes > li > :not(strong)::before{
-  content: "";
+  /* keep it from feeling “too wide”, but give it more than before */
+  max-width: 54ch;
 }
 
 /* Mobile */
