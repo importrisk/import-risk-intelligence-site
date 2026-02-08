@@ -456,7 +456,7 @@
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
-  margin: 44px auto 0;
+  margin: 24px auto 0; /* was 44px */
   max-width: 720px;
 }
 
