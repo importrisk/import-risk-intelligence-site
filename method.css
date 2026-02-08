@@ -4,13 +4,11 @@
    - Features = ONE strip behind cards on wide screens
    - Below-fold water texture comes from global .below-fold (DO NOT OVERRIDE)
    - Responsive: cards can grow; Coverage never overlaps
-   - CLEAN: no duplicate selectors, Delivery lists won’t “one-word wrap”
    ========================================================= */
 
 
 /* =========================================================
    FIX: Prevent stray sliders/range inputs from bleeding through
-   (only affects Method page sections if something injects them)
    ========================================================= */
 .method-hero input[type="range"],
 .method-features input[type="range"],
@@ -94,22 +92,15 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
-.method-hero .hero-subtitle-muted{
-  font-size: 0.98em;
-  opacity: 0.86;
-}
-
 
 /* =========================================================
    2) METHOD FEATURES (band behind cards)
-   - Background paint only (no layout changes)
    ========================================================= */
 .method-features{
   --card-h: 260px;
   --spill: 24px;
   --gap: 28px;
 
-  /* strip height behind the middle of the cards */
   --band-h: calc(var(--card-h) - (var(--spill) * 2));
 
   position: relative;
@@ -119,11 +110,8 @@
 
   margin: 0;
   padding: 0;
-
-  /* Default = flow (responsive-safe) */
   height: auto;
 
-  /* Water gradient base */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -132,7 +120,6 @@
   ) !important;
 }
 
-/* Water texture layer (matches global below-fold feel) */
 .method-features::after{
   content: "";
   position: absolute;
@@ -144,14 +131,13 @@
   z-index: 0;
 }
 
-/* Feature band strip (activated on wide screens below) */
 .method-features::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 0; /* becomes active on wide screens */
+  height: 0; /* activated on wide screens */
   background: rgba(83,103,128,.72);
   border-top: 1px solid var(--band-border, rgba(255,255,255,.22));
   box-shadow:
@@ -222,8 +208,7 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-
-  opacity: 1 !important; /* kill see-through overlaps */
+  opacity: 1 !important;
   color: rgba(255,255,255,.92) !important;
 }
 
@@ -281,20 +266,18 @@
 
 
 /* =========================================================
-   4) BELOW-FOLD (water comes from global .below-fold)
+   4) BELOW-FOLD
    ========================================================= */
 .below-fold.method-content{
   position: relative;
   z-index: 1;
   margin-top: 0 !important;
-
-  /* space above Coverage (safe; does NOT affect water render) */
   padding-top: 88px !important;
 }
 
 
 /* =========================================================
-   5) COVERAGE IN PRACTICE (header + DELIVERY block + pricing)
+   5) COVERAGE IN PRACTICE (Header + Delivery + Pricing)
    ========================================================= */
 .method-practice{
   position: relative;
@@ -302,11 +285,11 @@
   background: transparent;
 }
 
-/* ---------- Header ---------- */
+/* Header */
 .method-practice .mp-head{
   text-align: center;
   max-width: 900px;
-  margin: -32px auto 26px;
+  margin: -32px auto 28px;
 }
 
 .method-practice .mp-title{
@@ -319,13 +302,12 @@
 .method-practice .mp-lead{
   margin: 0;
   font-size: 18px;
-  line-height: 1.35;
+  line-height: 1.32;
   color: rgba(255,255,255,.78);
   -webkit-hyphens: none;
   hyphens: none;
 }
 
-/* add space between stacked lead paragraphs */
 .method-practice .mp-head .mp-lead + .mp-lead{
   margin-top: 14px;
 }
@@ -333,7 +315,7 @@
 
 /* =========================================================
    DELIVERY (center title + two columns)
-   - FIXES “one word per line” wrapping
+   - Fixes “one word per line” wrapping
    ========================================================= */
 .method-practice .mp-delivery-block{
   max-width: 980px;
@@ -343,7 +325,6 @@
 
 .method-practice .mp-delivery-title{
   margin: 0 0 18px;
-  text-align: center;
   font-size: 14.5px;
   letter-spacing: .16em;
   font-weight: 600;
@@ -354,7 +335,7 @@
 .method-practice .mp-delivery-grid{
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* critical */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 48px;
   align-items: start;
 
@@ -364,7 +345,6 @@
   text-align: left;
 }
 
-/* vertical divider */
 .method-practice .mp-delivery-grid::after{
   content: "";
   position: absolute;
@@ -372,7 +352,6 @@
   bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-
   width: 1px;
   background: linear-gradient(
     to bottom,
@@ -384,12 +363,11 @@
 
 .method-practice .mp-delivery-col{
   padding-top: 18px;
-  min-width: 0; /* critical for grid children to wrap normally */
+  min-width: 0;
 }
 
 .method-practice .mp-delivery-label{
   margin: 0 0 12px;
-  text-align: left;
   font-size: 14.5px;
   letter-spacing: .16em;
   font-weight: 600;
@@ -402,27 +380,22 @@
   list-style: none;
   padding: 0;
   margin: 0;
-
-  /* IMPORTANT: no fit-content / shrink-wrap */
-  width: 100%;
-  max-width: 100%;
-
+  width: 100% !important;
+  max-width: none !important;
   display: grid;
   gap: 14px;
 }
 
 .method-practice .mp-delivery-col ul.mp-includes > li{
   display: grid;
-  grid-template-columns: 22px minmax(0, 1fr); /* critical */
+  grid-template-columns: 22px minmax(0, 1fr);
   column-gap: 12px;
   align-items: start;
 
-  text-align: left;
   font-size: 16px;
   line-height: 1.55;
   color: rgba(255,255,255,.84);
 
-  /* sane wrapping */
   word-break: normal;
   overflow-wrap: break-word;
 }
@@ -431,19 +404,25 @@
   content: "✓";
   display: grid;
   place-items: center;
-
   width: 20px;
   height: 20px;
-
   border-radius: 50%;
   border: 0.75px solid rgba(180,215,255,.50);
-
   color: rgba(180,215,255,.90);
   font-size: 12px;
   font-weight: 450;
   line-height: 1;
-
   margin-top: 1px;
+}
+
+@media (max-width: 820px){
+  .method-practice .mp-delivery-grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .method-practice .mp-delivery-grid::after{
+    display: none;
+  }
 }
 
 
@@ -452,7 +431,7 @@
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
-  margin: 48px auto 0;
+  margin: 44px auto 0;
   max-width: 720px;
 }
 
@@ -468,8 +447,6 @@
 .method-practice .mp-cta-lead{
   margin: 10px auto 18px;
   max-width: 620px;
-  text-align: center;
-
   font-size: 16px;
   line-height: 1.5;
   color: rgba(255,255,255,.72);
@@ -490,7 +467,6 @@
   height: 1px;
   margin: 44px auto 0;
   max-width: 900px;
-
   background: linear-gradient(
     to right,
     rgba(255,255,255,0),
@@ -502,7 +478,6 @@
 
 /* =========================================================
    6) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
-   - Only apply the “strip math” when grid is 4-up
    ========================================================= */
 @media (min-width: 981px){
   .method-features{
@@ -535,16 +510,6 @@
   }
 
   .method-feature:not(:last-child)::after{
-    display: none;
-  }
-}
-
-@media (max-width: 820px){
-  .method-practice .mp-delivery-grid{
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .method-practice .mp-delivery-grid::after{
     display: none;
   }
 }
