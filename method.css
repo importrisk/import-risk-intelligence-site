@@ -324,7 +324,7 @@
    ========================================================= */
 
 .method-practice .mp-delivery-block{
-  margin: 28px auto 16px;
+  margin: 36px auto 0; /* was 12px */
   text-align: center;
 }
 
@@ -456,7 +456,7 @@
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
-  margin: 44px auto 0;
+  margin: 28px auto 0;
   max-width: 720px;
 }
 
