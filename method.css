@@ -321,59 +321,62 @@
 
 /* =========================================================
    6) DELIVERY (center title + two columns)
-   - Designed layout: fixed label column + clean description column
-   - No collapse, no weird wrapping
+   - Polished panel + better rhythm + cleaner rows
    ========================================================= */
 .method-practice .mp-delivery-block{
-  max-width: 1040px;
-  margin: 26px auto 8px;
+  max-width: 1100px;
+  margin: 28px auto 8px;
   text-align: center;
 }
 
 .method-practice .mp-delivery-title{
-  margin: 0 0 20px;
-  font-size: 13px;
-  letter-spacing: .22em;
-  font-weight: 650;
+  margin: 0 0 18px;
+  font-size: 12.5px;
+  letter-spacing: .24em;
+  font-weight: 700;
   text-transform: uppercase;
-  color: rgba(255,255,255,.70);
+  color: rgba(255,255,255,.68);
 }
 
-/* “panel” feel so it reads clean over texture */
+/* Panel */
 .method-practice .mp-delivery-grid{
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 64px;
+  gap: clamp(44px, 5vw, 72px);
   align-items: start;
 
-  max-width: 1040px;
+  max-width: 1100px;
   margin: 0 auto 26px;
-  padding: 28px 30px;
+  padding: clamp(22px, 2.6vw, 34px);
 
   text-align: left;
 
-  background: rgba(8, 18, 30, .22);
-  border: 1px solid rgba(255,255,255,.08);
+  /* softer, more “designed” */
+  background:
+    linear-gradient(180deg,
+      rgba(10, 20, 32, .28) 0%,
+      rgba(10, 20, 32, .18) 100%);
+  border: 1px solid rgba(255,255,255,.07);
   box-shadow:
-    0 18px 42px rgba(0,0,0,.22),
+    0 22px 55px rgba(0,0,0,.22),
     inset 0 1px 0 rgba(255,255,255,.05);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(7px);
 }
 
-/* vertical divider: softer + less contrast */
+/* vertical divider: lighter + shorter */
 .method-practice .mp-delivery-grid::after{
   content: "";
   position: absolute;
-  top: 22px;
-  bottom: 22px;
+  top: 24px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
   background: linear-gradient(
     to bottom,
     rgba(255,255,255,0),
-    rgba(255,255,255,.12),
+    rgba(255,255,255,.10),
     rgba(255,255,255,0)
   );
 }
@@ -385,14 +388,14 @@
 
 .method-practice .mp-delivery-label{
   margin: 0 0 14px;
-  font-size: 12.5px;
-  letter-spacing: .22em;
-  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .24em;
+  font-weight: 750;
   text-transform: uppercase;
-  color: rgba(255,255,255,.66);
+  color: rgba(255,255,255,.62);
 }
 
-/* list */
+/* List */
 .method-practice .mp-delivery-col ul.mp-includes{
   list-style: none;
   padding: 0;
@@ -400,23 +403,24 @@
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 
   width: 100%;
   min-width: 0;
 }
 
-/* Each item = icon | label | description */
+/* Row layout: icon | label | description */
 .method-practice .mp-delivery-col ul.mp-includes > li{
   display: grid;
-  grid-template-columns: 22px minmax(160px, 220px) minmax(0, 1fr);
+  grid-template-columns: 22px minmax(190px, 240px) minmax(0, 1fr);
   column-gap: 14px;
   row-gap: 6px;
   align-items: start;
 
-  padding: 10px 0;
+  padding: 12px 0;
 
-  border-top: 1px solid rgba(255,255,255,.07);
+  /* less “table”, more subtle */
+  border-top: 1px solid rgba(255,255,255,.06);
 }
 
 .method-practice .mp-delivery-col ul.mp-includes > li:first-child{
@@ -424,6 +428,7 @@
   padding-top: 0;
 }
 
+/* Check */
 .method-practice .mp-delivery-col ul.mp-includes > li::before{
   content: "✓";
   grid-column: 1;
@@ -435,68 +440,63 @@
   height: 20px;
 
   border-radius: 50%;
-  border: 1px solid rgba(160,205,255,.38);
-  background: rgba(15, 35, 58, .35);
+  border: 1px solid rgba(160,205,255,.28);
+  background: rgba(15, 35, 58, .28);
 
-  color: rgba(190,225,255,.90);
+  color: rgba(195,230,255,.86);
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1;
 }
 
-/* Make <strong> behave like the “label” column */
+/* Label (strong) */
 .method-practice .mp-delivery-col ul.mp-includes > li strong{
   grid-column: 2;
   display: block;
 
   font-size: 18px;
   font-weight: 650;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
+  line-height: 1.22;
   color: rgba(255,255,255,.92);
-
-  line-height: 1.25;
 }
 
-/* Description text = the 3rd column */
+/* Description text */
 .method-practice .mp-delivery-col ul.mp-includes > li{
   font-size: 16px;
   line-height: 1.55;
-  color: rgba(255,255,255,.78);
+  color: rgba(255,255,255,.76);
 
   overflow-wrap: break-word;
   word-break: normal;
   hyphens: none;
 }
 
-/* Ensure non-strong text sits in column 3 cleanly */
-.method-practice .mp-delivery-col ul.mp-includes > li{
-  /* no-op: keeps block consistent */
-}
+/* Force everything that is NOT <strong> into the description column */
 .method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
   grid-column: 3;
+  max-width: 46ch; /* keeps the right column from feeling “wide + floaty” */
 }
 
 /* Mobile */
 @media (max-width: 820px){
   .method-practice .mp-delivery-grid{
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 22px 18px;
+    gap: 22px;
   }
   .method-practice .mp-delivery-grid::after{
     display: none;
   }
 
-  /* On small screens, let label + description stack naturally */
   .method-practice .mp-delivery-col ul.mp-includes > li{
     grid-template-columns: 22px minmax(0, 1fr);
-    row-gap: 6px;
   }
   .method-practice .mp-delivery-col ul.mp-includes > li strong{
     grid-column: 2;
   }
   .method-practice .mp-delivery-col ul.mp-includes > li > :not(strong){
     grid-column: 2;
+    max-width: none;
   }
 }
 
