@@ -423,6 +423,10 @@
   font-weight: 760;
 }
 
+.mp-card .inline-learn-more{
+  margin-left: 34px;
+}
+
 /* Item heading */
 .method-practice .mp-card-list strong{
   display: block;
