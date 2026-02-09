@@ -460,11 +460,11 @@ img{ max-width: 100%; height: auto; display: block; }
    8) HOME — BIO CARD (IF PRESENT)
    ========================================================= */
 .split-bio{
-  align-self: stretch;
+  align-self: flex-start;            /* was: stretch (caused big empty space) */
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 20px 20px 12px; /* top | sides | bottom */
+  padding: 20px 20px 12px;           /* top | sides | bottom */
   background: rgba(255,255,255,.07);
   border: 1px solid var(--mist-border);
   box-shadow: var(--mist-shadow);
@@ -527,7 +527,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .bio-links{
-  margin-top: auto;
+  margin-top: 14px;                  /* was: auto (pushed link to bottom) */
   padding-top: 13px;
   border-top: 1px solid rgba(255,255,255,.14);
   font-size: 13px;
