@@ -52,7 +52,7 @@ description: Contact Import Risk Intelligence.
         </div>
 
         <div class="cs-row">
-          <label class="cs-label" for="revenue">Annual Import Volume</label>
+          <label class="cs-label" for="revenue">Approximate Annual Import Value</label>
           <select class="cs-input" id="revenue" name="annual_revenue">
             <option value="">Select…</option>
             <option value="under_10m">Under $10M</option>
@@ -63,25 +63,31 @@ description: Contact Import Risk Intelligence.
           </select>
         </div>
 
-      <div class="cs-row">
-  <label class="cs-label" for="message">Message</label>
-  <textarea class="cs-textarea" id="message" name="message" rows="7" required></textarea>
-</div>
+        <div class="cs-row">
+          <label class="cs-label" for="message">Message</label>
+          <textarea
+            class="cs-textarea"
+            id="message"
+            name="message"
+            rows="7"
+            placeholder="Key trade lanes, ports, products, or concerns you’d like covered…"
+            required></textarea>
+        </div>
 
-<div class="cs-actions">
-  <button class="cs-button" type="submit">Send</button>
+        <div class="cs-actions">
+          <button class="cs-button" type="submit">Send Request</button>
 
-<p class="cs-direct">
-  Prefer email?
-  <a class="js-email"
-     data-user="coverage"
-     data-domain="importriskreport.com"
-     href="#">
-    coverage@importriskreport.com
-  </a>
-</p>
+          <p class="cs-direct">
+            Prefer email?
+            <a class="js-email"
+               data-user="coverage"
+               data-domain="importriskreport.com"
+               href="#">
+              coverage@importriskreport.com
+            </a>
+          </p>
 
-</div>
+        </div>
 
       </form>
 
