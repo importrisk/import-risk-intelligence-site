@@ -464,7 +464,7 @@ img{ max-width: 100%; height: auto; display: block; }
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 20px;
+  padding: 20px 20px 12px; /* top | sides | bottom */
   background: rgba(255,255,255,.07);
   border: 1px solid var(--mist-border);
   box-shadow: var(--mist-shadow);
