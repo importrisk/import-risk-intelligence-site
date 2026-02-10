@@ -915,6 +915,11 @@ select.cs-input:-webkit-autofill:focus{
 
 .cs-button:hover{ background: rgba(127,177,234,.30); }
 
+.cs-button:disabled{
+  opacity: .65;
+  cursor: not-allowed;
+}
+
 .cs-direct{
   margin: 12px 0 0;
   font-size: 13px;
