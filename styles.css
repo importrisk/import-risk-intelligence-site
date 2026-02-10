@@ -882,15 +882,20 @@ img{ max-width: 100%; height: auto; display: block; }
   box-shadow: 0 0 0 3px rgba(127,177,234,.18);
 }
 
-/* Prevent Chrome/Safari autofill from turning inputs bright */
+/* Prevent Edge/Chrome autofill from turning inputs bright */
 .cs-input:-webkit-autofill,
 .cs-input:-webkit-autofill:hover,
 .cs-input:-webkit-autofill:focus,
 .cs-textarea:-webkit-autofill,
 .cs-textarea:-webkit-autofill:hover,
-.cs-textarea:-webkit-autofill:focus{
+.cs-textarea:-webkit-autofill:focus,
+select.cs-input:-webkit-autofill,
+select.cs-input:-webkit-autofill:hover,
+select.cs-input:-webkit-autofill:focus{
   -webkit-text-fill-color: rgba(255,255,255,.92);
   -webkit-box-shadow: 0 0 0 1000px rgba(255,255,255,.06) inset;
+  box-shadow: 0 0 0 1000px rgba(255,255,255,.06) inset;
+  caret-color: rgba(255,255,255,.92);
   transition: background-color 9999s ease-in-out 0s;
 }
 
