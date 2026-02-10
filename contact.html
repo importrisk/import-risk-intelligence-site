@@ -104,6 +104,10 @@ description: Contact Import Risk Intelligence.
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+}
 
       if (btn) btn.disabled = true;
       statusEl.textContent = "Sending your request…";
