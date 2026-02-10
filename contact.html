@@ -106,7 +106,7 @@ description: Contact Import Risk Intelligence.
       e.preventDefault();
 
       if (btn) btn.disabled = true;
-      statusEl.textContent = "Sending…";
+      statusEl.textContent = "Sending your request…";
 
       try {
         const res = await fetch(form.action, {
@@ -117,9 +117,9 @@ description: Contact Import Risk Intelligence.
 
         if (res.ok) {
           form.reset();
-          statusEl.textContent = "Sent. I’ll reply by email shortly.";
+          statusEl.textContent = "Thank you for your message. I’ll reply by email shortly.";
         } else {
-          let msg = "Something went wrong. Please try again.";
+          let msg = "Couldn’t send that. Please email coverage@importriskreport.com.";
           try {
             const data = await res.json();
             if (data && data.errors && data.errors.length) {
@@ -129,7 +129,7 @@ description: Contact Import Risk Intelligence.
           statusEl.textContent = msg;
         }
       } catch (err) {
-        statusEl.textContent = "Network error. Please try again.";
+        statusEl.textContent = "Connection issue. Please try again or email coverage@importriskreport.com.";
       } finally {
         if (btn) btn.disabled = false;
       }
