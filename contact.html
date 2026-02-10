@@ -100,8 +100,12 @@ description: Contact Import Risk Intelligence.
     const statusEl = document.getElementById("cs-status");
     if (!form || !statusEl) return;
 
+    const btn = form.querySelector('button[type="submit"]');
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      if (btn) btn.disabled = true;
       statusEl.textContent = "Sending…";
 
       try {
@@ -118,12 +122,16 @@ description: Contact Import Risk Intelligence.
           let msg = "Something went wrong. Please try again.";
           try {
             const data = await res.json();
-            if (data && data.errors && data.errors.length) msg = data.errors[0].message || msg;
+            if (data && data.errors && data.errors.length) {
+              msg = data.errors[0].message || msg;
+            }
           } catch (_) {}
           statusEl.textContent = msg;
         }
       } catch (err) {
         statusEl.textContent = "Network error. Please try again.";
+      } finally {
+        if (btn) btn.disabled = false;
       }
     });
   })();
