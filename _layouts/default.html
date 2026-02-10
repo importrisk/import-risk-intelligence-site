@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}" />
-  <link rel="stylesheet" href="/import-risk-intelligence-site/styles.css?v=88" />
-  {% if page.css %}
-  <link rel="stylesheet" href="/import-risk-intelligence-site{{ page.css }}" />
-  {% endif %}
+ <link rel="stylesheet" href="/styles.css?v=88" />
+{% if page.css %}
+<link rel="stylesheet" href="{{ page.css }}" />
+{% endif %}
 </head>
 
 <body>
