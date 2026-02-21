@@ -1571,7 +1571,7 @@ header.topbar,
 
   /* Move credibility line down */
   .hero .hero-cta-note{
-    margin-top: 86px !important;   /* was 62px */
+    margin-top: 96px !important;   /* was 62px */
   }
 
   /* Add more breathing room between cred + CTA */
