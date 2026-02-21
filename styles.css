@@ -1526,16 +1526,21 @@ header.topbar,
    HOME — Hero spacing tweak for new copy (minimal)
    ========================================================= */
 .hero-actions{
-  margin-top: 38px !important; /* was 135px */
+  margin-top: 62px !important; /* was 135px */
 }
 
+/* =========================================================
+   HOME — credibility line (final tuned version)
+   ========================================================= */
 .hero-cta-note{
-  margin: 14px auto 0 !important; /* tighten a bit */
-  max-width: 760px;              /* keeps it from getting too wide */
-  color: rgba(255,255,255,.92) !important;   /* crisp */
+  margin: 28px auto 0 !important;  /* moved down slightly */
+  max-width: 760px;                /* keeps it from getting too wide */
+
+  color: rgba(255,255,255,.92) !important;  /* crisp */
   font-weight: 600 !important;
-  font-size: 16px !important;               /* slightly smaller */
+  font-size: 16px !important;      /* slightly smaller than subtitle */
   letter-spacing: .01em;
+
   text-shadow:
     0 2px 6px rgba(0,0,0,.55),
     0 10px 24px rgba(0,0,0,.35) !important;
