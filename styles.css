@@ -1562,7 +1562,7 @@ header.topbar,
 
   /* Move the hero stack up a bit */
   .hero .hero-inner{
-    padding-top: 80px !important;   /* was 120px */
+    padding-top: 76px !important;   /* was 120px */
   }
 
   /* Tighten credibility line so it doesn't push the CTA down */
