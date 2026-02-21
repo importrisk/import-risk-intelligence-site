@@ -1562,7 +1562,7 @@ header.topbar,
 
   /* Move the hero stack up a bit */
   .hero .hero-inner{
-    padding-top: 88px !important;   /* was 120px */
+    padding-top: 80px !important;   /* was 120px */
   }
 
   /* Tighten credibility line so it doesn't push the CTA down */
@@ -1570,7 +1570,7 @@ header.topbar,
     margin-top: 34px !important;    /* was 62px */
   }
 
-  /* Give the button breathing room BELOW (this is what you want) */
+  /* Give the button breathing room BELOW */
   .hero .hero-actions{
     margin-top: 18px !important;    /* keeps CTA close to note */
     margin-bottom: 30px !important; /* creates space before features band */
@@ -1578,6 +1578,6 @@ header.topbar,
 
   /* Extra insurance: add a little hero bottom padding */
   .hero{
-    padding-bottom: 18px;
+    padding-bottom: 18px !important;
   }
 }
