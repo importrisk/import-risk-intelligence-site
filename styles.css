@@ -1573,7 +1573,7 @@ header.topbar,
   /* Give the button breathing room BELOW (this is what you want) */
   .hero .hero-actions{
     margin-top: 18px !important;    /* keeps CTA close to note */
-    margin-bottom: 22px !important; /* creates space before features band */
+    margin-bottom: 30px !important; /* creates space before features band */
   }
 
   /* Extra insurance: add a little hero bottom padding */
