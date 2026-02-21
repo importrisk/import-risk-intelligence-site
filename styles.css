@@ -1555,50 +1555,59 @@ header.topbar,
     0 2px 0 rgba(255,255,255,.15) inset !important;
 }
 /* =========================================================
-   HOME — HERO SPACING GUARDED FIX
-   - Locks desktop/tablet spacing
-   - Applies the "move up + space under CTA" only on real phones
-   Paste at VERY BOTTOM of CSS
+   HOME — HERO SPACING FINAL TUNE
+   Desktop refined + mobile lifted slightly more
    ========================================================= */
 
-/* 1) Desktop + tablet: hard lock the intended hero layout */
+/* -------------------------------
+   1) Desktop / Tablet (>=521px)
+   ------------------------------- */
 @media (min-width: 521px){
+
+  /* Keep headline area stable */
   .hero .hero-inner{
     padding-top: 120px !important;
   }
+
+  /* Move credibility line down */
   .hero .hero-cta-note{
-    margin-top: 62px !important;
+    margin-top: 86px !important;   /* was 62px */
   }
+
+  /* Add more breathing room between cred + CTA */
   .hero .hero-actions{
-    margin-top: 28px !important;
+    margin-top: 40px !important;   /* was 28px */
     margin-bottom: 0 !important;
   }
+
   .hero{
     padding-bottom: 0 !important;
   }
 }
 
-/* 2) Phones only (prevents accidental desktop application) */
+
+/* -------------------------------
+   2) Phones (real touch devices)
+   ------------------------------- */
 @media (max-width: 520px) and (hover: none) and (pointer: coarse){
 
-  /* Move the hero stack up a bit */
+  /* Move entire hero stack UP more */
   .hero .hero-inner{
-    padding-top: 76px !important;
+    padding-top: 64px !important;   /* was 76px */
   }
 
-  /* Keep credibility line from pushing CTA down */
+  /* Slightly tighter credibility */
   .hero .hero-cta-note{
-    margin-top: 34px !important;
+    margin-top: 28px !important;
     margin-bottom: 12px !important;
   }
 
-  /* CTA spacing: tight above, breathing room below */
+  /* CTA spacing */
   .hero .hero-actions{
-    margin-top: 18px !important;
-    margin-bottom: 30px !important;
+    margin-top: 16px !important;
+    margin-bottom: 28px !important;
   }
 
-  /* Extra insurance before features band */
   .hero{
     padding-bottom: 18px !important;
   }
