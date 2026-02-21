@@ -1522,3 +1522,14 @@ header.topbar,
   .policy-body{ padding: 44px 0 60px; }
 }
 
+/* =========================================================
+   HOME — Hero spacing tweak for new copy (minimal)
+   ========================================================= */
+.hero-actions{
+  margin-top: 38px !important; /* was 135px */
+}
+
+.hero-cta-note{
+  margin: 14px auto 0 !important; /* tighten a bit */
+  max-width: 760px;              /* keeps it from getting too wide */
+}
