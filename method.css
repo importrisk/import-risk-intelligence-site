@@ -753,30 +753,28 @@
   color: rgba(255,255,255,.60);
 }
 
-/* Link styling upgrade */
-.method-practice .mp-card-footer .inline-learn-more{
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: rgba(127,177,234,.95);
-  transition: opacity .2s ease;
-}
+/* =========================================================
+   MP CARD FOOTER (See + Request link)
+   - Aligns "See..." and the link to the same left edge
+   - Keeps the divider full-width
+   ========================================================= */
 
-.method-practice .mp-card-footer .inline-learn-more:hover{
-  opacity: .85;
-}
-/* Nudge the footer content in as a unit */
+/* Footer wrapper */
 .method-practice .mp-card-footer{
-  padding-left: 34px;   /* matches your list-item icon gutter */
-  padding-right: 6px;   /* tiny breathing room */
-}
+  margin-top: 22px;
+  padding-top: 18px;
 
-/* If you want the divider to stay full-width, move it to a pseudo */
-.method-practice .mp-card-footer{
+  /* align footer text with list-item text (icon gutter = 34px) */
+  padding-left: 34px;
+  padding-right: 6px;
+
+  text-align: left;
+
   position: relative;
-  border-top: 0;        /* kill the existing border */
+  border-top: 0; /* remove any existing border */
 }
 
+/* Full-width divider */
 .method-practice .mp-card-footer::before{
   content: "";
   position: absolute;
@@ -785,4 +783,31 @@
   top: 0;
   height: 1px;
   background: rgba(255,255,255,.08);
+}
+
+/* Optional: kicker line ("See how...") */
+.method-practice .mp-card-footer .mp-cta-kicker{
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.70);
+}
+
+/* Link styling upgrade */
+.method-practice .mp-card-footer .inline-learn-more{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgba(127,177,234,.95);
+
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+.method-practice .mp-card-footer .inline-learn-more:hover{
+  opacity: .85;
 }
