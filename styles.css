@@ -1554,3 +1554,30 @@ header.topbar,
     0 18px 36px rgba(0,0,0,.35),
     0 2px 0 rgba(255,255,255,.15) inset !important;
 }
+/* =========================================================
+   HOME — MOBILE HERO SPACING (move up + add space under CTA)
+   Paste at VERY bottom of the CSS (last lines)
+   ========================================================= */
+@media (max-width: 520px){
+
+  /* Move the hero stack up a bit */
+  .hero .hero-inner{
+    padding-top: 88px !important;   /* was 120px */
+  }
+
+  /* Tighten credibility line so it doesn't push the CTA down */
+  .hero .hero-cta-note{
+    margin-top: 34px !important;    /* was 62px */
+  }
+
+  /* Give the button breathing room BELOW (this is what you want) */
+  .hero .hero-actions{
+    margin-top: 18px !important;    /* keeps CTA close to note */
+    margin-bottom: 22px !important; /* creates space before features band */
+  }
+
+  /* Extra insurance: add a little hero bottom padding */
+  .hero{
+    padding-bottom: 18px;
+  }
+}
