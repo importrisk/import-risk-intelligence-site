@@ -1586,28 +1586,30 @@ header.topbar,
 }
 
 
-/* -------------------------------
-   2) Phones (real touch devices)
-   ------------------------------- */
-@media (max-width: 520px) and (hover: none) and (pointer: coarse){
+/* =========================================================
+   HOME — iPhone hero spacing (SAFE)
+   Paste at VERY bottom of CSS
+   ========================================================= */
+@media (max-width: 520px){
 
-  /* Move entire hero stack UP more */
+  /* Move entire hero stack UP */
   .hero .hero-inner{
-    padding-top: 64px !important;   /* was 76px */
+    padding-top: 64px !important;
   }
 
-  /* Slightly tighter credibility */
+  /* Credibility line spacing */
   .hero .hero-cta-note{
     margin-top: 28px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 14px !important; /* adds a touch more gap before CTA */
   }
 
-  /* CTA spacing */
+  /* CTA spacing: add room BELOW so features band isn't tight */
   .hero .hero-actions{
-    margin-top: 16px !important;
-    margin-bottom: 28px !important;
+    margin-top: 18px !important;
+    margin-bottom: 30px !important;
   }
 
+  /* Slight cushion at bottom of hero */
   .hero{
     padding-bottom: 18px !important;
   }
