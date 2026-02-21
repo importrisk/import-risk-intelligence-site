@@ -765,3 +765,24 @@
 .method-practice .mp-card-footer .inline-learn-more:hover{
   opacity: .85;
 }
+/* Nudge the footer content in as a unit */
+.method-practice .mp-card-footer{
+  padding-left: 34px;   /* matches your list-item icon gutter */
+  padding-right: 6px;   /* tiny breathing room */
+}
+
+/* If you want the divider to stay full-width, move it to a pseudo */
+.method-practice .mp-card-footer{
+  position: relative;
+  border-top: 0;        /* kill the existing border */
+}
+
+.method-practice .mp-card-footer::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(255,255,255,.08);
+}
