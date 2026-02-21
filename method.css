@@ -3,7 +3,7 @@
    - Hero image defined ONLY here
    - Features = ONE strip behind cards on wide screens
    - Below-fold water texture comes from global .below-fold (DO NOT OVERRIDE)
-   - Below fold: Coverage header + Delivery (two columns) + Pricing
+   - Below fold: Coverage header + Coverage Model (two columns) + Pricing + FAQ
    ========================================================= */
 
 
@@ -92,10 +92,22 @@
     0 0 24px rgba(0,0,0,.25);
 }
 
+/* Optional secondary hero line */
+.method-hero .hero-subtitle.hero-subtitle-muted{
+  margin: 10px auto 0;
+  max-width: 780px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.66);
+  letter-spacing: 0;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.28),
+    0 0 18px rgba(0,0,0,.18);
+}
+
 
 /* =========================================================
    2) METHOD FEATURES (band behind cards)
-   - Paint only; layout is controlled with wide-screen lock below
    ========================================================= */
 .method-features{
   --card-h: 260px;
@@ -114,7 +126,6 @@
   padding: 0;
   height: auto;
 
-  /* water gradient to match global below-fold */
   background: linear-gradient(
     180deg,
     rgba(20, 42, 68, .89) 0%,
@@ -156,16 +167,14 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
-
   position: relative;
   z-index: 2;
-
   transform: translateY(calc(-1 * var(--spill)));
 }
 
 
 /* =========================================================
-   3) CARDS
+   3) FEATURE CARDS
    ========================================================= */
 .method-feature{
   position: relative;
@@ -182,7 +191,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   min-height: var(--card-h);
   height: auto;
 }
@@ -213,7 +221,6 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-
   opacity: 1 !important;
   color: rgba(255,255,255,.92) !important;
 }
@@ -291,7 +298,6 @@
   background: transparent;
 }
 
-/* Header */
 .method-practice .mp-head{
   text-align: center;
   max-width: 900px;
@@ -320,15 +326,13 @@
 
 
 /* =========================================================
-   6) DELIVERY — polished, executive
+   6) COVERAGE MODEL (two cards)
    ========================================================= */
-
 .method-practice .mp-delivery-block{
-  margin: 28px auto 0; /* was 16px */
+  margin: 28px auto 0;
   text-align: center;
 }
 
-/* Section title */
 .method-practice .mp-delivery-title{
   margin: 0 0 22px;
   font-size: 14px;
@@ -338,31 +342,25 @@
   color: rgba(255,255,255,.82);
 }
 
-/* Two-card layout */
 .method-practice .mp-delivery-cards{
   max-width: 920px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 3vw, 26px);
-
   align-items: stretch;
 }
 
-/* Individual card */
 .method-practice .mp-card{
   position: relative;
   padding: clamp(22px, 2.6vw, 30px);
-
   display: flex;
   flex-direction: column;
   text-align: left;
 
-  background:
-    linear-gradient(180deg,
-      rgba(10,20,32,.32) 0%,
-      rgba(10,20,32,.18) 100%);
+  background: linear-gradient(180deg,
+    rgba(10,20,32,.32) 0%,
+    rgba(10,20,32,.18) 100%);
   border: 1px solid rgba(255,255,255,.10);
   box-shadow:
     0 18px 48px rgba(0,0,0,.25),
@@ -370,11 +368,9 @@
   backdrop-filter: blur(7px);
 }
 
-/* Card header */
 .method-practice .mp-card-label{
-  margin: 0 0 18px;
+  margin: 0 0 10px;
   text-align: center;
-
   font-size: 12px;
   letter-spacing: .28em;
   font-weight: 740;
@@ -382,26 +378,31 @@
   color: rgba(255,255,255,.66);
 }
 
-/* List */
+/* Subtitle under card label */
+.method-practice .mp-card-subtitle{
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.68);
+}
+
 .method-practice .mp-card-list{
   list-style: none;
   margin: 0;
   padding: 0;
-
   display: flex;
   flex-direction: column;
   gap: 18px;
-
   flex-grow: 1;
 }
 
-/* List items */
 .method-practice .mp-card-list li{
   position: relative;
   padding-left: 34px;
 }
 
-/* Check icon */
 .method-practice .mp-card-list li::before{
   content: "✓";
   position: absolute;
@@ -410,7 +411,6 @@
 
   width: 20px;
   height: 20px;
-
   display: grid;
   place-items: center;
 
@@ -423,29 +423,24 @@
   font-weight: 760;
 }
 
-.mp-card .inline-learn-more{
-  margin-left: 34px;
-}
-
-/* Item heading */
 .method-practice .mp-card-list strong{
   display: block;
   margin-bottom: 4px;
-
   font-size: 18px;
   font-weight: 660;
   letter-spacing: -0.012em;
   color: rgba(255,255,255,.94);
 }
 
-/* Item description */
 .method-practice .mp-card-list span{
   display: block;
   max-width: 46ch;
-
   font-size: 15px;
   line-height: 1.55;
   color: rgba(255,255,255,.72);
+
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 /* Mobile */
@@ -453,14 +448,83 @@
   .method-practice .mp-delivery-cards{
     grid-template-columns: 1fr;
   }
+  .method-practice .mp-card-subtitle{
+    font-size: 13.5px;
+  }
 }
+
+
+/* =========================================================
+   6b) CTA FOOTER (kicker + link) — FINAL ALIGNMENT
+   Works with .mp-card-footer (preferred) OR your old .mp-card-cta
+   ========================================================= */
+.method-practice .mp-card-footer,
+.method-practice .mp-card-cta{
+  margin-top: 22px;
+  padding-top: 18px;
+
+  /* Align kicker + link with list-item TEXT edge (not the check icon) */
+  padding-left: 34px;
+  padding-right: 6px;
+
+  text-align: left;
+  position: relative;
+
+  border-top: 0;
+}
+
+.method-practice .mp-card-footer::before,
+.method-practice .mp-card-cta::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(255,255,255,.08);
+}
+
+/* Kicker line ("See how…") */
+.method-practice .mp-card-footer .mp-cta-kicker,
+.method-practice .mp-card-cta .mp-cta-kicker{
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.70);
+}
+
+/* Link — hard reset so it cannot be offset by any older rules */
+.method-practice .mp-card-footer .inline-learn-more,
+.method-practice .mp-card-cta .inline-learn-more{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgba(127,177,234,.95);
+  text-decoration: none;
+
+  transition: opacity .2s ease;
+}
+
+.method-practice .mp-card-footer .inline-learn-more:hover,
+.method-practice .mp-card-cta .inline-learn-more:hover{
+  opacity: .85;
+}
+
 
 /* =========================================================
    7) PRICING (centered)
    ========================================================= */
 .method-practice .mp-pricing{
   text-align: center;
-  margin: 28px auto 0; /* was 44px */
+  margin: 28px auto 0;
   max-width: 720px;
 }
 
@@ -503,23 +567,14 @@
     rgba(255,255,255,0)
   );
 }
-/* =========================================================
-   FAQ (Method page) — Common Questions + centered capstone
-   Works with your current HTML:
-   .mp-faq > .mp-faq-title + .mp-faq-grid(.mp-faq-item...) + .mp-faq-centered
-   ========================================================= */
 
+
+/* =========================================================
+   FAQ (Method page)
+   ========================================================= */
 .method-practice .mp-faq{
   max-width: 980px;
   margin: 52px auto 26px;
-}
-
-/* Make the grid container a positioned context so we can draw a center divider */
-.method-practice .mp-faq-grid{
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px 72px;
 }
 
 .method-practice .mp-faq-title{
@@ -530,7 +585,13 @@
   color: rgba(255,255,255,.92);
 }
 
-/* Optional: subtle center divider that matches your Delivery divider vibe */
+.method-practice .mp-faq-grid{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px 72px;
+}
+
 .method-practice .mp-faq-grid::after{
   content: "";
   position: absolute;
@@ -552,7 +613,7 @@
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,.10);
   position: relative;
-  min-width: 0; /* prevents weird wrapping in grid children */
+  min-width: 0;
 }
 
 .method-practice .mp-faq-item::before{
@@ -574,6 +635,10 @@
   line-height: 1.28;
   color: rgba(255,255,255,.93);
   letter-spacing: -0.01em;
+
+  max-width: none;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .method-practice .mp-a{
@@ -584,12 +649,10 @@
   color: rgba(255,255,255,.80);
   max-width: 52ch;
 
-  /* safe wrapping */
   overflow-wrap: break-word;
   word-break: normal;
 }
 
-/* hover polish (desktop only) */
 @media (hover:hover){
   .method-practice .mp-faq-item:hover::before{
     background: rgba(127,177,234,.70);
@@ -599,7 +662,6 @@
   }
 }
 
-/* Centered capstone item (your last standalone .mp-faq-item) */
 .method-practice .mp-faq-item.mp-faq-centered{
   max-width: 620px;
   margin: 36px auto 0;
@@ -607,20 +669,22 @@
   border-top: 1px solid rgba(255,255,255,.10);
   padding-top: 16px;
 }
+
 .method-practice .mp-faq-item.mp-faq-centered::before{
   display: none;
 }
+
 .method-practice .mp-faq-item.mp-faq-centered .mp-q,
 .method-practice .mp-faq-item.mp-faq-centered .mp-a{
   padding-left: 0;
   margin-left: auto;
   margin-right: auto;
 }
+
 .method-practice .mp-faq-item.mp-faq-centered .mp-a{
   max-width: 62ch;
 }
 
-/* responsive */
 @media (max-width: 820px){
   .method-practice .mp-faq-grid{
     grid-template-columns: 1fr;
@@ -633,6 +697,7 @@
     max-width: 60ch;
   }
 }
+
 
 /* =========================================================
    8) WIDE SCREEN LOCK: fixed strip (prevents grey slab)
@@ -685,129 +750,4 @@
   .method-practice .mp-goal-price{
     font-size: 28px;
   }
-}
-/* Safety: neutralize global h4/p/section rules that can break layout */
-.method-practice .mp-faq,
-.method-practice .mp-faq *{
-  min-width: 0;
-}
-
-.method-practice .mp-q{
-  max-width: none;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.method-practice .mp-a{
-  max-width: 52ch; /* keep your intended measure */
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-/* Secondary hero line (cred grounding) */
-.method-hero .hero-subtitle.hero-subtitle-muted{
-  margin: 10px auto 0;
-  max-width: 780px;
-  font-size: 16px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.66);
-  letter-spacing: 0;
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.28),
-    0 0 18px rgba(0,0,0,.18);
-}
-/* Subtitle under "What I Monitor" / "What You Receive" */
-.method-practice .mp-card-subtitle{
-  margin: -8px 0 18px;          /* tucks under the label, then gives air before list */
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.68);
-}
-
-/* Keep it from feeling tight on smaller screens */
-@media (max-width: 820px){
-  .method-practice .mp-card-subtitle{
-    margin: -6px 0 16px;
-    font-size: 13.5px;
-  }
-}
-.method-practice .mp-card-cta-intro{
-  margin-top: auto;
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: rgba(255,255,255,.65);
-}
-/* Card footer area */
-.method-practice .mp-card-footer{
-  margin-top: auto;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
-/* Intro line */
-.method-practice .mp-card-cta-intro{
-  margin: 0 0 8px;
-  font-size: 14px;
-  color: rgba(255,255,255,.60);
-}
-
-/* =========================================================
-   MP CARD FOOTER (See + Request link)
-   - Aligns "See..." and the link to the same left edge
-   - Keeps the divider full-width
-   ========================================================= */
-
-/* Footer wrapper */
-.method-practice .mp-card-footer{
-  margin-top: 22px;
-  padding-top: 18px;
-
-  /* align footer text with list-item text (icon gutter = 34px) */
-  padding-left: 34px;
-  padding-right: 6px;
-
-  text-align: left;
-
-  position: relative;
-  border-top: 0; /* remove any existing border */
-}
-
-/* Full-width divider */
-.method-practice .mp-card-footer::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: rgba(255,255,255,.08);
-}
-
-/* Optional: kicker line ("See how...") */
-.method-practice .mp-card-footer .mp-cta-kicker{
-  margin: 0 0 10px;
-  font-size: 15px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.70);
-}
-
-/* Link styling upgrade */
-.method-practice .mp-card-footer .inline-learn-more{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: rgba(127,177,234,.95);
-
-  text-decoration: none;
-  transition: opacity .2s ease;
-}
-
-.method-practice .mp-card-footer .inline-learn-more:hover{
-  opacity: .85;
 }
