@@ -1555,27 +1555,50 @@ header.topbar,
     0 2px 0 rgba(255,255,255,.15) inset !important;
 }
 /* =========================================================
-   HOME — MOBILE HERO SPACING (move up + add space under CTA)
-   Paste at VERY bottom of the CSS (last lines)
+   HOME — HERO SPACING GUARDED FIX
+   - Locks desktop/tablet spacing
+   - Applies the "move up + space under CTA" only on real phones
+   Paste at VERY BOTTOM of CSS
    ========================================================= */
-@media (max-width: 520px){
+
+/* 1) Desktop + tablet: hard lock the intended hero layout */
+@media (min-width: 521px){
+  .hero .hero-inner{
+    padding-top: 120px !important;
+  }
+  .hero .hero-cta-note{
+    margin-top: 62px !important;
+  }
+  .hero .hero-actions{
+    margin-top: 28px !important;
+    margin-bottom: 0 !important;
+  }
+  .hero{
+    padding-bottom: 0 !important;
+  }
+}
+
+/* 2) Phones only (prevents accidental desktop application) */
+@media (max-width: 520px) and (hover: none) and (pointer: coarse){
 
   /* Move the hero stack up a bit */
   .hero .hero-inner{
-    padding-top: 76px !important;   /* was 120px */
+    padding-top: 76px !important;
   }
 
-  /* Tighten credibility line so it doesn't push the CTA down */
+  /* Keep credibility line from pushing CTA down */
   .hero .hero-cta-note{
-    margin-top: 34px !important;    /* was 62px */
+    margin-top: 34px !important;
+    margin-bottom: 12px !important;
   }
 
-  /* Give the button breathing room BELOW */
+  /* CTA spacing: tight above, breathing room below */
   .hero .hero-actions{
-    margin-top:22px !important;    /* keeps CTA close to note */
+    margin-top: 18px !important;
+    margin-bottom: 30px !important;
   }
 
-  /* Extra insurance: add a little hero bottom padding */
+  /* Extra insurance before features band */
   .hero{
     padding-bottom: 18px !important;
   }
