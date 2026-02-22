@@ -1052,22 +1052,22 @@ select.cs-input:-webkit-autofill:focus{
   pointer-events: none;
 
   background-image:
-  /* top fade (stronger) */
-  linear-gradient(180deg,
-    rgba(11, 29, 47, .38) 0%,
-    rgba(11, 29, 47, .22) 22%,
-    rgba(11, 29, 47, 0) 48%),
-  /* bottom fade (stronger, helps the card overlap) */
-  linear-gradient(0deg,
-    rgba(11, 29, 47, .44) 0%,
-    rgba(11, 29, 47, .22) 30%,
-    rgba(11, 29, 47, 0) 58%),
-  /* soft overall veil */
-  linear-gradient(180deg,
-    rgba(0,0,0,.14) 0%,
-    rgba(0,0,0,.08) 60%,
-    rgba(0,0,0,.08) 100%),
-  url("assets/images/insights-hero.jpg");
+    /* top fade (stronger) */
+    linear-gradient(180deg,
+      rgba(11, 29, 47, .38) 0%,
+      rgba(11, 29, 47, .22) 22%,
+      rgba(11, 29, 47, 0) 48%),
+    /* bottom fade (stronger, helps the card overlap) */
+    linear-gradient(0deg,
+      rgba(11, 29, 47, .44) 0%,
+      rgba(11, 29, 47, .22) 30%,
+      rgba(11, 29, 47, 0) 58%),
+    /* soft overall veil */
+    linear-gradient(180deg,
+      rgba(0,0,0,.14) 0%,
+      rgba(0,0,0,.08) 60%,
+      rgba(0,0,0,.08) 100%),
+    url("assets/images/insights-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -1075,23 +1075,21 @@ select.cs-input:-webkit-autofill:focus{
   filter: saturate(.88) contrast(.96) brightness(.96);
 }
 
-.insights-hero::before{
+/* Guaranteed-visible bottom mist fade (drawn over the image) */
+.insights-hero > .insights-hero-bg::after{
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 220px;
-  z-index: 4;
+  inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
     rgba(20, 42, 68, 0) 0%,
-    rgba(16, 34, 56, .35) 55%,
-    rgba(12, 26, 44, .55) 100%
+    rgba(16, 34, 56, .22) 62%,
+    rgba(12, 26, 44, .56) 100%
   );
 }
 
+/* Keep the seam line like Contact */
 .insights-hero::after{
   content: "";
   position: absolute;
@@ -1193,7 +1191,7 @@ select.cs-input:-webkit-autofill:focus{
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* Inside-card typography (clean, no inline styles needed) */
+/* Inside-card typography */
 .insights-card h2{
   margin: 26px 0 10px;
   font-size: 18px;
