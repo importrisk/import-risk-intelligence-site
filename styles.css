@@ -1027,7 +1027,10 @@ select.cs-input:-webkit-autofill:focus{
 
 /* =========================================================
    INSIGHTS — HERO (dedicated, image-backed)
+   + Contact-style spill section + centered dark card
    ========================================================= */
+
+/* --- HERO --- */
 .insights-hero{
   position: relative;
   padding-top: var(--topbar-h);
@@ -1091,6 +1094,73 @@ select.cs-input:-webkit-autofill:focus{
   .insights-hero-inner{ padding: 78px 24px 44px; }
 }
 
+/* --- CONTACT-STYLE SPILL + CENTER CARD (below the hero) ---
+   Use in Insights HTML:
+   <section class="insights-simple">
+     <div class="container">
+       <div class="insights-card"> ... </div>
+     </div>
+   </section>
+*/
+.insights-simple{
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+  padding: 160px 0 76px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(20, 42, 68, .89) 0%,
+    rgba(16, 34, 56, .91) 55%,
+    rgba(12, 26, 44, .94) 100%
+  );
+}
+
+.insights-simple::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  filter: blur(1px) saturate(.8) contrast(.90);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.insights-simple > .container{
+  position: relative;
+  z-index: 2;
+}
+
+.insights-card{
+  max-width: 820px;
+  margin: 0 auto;
+  margin-top: -340px;
+
+  padding: 24px 24px 20px;
+  border-radius: 0;
+
+  background: rgba(20, 32, 48, .88);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 18px 44px rgba(0,0,0,.28);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Responsive (mirror Contact behavior) */
+@media (max-width: 920px){
+  .insights-simple{
+    margin-top: -54px;
+    padding: 150px 0 62px;
+  }
+
+  .insights-card{
+    max-width: 720px;
+    margin-top: -200px;
+    padding: 20px 18px 18px;
+  }
+}
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
