@@ -21,92 +21,96 @@ description: Examples of what an IRI alert or weekly brief looks like — concis
   </section>
 
   <!-- SPILL + CENTER CARD (Contact-style) -->
-  <section class="insights-simple" aria-label="Insights examples">
-    <div class="container">
-      <div class="insights-card">
+<section class="insights-entries" aria-label="Insights entries">
+  <div class="container">
+    <header class="insights-sectionhead">
+      <h2>Recent examples</h2>
+      <p class="muted">A curated selection from the past 60 days.</p>
+    </header>
 
-        <!-- Jump links -->
-        <p class="insights-jump">
-          Jump to:
-          <a href="#trade">Trade</a> •
-          <a href="#ports">Ports</a> •
-          <a href="#customs">Customs</a> •
-          <a href="#weather">Weather</a> •
-          <a href="#cyber">Cyber</a>
-        </p>
+    <!-- ENTRY 1: Escalation Alert (EA) -->
+    <article class="insight-card is-elevated">
+      <details class="insight" open>
+        <summary class="insight-summary">
+          <div class="insight-top">
+            <div class="insight-titlewrap">
+              <div class="insight-kicker">Escalation Alert</div>
+              <h3 class="insight-title">
+                Supreme Court strikes down IEEPA tariffs; Section 122 replacement at 15% effective February 24
+              </h3>
+            </div>
 
-        <!-- TRADE -->
-        <h2 id="trade">Trade</h2>
+            <div class="insight-metaRight">
+              <div class="insight-date">22 February 2026</div>
+              <span class="pill pill-elevated">Condition: Elevated</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </div>
+          </div>
 
-        <p><strong>Example: Trade policy action with import cost exposure</strong><br>
-        <span class="insights-note">Format mirrors an escalation note or brief item.</span></p>
+          <div class="insight-metaLine">
+            <span class="meta-label">Scope:</span>
+            <span>U.S. imports (broad)</span>
+            <span class="dot">•</span>
+            <span class="meta-label">Impact:</span>
+            <span>COST: HIGH</span>
+            <span class="dot">•</span>
+            <span>TIMING: LOW</span>
+            <span class="dot">•</span>
+            <span>EXECUTION: MODERATE</span>
+          </div>
 
-        <ul>
-          <li><strong>What changed:</strong> A policy signal suggests potential duty treatment changes or tighter enforcement focus.</li>
-          <li><strong>Why it matters:</strong> Landed cost and clearance timelines can shift quickly once guidance and targeting posture solidify.</li>
-          <li><strong>Who’s exposed:</strong> Importers with concentrated origin exposure, sensitive classifications, or thin-margin SKUs.</li>
-          <li><strong>What to watch next:</strong> Effective dates, scope clarifications, enforcement language, and follow-on agency notices.</li>
-          <li><strong>Bottom line:</strong> Plan for volatility until implementation details stabilize.</li>
-        </ul>
+          <p class="insight-blurb">
+            The administration replaced IEEPA tariffs with a 15% global tariff under Section 122, effective February 24 for 150 days.
+            Section 301 and Section 232 tariffs remain in effect.
+          </p>
 
-        <!-- PORTS -->
-        <h2 id="ports">Ports &amp; Logistics</h2>
+          <div class="insight-ctaRow" aria-hidden="true">
+            <span class="ctaText">Expand brief</span>
+          </div>
+        </summary>
 
-        <p><strong>Example: Port congestion or terminal friction that changes lead-time assumptions</strong></p>
+        <div class="insight-body">
+          <div class="insight-grid">
+            <div class="insight-block">
+              <h4>Assessed impact</h4>
+              <p><strong>Cost:</strong> Most goods shift to 15% Section 122 plus applicable Section 301 duties; landed cost will likely require a SKU-level refresh.</p>
+              <p><strong>Timing:</strong> No immediate clearance disruption expected, but guidance could tighten near Feb 24.</p>
+              <p><strong>Execution:</strong> Exemptions may apply (USMCA goods, pharmaceuticals, critical minerals, certain electronics); unverified SKUs may be treated as dutiable pending confirmation.</p>
+            </div>
 
-        <ul>
-          <li><strong>What changed:</strong> Congestion indicators show deterioration (dwell, vessel bunching, appointments, rail flow, chassis availability).</li>
-          <li><strong>Why it matters:</strong> Delays compound downstream (dray to warehouse receiving to customer service levels).</li>
-          <li><strong>Who’s exposed:</strong> Importers using the gateway, time-sensitive inventory, intermodal moves, constrained dray capacity.</li>
-          <li><strong>What to watch next:</strong> Whether congestion persists for multiple cycles, not just a single-day spike.</li>
-          <li><strong>Bottom line:</strong> Treat early congestion as a lead-time multiplier, not a one-off delay.</li>
-        </ul>
+            <div class="insight-block">
+              <h4>Decision window</h4>
+              <p class="callout">
+                <strong>EOD February 23:</strong> Actions to consider before the February 24 effective date.
+              </p>
+              <p>
+                Before Feb 24, consider validating exemption status for in-scope SKUs, refreshing landed cost math using 15% Section 122 plus applicable Section 301 duties,
+                and consulting trade counsel on potential IEEPA refund eligibility while compiling 2025 duty records by HTS code.
+              </p>
+            </div>
 
-        <!-- CUSTOMS -->
-        <h2 id="customs">Customs &amp; Compliance</h2>
+            <div class="insight-block">
+              <h4>Watchpoints</h4>
+              <p><strong>CBP implementation:</strong> Look for CSMS messages, new documentation requirements, or port-level clearance friction tied to Section 122 starting Feb 24.</p>
+              <p><strong>Refund path:</strong> Watch for Treasury/CBP instructions or CIT filings that define eligibility, procedure, and timing.</p>
+            </div>
 
-        <p><strong>Example: Enforcement signal that predicts more holds or scrutiny</strong></p>
+            <div class="insight-block">
+              <h4>Sources</h4>
+              <ol class="sources">
+                <li>WilmerHale Client Alert, February 21, 2026</li>
+                <li>SCOTUSblog, February 20, 2026</li>
+                <li>NPR, February 21, 2026</li>
+                <li>Yale Budget Lab, February 20, 2026</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </details>
+    </article>
 
-        <ul>
-          <li><strong>What changed:</strong> Official language indicates increased targeting or compliance emphasis on a product area or documentation topic.</li>
-          <li><strong>Why it matters:</strong> More document requests, exams, and inconsistent release times can disrupt planning.</li>
-          <li><strong>Who’s exposed:</strong> Importers in-scope, borderline classifications, weak supplier documentation, high broker override rates.</li>
-          <li><strong>What to watch next:</strong> Follow-on notices, rulings, and broker-reported exam/hold patterns.</li>
-          <li><strong>Bottom line:</strong> If you’re in-scope, tighten paperwork and classification discipline before you become the example.</li>
-        </ul>
-
-        <!-- WEATHER -->
-        <h2 id="weather">Weather &amp; Disruption</h2>
-
-        <p><strong>Example: Severe weather with logistics impacts beyond the headline</strong></p>
-
-        <ul>
-          <li><strong>What changed:</strong> A weather system intersects with logistics nodes (ports, inland corridors, rail ramps, DC regions).</li>
-          <li><strong>Why it matters:</strong> The recovery tail (staffing, closures, backlogs) often lasts longer than the event.</li>
-          <li><strong>Who’s exposed:</strong> Moves transiting affected corridors, facilities in-region, tight delivery windows.</li>
-          <li><strong>What to watch next:</strong> Escalation path (watch to warning), operational advisories, and recovery indicators.</li>
-          <li><strong>Bottom line:</strong> Plan around the recovery lag, not the storm duration.</li>
-        </ul>
-
-        <!-- CYBER -->
-        <h2 id="cyber">Cyber &amp; Outage</h2>
-
-        <p><strong>Example: System outage at a node that silently slows cargo flow</strong></p>
-
-        <ul>
-          <li><strong>What changed:</strong> A terminal, carrier, broker, or port community workflow degrades due to outage or cyber disruption.</li>
-          <li><strong>Why it matters:</strong> Visibility drops, release workflows slow, and appointment queues build.</li>
-          <li><strong>Who’s exposed:</strong> Importers dependent on the impacted operator, high-velocity turns, no redundancy in comms.</li>
-          <li><strong>What to watch next:</strong> Scope confirmation, restoration timeline, and whether manual workarounds are effective.</li>
-          <li><strong>Bottom line:</strong> When systems fail, time becomes the cost.</li>
-        </ul>
-
-        <p class="insights-cta">
-          Want this filtered to your lanes? <a href="./contact.html">Request coverage →</a>
-        </p>
-
-      </div>
-    </div>
-  </section>
+    <!-- Add 2 more cards below using the same structure -->
+  </div>
+</section>
 
 </main>
