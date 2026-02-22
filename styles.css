@@ -1028,7 +1028,12 @@ select.cs-input:-webkit-autofill:focus{
 /* =========================================================
    INSIGHTS — CONTACT-STYLE PAGE
    Tall hero + centered head + spill + centered dark card
-   (Brief-like entries inside the card; no bento boxes)
+   Brief-style entries (no bento boxes)
+   Matches current Insights HTML:
+   .insights-hero / .insights-hero-bg / .insights-hero-head
+   .insights-title / .insights-subtitle
+   .insights-brief / .insights-brief-head
+   .brief-card.spill-up / .brief-entry / details.brief-details
    ========================================================= */
 
 /* HERO */
@@ -1090,7 +1095,7 @@ select.cs-input:-webkit-autofill:focus{
   );
 }
 
-/* Keep the seam line like Contact */
+/* Seam line like Contact */
 .insights-hero::after{
   content: "";
   position: absolute;
@@ -1138,14 +1143,11 @@ select.cs-input:-webkit-autofill:focus{
     0 14px 34px rgba(0,0,0,.30);
 }
 
-.insights-meta{
-  margin: 14px 0 0;
-  font-size: 14px;
-  color: rgba(255,255,255,.78);
-}
+/* =========================================================
+   BODY — Water spill section + centered dark “brief card”
+   ========================================================= */
 
-/* SPILL SECTION (water texture) */
-.insights-simple{
+.insights-brief{
   position: relative;
   z-index: 10;
   margin-top: 0;
@@ -1159,7 +1161,7 @@ select.cs-input:-webkit-autofill:focus{
   );
 }
 
-.insights-simple::after{
+.insights-brief::after{
   content: "";
   position: absolute;
   inset: 0;
@@ -1170,13 +1172,31 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 0;
 }
 
-.insights-simple > .container{
+.insights-brief > .container{
   position: relative;
   z-index: 2;
 }
 
-/* CENTER DARK CARD (matches Contact form card) */
-.insights-card{
+/* Section head sits ABOVE the card like your mock */
+.insights-brief-head{
+  max-width: 820px;
+  margin: 0 auto 14px;
+}
+
+.insights-brief-head h2{
+  margin: 0 0 6px;
+  font-size: 26px;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.94);
+}
+
+.insights-brief-head .muted{
+  margin: 0;
+  color: var(--muted, rgba(255,255,255,.82));
+}
+
+/* The “Contact-style” center card that spills into hero */
+.brief-card{
   max-width: 820px;
   margin: 0 auto;
   margin-top: -340px;
@@ -1192,66 +1212,23 @@ select.cs-input:-webkit-autofill:focus{
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* Inside-card typography (keep simple; brief content uses its own classes below) */
-.insights-card h2{
-  margin: 26px 0 10px;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.92);
-}
-.insights-card p{
-  margin: 0 0 14px;
-  color: rgba(255,255,255,.82);
-  line-height: 1.55;
-}
-.insights-card ul{
-  margin: 0 0 14px 18px;
-  color: rgba(255,255,255,.82);
-  line-height: 1.55;
-}
-.insights-card a{
-  color: rgba(127,177,234,.92);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(127,177,234,.22);
-}
-.insights-card a:hover{ border-bottom-color: rgba(127,177,234,.55); }
-
-.insights-jump{
-  margin: 0 0 18px;
-  color: rgba(255,255,255,.80);
-}
-
-.insights-note{
-  color: rgba(255,255,255,.70);
-  font-size: 13px;
-}
-
-.insights-cta{
-  margin-top: 34px;
-}
-
 /* =========================================================
-   INSIGHTS — BRIEF-STYLE ENTRIES (streamlined; no bento)
-   Expected HTML inside .insights-card:
-   .brief-entry
-     .brief-kicker
-     .brief-topline (.brief-title + .brief-right)
-     .brief-meta
-     .brief-summary
-     details.brief-details > summary.brief-toggle + .brief-body
+   BRIEF ENTRY — streamlined “PDF-like” reading
    ========================================================= */
 
-.insights-card .brief-entry{
+.brief-entry{
   padding: 16px 0 14px;
 }
 
-.insights-card .brief-entry + .brief-entry{
-  border-top: 1px solid rgba(255,255,255,.10);
-  margin-top: 14px;
-  padding-top: 18px;
+/* Use the <hr> divider between entries (keeps it brief-like) */
+.brief-rule{
+  border: 0;
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  margin: 12px 0;
 }
 
-.insights-card .brief-kicker{
+.brief-kicker{
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: .14em;
@@ -1259,35 +1236,35 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0 0 10px;
 }
 
-.insights-card .brief-topline{
+.brief-topline{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
 }
 
-.insights-card .brief-title{
+.brief-title{
   margin: 0;
   font-size: 20px;
   line-height: 1.25;
   color: rgba(255,255,255,.96);
 }
 
-.insights-card .brief-right{
+.brief-right{
   display: inline-flex;
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
 }
 
-.insights-card .brief-date{
+.brief-date{
   font-size: 13px;
   color: rgba(255,255,255,.68);
   white-space: nowrap;
 }
 
-/* Condition label (simple, brief-like) */
-.insights-card .brief-condition{
+/* Condition pill */
+.brief-condition{
   font-size: 13px;
   padding: 6px 10px;
   border-radius: 999px;
@@ -1295,13 +1272,14 @@ select.cs-input:-webkit-autofill:focus{
   background: rgba(255,255,255,.06);
   white-space: nowrap;
 }
-.insights-card .brief-condition.is-normal{   border-color: rgba(255,255,255,.16); }
-.insights-card .brief-condition.is-elevated{ border-color: rgba(127,177,234,.35); background: rgba(127,177,234,.10); }
-.insights-card .brief-condition.is-disrupted{border-color: rgba(255,210,120,.35); background: rgba(255,210,120,.10); }
-.insights-card .brief-condition.is-critical{ border-color: rgba(255,120,120,.35); background: rgba(255,120,120,.10); }
 
-/* Meta line like the PDF */
-.insights-card .brief-meta{
+.brief-condition.is-normal{   border-color: rgba(255,255,255,.16); }
+.brief-condition.is-elevated{ border-color: rgba(127,177,234,.35); background: rgba(127,177,234,.10); }
+.brief-condition.is-disrupted{border-color: rgba(255,210,120,.35); background: rgba(255,210,120,.10); }
+.brief-condition.is-critical{ border-color: rgba(255,120,120,.35); background: rgba(255,120,120,.10); }
+
+/* Meta line */
+.brief-meta{
   margin: 10px 0 0;
   color: rgba(255,255,255,.82);
   font-size: 13px;
@@ -1309,25 +1287,26 @@ select.cs-input:-webkit-autofill:focus{
   flex-wrap: wrap;
   gap: 8px;
 }
-.insights-card .brief-meta .sep{
+
+.brief-meta .sep{
   opacity: .55;
   padding: 0 2px;
 }
 
-/* Summary paragraph */
-.insights-card .brief-summary{
+/* Summary */
+.brief-summary{
   margin: 10px 0 0;
   color: rgba(255,255,255,.92);
   line-height: 1.5;
 }
 
-/* Toggle / details (minimal; not button-y) */
-.insights-card .brief-details{
+/* Expand/collapse toggle (minimal, not button-y) */
+.brief-details{
   margin: 10px 0 0;
   padding: 0;
 }
 
-.insights-card .brief-toggle{
+.brief-toggle{
   list-style: none;
   cursor: pointer;
   display: inline-flex;
@@ -1337,29 +1316,31 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(127,177,234,.92);
   user-select: none;
 }
-.insights-card .brief-toggle::-webkit-details-marker{ display: none; }
 
-.insights-card .toggle-chev{
+.brief-toggle::-webkit-details-marker{ display: none; }
+
+.toggle-chev{
   opacity: .75;
   transition: transform .18s ease;
 }
-.insights-card .brief-details[open] .toggle-chev{ transform: rotate(180deg); }
 
-.insights-card .brief-details .toggle-label::before{ content: "Expand brief"; }
-.insights-card .brief-details[open] .toggle-label::before{ content: "Collapse brief"; }
+.brief-details[open] .toggle-chev{ transform: rotate(180deg); }
+
+.brief-details .toggle-label::before{ content: "Expand brief"; }
+.brief-details[open] .toggle-label::before{ content: "Collapse brief"; }
 
 /* Expanded content */
-.insights-card .brief-body{
+.brief-body{
   margin-top: 10px;
   padding-top: 12px;
   border-top: 1px solid rgba(255,255,255,.10);
 }
 
-.insights-card .brief-section{
+.brief-section{
   margin: 0 0 14px;
 }
 
-.insights-card .brief-h{
+.brief-h{
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: .14em;
@@ -1367,21 +1348,25 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0 0 8px;
 }
 
-.insights-card .brief-section p{
+.brief-section p{
   margin: 0 0 8px;
   line-height: 1.5;
 }
-.insights-card .brief-section p:last-child{ margin-bottom: 0; }
+.brief-section p:last-child{ margin-bottom: 0; }
 
-.insights-card .brief-sources{
+.brief-sources{
   margin: 0;
   padding-left: 18px;
   color: rgba(255,255,255,.82);
 }
-.insights-card .brief-sources li{ margin: 0 0 6px; }
-.insights-card .brief-sources li:last-child{ margin-bottom: 0; }
 
-/* RESPONSIVE (mirror Contact) */
+.brief-sources li{ margin: 0 0 6px; }
+.brief-sources li:last-child{ margin-bottom: 0; }
+
+/* =========================================================
+   INSIGHTS responsive (mirror Contact behavior)
+   ========================================================= */
+
 @media (max-width: 920px){
   .insights-hero{
     height: 520px;
@@ -1392,27 +1377,23 @@ select.cs-input:-webkit-autofill:focus{
   .insights-hero-head{ transform: translateY(-18px); }
   .insights-title{ font-size: 36px; }
 
-  .insights-simple{
+  .insights-brief{
     margin-top: -54px;
     padding: 150px 0 62px;
   }
 
-  .insights-card{
+  .brief-card{
     max-width: 720px;
     margin-top: -200px;
     padding: 20px 18px 18px;
   }
 
-  .insights-card .brief-topline{
-    flex-direction: column;
-  }
-  .insights-card .brief-right{
+  .brief-topline{ flex-direction: column; }
+  .brief-right{
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-  .insights-card .brief-title{
-    font-size: 18px;
-  }
+  .brief-title{ font-size: 18px; }
 }
 
 @media (min-width: 1300px){
@@ -1421,7 +1402,6 @@ select.cs-input:-webkit-autofill:focus{
     max-height: 920px;
   }
 }
-
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
