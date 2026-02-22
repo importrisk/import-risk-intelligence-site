@@ -1334,9 +1334,11 @@ select.cs-input:-webkit-autofill:focus{
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 0;
-  color: rgba(127,177,234,.92);
+  padding: 10px 0 2px;        /* gives it a “row” feel */
+  color: rgba(180,210,255,.92); /* slightly calmer than bright brand */
   user-select: none;
+  font-size: 13px;
+  letter-spacing: .01em;
 }
 
 .brief-toggle::-webkit-details-marker{ display: none; }
