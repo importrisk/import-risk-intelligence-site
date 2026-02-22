@@ -1058,8 +1058,11 @@ select.cs-input:-webkit-autofill:focus{
 .insights-hero-inner{
   position: relative;
   z-index: 2;
-  padding: 56px 0 28px;
-  max-width: 900px;
+
+  max-width: var(--container);
+  margin: 0 auto;
+
+  padding: 56px 24px 28px;
 }
 
 .insights-title{
@@ -1085,7 +1088,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
-  .insights-hero-inner{ padding: 78px 0 44px; }
+  .insights-hero-inner{ padding: 78px 24px 44px; }
 }
 
 /* =========================================================
