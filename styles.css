@@ -1340,6 +1340,10 @@ select.cs-input:-webkit-autofill:focus{
   user-select: none;
   font-size: 13px;
   letter-spacing: .01em;
+
+  background: transparent;
+  border: 0;
+  outline: none;
 }
 
 .brief-toggle::-webkit-details-marker{ display: none; }
