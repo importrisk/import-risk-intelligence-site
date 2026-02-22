@@ -1028,6 +1028,7 @@ select.cs-input:-webkit-autofill:focus{
 /* =========================================================
    INSIGHTS — CONTACT-STYLE PAGE
    Tall hero + centered head + spill + centered dark card
+   (Brief-like entries inside the card; no bento boxes)
    ========================================================= */
 
 /* HERO */
@@ -1174,7 +1175,7 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 2;
 }
 
-/* CENTER DARK CARD */
+/* CENTER DARK CARD (matches Contact form card) */
 .insights-card{
   max-width: 820px;
   margin: 0 auto;
@@ -1191,7 +1192,7 @@ select.cs-input:-webkit-autofill:focus{
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* Inside-card typography */
+/* Inside-card typography (keep simple; brief content uses its own classes below) */
 .insights-card h2{
   margin: 26px 0 10px;
   font-size: 18px;
@@ -1229,6 +1230,157 @@ select.cs-input:-webkit-autofill:focus{
   margin-top: 34px;
 }
 
+/* =========================================================
+   INSIGHTS — BRIEF-STYLE ENTRIES (streamlined; no bento)
+   Expected HTML inside .insights-card:
+   .brief-entry
+     .brief-kicker
+     .brief-topline (.brief-title + .brief-right)
+     .brief-meta
+     .brief-summary
+     details.brief-details > summary.brief-toggle + .brief-body
+   ========================================================= */
+
+.insights-card .brief-entry{
+  padding: 16px 0 14px;
+}
+
+.insights-card .brief-entry + .brief-entry{
+  border-top: 1px solid rgba(255,255,255,.10);
+  margin-top: 14px;
+  padding-top: 18px;
+}
+
+.insights-card .brief-kicker{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.68);
+  margin: 0 0 10px;
+}
+
+.insights-card .brief-topline{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.insights-card .brief-title{
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.25;
+  color: rgba(255,255,255,.96);
+}
+
+.insights-card .brief-right{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.insights-card .brief-date{
+  font-size: 13px;
+  color: rgba(255,255,255,.68);
+  white-space: nowrap;
+}
+
+/* Condition label (simple, brief-like) */
+.insights-card .brief-condition{
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  white-space: nowrap;
+}
+.insights-card .brief-condition.is-normal{   border-color: rgba(255,255,255,.16); }
+.insights-card .brief-condition.is-elevated{ border-color: rgba(127,177,234,.35); background: rgba(127,177,234,.10); }
+.insights-card .brief-condition.is-disrupted{border-color: rgba(255,210,120,.35); background: rgba(255,210,120,.10); }
+.insights-card .brief-condition.is-critical{ border-color: rgba(255,120,120,.35); background: rgba(255,120,120,.10); }
+
+/* Meta line like the PDF */
+.insights-card .brief-meta{
+  margin: 10px 0 0;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.insights-card .brief-meta .sep{
+  opacity: .55;
+  padding: 0 2px;
+}
+
+/* Summary paragraph */
+.insights-card .brief-summary{
+  margin: 10px 0 0;
+  color: rgba(255,255,255,.92);
+  line-height: 1.5;
+}
+
+/* Toggle / details (minimal; not button-y) */
+.insights-card .brief-details{
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.insights-card .brief-toggle{
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  color: rgba(127,177,234,.92);
+  user-select: none;
+}
+.insights-card .brief-toggle::-webkit-details-marker{ display: none; }
+
+.insights-card .toggle-chev{
+  opacity: .75;
+  transition: transform .18s ease;
+}
+.insights-card .brief-details[open] .toggle-chev{ transform: rotate(180deg); }
+
+.insights-card .brief-details .toggle-label::before{ content: "Expand brief"; }
+.insights-card .brief-details[open] .toggle-label::before{ content: "Collapse brief"; }
+
+/* Expanded content */
+.insights-card .brief-body{
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.insights-card .brief-section{
+  margin: 0 0 14px;
+}
+
+.insights-card .brief-h{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.68);
+  margin: 0 0 8px;
+}
+
+.insights-card .brief-section p{
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.insights-card .brief-section p:last-child{ margin-bottom: 0; }
+
+.insights-card .brief-sources{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.82);
+}
+.insights-card .brief-sources li{ margin: 0 0 6px; }
+.insights-card .brief-sources li:last-child{ margin-bottom: 0; }
+
 /* RESPONSIVE (mirror Contact) */
 @media (max-width: 920px){
   .insights-hero{
@@ -1250,6 +1402,17 @@ select.cs-input:-webkit-autofill:focus{
     margin-top: -200px;
     padding: 20px 18px 18px;
   }
+
+  .insights-card .brief-topline{
+    flex-direction: column;
+  }
+  .insights-card .brief-right{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .insights-card .brief-title{
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1300px){
@@ -1258,307 +1421,7 @@ select.cs-input:-webkit-autofill:focus{
     max-height: 920px;
   }
 }
-/* --- CONTACT-STYLE SPILL + CENTER CARD (below the hero) ---
-   Use in Insights HTML:
-   <section class="insights-simple">
-     <div class="container">
-       <div class="insights-card"> ... </div>
-     </div>
-   </section>
-*/
-.insights-simple{
-  position: relative;
-  z-index: 10;
-  margin-top: 0;
-  padding: 160px 0 76px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(20, 42, 68, .89) 0%,
-    rgba(16, 34, 56, .91) 55%,
-    rgba(12, 26, 44, .94) 100%
-  );
-}
-
-.insights-simple::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("assets/images/water-texture.jpg") center / cover no-repeat;
-  opacity: 0.22;
-  filter: blur(1px) saturate(.8) contrast(.90);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.insights-simple > .container{
-  position: relative;
-  z-index: 2;
-}
-
-.insights-card{
-  max-width: 820px;
-  margin: 0 auto;
-  margin-top: -340px;
-
-  padding: 24px 24px 20px;
-  border-radius: 0;
-
-  background: rgba(20, 32, 48, .88);
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 18px 44px rgba(0,0,0,.28);
-
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-/* ================================
-   INSIGHTS — Entries (Mini-brief cards)
-   ================================ */
-
-.insights-entries{
-  padding: 28px 0 64px;
-}
-
-.insights-entries .container{
-  width: min(var(--container, 1080px), calc(100% - 40px));
-  margin: 0 auto;
-}
-
-.insights-sectionhead{
-  margin: 18px 0 18px;
-}
-
-.insights-sectionhead h2{
-  margin: 0 0 6px;
-  font-size: 22px;
-  letter-spacing: .2px;
-}
-
-.insights-sectionhead .muted{
-  margin: 0;
-  color: var(--muted, rgba(255,255,255,.82));
-}
-
-/* Card wrapper */
-.insight-card{
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 16px;
-  background: rgba(10,14,18,.32);
-  box-shadow: 0 10px 24px rgba(0,0,0,.22);
-  overflow: hidden;
-  margin: 14px 0;
-}
-
-/* Optional left accent by condition */
-.insight-card.is-elevated{ border-left: 4px solid rgba(127,177,234,.9); }
-.insight-card.is-normal{   border-left: 4px solid rgba(255,255,255,.18); }
-.insight-card.is-disrupted{border-left: 4px solid rgba(255,210,120,.85); }
-.insight-card.is-critical{ border-left: 4px solid rgba(255,120,120,.85); }
-
-/* Details reset */
-.insight{
-  padding: 0;
-}
-
-.insight summary{
-  list-style: none;
-  cursor: pointer;
-  padding: 16px 18px 14px;
-}
-
-.insight summary::-webkit-details-marker{ display:none; }
-
-/* Top row */
-.insight-top{
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.insight-kicker{
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--faint, rgba(255,255,255,.68));
-  margin-bottom: 6px;
-}
-
-.insight-title{
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.25;
-}
-
-.insight-metaRight{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 0 0 auto;
-}
-
-.insight-date{
-  color: var(--faint, rgba(255,255,255,.68));
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-/* Pills */
-.pill{
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 13px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  white-space: nowrap;
-}
-
-.pill-elevated{ border-color: rgba(127,177,234,.35); background: rgba(127,177,234,.12); }
-.pill-normal{   border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.06); }
-.pill-disrupted{border-color: rgba(255,210,120,.35); background: rgba(255,210,120,.12); }
-.pill-critical{ border-color: rgba(255,120,120,.35); background: rgba(255,120,120,.12); }
-
-.chev{
-  opacity: .7;
-  transition: transform .18s ease;
-  margin-left: 2px;
-}
-
-/* Meta line */
-.insight-metaLine{
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  color: var(--muted, rgba(255,255,255,.82));
-  font-size: 13px;
-}
-
-.meta-label{
-  color: var(--faint, rgba(255,255,255,.68));
-}
-
-.dot{
-  opacity: .55;
-  padding: 0 2px;
-}
-
-/* Blurb */
-.insight-blurb{
-  margin: 10px 0 0;
-  color: var(--text, rgba(255,255,255,.96));
-  opacity: .95;
-  line-height: 1.45;
-}
-
-/* “Expand brief” line (changes to “Collapse brief” when open) */
-.insight-ctaRow{
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.05);
-}
-
-.insight .ctaText::before{
-  content: "Expand brief";
-}
-
-.insight[open] .ctaText::before{
-  content: "Collapse brief";
-}
-
-/* Body */
-.insight-body{
-  padding: 16px 18px 18px;
-  border-top: 1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.12);
-}
-
-.insight-grid{
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 14px;
-}
-
-.insight-block{
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
-  border-radius: 14px;
-  padding: 12px 12px;
-}
-
-.insight-block h4{
-  margin: 0 0 8px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: .10em;
-  color: var(--faint, rgba(255,255,255,.68));
-}
-
-.insight-block p{
-  margin: 0 0 8px;
-  line-height: 1.45;
-}
-
-.insight-block p:last-child{ margin-bottom: 0; }
-
-.callout{
-  padding: 10px 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(127,177,234,.25);
-  background: rgba(127,177,234,.08);
-}
-
-/* Sources */
-.sources{
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted, rgba(255,255,255,.82));
-}
-
-.sources li{ margin: 0 0 6px; }
-.sources li:last-child{ margin-bottom: 0; }
-
-/* Open state chevron */
-.insight[open] .chev{
-  transform: rotate(180deg);
-}
-
-/* Responsive */
-@media (max-width: 820px){
-  .insight-top{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .insight-metaRight{
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-  .insight-grid{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsive (mirror Contact behavior) */
-@media (max-width: 920px){
-  .insights-simple{
-    margin-top: -54px;
-    padding: 150px 0 62px;
-  }
-
-  .insights-card{
-    max-width: 720px;
-    margin-top: -200px;
-    padding: 20px 18px 18px;
-  }
-}
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
