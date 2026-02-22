@@ -1072,7 +1072,7 @@ select.cs-input:-webkit-autofill:focus{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 70%;
-  filter: saturate(.92) contrast(.98) brightness(1.03);
+  filter: saturate(.88) contrast(.96) brightness(.96);
 }
 
 .insights-hero::after{
