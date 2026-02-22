@@ -1320,6 +1320,7 @@ select.cs-input:-webkit-autofill:focus{
   margin: 10px 0 0;
   color: rgba(255,255,255,.92);
   line-height: 1.5;
+  max-width: 92ch;
 }
 
 /* Expand/collapse toggle (minimal, not button-y) */
@@ -1378,6 +1379,7 @@ select.cs-input:-webkit-autofill:focus{
 .brief-section p{
   margin: 0 0 8px;
   line-height: 1.5;
+  max-width: 78ch;
 }
 .brief-section p:last-child{ margin-bottom: 0; }
 
