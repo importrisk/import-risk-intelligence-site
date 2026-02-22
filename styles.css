@@ -1,13 +1,13 @@
-   /* =========================================================
+/* =========================================================
    Import Risk Intelligence — Morning Steel Blue-Grey Theme
    CLEAN + ORGANIZED (single file)
    - Home hero locked
    - Below-fold water texture
    - Home features band
-   - Method page: coverage section uses water (no grey slab)
    - Contact page: hero + spill + seam + water (single source of truth)
+   - Policy pages: simple gradient hero (no image)
+   - Insights page: dedicated image-backed hero
    ========================================================= */
-
 
 /* =========================================================
    0) TOKENS
@@ -53,7 +53,6 @@
   --contact-hero-y: 88%;
 }
 
-
 /* =========================================================
    1) BASE / RESETS
    ========================================================= */
@@ -79,7 +78,6 @@ body{
 a{ color: inherit; text-decoration: none; }
 img{ max-width: 100%; height: auto; display: block; }
 
-
 /* =========================================================
    2) BUTTONS
    ========================================================= */
@@ -102,7 +100,6 @@ img{ max-width: 100%; height: auto; display: block; }
   box-shadow: 0 16px 34px rgba(0,0,0,.22);
 }
 .btn-primary:hover{ filter: brightness(1.05); }
-
 
 /* =========================================================
    3) TOPBAR / NAV
@@ -222,7 +219,6 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 .nav-cta:hover{ background: rgba(127,177,234,.72); }
 
-
 /* =========================================================
    4) HOME — HERO (LOCKED)
    ========================================================= */
@@ -276,7 +272,7 @@ img{ max-width: 100%; height: auto; display: block; }
   margin: 14px auto 0;
   max-width: 680px;
   font-size: 24px;
-  color: rgba(255,255,255,.88); /* slightly stronger than .78 */
+  color: rgba(255,255,255,.88);
   text-shadow:
     0 2px 10px rgba(0,0,0,.45),
     0 14px 34px rgba(0,0,0,.30);
@@ -287,15 +283,30 @@ img{ max-width: 100%; height: auto; display: block; }
   opacity: 0.86;
 }
 
-.hero-actions{ margin-top: 135px; }
-
+/* Final tuned spacing */
 .hero-cta-note{
-  margin: 22px auto 0;
-  font-size: 18px;
-  color: rgba(255,255,255,.70);
-  text-shadow: 0 10px 20px rgba(0,0,0,.18);
+  margin: 96px auto 0;
+  max-width: 760px;
+  color: rgba(255,255,255,.92);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: .01em;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.55),
+    0 10px 24px rgba(0,0,0,.35);
 }
 
+.hero-actions{
+  margin-top: 40px;
+}
+
+.hero-actions .btn-primary{
+  padding: 14px 22px;
+  font-size: 15px;
+  box-shadow:
+    0 18px 36px rgba(0,0,0,.35),
+    0 2px 0 rgba(255,255,255,.15) inset;
+}
 
 /* =========================================================
    5) BELOW FOLD (GLOBAL) — WATER TEXTURE
@@ -328,7 +339,6 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 1;
 }
-
 
 /* =========================================================
    6) HOME — FEATURES BAND
@@ -399,7 +409,6 @@ img{ max-width: 100%; height: auto; display: block; }
   background: rgba(255,255,255,.14);
 }
 
-
 /* =========================================================
    7) HOME — SPLIT SECTIONS
    ========================================================= */
@@ -460,11 +469,11 @@ img{ max-width: 100%; height: auto; display: block; }
    8) HOME — BIO CARD (IF PRESENT)
    ========================================================= */
 .split-bio{
-  align-self: flex-start;            /* was: stretch (caused big empty space) */
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 20px 20px 12px;           /* top | sides | bottom */
+  padding: 20px 20px 12px;
   background: rgba(255,255,255,.07);
   border: 1px solid var(--mist-border);
   box-shadow: var(--mist-shadow);
@@ -499,7 +508,6 @@ img{ max-width: 100%; height: auto; display: block; }
   color: var(--ink);
 }
 
-/* Primary line */
 .bio-role{
   margin: 4px 0 0;
   font-size: 14px;
@@ -507,9 +515,7 @@ img{ max-width: 100%; height: auto; display: block; }
   color: var(--ink-faint);
 }
 
-.bio-role + .bio-role{
-  margin-top: 3px;
-}
+.bio-role + .bio-role{ margin-top: 3px; }
 
 .bio-blurb{
   margin: 0;
@@ -518,16 +524,11 @@ img{ max-width: 100%; height: auto; display: block; }
   color: rgba(255,255,255,.82);
 }
 
-/* Paragraph rhythm (prevents big blocks) */
-.bio-blurb p{
-  margin: 0 0 16px;
-}
-.bio-blurb p:last-child{
-  margin-bottom: 0;
-}
+.bio-blurb p{ margin: 0 0 16px; }
+.bio-blurb p:last-child{ margin-bottom: 0; }
 
 .bio-links{
-  margin-top: 14px;                  /* was: auto (pushed link to bottom) */
+  margin-top: 14px;
   padding-top: 13px;
   border-top: 1px solid rgba(255,255,255,.14);
   font-size: 13px;
@@ -618,7 +619,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .site-footer .footer-nav{
   display: flex;
-  justify-content: flex-end; /* RIGHT align the menu */
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -631,15 +632,8 @@ img{ max-width: 100%; height: auto; display: block; }
   text-decoration: none !important;
 }
 
-/* NEW: let the last link sit flush right */
-.site-footer .footer-nav a:last-child{
-  padding-right: 0;
-}
-
-/* Optional: keep the first link from having extra left pad */
-.site-footer .footer-nav a:first-child{
-  padding-left: 0;
-}
+.site-footer .footer-nav a:last-child{ padding-right: 0; }
+.site-footer .footer-nav a:first-child{ padding-left: 0; }
 
 .site-footer .footer-nav a:hover{ color: rgba(255,255,255,.96); }
 
@@ -654,7 +648,6 @@ img{ max-width: 100%; height: auto; display: block; }
   opacity: .9;
 }
 
-/* Email line (right column) */
 .site-footer .footer-meta{
   margin: 0;
   font-size: 12.5px;
@@ -689,22 +682,12 @@ img{ max-width: 100%; height: auto; display: block; }
    .contact-hero-title / .contact-hero-subtitle
    .contact-simple / .contact-simple-form / .cs-*
    ========================================================= */
-
-/* HERO FRAMING CONTROL
-   Bigger % = show more bottom of photo = more water
-*/
-:root{
-  --contact-hero-y: 88%;
-}
-
-/* ---------- HERO ---------- */
 .contact-hero{
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding-top: var(--topbar-h);
 
-  /* ~50px less hero height (less water showing) */
   height: calc(72vh - 50px);
   min-height: 500px;
   max-height: 860px;
@@ -712,44 +695,33 @@ img{ max-width: 100%; height: auto; display: block; }
   background: transparent;
 }
 
-/* The ONLY place the photo lives */
 .contact-hero > .contact-hero-bg{
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 
- background-image:
-  /* TOP cap (cool blue, subtle) */
-  linear-gradient(180deg,
-    rgba(11, 29, 47, .22) 0%,
-    rgba(11, 29, 47, .10) 22%,
-    rgba(11, 29, 47, 0) 45%),
-
-  /* BOTTOM cap (cool blue, subtle) */
-  linear-gradient(0deg,
-    rgba(11, 29, 47, .26) 0%,
-    rgba(11, 29, 47, .12) 26%,
-    rgba(11, 29, 47, 0) 52%),
-
-  /* existing readability (keep light) */
-  linear-gradient(180deg,
-    rgba(0,0,0,.10) 0%,
-    rgba(0,0,0,.06) 60%,
-    rgba(0,0,0,.06) 100%),
-
-  /* photo */
-  url("assets/images/contact-hero.jpg");
+  background-image:
+    linear-gradient(180deg,
+      rgba(11, 29, 47, .22) 0%,
+      rgba(11, 29, 47, .10) 22%,
+      rgba(11, 29, 47, 0) 45%),
+    linear-gradient(0deg,
+      rgba(11, 29, 47, .26) 0%,
+      rgba(11, 29, 47, .12) 26%,
+      rgba(11, 29, 47, 0) 52%),
+    linear-gradient(180deg,
+      rgba(0,0,0,.10) 0%,
+      rgba(0,0,0,.06) 60%,
+      rgba(0,0,0,.06) 100%),
+    url("assets/images/contact-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center var(--contact-hero-y);
-
-  /* “less intense” without getting darker */
   filter: saturate(.90) contrast(.93) brightness(1.08);
 }
 
-/* hairline at bottom of hero */
 .contact-hero::after{
   content: "";
   position: absolute;
@@ -767,11 +739,7 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 2;
   height: 100%;
   display: grid;
-
-  /* was: place-items: center; */
   place-items: start center;
-
-  /* controls how high the heading sits */
   padding-top: 140px;
 }
 
@@ -791,24 +759,19 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .contact-hero-subtitle{
- margin: 14px auto 0;
+  margin: 14px auto 0;
   max-width: 680px;
   font-size: 24px;
-  color: rgba(255,255,255,.88); /* slightly stronger than .78 */
+  color: rgba(255,255,255,.88);
   text-shadow:
     0 2px 10px rgba(0,0,0,.45),
     0 14px 34px rgba(0,0,0,.30);
 }
 
-/* ---------- FORM SECTION (WATER BG) ---------- */
 .contact-simple{
   position: relative;
   z-index: 10;
-
-  /* pull the section up into the hero */
   margin-top: 0px;
-
-  /* reclaim spacing so content doesn’t get clipped */
   padding: 160px 0 76px;
 
   background: linear-gradient(
@@ -819,7 +782,6 @@ img{ max-width: 100%; height: auto; display: block; }
   );
 }
 
-/* water texture overlay */
 .contact-simple::after{
   content: "";
   position: absolute;
@@ -836,12 +798,9 @@ img{ max-width: 100%; height: auto; display: block; }
   z-index: 2;
 }
 
-/* ---------- PANEL ---------- */
 .contact-simple-form{
   max-width: 820px;
   margin: 0 auto;
-
-  /* spill upward into hero */
   margin-top: -340px;
 
   padding: 24px 24px 20px;
@@ -855,7 +814,6 @@ img{ max-width: 100%; height: auto; display: block; }
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* ---------- FIELDS ---------- */
 .cs-row{ margin: 0 0 14px; }
 
 .cs-label{
@@ -882,7 +840,6 @@ img{ max-width: 100%; height: auto; display: block; }
   box-shadow: 0 0 0 3px rgba(127,177,234,.18);
 }
 
-/* Prevent Edge/Chrome autofill from turning inputs bright */
 .cs-input:-webkit-autofill,
 .cs-input:-webkit-autofill:hover,
 .cs-input:-webkit-autofill:focus,
@@ -914,11 +871,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .cs-button:hover{ background: rgba(127,177,234,.30); }
-
-.cs-button:disabled{
-  opacity: .65;
-  cursor: not-allowed;
-}
+.cs-button:disabled{ opacity: .65; cursor: not-allowed; }
 
 .cs-direct{
   margin: 12px 0 0;
@@ -942,8 +895,7 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.82);
 }
 
-
-/* ---------- RESPONSIVE ---------- */
+/* Contact responsive */
 @media (max-width: 920px){
   :root{ --contact-hero-y: 90%; }
 
@@ -961,11 +913,6 @@ select.cs-input:-webkit-autofill:focus{
     padding: 128px 0 62px;
   }
 
-  .contact-simple::before{
-    top: -14px;
-    height: 14px;
-  }
-
   .contact-simple-form{
     max-width: 720px;
     margin-top: -86px;
@@ -981,448 +928,9 @@ select.cs-input:-webkit-autofill:focus{
     max-height: 920px;
   }
 }
+
 /* =========================================================
-   MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
-   Paste at VERY bottom of CSS
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   STEP 1: prevent horizontal overflow + stack home split section
-   --------------------------------------------------------- */
-@media (max-width: 1100px){
-  html, body{ overflow-x: hidden; }
-
-  .split-inner{
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .split-bio{
-    max-width: 520px;
-    margin: 0 auto;
-  }
-}
-
-/* ---------------------------------------------------------
-   STEP 2: keep "Tracking for" together + force break after Independent on phones
-   --------------------------------------------------------- */
-.nowrap{ white-space: nowrap; }
-.br-mobile{ display: none; }
-
-@media (max-width: 520px){
-  .br-mobile{ display: inline; }
-}
-
-/* ---------------------------------------------------------
-   STEP 3: iPhone — spacing between hero note and features band
-   (You said 16px looks good; adjust if needed)
-   --------------------------------------------------------- */
-@media (max-width: 520px){
-  .hero-cta-note{
-    margin-bottom: 16px !important;
-  }
-
-  /* keep features from adding extra space */
-  .below-fold .features{
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
-
-/* ---------------------------------------------------------
-   STEP 4: “non-hamburger” layout ONLY for 641–720px
-   (prevents fighting with hamburger <=720)
-   --------------------------------------------------------- */
-@media (min-width: 641px) and (max-width: 720px){
-  .topbar-inner{
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav{
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    row-gap: 10px;
-    column-gap: 12px;
-    align-items: center;
-  }
-
-  .nav-cta{
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    height: 36px;
-    padding: 0 12px;
-  }
-
-  .nav-link:not(.nav-cta){
-    grid-row: 2;
-    justify-self: center;
-  }
-
-  .nav-link[href*="#home"]{ grid-column: 1; }
-  .nav-link[href*="method"]{ grid-column: 2; }
-}
-
-/* ---------------------------------------------------------
-   STEP 5: Hamburger menu (CSS-only “sheet” overlay) <=720px
-   Requires sibling order:
-   input.nav-toggle + label.hamburger + a.brand + nav.nav + label.nav-backdrop
-   --------------------------------------------------------- */
-.nav-toggle{ display: none; }
-.hamburger{ display: none; }
-.nav-backdrop{ display: none; }
-
-@media (max-width: 720px){
-
-  /* Keep overlay above hero */
-  .topbar{ z-index: 9999; }
-
-  /* Layout (Safari-safe): brand hard-left, hamburger hard-right */
-  .topbar-inner{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* important for iPhone */
-    gap: 14px;
-  }
-
-  .brand{
-    order: 1;
-    white-space: nowrap;
-    margin-left: 0 !important;
-  }
-
-  /* show full name again (overrides <=560px hide if present above) */
-  .brand-name{ display: inline !important; }
-
-  .hamburger{
-    order: 2;
-    margin-left: auto !important;
-  }
-
-  /* Hamburger button */
-  .hamburger{
-    display: inline-flex;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-  }
-
-  /* Fixed bars */
-  .hamburger span{
-    position: absolute;
-    left: 11px;
-    right: 11px;
-    height: 2px;
-    background: rgba(255,255,255,.86);
-    border-radius: 2px;
-    transition: transform .18s ease, opacity .18s ease;
-  }
-  .hamburger span:nth-child(1){ top: 14px; }
-  .hamburger span:nth-child(2){ top: 21px; }
-  .hamburger span:nth-child(3){ top: 28px; }
-
-  /* Menu panel: sheet below topbar */
-  .nav{
-    position: fixed;
-    top: var(--topbar-h);
-    left: 0;
-    right: 0;
-
-    bottom: auto;
-    max-height: calc(100vh - var(--topbar-h));
-    overflow: auto;
-
-    display: none !important; /* override desktop inline-flex */
-    z-index: 9998;
-
-    padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
-    background: rgba(11, 29, 47, .94);
-    border-top: 1px solid rgba(255,255,255,.10);
-    border-bottom: 1px solid rgba(255,255,255,.10);
-    box-shadow: 0 18px 44px rgba(0,0,0,.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Open state */
-  .nav-toggle:checked ~ .nav{
-    display: block !important;
-  }
-
-  /* Menu items */
-  .nav-link{
-    width: 100%;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-
-    height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    padding: 0 14px;
-    font-size: 16px;
-
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.05);
-  }
-  .nav-link + .nav-link{ margin-top: 14px; }
-
-  .nav-cta{
-    background: rgba(127,177,234,.18);
-    border-color: rgba(127,177,234,.45);
-  }
-
-  /* Animate hamburger into X */
-  .nav-toggle:checked + .hamburger span:nth-child(1){
-    transform: translateY(7px) rotate(45deg);
-  }
-  .nav-toggle:checked + .hamburger span:nth-child(2){
-    opacity: 0;
-  }
-  .nav-toggle:checked + .hamburger span:nth-child(3){
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* Backdrop: tap outside to close */
-  .nav-backdrop{
-    position: fixed;
-    inset: 0;
-    z-index: 9997; /* below nav */
-    background: rgba(0,0,0,.35);
-    display: none;
-  }
-  .nav-toggle:checked ~ .nav-backdrop{
-    display: block;
-  }
-}
-
-/* ---------------------------------------------------------
-   STEP 6: optionally hide brand-name on VERY small screens
-   (If you still want this, keep it. If not, delete it.)
-   NOTE: hamburger block forces it back on <=720.
-   --------------------------------------------------------- */
-@media (max-width: 560px){
-  .brand-name{ display: none; }
-}
-/* =========================================================
-   FIX — Force mobile menu to be a SHEET (not full screen)
-   Paste at VERY bottom of CSS
-   ========================================================= */
-@media (max-width: 720px){
-  .nav{
-    inset: auto !important;     /* kills any old "inset:0" */
-    bottom: auto !important;    /* kills any old "bottom:0" */
-    height: auto !important;    /* kills any old "height:100vh" */
-    top: var(--topbar-h) !important;
-    left: 0 !important;
-    right: 0 !important;
-    max-height: calc(100vh - var(--topbar-h)) !important;
-    overflow: auto !important;
-  }
-}
-/* =========================================================
-   MOBILE — Feature dividers (controlled length, stacked)
-   ========================================================= */
-@media (max-width: 720px){
-
-  /* Ensure single-column stack */
-  .feature-grid{
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Kill desktop vertical dividers completely */
-  .feature:not(:last-child)::after{
-    content: none !important;
-  }
-
-  /* Remove any leftover borders */
-  .feature{
-    border: none !important;
-    position: relative;
-  }
-
-  /* Add horizontal divider with controlled width */
-  .feature + .feature::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 72px;          /* ← adjust this */
-    right: 72px;         /* ← adjust this */
-    height: 1px;
-    background: rgba(255,255,255,.12);
-  }
-}
-/* =========================================================
-   HARD RESET (safer): ensure PAGE scrolls + topbar is not sticky
-   Paste at VERY bottom (last lines of file)
-   ========================================================= */
-
-html, body{
-  overflow-y: auto !important;
-  height: auto !important;
-}
-
-/* keep any earlier overflow-x hidden rules you already have */
-header.topbar,
-.topbar{
-  position: absolute !important;
-  inset: 0 0 auto 0 !important; /* top:0; left:0; right:0 */
-  transform: none !important;
-  will-change: auto !important;
-}
-/* =========================================================
-   FOOTER — MOBILE STACK FIX
-   Paste at VERY bottom of CSS
-   ========================================================= */
-
-@media (max-width: 760px){
-
-  .site-footer{
-    padding: 20px 0 18px;
-  }
-
-  .site-footer .footer-inner{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  /* Left side: let text breathe */
-  .site-footer .footer-left{
-    width: 100%;
-  }
-
-  .site-footer .footer-desc,
-  .site-footer .footer-legal{
-    max-width: 620px;
-  }
-
-  /* Right side becomes full-width and LEFT aligned */
-  .site-footer .footer-right{
-    width: 100%;
-    margin-left: 0;
-    align-items: flex-start;
-    text-align: left;
-    gap: 10px;
-  }
-
-  /* Nav: allow wrapping + remove the desktop separators */
-  .site-footer .footer-nav{
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 10px 14px;
-  }
-
-  .site-footer .footer-nav a{
-    padding: 0;
-  }
-
-  .site-footer .footer-nav a:not(:last-child)::after{
-    content: none;
-  }
-
-  /* Email line: allow wrapping without pushing layout */
-  .site-footer .footer-meta{
-    width: 100%;
-  }
-
-  .site-footer .footer-email{
-    overflow-wrap: anywhere; /* prevents clipping on small widths */
-    word-break: break-word;
-  }
-
-  /* Copyright: keep it visible and aligned */
-  .site-footer .footer-copy{
-    width: 100%;
-    margin-top: 2px;
-  }
-}
-/* =========================================================
-   CONTACT — MOBILE HERO READABILITY + FORM OVERLAP (NO BOX)
-   Paste at VERY BOTTOM of your main CSS file
-   ========================================================= */
-
-@media (max-width: 920px){
-
-  /* Move hero copy up (gets subtitle off busy background) */
-  .contact-hero .container{
-    padding-top: 100px !important; /* was 140px */
-  }
-
-  .contact-hero-head{
-    transform: translateY(-50px) !important; /* was -18px */
-    padding: 0 !important;
-    background: transparent !important;
-    border: 0 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Subtitle readability (no background panel) */
-  .contact-hero-subtitle{
-    color: rgba(255,255,255,.90) !important;
-    text-shadow:
-      0 2px 10px rgba(0,0,0,.45),
-      0 10px 26px rgba(0,0,0,.30) !important;
-  }
-
-  /* Restore the form spill into the hero on mobile */
-  .contact-simple{
-    margin-top: -54px !important;
-    padding-top: 150px !important;
-  }
-
-  /* Overlap amount (tweak if needed): -220 more, -200 less */
-  .contact-simple-form{
-    margin-top: -200px !important;
-  }
-}
-/* =========================================================
-   HOME SPLIT — keep 2 columns longer (bio stays on right)
-   Paste at VERY bottom of main CSS
-   ========================================================= */
-
-/* 901–1100px: stay 2-col, just tighten spacing and let left "squish" */
-@media (min-width: 901px) and (max-width: 1100px){
-  .split-inner{
-    grid-template-columns: minmax(0, 1fr) 300px !important; /* was 1fr stack */
-    gap: 44px !important;                                  /* was 34px */
-  }
-
-  /* undo the mobile centering/max-width behavior */
-  .split-bio{
-    max-width: none !important;
-    margin: 0 !important;
-  }
-}
-
-/* <=900px: true mobile stack */
-@media (max-width: 900px){
-  .split-inner{
-    grid-template-columns: 1fr !important;
-    gap: 34px !important;
-  }
-
-  .split-bio{
-    max-width: 520px;
-    margin: 0 auto;
-  }
-}
-/* =========================================================
-   PRIVACY POLICY / POLICY PAGES
+   POLICY PAGES (Privacy / Terms / etc.)
    ========================================================= */
 .policy-hero{
   position: relative;
@@ -1484,9 +992,7 @@ header.topbar,
   padding: 54px 0 72px;
 }
 
-.policy-inner{
-  max-width: 900px;
-}
+.policy-inner{ max-width: 900px; }
 
 .policy-inner h2{
   margin: 28px 0 10px;
@@ -1512,109 +1018,14 @@ header.topbar,
   text-decoration: none;
   border-bottom: 1px solid rgba(127,177,234,.22);
 }
-.policy-inner a:hover{
-  border-bottom-color: rgba(127,177,234,.55);
-}
+.policy-inner a:hover{ border-bottom-color: rgba(127,177,234,.55); }
 
-/* Mobile spacing */
 @media (max-width: 760px){
   .policy-hero-inner{ padding: 78px 0 44px; }
   .policy-body{ padding: 44px 0 60px; }
 }
 
 /* =========================================================
-   HOME — Hero spacing tweak for new copy (minimal)
-   ========================================================= */
-.hero-actions{
-  margin-top: 28px !important; /* was 135px */
-}
-
-/* =========================================================
-   HOME — credibility line (final tuned version)
-   ========================================================= */
-.hero-cta-note{
-  margin: 62px auto 0 !important;  /* moved down slightly */
-  max-width: 760px;                /* keeps it from getting too wide */
-
-  color: rgba(255,255,255,.92) !important;  /* crisp */
-  font-weight: 600 !important;
-  font-size: 16px !important;      /* slightly smaller than subtitle */
-  letter-spacing: .01em;
-
-  text-shadow:
-    0 2px 6px rgba(0,0,0,.55),
-    0 10px 24px rgba(0,0,0,.35) !important;
-}
-
-/* HOME — strengthen hero CTA presence */
-.hero-actions .btn-primary{
-  padding: 14px 22px !important;     /* slightly larger */
-  font-size: 15px !important;
-  box-shadow:
-    0 18px 36px rgba(0,0,0,.35),
-    0 2px 0 rgba(255,255,255,.15) inset !important;
-}
-/* =========================================================
-   HOME — HERO SPACING FINAL TUNE
-   Desktop refined + mobile lifted slightly more
-   ========================================================= */
-
-/* -------------------------------
-   1) Desktop / Tablet (>=521px)
-   ------------------------------- */
-@media (min-width: 521px){
-
-  /* Keep headline area stable */
-  .hero .hero-inner{
-    padding-top: 120px !important;
-  }
-
-  /* Move credibility line down */
-  .hero .hero-cta-note{
-    margin-top: 96px !important;   /* was 62px */
-  }
-
-  /* Add more breathing room between cred + CTA */
-  .hero .hero-actions{
-    margin-top: 40px !important;   /* was 28px */
-    margin-bottom: 0 !important;
-  }
-
-  .hero{
-    padding-bottom: 0 !important;
-  }
-}
-
-
-/* =========================================================
-   HOME — iPhone hero spacing (SAFE)
-   Paste at VERY bottom of CSS
-   ========================================================= */
-@media (max-width: 520px){
-
-  /* Move entire hero stack UP */
-  .hero .hero-inner{
-    padding-top: 64px !important;
-  }
-
-  /* Credibility line spacing */
-  .hero .hero-cta-note{
-    margin-top: 28px !important;
-    margin-bottom: 14px !important; /* adds a touch more gap before CTA */
-  }
-
-  /* CTA spacing: add room BELOW so features band isn't tight */
-  .hero .hero-actions{
-    margin-top: 18px !important;
-    margin-bottom: 30px !important;
-  }
-
-  /* Slight cushion at bottom of hero */
-  .hero{
-    padding-bottom: 18px !important;
-  }
-
- /* =========================================================
    INSIGHTS — HERO (dedicated, image-backed)
    ========================================================= */
 .insights-hero{
@@ -1675,4 +1086,339 @@ header.topbar,
 
 @media (max-width: 760px){
   .insights-hero-inner{ padding: 78px 0 44px; }
+}
+
+/* =========================================================
+   MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
+   ========================================================= */
+
+/* Prevent horizontal overflow + home split stack */
+@media (max-width: 1100px){
+  html, body{ overflow-x: hidden; }
+  .split-inner{ grid-template-columns: 1fr; gap: 34px; }
+  .split-bio{ max-width: 520px; margin: 0 auto; }
+}
+
+/* Keep "Tracking for" together + optional mobile break helper */
+.nowrap{ white-space: nowrap; }
+.br-mobile{ display: none; }
+@media (max-width: 520px){
+  .br-mobile{ display: inline; }
+}
+
+/* iPhone — spacing between hero note and features band */
+@media (max-width: 520px){
+  .hero .hero-inner{ padding-top: 64px !important; }
+  .hero .hero-cta-note{ margin-top: 28px !important; margin-bottom: 14px !important; }
+  .hero .hero-actions{ margin-top: 18px !important; margin-bottom: 30px !important; }
+  .hero{ padding-bottom: 18px !important; }
+
+  .below-fold .features{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* 641–720px: “non-hamburger” layout only */
+@media (min-width: 641px) and (max-width: 720px){
+  .topbar-inner{
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .nav-cta{
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    height: 36px;
+    padding: 0 12px;
+  }
+
+  .nav-link:not(.nav-cta){
+    grid-row: 2;
+    justify-self: center;
+  }
+
+  .nav-link[href*="#home"]{ grid-column: 1; }
+  .nav-link[href*="method"]{ grid-column: 2; }
+}
+
+/* Hamburger menu (CSS-only “sheet” overlay) <=720px
+   Requires sibling order:
+   input.nav-toggle + label.hamburger + a.brand + nav.nav + label.nav-backdrop
+*/
+.nav-toggle{ display: none; }
+.hamburger{ display: none; }
+.nav-backdrop{ display: none; }
+
+@media (max-width: 720px){
+
+  .topbar{ z-index: 9999; }
+
+  .topbar-inner{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+
+  .brand{
+    order: 1;
+    white-space: nowrap;
+    margin-left: 0 !important;
+  }
+
+  .brand-name{ display: inline !important; }
+
+  .hamburger{
+    order: 2;
+    margin-left: auto !important;
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  .hamburger span{
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    background: rgba(255,255,255,.86);
+    border-radius: 2px;
+    transition: transform .18s ease, opacity .18s ease;
+  }
+  .hamburger span:nth-child(1){ top: 14px; }
+  .hamburger span:nth-child(2){ top: 21px; }
+  .hamburger span:nth-child(3){ top: 28px; }
+
+  .nav{
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    right: 0;
+
+    bottom: auto;
+    max-height: calc(100vh - var(--topbar-h));
+    overflow: auto;
+
+    display: none !important;
+    z-index: 9998;
+
+    padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
+    background: rgba(11, 29, 47, .94);
+    border-top: 1px solid rgba(255,255,255,.10);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-toggle:checked ~ .nav{
+    display: block !important;
+  }
+
+  .nav-link{
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 0 14px;
+    font-size: 16px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.05);
+  }
+  .nav-link + .nav-link{ margin-top: 14px; }
+
+  .nav-cta{
+    background: rgba(127,177,234,.18);
+    border-color: rgba(127,177,234,.45);
+  }
+
+  .nav-toggle:checked + .hamburger span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle:checked + .hamburger span:nth-child(2){
+    opacity: 0;
+  }
+  .nav-toggle:checked + .hamburger span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: rgba(0,0,0,.35);
+    display: none;
+  }
+  .nav-toggle:checked ~ .nav-backdrop{
+    display: block;
+  }
+
+  /* Hard reset: ensure menu is a sheet (not full screen) */
+  .nav{
+    inset: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+    top: var(--topbar-h) !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: calc(100vh - var(--topbar-h)) !important;
+    overflow: auto !important;
+  }
+}
+
+/* Optionally hide brand-name on very small screens */
+@media (max-width: 560px){
+  .brand-name{ display: none; }
+}
+
+/* Mobile — feature dividers become horizontal */
+@media (max-width: 720px){
+  .feature-grid{ grid-template-columns: 1fr !important; }
+
+  .feature:not(:last-child)::after{ content: none !important; }
+
+  .feature{
+    border: none !important;
+    position: relative;
+  }
+
+  .feature + .feature::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 72px;
+    right: 72px;
+    height: 1px;
+    background: rgba(255,255,255,.12);
+  }
+}
+
+/* Footer — mobile stack */
+@media (max-width: 760px){
+  .site-footer{ padding: 20px 0 18px; }
+
+  .site-footer .footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .site-footer .footer-left{ width: 100%; }
+
+  .site-footer .footer-desc,
+  .site-footer .footer-legal{ max-width: 620px; }
+
+  .site-footer .footer-right{
+    width: 100%;
+    margin-left: 0;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+  }
+
+  .site-footer .footer-nav{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .site-footer .footer-nav a{ padding: 0; }
+  .site-footer .footer-nav a:not(:last-child)::after{ content: none; }
+
+  .site-footer .footer-meta{ width: 100%; }
+
+  .site-footer .footer-email{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .site-footer .footer-copy{
+    width: 100%;
+    margin-top: 2px;
+  }
+}
+
+/* Contact — mobile hero readability + form overlap (no box) */
+@media (max-width: 920px){
+  .contact-hero .container{
+    padding-top: 100px !important;
+  }
+
+  .contact-hero-head{
+    transform: translateY(-50px) !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .contact-hero-subtitle{
+    color: rgba(255,255,255,.90) !important;
+    text-shadow:
+      0 2px 10px rgba(0,0,0,.45),
+      0 10px 26px rgba(0,0,0,.30) !important;
+  }
+
+  .contact-simple{
+    margin-top: -54px !important;
+    padding-top: 150px !important;
+  }
+
+  .contact-simple-form{
+    margin-top: -200px !important;
+  }
+}
+
+/* Home split — keep 2 columns longer */
+@media (min-width: 901px) and (max-width: 1100px){
+  .split-inner{
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    gap: 44px !important;
+  }
+
+  .split-bio{
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px){
+  .split-inner{
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .split-bio{
+    max-width: 520px;
+    margin: 0 auto;
+  }
 }
