@@ -1612,8 +1612,9 @@ header.topbar,
   /* Slight cushion at bottom of hero */
   .hero{
     padding-bottom: 18px !important;
+  }
 
-   /* =========================================================
+ /* =========================================================
    INSIGHTS — HERO (dedicated, image-backed)
    ========================================================= */
 .insights-hero{
