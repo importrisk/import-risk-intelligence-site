@@ -1613,11 +1613,21 @@ header.topbar,
   .hero{
     padding-bottom: 18px !important;
 
-     /* =========================================================
-   INSIGHTS — HERO IMAGE
+   /* =========================================================
+   INSIGHTS — HERO (dedicated, image-backed)
    ========================================================= */
+.insights-hero{
+  position: relative;
+  padding-top: var(--topbar-h);
+  min-height: 320px;
+  overflow: hidden;
+  isolation: isolate;
+}
 
 .insights-hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-image:
     linear-gradient(
       180deg,
@@ -1630,6 +1640,38 @@ header.topbar,
   background-repeat: no-repeat;
   background-position: center 70%;
   filter: saturate(.92) contrast(.98) brightness(1.03);
+  pointer-events: none;
 }
-  }
+
+.insights-hero-inner{
+  position: relative;
+  z-index: 2;
+  padding: 56px 0 28px;
+  max-width: 900px;
+}
+
+.insights-title{
+  margin: 0 0 10px;
+  font-size: clamp(40px, 5vw, 54px);
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 14px 34px rgba(0,0,0,.22);
+}
+
+.insights-subtitle{
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,.82);
+  text-shadow: 0 10px 24px rgba(0,0,0,.18);
+  max-width: 62ch;
+}
+
+.insights-meta{
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.70);
+}
+
+@media (max-width: 760px){
+  .insights-hero-inner{ padding: 78px 0 44px; }
 }
