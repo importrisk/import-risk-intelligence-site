@@ -1194,6 +1194,24 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0;
   color: var(--muted, rgba(255,255,255,.82));
 }
+/* Card header (inside the dark card) */
+.brief-card-head{
+  padding: 2px 0 14px;
+  margin: 0 0 14px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.brief-card-head h2{
+  margin: 0 0 6px;
+  font-size: 26px;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.94);
+}
+
+.brief-card-head .muted{
+  margin: 0;
+  color: var(--muted, rgba(255,255,255,.82));
+}
 
 /* The “Contact-style” center card that spills into hero */
 .brief-card{
