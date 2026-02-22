@@ -1052,19 +1052,22 @@ select.cs-input:-webkit-autofill:focus{
   pointer-events: none;
 
   background-image:
-    linear-gradient(180deg,
-      rgba(11, 29, 47, .22) 0%,
-      rgba(11, 29, 47, .10) 22%,
-      rgba(11, 29, 47, 0) 45%),
-    linear-gradient(0deg,
-      rgba(11, 29, 47, .26) 0%,
-      rgba(11, 29, 47, .12) 26%,
-      rgba(11, 29, 47, 0) 52%),
-    linear-gradient(180deg,
-      rgba(0,0,0,.10) 0%,
-      rgba(0,0,0,.06) 60%,
-      rgba(0,0,0,.06) 100%),
-    url("assets/images/insights-hero.jpg");
+  /* top fade (stronger) */
+  linear-gradient(180deg,
+    rgba(11, 29, 47, .38) 0%,
+    rgba(11, 29, 47, .22) 22%,
+    rgba(11, 29, 47, 0) 48%),
+  /* bottom fade (stronger, helps the card overlap) */
+  linear-gradient(0deg,
+    rgba(11, 29, 47, .44) 0%,
+    rgba(11, 29, 47, .22) 30%,
+    rgba(11, 29, 47, 0) 58%),
+  /* soft overall veil */
+  linear-gradient(180deg,
+    rgba(0,0,0,.14) 0%,
+    rgba(0,0,0,.08) 60%,
+    rgba(0,0,0,.08) 100%),
+  url("assets/images/insights-hero.jpg");
 
   background-size: cover;
   background-repeat: no-repeat;
