@@ -1031,7 +1031,7 @@ select.cs-input:-webkit-autofill:focus{
 .insights-hero{
   position: relative;
   padding-top: var(--topbar-h);
-  min-height: 320px;
+  min-height: 440px;
   overflow: hidden;
   isolation: isolate;
 }
