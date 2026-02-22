@@ -21,83 +21,76 @@ description: Examples of what an IRI alert or weekly brief looks like — concis
   </section>
 
   <!-- SPILL + CENTER CARD (Contact-style) -->
-<section class="insights-entries" aria-label="Insights entries">
+<section class="insights-brief">
   <div class="container">
-    <header class="insights-sectionhead">
+
+    <header class="insights-brief-head">
       <h2>Recent examples</h2>
       <p class="muted">A curated selection from the past 60 days.</p>
     </header>
 
-    <!-- ENTRY 1: Escalation Alert (EA) -->
-    <article class="insight-card is-elevated">
-      <details class="insight" open>
-        <summary class="insight-summary">
-          <div class="insight-top">
-            <div class="insight-titlewrap">
-              <div class="insight-kicker">Escalation Alert</div>
-              <h3 class="insight-title">
-                Supreme Court strikes down IEEPA tariffs; Section 122 replacement at 15% effective February 24
-              </h3>
-            </div>
+    <div class="brief-card spill-up">
+      <!-- ENTRY -->
+      <article class="brief-entry" id="ea-2026-02-22">
+        <header class="brief-entry-head">
+          <div class="brief-kicker">Escalation Alert</div>
 
-            <div class="insight-metaRight">
-              <div class="insight-date">22 February 2026</div>
-              <span class="pill pill-elevated">Condition: Elevated</span>
-              <span class="chev" aria-hidden="true">▾</span>
+          <div class="brief-topline">
+            <h3 class="brief-title">
+              Supreme Court strikes down IEEPA tariffs; Section 122 replacement at 15% effective February 24
+            </h3>
+
+            <div class="brief-right">
+              <div class="brief-date">22 February 2026</div>
+              <div class="brief-condition is-elevated">Condition: Elevated</div>
             </div>
           </div>
 
-          <div class="insight-metaLine">
-            <span class="meta-label">Scope:</span>
-            <span>U.S. imports (broad)</span>
-            <span class="dot">•</span>
-            <span class="meta-label">Impact:</span>
-            <span>COST: HIGH</span>
-            <span class="dot">•</span>
+          <div class="brief-meta">
+            <span><strong>Scope:</strong> U.S. imports (broad)</span>
+            <span class="sep">•</span>
+            <span><strong>Impact:</strong> COST: HIGH</span>
+            <span class="sep">•</span>
             <span>TIMING: LOW</span>
-            <span class="dot">•</span>
+            <span class="sep">•</span>
             <span>EXECUTION: MODERATE</span>
           </div>
+        </header>
 
-          <p class="insight-blurb">
-            The administration replaced IEEPA tariffs with a 15% global tariff under Section 122, effective February 24 for 150 days.
-            Section 301 and Section 232 tariffs remain in effect.
-          </p>
+        <div class="brief-summary">
+          The administration replaced IEEPA tariffs with a 15% global tariff under Section 122, effective February 24 for 150 days.
+          Section 301 and Section 232 tariffs remain in effect.
+        </div>
 
-          <div class="insight-ctaRow" aria-hidden="true">
-            <span class="ctaText">Expand brief</span>
-          </div>
-        </summary>
+        <details class="brief-details">
+          <summary class="brief-toggle">
+            <span class="toggle-label">Expand brief</span>
+            <span class="toggle-chev" aria-hidden="true">▾</span>
+          </summary>
 
-        <div class="insight-body">
-          <div class="insight-grid">
-            <div class="insight-block">
-              <h4>Assessed impact</h4>
+          <div class="brief-body">
+            <div class="brief-section">
+              <div class="brief-h">Assessed impact</div>
               <p><strong>Cost:</strong> Most goods shift to 15% Section 122 plus applicable Section 301 duties; landed cost will likely require a SKU-level refresh.</p>
               <p><strong>Timing:</strong> No immediate clearance disruption expected, but guidance could tighten near Feb 24.</p>
               <p><strong>Execution:</strong> Exemptions may apply (USMCA goods, pharmaceuticals, critical minerals, certain electronics); unverified SKUs may be treated as dutiable pending confirmation.</p>
             </div>
 
-            <div class="insight-block">
-              <h4>Decision window</h4>
-              <p class="callout">
-                <strong>EOD February 23:</strong> Actions to consider before the February 24 effective date.
-              </p>
-              <p>
-                Before Feb 24, consider validating exemption status for in-scope SKUs, refreshing landed cost math using 15% Section 122 plus applicable Section 301 duties,
-                and consulting trade counsel on potential IEEPA refund eligibility while compiling 2025 duty records by HTS code.
-              </p>
+            <div class="brief-section">
+              <div class="brief-h">Decision window</div>
+              <p><strong>EOD February 23:</strong> Actions to consider before the February 24 effective date.</p>
+              <p>Before Feb 24, consider validating exemption status for in-scope SKUs, refreshing landed cost math using 15% Section 122 plus applicable Section 301 duties, and consulting trade counsel on potential IEEPA refund eligibility while compiling 2025 duty records by HTS code.</p>
             </div>
 
-            <div class="insight-block">
-              <h4>Watchpoints</h4>
+            <div class="brief-section">
+              <div class="brief-h">Watchpoints</div>
               <p><strong>CBP implementation:</strong> Look for CSMS messages, new documentation requirements, or port-level clearance friction tied to Section 122 starting Feb 24.</p>
               <p><strong>Refund path:</strong> Watch for Treasury/CBP instructions or CIT filings that define eligibility, procedure, and timing.</p>
             </div>
 
-            <div class="insight-block">
-              <h4>Sources</h4>
-              <ol class="sources">
+            <div class="brief-section">
+              <div class="brief-h">Sources</div>
+              <ol class="brief-sources">
                 <li>WilmerHale Client Alert, February 21, 2026</li>
                 <li>SCOTUSblog, February 20, 2026</li>
                 <li>NPR, February 21, 2026</li>
@@ -105,12 +98,71 @@ description: Examples of what an IRI alert or weekly brief looks like — concis
               </ol>
             </div>
           </div>
-        </div>
-      </details>
-    </article>
+        </details>
+      </article>
 
-    <!-- Add 2 more cards below using the same structure -->
+      <!-- Divider -->
+      <hr class="brief-rule">
+
+      <!-- ENTRY 2 placeholder -->
+      <article class="brief-entry">
+        <header class="brief-entry-head">
+          <div class="brief-kicker">Operational Disruption</div>
+          <div class="brief-topline">
+            <h3 class="brief-title">Rail congestion due to winter storms (Midwest intermodal)</h3>
+            <div class="brief-right">
+              <div class="brief-date">[Date]</div>
+              <div class="brief-condition is-disrupted">Condition: Disrupted</div>
+            </div>
+          </div>
+          <div class="brief-meta">
+            <span><strong>Scope:</strong> U.S. inland rail / intermodal (Midwest)</span>
+            <span class="sep">•</span>
+            <span><strong>Impact:</strong> COST: MODERATE</span>
+            <span class="sep">•</span>
+            <span>TIMING: HIGH</span>
+            <span class="sep">•</span>
+            <span>EXECUTION: HIGH</span>
+          </div>
+        </header>
+        <div class="brief-summary">[1–2 sentence summary here]</div>
+        <details class="brief-details">
+          <summary class="brief-toggle"><span class="toggle-label">Expand brief</span><span class="toggle-chev" aria-hidden="true">▾</span></summary>
+          <div class="brief-body">[details]</div>
+        </details>
+      </article>
+
+      <hr class="brief-rule">
+
+      <!-- ENTRY 3 placeholder -->
+      <article class="brief-entry">
+        <header class="brief-entry-head">
+          <div class="brief-kicker">Network Volatility</div>
+          <div class="brief-topline">
+            <h3 class="brief-title">Red Sea / Suez routing shifts and global capacity ripple effects</h3>
+            <div class="brief-right">
+              <div class="brief-date">[Date]</div>
+              <div class="brief-condition is-elevated">Condition: Elevated</div>
+            </div>
+          </div>
+          <div class="brief-meta">
+            <span><strong>Scope:</strong> Global ocean networks</span>
+            <span class="sep">•</span>
+            <span><strong>Impact:</strong> COST: MODERATE</span>
+            <span class="sep">•</span>
+            <span>TIMING: LOW–MODERATE</span>
+            <span class="sep">•</span>
+            <span>EXECUTION: MODERATE</span>
+          </div>
+        </header>
+        <div class="brief-summary">[1–2 sentence summary here]</div>
+        <details class="brief-details">
+          <summary class="brief-toggle"><span class="toggle-label">Expand brief</span><span class="toggle-chev" aria-hidden="true">▾</span></summary>
+          <div class="brief-body">[details]</div>
+        </details>
+      </article>
+
+    </div>
   </div>
 </section>
-
 </main>
