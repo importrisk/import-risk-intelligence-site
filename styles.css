@@ -1360,8 +1360,11 @@ select.cs-input:-webkit-autofill:focus{
   border-top: 1px solid rgba(255,255,255,.10);
 }
 
-.brief-section{
-  margin: 0 0 14px;
+/* Subtle dividers between sections (no rounded corners) */
+.brief-body .brief-section + .brief-section{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .brief-h{
