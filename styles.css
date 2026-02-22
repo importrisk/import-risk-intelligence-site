@@ -1228,6 +1228,10 @@ select.cs-input:-webkit-autofill:focus{
 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
+    /* Slightly smaller content text */
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 /* =========================================================
@@ -1263,7 +1267,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .brief-title{
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.25;
   color: rgba(255,255,255,.96);
 }
@@ -1350,7 +1354,7 @@ select.cs-input:-webkit-autofill:focus{
 /* Expanded content */
 .brief-body{
   margin-top: 10px;
-  padding-top: 12px;
+  padding-top: 10px;
   border-top: 1px solid rgba(255,255,255,.10);
 }
 
