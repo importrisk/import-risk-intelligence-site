@@ -1196,8 +1196,8 @@ select.cs-input:-webkit-autofill:focus{
 }
 /* Card header (inside the dark card) */
 .brief-card-head{
-  padding: 2px 0 14px;
-  margin: 0 0 14px;
+  padding: 6px 0 18px;                 /* more bottom padding */
+  margin: 0 0 22px;                    /* more space before first entry */
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
@@ -1284,8 +1284,8 @@ select.cs-input:-webkit-autofill:focus{
 /* Condition pill */
 .brief-condition{
   font-size: 13px;
-  padding: 6px 10px;
-  border-radius: 999px;
+  padding: 6px 12px;        /* optional: a touch more tag-like */
+  border-radius: 10px;      /* <-- rectangle instead of capsule */
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
   white-space: nowrap;
