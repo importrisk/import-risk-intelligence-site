@@ -916,7 +916,7 @@ select.cs-input:-webkit-autofill:focus{
     max-height: none;
   }
 
-  .contact-hero-head{ transform: translateY(-18px); }
+  .contact-hero-head{ transform: translateY(-40px); }
   .contact-hero-title{ font-size: 36px; }
 
   .contact-simple{
