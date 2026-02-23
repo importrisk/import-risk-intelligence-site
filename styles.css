@@ -1273,9 +1273,10 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-right{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;     /* date above condition */
+  align-items: flex-end;      /* right-aligned */
+  gap: 6px;                   /* space between date and box */
   flex: 0 0 auto;
 }
 
