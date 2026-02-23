@@ -1264,14 +1264,7 @@ select.cs-input:-webkit-autofill:focus{
   margin: 12px 0;
 }
 
-.brief-kicker{
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: rgba(255,255,255,.68);
-  margin: 0 0 10px;
-}
-
+/* Kicker row: left label + right date */
 .brief-kickerRow{
   display: flex;
   align-items: baseline;
@@ -1280,16 +1273,21 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0 0 10px;
 }
 
-/* kicker no longer needs bottom margin in this layout */
-.brief-kicker{ margin: 0; }
+.brief-kicker{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.68);
+  margin: 0;
+}
 
-/* date on kicker row */
-.brief-kickerRow .brief-date{
+.brief-date{
   font-size: 12.5px;
   color: rgba(255,255,255,.74);
   white-space: nowrap;
 }
 
+/* Title row + right rail */
 .brief-topline{
   display: flex;
   align-items: flex-start;
@@ -1321,7 +1319,7 @@ select.cs-input:-webkit-autofill:focus{
 /* Condition pill */
 .brief-condition{
   font-size: 13px;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 0;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.06);
