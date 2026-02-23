@@ -1212,6 +1212,10 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0 0 10px;
 }
 
+.brief-card-foot .inline-learn-more{
+  margin-top: 0;    /* prevent extra gap */
+}
+
 /* =========================================================
    BRIEF ENTRY — streamlined “PDF-like” reading
    ========================================================= */
