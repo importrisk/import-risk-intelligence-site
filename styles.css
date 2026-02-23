@@ -1319,16 +1319,17 @@ select.cs-input:-webkit-autofill:focus{
 .brief-condition.is-disrupted{border-color: rgba(255,210,120,.35); background: rgba(255,210,120,.10); }
 .brief-condition.is-critical{ border-color: rgba(255,120,120,.35); background: rgba(255,120,120,.10); }
 
-/* Meta line */
+/* Meta line (Coverage on one line, Impact on the next) */
 .brief-meta{
   margin: 12px 0 0;
   color: rgba(255,255,255,.78);
   font-size: 13px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;              /* controls spacing when it wraps */
+  display: block;         /* stack lines */
   line-height: 1.35;
 }
+
+.brief-meta .brief-coverage{ margin: 0; }
+.brief-meta .brief-impact{ margin: 6px 0 0; }
 
 /* Meta labels: quieter, more “brief-like” */
 .brief-meta strong{
