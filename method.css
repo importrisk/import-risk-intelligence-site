@@ -749,6 +749,11 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
+   
+   /* Move Method hero text UP on phones */
+.method-hero-inner{
+  padding-top: 76px; /* was 100px on desktop */
+}
 
   .method-practice .mp-title{
     font-size: 36px;
