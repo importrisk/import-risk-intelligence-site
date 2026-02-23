@@ -1321,17 +1321,18 @@ select.cs-input:-webkit-autofill:focus{
 
 /* Meta line */
 .brief-meta{
-  margin: 10px 0 0;
-  color: rgba(255,255,255,.82);
+  margin: 12px 0 0;
+  color: rgba(255,255,255,.78);
   font-size: 13px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;              /* controls spacing when it wraps */
+  line-height: 1.35;
 }
 
 .brief-meta .sep{
-  opacity: .55;
-  padding: 0 2px;
+  opacity: .35;
+  padding: 0 4px;
 }
 
 /* Summary */
