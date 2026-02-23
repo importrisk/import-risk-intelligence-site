@@ -744,15 +744,18 @@
   }
 }
 
+/* Match Insights-style breakpoint behavior */
+@media (max-width: 920px){
+  /* Move Method hero text UP on mobile/tablet */
+  .method-hero .method-hero-inner{
+    padding-top: 76px !important; /* desktop is 100px */
+  }
+}
+
 @media (max-width: 640px){
   .method-feature-grid{
     grid-template-columns: 1fr;
     gap: 18px;
-  }
-
-  /* Move Method hero text UP on phones */
-  .method-hero-inner{
-    padding-top: 76px; /* was 100px on desktop */
   }
 
   .method-practice .mp-title{
