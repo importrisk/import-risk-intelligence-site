@@ -748,7 +748,7 @@
 @media (max-width: 920px){
   /* Move Method hero text UP on mobile/tablet */
   .method-hero .method-hero-inner{
-    padding-top: 76px !important; /* desktop is 100px */
+    padding-top: 66px !important; /* desktop is 100px */
   }
 }
 
