@@ -1330,6 +1330,12 @@ select.cs-input:-webkit-autofill:focus{
   line-height: 1.35;
 }
 
+/* Meta labels: quieter, more “brief-like” */
+.brief-meta strong{
+  font-weight: 650;
+  color: rgba(255,255,255,.86);
+}
+
 .brief-meta .sep{
   opacity: .35;
   padding: 0 4px;
