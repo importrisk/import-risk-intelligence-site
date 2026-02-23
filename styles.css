@@ -1329,7 +1329,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-meta .brief-coverage{ margin: 0; }
-.brief-meta .brief-impact{ margin: 6px 0 0; }
+.brief-meta .brief-impact{ margin: 3px 0 0; }
 
 /* Meta labels: quieter, more “brief-like” */
 .brief-meta strong{
