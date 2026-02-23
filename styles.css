@@ -1371,6 +1371,11 @@ select.cs-input:-webkit-autofill:focus{
   background: transparent;
   border: 0;
   outline: none;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+.brief-toggle:hover{
+  color: rgba(210,230,255,.96);
 }
 
 .brief-toggle::-webkit-details-marker{ display: none; }
