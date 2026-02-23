@@ -1326,7 +1326,7 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 13px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 5px;
 }
 
 .brief-meta .sep{
