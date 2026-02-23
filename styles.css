@@ -1364,10 +1364,11 @@ select.cs-input:-webkit-autofill:focus{
 
 .brief-sources{
   margin: 0;
+  line-height: 1.45;
   padding-left: 18px;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.78);
 }
-.brief-sources li{ margin: 0 0 6px; }
+.brief-sources li{ margin: 0 0 5px; }
 .brief-sources li:last-child{ margin-bottom: 0; }
 
 /* =========================================================
