@@ -1320,7 +1320,7 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 13px;
   padding: 5px 10px;
   border-radius: 0;
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.06);
   white-space: nowrap;
   display: inline-block;
