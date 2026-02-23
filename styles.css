@@ -1202,6 +1202,16 @@ select.cs-input:-webkit-autofill:focus{
   color: var(--muted, rgba(255,255,255,.82));
 }
 
+.brief-card-foot{
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.brief-card-foot .muted{
+  margin: 0 0 10px;
+}
+
 /* =========================================================
    BRIEF ENTRY — streamlined “PDF-like” reading
    ========================================================= */
