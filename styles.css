@@ -1325,7 +1325,7 @@ select.cs-input:-webkit-autofill:focus{
   white-space: nowrap;
   display: inline-block;
   position: relative;
-  top: -2px;
+  top: -3px;
 }
 
 .brief-condition.is-normal{   border-color: rgba(255,255,255,.16); }
