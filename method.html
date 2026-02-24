@@ -36,21 +36,26 @@ css: /method.css?v=100
      stroke="currentColor" stroke-width="1.4"
      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 
-  <!-- outer ring: add dashoffset so the gap lands under the pointer -->
-  <circle cx="12" cy="12" r="8"
-          stroke-dasharray="42 8"
-          stroke-dashoffset="8"
-          transform="rotate(20 12 12)"/>
+  <!-- 1) Add this mask block near the top -->
+  <mask id="radar-cut" maskUnits="userSpaceOnUse">
+    <rect x="0" y="0" width="24" height="24" fill="white"/>
+    <!-- black stroke = area to hide (wider than pointer) -->
+    <path d="M12 12 L19.2 5.9" stroke="black" stroke-width="3.6" stroke-linecap="round"/>
+  </mask>
 
-  <!-- inner ring: same idea -->
-  <circle cx="12" cy="12" r="4.4"
-          stroke-dasharray="24.5 4.8"
-          stroke-dashoffset="5"/>
+  <!-- 2) Wrap your rings in a <g> that uses the mask -->
+  <g mask="url(#radar-cut)">
+    <circle cx="12" cy="12" r="8"
+            stroke-dasharray="42 8"
+            stroke-dashoffset="8"
+            transform="rotate(20 12 12)"/>
+    <circle cx="12" cy="12" r="4.4"
+            stroke-dasharray="24.5 4.8"
+            stroke-dashoffset="5"/>
+  </g>
 
-  <!-- pointer -->
+  <!-- 3) Keep pointer + center dot on top -->
   <path d="M12 12 L19.2 5.9"/>
-
-  <!-- center dot -->
   <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
 </svg>
 
