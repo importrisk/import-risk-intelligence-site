@@ -374,8 +374,8 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .feature svg{
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   display: block;
   margin-bottom: 14px;
   opacity: .85;
