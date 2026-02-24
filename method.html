@@ -32,15 +32,27 @@ css: /method.css?v=100
     <div class="feature-grid">
 
   <div class="feature">
-  <svg viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="8" stroke-dasharray="42 8"
-                          transform="rotate(20 12 12)"/>
-                  <circle cx="12" cy="12" r="4.4" stroke-dasharray="24.5 4.8"/>
-                  <path d="M12 12 L19.2 5.9"/>
-                  <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
-                </svg>
+ <svg viewBox="0 0 24 24" fill="none"
+     stroke="currentColor" stroke-width="1.4"
+     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+  <!-- outer ring: add dashoffset so the gap lands under the pointer -->
+  <circle cx="12" cy="12" r="8"
+          stroke-dasharray="42 8"
+          stroke-dashoffset="8"
+          transform="rotate(20 12 12)"/>
+
+  <!-- inner ring: same idea -->
+  <circle cx="12" cy="12" r="4.4"
+          stroke-dasharray="24.5 4.8"
+          stroke-dashoffset="5"/>
+
+  <!-- pointer -->
+  <path d="M12 12 L19.2 5.9"/>
+
+  <!-- center dot -->
+  <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
+</svg>
 
   <h3>SIGNAL</h3>
   <p>Only developments with real operational consequence.</p>
