@@ -116,6 +116,12 @@
   margin: 0;
 }
 
+/* Method band: allow chosen icon to be wider, same height */
+.features .feature svg.icon-wide{
+  height: 28px;
+  width: auto;
+}
+
 /* =========================================================
    4) BELOW-FOLD (spacing only; water comes from global .below-fold)
    ========================================================= */
