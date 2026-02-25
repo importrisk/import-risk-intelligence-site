@@ -56,7 +56,7 @@
 
 /* Wide screens: lock to bottom so the ship sits higher in the visible crop */
 @media (min-width: 1200px){
-  .method-hero-bg{ background-position: center bottom; }
+  .method-hero-bg{ background-position: center 82%; }
 }
 
 .method-hero > .container{
