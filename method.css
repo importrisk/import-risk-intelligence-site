@@ -36,21 +36,22 @@
   position: absolute;
   inset: 0;
 
+  .method-hero-bg{
   background-image:
-  /* stronger de-fog (still subtle, but you’ll actually see it) */
-  linear-gradient(180deg,
-    rgba(10,20,32,.18) 0%,
-    rgba(10,20,32,.12) 60%,
-    rgba(10,20,32,.08) 100%
-  ),
-  linear-gradient(
-    180deg,
-    var(--hero-top) 0%,
-    var(--hero-mid) 58%,
-    var(--hero-bottom) 100%
-  ),
-  url("assets/images/method-hero-3.jpg") !important;
-
+    /* stronger de-fog (still subtle, but you’ll actually see it) */
+    linear-gradient(180deg,
+      rgba(10,20,32,.18) 0%,
+      rgba(10,20,32,.12) 60%,
+      rgba(10,20,32,.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--hero-top) 0%,
+      var(--hero-mid) 58%,
+      var(--hero-bottom) 100%
+    ),
+    url("assets/images/method-hero-3.jpg") !important;
+}
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 55%;
