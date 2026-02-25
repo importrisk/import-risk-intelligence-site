@@ -37,17 +37,16 @@
   inset: 0;
 
   background-image:
-    linear-gradient(
-      180deg,
-      var(--hero-top) 0%,
-      var(--hero-mid) 58%,
-      var(--hero-bottom) 100%
+    linear-gradient(180deg,
+      rgba(10,20,32,.55) 0%,
+      rgba(10,20,32,.32) 58%,
+      rgba(10,20,32,.22) 100%
     ),
     url("assets/images/method-hero-2.jpg") !important;
 
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center 55%;
+  background-position: center 52%;
   transform: translateY(0);
   will-change: transform;
   pointer-events: none;
