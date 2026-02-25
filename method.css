@@ -51,7 +51,7 @@
       var(--hero-bottom) 100%
     ),
     url("assets/images/method-hero-3.jpg") !important;
-}
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 55%;
