@@ -37,6 +37,13 @@
   inset: 0;
 
   background-image:
+    /* lighten slightly (reduces “fog”) */
+    linear-gradient(180deg,
+      rgba(10,20,32,.10) 0%,
+      rgba(10,20,32,.06) 60%,
+      rgba(10,20,32,.04) 100%
+    ),
+    /* keep your existing hero gradient */
     linear-gradient(
       180deg,
       var(--hero-top) 0%,
