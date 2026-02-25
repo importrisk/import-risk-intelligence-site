@@ -54,12 +54,9 @@
   z-index: 0;
 }
 
-/* Wide screens: nudge UP (ship sits higher) */
+/* Wide screens: lock to bottom so the ship sits higher in the visible crop */
 @media (min-width: 1200px){
-  .method-hero-bg{ background-position: center 52%; }
-}
-@media (min-width: 1600px){
-  .method-hero-bg{ background-position: center 50%; }
+  .method-hero-bg{ background-position: center bottom; }
 }
 
 .method-hero > .container{
