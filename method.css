@@ -54,12 +54,12 @@
   z-index: 0;
 }
 
-/* Stop desktop shifts from cutting off the new hero image */
+/* Wide screens: show more of the bottom (ship) */
 @media (min-width: 1200px){
-  .method-hero-bg{ transform: translateY(0); }
+  .method-hero-bg{ background-position: center 62%; }
 }
 @media (min-width: 1600px){
-  .method-hero-bg{ transform: translateY(0); }
+  .method-hero-bg{ background-position: center 66%; }
 }
 
 .method-hero > .container{
