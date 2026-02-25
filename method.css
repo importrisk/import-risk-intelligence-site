@@ -34,7 +34,7 @@
 
 .method-hero-bg{
   position: absolute;
-  inset: -10vh 0 -10vh 0;
+  inset: 0;
 
   background-image:
     linear-gradient(
@@ -47,18 +47,19 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center 74%;
+  background-position: center 55%;
   transform: translateY(0);
   will-change: transform;
   pointer-events: none;
   z-index: 0;
 }
 
+/* Stop desktop shifts from cutting off the new hero image */
 @media (min-width: 1200px){
-  .method-hero-bg{ transform: translateY(6vh); }
+  .method-hero-bg{ transform: translateY(0); }
 }
 @media (min-width: 1600px){
-  .method-hero-bg{ transform: translateY(8vh); }
+  .method-hero-bg{ transform: translateY(0); }
 }
 
 .method-hero > .container{
