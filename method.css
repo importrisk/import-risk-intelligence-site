@@ -54,18 +54,14 @@
   z-index: 0;
 }
 
-/* Wide screens: slight nudge down (keep ship visible without panning too far) */
+/* Wide screens: nudge UP (ship sits higher) */
 @media (min-width: 1200px){
-  .method-hero-bg{ background-position: center 58%; }
+  .method-hero-bg{ background-position: center 52%; }
 }
 @media (min-width: 1600px){
-  .method-hero-bg{ background-position: center 60%; }
+  .method-hero-bg{ background-position: center 50%; }
 }
 
-/* Ultra-wide safety: add a little height instead of pushing image further down */
-@media (min-width: 1600px){
-  .method-hero{ min-height: clamp(460px, 58vh, 680px); }
-}
 .method-hero > .container{
   position: relative;
   z-index: 1;
