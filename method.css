@@ -36,7 +36,6 @@
   position: absolute;
   inset: 0;
 
-  .method-hero-bg{
   background-image:
     /* stronger de-fog (still subtle, but you’ll actually see it) */
     linear-gradient(180deg,
