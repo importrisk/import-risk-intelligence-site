@@ -23,9 +23,9 @@ description: Contact Import Risk Intelligence.
     <div class="container">
 
       <form class="contact-simple-form" action="https://formspree.io/f/maqdnvve" method="POST">
-    
-       <input type="hidden" name="_subject" value="IRI coverage request">
-       <input type="text" name="_gotcha" style="display:none">
+
+        <input type="hidden" name="_subject" value="IRI coverage request">
+        <input type="text" name="_gotcha" style="display:none">
 
         <div class="cs-row">
           <label class="cs-label" for="name">Name</label>
@@ -36,18 +36,31 @@ description: Contact Import Risk Intelligence.
           <label class="cs-label" for="email">Email</label>
           <input class="cs-input" id="email" name="email" type="email" autocomplete="email" required />
         </div>
+
         <div class="cs-row">
           <label class="cs-label" for="title">Title / Role (optional)</label>
           <input
-         class="cs-input"
-         id="title"
-         name="title"
-         type="text"
-         autocomplete="organization-title"
-         placeholder="e.g., COO, VP Supply Chain, Import Manager"/>
-</div>
+            class="cs-input"
+            id="title"
+            name="title"
+            type="text"
+            autocomplete="organization-title"
+            placeholder="e.g., COO, VP Supply Chain, Import Manager"
+          />
+        </div>
 
-       <input class="cs-input" id="company" name="company" type="text" autocomplete="organization" required />
+        <div class="cs-row">
+          <label class="cs-label" for="company">Company</label>
+          <input
+            class="cs-input"
+            id="company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            required
+          />
+        </div>
+
         <div class="cs-row">
           <label class="cs-label" for="revenue">Approximate Annual Import Value</label>
           <select class="cs-input" id="revenue" name="annual_revenue">
@@ -83,58 +96,58 @@ description: Contact Import Risk Intelligence.
               coverage@importriskreport.com
             </a>
           </p>
-
         </div>
 
       </form>
 
     </div>
   </section>
-<script>
-  (function () {
-    const form = document.querySelector(".contact-simple-form");
-    const statusEl = document.getElementById("cs-status");
-    if (!form || !statusEl) return;
 
-    const btn = form.querySelector('button[type="submit"]');
+  <script>
+    (function () {
+      const form = document.querySelector(".contact-simple-form");
+      const statusEl = document.getElementById("cs-status");
+      if (!form || !statusEl) return;
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-}
+      const btn = form.querySelector('button[type="submit"]');
 
-      if (btn) btn.disabled = true;
-      statusEl.textContent = "Sending your request…";
-
-      try {
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { "Accept": "application/json" }
-        });
-
-        if (res.ok) {
-          form.reset();
-          statusEl.textContent = "Thank you for your message. I’ll reply by email shortly.";
-        } else {
-          let msg = "Couldn’t send that. Please email coverage@importriskreport.com.";
-          try {
-            const data = await res.json();
-            if (data && data.errors && data.errors.length) {
-              msg = data.errors[0].message || msg;
-            }
-          } catch (_) {}
-          statusEl.textContent = msg;
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
         }
-      } catch (err) {
-        statusEl.textContent = "Connection issue. Please try again or email coverage@importriskreport.com.";
-      } finally {
-        if (btn) btn.disabled = false;
-      }
-    });
-  })();
-</script>
+
+        if (btn) btn.disabled = true;
+        statusEl.textContent = "Sending your request…";
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            form.reset();
+            statusEl.textContent = "Thank you for your message. I’ll reply by email shortly.";
+          } else {
+            let msg = "Couldn’t send that. Please email coverage@importriskreport.com.";
+            try {
+              const data = await res.json();
+              if (data && data.errors && data.errors.length) {
+                msg = data.errors[0].message || msg;
+              }
+            } catch (_) {}
+            statusEl.textContent = msg;
+          }
+        } catch (err) {
+          statusEl.textContent = "Connection issue. Please try again or email coverage@importriskreport.com.";
+        } finally {
+          if (btn) btn.disabled = false;
+        }
+      });
+    })();
+  </script>
 
 </main>
