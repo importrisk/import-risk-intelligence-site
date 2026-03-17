@@ -1535,6 +1535,35 @@ select.cs-input:-webkit-autofill:focus{
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+.client-profile-intro{
+  max-width: 760px;
+}
+
+.client-profile-kicker{
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.60);
+}
+
+.client-profile-card-title{
+  margin: 0 0 14px;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.94);
+}
+
+.client-profile-card-text{
+  margin: 0 0 14px;
+  max-width: 70ch;
+  line-height: 1.55;
+  color: rgba(255,255,255,.82);
+}
+
+.client-profile-card-text:last-child{
+  margin-bottom: 0;
+}
 
 @media (max-width: 760px){
   .client-profile-hero-inner{
