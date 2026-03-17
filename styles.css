@@ -1460,14 +1460,14 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 0;
   background:
     linear-gradient(180deg,
-      rgba(11,29,47,.42) 0%,
-      rgba(11,29,47,.26) 58%,
-      rgba(11,29,47,.18) 100%),
+      rgba(11,29,47,.58) 0%,
+      rgba(11,29,47,.42) 58%,
+      rgba(11,29,47,.34) 100%),
     url("assets/images/contact-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 78%;
-  filter: saturate(.72) contrast(.92) brightness(.82);
+  filter: saturate(.58) contrast(.88) brightness(.70);
 }
 
 .client-profile-hero-inner{
