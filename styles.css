@@ -1449,7 +1449,7 @@ select.cs-input:-webkit-autofill:focus{
 .client-profile-hero{
   position: relative;
   padding-top: var(--topbar-h);
-  min-height: 320px;
+  min-height: 360px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -1473,16 +1473,18 @@ select.cs-input:-webkit-autofill:focus{
 .client-profile-hero-inner{
   position: relative;
   z-index: 2;
-  padding: 132px 0 72px;
+  padding: 118px 0 118px;
   max-width: 900px;
 }
 
 .client-profile-head{
   max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .client-profile-title{
-  margin: 0 0 10px;
+  margin: 0;
   font-size: clamp(34px, 4.2vw, 46px);
   letter-spacing: -0.02em;
   color: rgba(255,255,255,.96);
@@ -1500,7 +1502,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .client-profile-body{
   position: relative;
-  margin-top: -92px;
+  margin-top: -128px;
   padding: 0 0 76px;
   background: linear-gradient(
     180deg,
