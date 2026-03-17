@@ -1449,7 +1449,7 @@ select.cs-input:-webkit-autofill:focus{
 .client-profile-hero{
   position: relative;
   padding-top: var(--topbar-h);
-  min-height: 360px;
+  min-height: 500px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -1473,7 +1473,7 @@ select.cs-input:-webkit-autofill:focus{
 .client-profile-hero-inner{
   position: relative;
   z-index: 2;
-  padding: 118px 0 118px;
+  padding: 118px 0 88px;
   max-width: 900px;
 }
 
@@ -1502,7 +1502,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .client-profile-body{
   position: relative;
-  margin-top: -128px;
+  margin-top: -96px;
   padding: 0 0 76px;
   background: linear-gradient(
     180deg,
