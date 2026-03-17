@@ -1562,12 +1562,12 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .client-profile-card-text{
-  margin: 0 0 14px;
-  max-width: 70ch;
-  line-height: 1.55;
-  color: rgba(255,255,255,.82);
+  margin: 0 0 12px;
+  max-width: 72ch;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.76);
 }
-
 .client-profile-card-text:last-child{
   margin-bottom: 0;
 }
