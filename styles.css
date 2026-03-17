@@ -1530,7 +1530,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .client-profile-card{
   max-width: 860px;
-  margin: -96px auto 0;
+  margin: 0 auto;
   padding: 28px 28px 24px;
   background: rgba(14, 22, 34, .88);
   border: 1px solid rgba(255,255,255,.10);
@@ -1539,6 +1539,7 @@ select.cs-input:-webkit-autofill:focus{
   -webkit-backdrop-filter: blur(6px);
   position: relative;
   z-index: 3;
+  transform: translateY(-96px);
 }
 
 .client-profile-intro{
