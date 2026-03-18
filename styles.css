@@ -1589,6 +1589,99 @@ select.cs-input:-webkit-autofill:focus{
     padding: 20px 18px 18px;
   }
 }
+/* =========================================================
+   CLIENT PROFILE FORM — COMPANY OVERVIEW
+   ========================================================= */
+.cp-section{
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.cp-section-head{
+  margin-bottom: 18px;
+}
+
+.cp-section-title{
+  margin: 0 0 8px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.94);
+}
+
+.cp-section-text{
+  margin: 0;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.74);
+}
+
+.cp-form{
+  margin-top: 0;
+}
+
+.cp-grid{
+  display: grid;
+  gap: 16px;
+}
+
+.cp-grid-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cp-row{
+  margin: 0 0 16px;
+}
+
+.cp-label{
+  display: block;
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,.86);
+}
+
+.cp-required{
+  color: rgba(180,210,255,.92);
+}
+
+.cp-input,
+.cp-textarea,
+.cp-select{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  color: rgba(255,255,255,.94);
+  outline: none;
+  font: inherit;
+}
+
+.cp-input:focus,
+.cp-textarea:focus,
+.cp-select:focus{
+  border-color: rgba(127,177,234,.55);
+  box-shadow: 0 0 0 3px rgba(127,177,234,.18);
+}
+
+.cp-help{
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(255,255,255,.62);
+}
+
+@media (max-width: 760px){
+  .cp-grid-2{
+    grid-template-columns: 1fr;
+  }
+
+  .cp-section{
+    margin-top: 26px;
+    padding-top: 20px;
+  }
+}
 
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
