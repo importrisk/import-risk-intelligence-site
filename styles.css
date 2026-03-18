@@ -1590,7 +1590,7 @@ select.cs-input:-webkit-autofill:focus{
   }
 }
 /* =========================================================
-   CLIENT PROFILE FORM — COMPANY OVERVIEW
+   CLIENT PROFILE FORM
    ========================================================= */
 .cp-section{
   margin-top: 30px;
@@ -1607,14 +1607,6 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 22px;
   letter-spacing: -0.01em;
   color: rgba(255,255,255,.94);
-}
-
-.cp-section-text{
-  margin: 0;
-  max-width: 68ch;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255,255,255,.74);
 }
 
 .cp-form{
@@ -1665,24 +1657,6 @@ select.cs-input:-webkit-autofill:focus{
   box-shadow: 0 0 0 3px rgba(127,177,234,.18);
 }
 
-.cp-help{
-  margin: 8px 0 0;
-  font-size: 12.5px;
-  line-height: 1.4;
-  color: rgba(255,255,255,.62);
-}
-
-@media (max-width: 760px){
-  .cp-grid-2{
-    grid-template-columns: 1fr;
-  }
-
-  .cp-section{
-    margin-top: 26px;
-    padding-top: 20px;
-  }
-}
-
 .cp-select{
   appearance: none;
   -webkit-appearance: none;
@@ -1701,6 +1675,7 @@ select.cs-input:-webkit-autofill:focus{
 .cp-select option{
   color: #0b1d2f;
 }
+
 .cp-fieldset{
   margin: 0;
   padding: 0;
@@ -1710,8 +1685,8 @@ select.cs-input:-webkit-autofill:focus{
 
 .cp-check-grid{
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, max-content));
-  gap: 10px 14px;
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  gap: 10px 18px;
   margin-top: 6px;
 }
 
@@ -1734,12 +1709,20 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
+  .cp-grid-2{
+    grid-template-columns: 1fr;
+  }
+
+  .cp-section{
+    margin-top: 26px;
+    padding-top: 20px;
+  }
+
   .cp-check-grid{
     grid-template-columns: repeat(2, minmax(0, max-content));
     gap: 10px 18px;
   }
 }
-
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
