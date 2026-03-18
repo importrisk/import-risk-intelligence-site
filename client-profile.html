@@ -20,29 +20,76 @@ description: Private client profile form for configuring Import Risk Intelligenc
 
 <main class="client-profile-page">
   <section class="client-profile-hero" aria-label="Client Profile">
-  <div class="client-profile-hero-bg" aria-hidden="true"></div>
+    <div class="client-profile-hero-bg" aria-hidden="true"></div>
 
- <div class="container client-profile-hero-inner">
-  <div class="client-profile-head">
-    <h1 class="client-profile-title">Client Profile</h1>
-  </div>
-</div>
-</section>
+    <div class="container client-profile-hero-inner">
+      <div class="client-profile-head">
+        <h1 class="client-profile-title">Client Profile</h1>
+      </div>
+    </div>
+  </section>
 
   <section class="client-profile-body">
     <div class="container">
-     <div class="client-profile-card">
-  <div class="client-profile-intro">
-    <h2 class="client-profile-card-title">Monitoring setup</h2>
+      <div class="client-profile-card">
+        <div class="client-profile-intro">
+          <h2 class="client-profile-card-title">Monitoring setup</h2>
 
-    <p class="client-profile-card-text">
-      This will allow me to configure monitoring around your import profile, product exposure, sourcing footprint, and operating priorities.
-    </p>
+          <p class="client-profile-card-text">
+            This will allow me to configure monitoring around your import profile, product exposure, sourcing footprint, and operating priorities.
+          </p>
 
-    <p class="client-profile-card-text">
-      You do not need to include anything you consider highly sensitive. Information provided here is not shared outside of IRI.
-    </p>
-  </div>
-</div>
+          <p class="client-profile-card-text">
+            You do not need to include anything you consider highly sensitive. Information provided here is not shared outside of IRI.
+          </p>
+        </div>
+
+        <section class="cp-section" aria-labelledby="company-overview-title">
+          <div class="cp-section-head">
+            <h3 id="company-overview-title" class="cp-section-title">Company Overview</h3>
+            <p class="cp-section-text">
+              Basic contact and company details used to set up the profile.
+            </p>
+          </div>
+
+          <form class="cp-form" action="#" method="post">
+            <div class="cp-row">
+              <label class="cp-label" for="cp-company-name">Company name <span class="cp-required">*</span></label>
+              <input class="cp-input" type="text" id="cp-company-name" name="company_name" required>
+            </div>
+
+            <div class="cp-grid cp-grid-2">
+              <div class="cp-row">
+                <label class="cp-label" for="cp-contact-name">Primary contact name <span class="cp-required">*</span></label>
+                <input class="cp-input" type="text" id="cp-contact-name" name="primary_contact_name" required>
+              </div>
+
+              <div class="cp-row">
+                <label class="cp-label" for="cp-title-role">Title / role</label>
+                <input class="cp-input" type="text" id="cp-title-role" name="title_role">
+              </div>
+            </div>
+
+            <div class="cp-grid cp-grid-2">
+              <div class="cp-row">
+                <label class="cp-label" for="cp-email">Email address <span class="cp-required">*</span></label>
+                <input class="cp-input" type="email" id="cp-email" name="email_address" required>
+              </div>
+
+              <div class="cp-row">
+                <label class="cp-label" for="cp-phone">Direct phone line</label>
+                <input class="cp-input" type="tel" id="cp-phone" name="direct_phone_line">
+              </div>
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-headquarters">Headquarters</label>
+              <input class="cp-input" type="text" id="cp-headquarters" name="headquarters" aria-describedby="cp-headquarters-help">
+              <p id="cp-headquarters-help" class="cp-help">City and state is enough.</p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
   </section>
 </main>
