@@ -1686,8 +1686,8 @@ select.cs-input:-webkit-autofill:focus{
 .cp-check-grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, max-content));
-  gap: 10px 18px;
-  margin-top: 6px;
+  gap: 8px 18px;
+  margin-top: 4px;
 }
 
 .cp-check{
