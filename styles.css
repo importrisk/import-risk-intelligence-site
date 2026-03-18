@@ -1683,6 +1683,25 @@ select.cs-input:-webkit-autofill:focus{
   }
 }
 
+.cp-select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,.72) 50%),
+    linear-gradient(135deg, rgba(255,255,255,.72) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 2px),
+    calc(100% - 12px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+
+.cp-select option{
+  color: #0b1d2f;
+}
+
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
