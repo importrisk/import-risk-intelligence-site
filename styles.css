@@ -1691,27 +1691,77 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .cp-check{
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   min-height: 22px;
   font-size: 14px;
   color: rgba(255,255,255,.84);
   cursor: pointer;
+  user-select: none;
 }
 
 .cp-check input[type="checkbox"]{
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  accent-color: #7fb1ea;
-  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cp-check-box{
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border: 1px solid rgba(255,255,255,.24);
+  background: rgba(0,0,0,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.cp-check-text{
+  line-height: 1.2;
+}
+
+.cp-check-box::after{
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.cp-check:hover .cp-check-box{
+  border-color: rgba(127,177,234,.55);
+  background: rgba(127,177,234,.08);
+}
+
+.cp-check input[type="checkbox"]:focus + .cp-check-box{
+  border-color: rgba(127,177,234,.65);
+  box-shadow: 0 0 0 3px rgba(127,177,234,.18);
+}
+
+.cp-check input[type="checkbox"]:checked + .cp-check-box{
+  border-color: rgba(127,177,234,.85);
+  background: linear-gradient(180deg, rgba(127,177,234,.88) 0%, rgba(95,148,216,.88) 100%);
+}
+
+.cp-check input[type="checkbox"]:checked + .cp-check-box::after{
+  opacity: 1;
 }
 
 @media (max-width: 760px){
-  .cp-grid-2{
-    grid-template-columns: 1fr;
+  .cp-check-grid{
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: 10px 18px;
   }
+}
 
   .cp-section{
     margin-top: 26px;
