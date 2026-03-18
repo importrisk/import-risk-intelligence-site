@@ -86,137 +86,137 @@ description: Private client profile form for configuring Import Risk Intelligenc
           </section>
 
           <section class="cp-section" aria-labelledby="import-footprint-title">
-            <div class="cp-section-head">
-              <h3 id="import-footprint-title" class="cp-section-title">Import Footprint</h3>
-            </div>
+  <div class="cp-section-head">
+    <h3 id="import-footprint-title" class="cp-section-title">Import Footprint</h3>
+  </div>
 
-            <div class="cp-grid cp-grid-2">
-              <div class="cp-row">
-                <label class="cp-label" for="cp-annual-import-value">Approximate annual import value</label>
-                <select class="cp-select" id="cp-annual-import-value" name="annual_import_value">
-                  <option value="">Select</option>
-                  <option>Under $10M</option>
-                  <option>$10M–$50M</option>
-                  <option>$50M–$100M</option>
-                  <option>$100M–$250M</option>
-                  <option>$250M–$500M</option>
-                  <option>Over $500M</option>
-                </select>
-              </div>
+  <div class="cp-grid cp-grid-2">
+    <div class="cp-row">
+      <label class="cp-label" for="cp-annual-import-value">Approximate annual import value</label>
+      <select class="cp-select" id="cp-annual-import-value" name="annual_import_value">
+        <option value="">Select</option>
+        <option>Under $10M</option>
+        <option>$10M–$50M</option>
+        <option>$50M–$100M</option>
+        <option>$100M–$250M</option>
+        <option>$250M–$500M</option>
+        <option>Over $500M</option>
+      </select>
+    </div>
 
-              <div class="cp-row">
-                <label class="cp-label" for="cp-shipment-volume">Approximate inbound shipment volume</label>
-                <select class="cp-select" id="cp-shipment-volume" name="shipment_volume">
-                  <option value="">Select</option>
-                  <option>Fewer than 100 shipments/year</option>
-                  <option>100–500 shipments/year</option>
-                  <option>500–1,000 shipments/year</option>
-                  <option>1,000–5,000 shipments/year</option>
-                  <option>Over 5,000 shipments/year</option>
-                </select>
-              </div>
-            </div>
+    <div class="cp-row">
+      <label class="cp-label" for="cp-shipment-volume">Approximate inbound shipment volume</label>
+      <select class="cp-select" id="cp-shipment-volume" name="shipment_volume">
+        <option value="">Select</option>
+        <option>Fewer than 100 shipments/year</option>
+        <option>100–500 shipments/year</option>
+        <option>500–1,000 shipments/year</option>
+        <option>1,000–5,000 shipments/year</option>
+        <option>Over 5,000 shipments/year</option>
+      </select>
+    </div>
+  </div>
 
-            <div class="cp-grid cp-grid-2">
-              <div class="cp-row">
-                <fieldset class="cp-fieldset">
-                  <legend class="cp-label">Primary incoterms used</legend>
+  <div class="cp-row">
+    <label class="cp-label" for="cp-brokers">Customs broker(s)</label>
+    <input
+      class="cp-input"
+      type="text"
+      id="cp-brokers"
+      name="customs_brokers"
+      placeholder="Broker name(s)"
+    >
+  </div>
 
-                  <div class="cp-check-grid">
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="EXW">
-                      <span>EXW</span>
-                    </label>
+  <div class="cp-row">
+    <label class="cp-label" for="cp-ports">Main ports of entry</label>
+    <input
+      class="cp-input"
+      type="text"
+      id="cp-ports"
+      name="main_ports_of_entry"
+      placeholder="e.g., Los Angeles/Long Beach, Savannah, Newark"
+    >
+  </div>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="FOB">
-                      <span>FOB</span>
-                    </label>
+  <div class="cp-grid cp-grid-2">
+    <div class="cp-row">
+      <fieldset class="cp-fieldset">
+        <legend class="cp-label">Primary incoterms used</legend>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="FCA">
-                      <span>FCA</span>
-                    </label>
+        <div class="cp-check-grid">
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="EXW">
+            <span>EXW</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="CIF">
-                      <span>CIF</span>
-                    </label>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="FOB">
+            <span>FOB</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="CFR">
-                      <span>CFR</span>
-                    </label>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="FCA">
+            <span>FCA</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="DDP">
-                      <span>DDP</span>
-                    </label>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="CIF">
+            <span>CIF</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="incoterms[]" value="Other">
-                      <span>Other</span>
-                    </label>
-                  </div>
-                </fieldset>
-              </div>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="CFR">
+            <span>CFR</span>
+          </label>
 
-              <div class="cp-row">
-                <fieldset class="cp-fieldset">
-                  <legend class="cp-label">Main modes used</legend>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="DDP">
+            <span>DDP</span>
+          </label>
 
-                  <div class="cp-check-grid">
-                    <label class="cp-check">
-                      <input type="checkbox" name="modes[]" value="Ocean">
-                      <span>Ocean</span>
-                    </label>
+          <label class="cp-check">
+            <input type="checkbox" name="incoterms[]" value="Other">
+            <span>Other</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="modes[]" value="Air">
-                      <span>Air</span>
-                    </label>
+    <div class="cp-row">
+      <fieldset class="cp-fieldset">
+        <legend class="cp-label">Main modes used</legend>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="modes[]" value="Truck">
-                      <span>Truck</span>
-                    </label>
+        <div class="cp-check-grid">
+          <label class="cp-check">
+            <input type="checkbox" name="modes[]" value="Ocean">
+            <span>Ocean</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="modes[]" value="Rail">
-                      <span>Rail</span>
-                    </label>
+          <label class="cp-check">
+            <input type="checkbox" name="modes[]" value="Air">
+            <span>Air</span>
+          </label>
 
-                    <label class="cp-check">
-                      <input type="checkbox" name="modes[]" value="Parcel / express">
-                      <span>Parcel / express</span>
-                    </label>
-                  </div>
-                </fieldset>
-              </div>
-            </div>
+          <label class="cp-check">
+            <input type="checkbox" name="modes[]" value="Truck">
+            <span>Truck</span>
+          </label>
 
-            <div class="cp-row">
-              <label class="cp-label" for="cp-brokers">Customs broker(s)</label>
-              <input
-                class="cp-input"
-                type="text"
-                id="cp-brokers"
-                name="customs_brokers"
-                placeholder="Broker name(s)"
-              >
-            </div>
+          <label class="cp-check">
+            <input type="checkbox" name="modes[]" value="Rail">
+            <span>Rail</span>
+          </label>
 
-            <div class="cp-row">
-              <label class="cp-label" for="cp-ports">Main ports of entry</label>
-              <input
-                class="cp-input"
-                type="text"
-                id="cp-ports"
-                name="main_ports_of_entry"
-                placeholder="Major U.S. ports only is fine"
-              >
-            </div>
-          </section>
+          <label class="cp-check">
+            <input type="checkbox" name="modes[]" value="Parcel / express">
+            <span>Parcel / express</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</section>
         </form>
       </div>
     </div>
