@@ -1782,6 +1782,22 @@ select.cs-input:-webkit-autofill:focus{
     gap: 12px 0;
   }
 }
+.cp-check-grid-exposure{
+  grid-template-columns: repeat(2, max-content);
+  gap: 14px 28px;
+}
+
+.cp-textarea{
+  min-height: 110px;
+  resize: vertical;
+}
+
+@media (max-width: 760px){
+  .cp-check-grid-exposure{
+    grid-template-columns: 1fr;
+    gap: 12px 0;
+  }
+}
 /* =========================================================
    MOBILE FIXES — Home + Topbar (CLEAN, SINGLE SOURCE)
    ========================================================= */
