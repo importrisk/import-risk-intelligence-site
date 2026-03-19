@@ -294,6 +294,55 @@ description: Private client profile form for configuring Import Risk Intelligenc
               ></textarea>
             </div>
           </section>
+                    <section class="cp-section" aria-labelledby="lanes-dependencies-title">
+            <div class="cp-section-head">
+              <h3 id="lanes-dependencies-title" class="cp-section-title">Key Lanes &amp; Logistics Dependencies</h3>
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-key-lanes">Key trade lanes</label>
+              <textarea
+                class="cp-textarea"
+                id="cp-key-lanes"
+                name="key_trade_lanes"
+                rows="4"
+                placeholder="e.g., Vietnam to Long Beach, Mexico to Laredo, Germany to Savannah"
+              ></textarea>
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-routing-points">Important inland routing or handoff points</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-routing-points"
+                name="important_routing_or_handoff_points"
+                placeholder="e.g., Laredo, Chicago rail, Memphis hub, Savannah DC"
+              >
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-logistics-dependencies">Critical logistics dependencies</label>
+              <textarea
+                class="cp-textarea"
+                id="cp-logistics-dependencies"
+                name="critical_logistics_dependencies"
+                rows="4"
+                placeholder="e.g., specific forwarders, carriers, terminals, rail providers, drayage partners, or warehouses that are especially important"
+              ></textarea>
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-chokepoints">Known chokepoints or fragile links</label>
+              <textarea
+                class="cp-textarea"
+                id="cp-chokepoints"
+                name="known_chokepoints_or_fragile_links"
+                rows="4"
+                placeholder="e.g., border crossings, specific ports, seasonal congestion, rail handoffs, chassis availability, labor-sensitive terminals"
+              ></textarea>
+            </div>
+          </section>
         </form>
       </div>
     </div>
