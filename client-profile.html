@@ -247,12 +247,12 @@ description: Private client profile form for configuring Import Risk Intelligenc
             </div>
 
             <div class="cp-row">
-              <label class="cp-label" for="cp-critical-lines">Mission-critical product lines</label>
+              <label class="cp-label" for="cp-priority-lines">Priority product lines</label>
               <input
                 class="cp-input"
                 type="text"
-                id="cp-critical-lines"
-                name="mission_critical_lines"
+                id="cp-priority-lines"
+                name="priority_product_lines"
                 placeholder="Product lines where disruption would matter most"
               >
             </div>
@@ -292,9 +292,9 @@ description: Private client profile form for configuring Import Risk Intelligenc
                   </label>
 
                   <label class="cp-check">
-                    <input type="checkbox" name="priority_exposure_areas[]" value="Customs exams / inspection friction">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Customs exams / inspection delays">
                     <span class="cp-check-box" aria-hidden="true"></span>
-                    <span class="cp-check-text">Customs exams / inspection friction</span>
+                    <span class="cp-check-text">Customs exams / inspection delays</span>
                   </label>
 
                   <label class="cp-check">
@@ -313,13 +313,13 @@ description: Private client profile form for configuring Import Risk Intelligenc
             </div>
 
             <div class="cp-row">
-              <label class="cp-label" for="cp-immediate-escalation">Products or issues that should trigger immediate escalation</label>
+              <label class="cp-label" for="cp-immediate-escalation">Immediate escalation triggers</label>
               <textarea
                 class="cp-textarea"
                 id="cp-immediate-escalation"
-                name="immediate_escalation_products"
+                name="immediate_escalation_triggers"
                 rows="4"
-                placeholder="Products, categories, or issues where you want faster escalation"
+                placeholder="Products, categories, or issues that should be escalated immediately"
               ></textarea>
             </div>
           </section>
