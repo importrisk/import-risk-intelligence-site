@@ -86,243 +86,243 @@ description: Private client profile form for configuring Import Risk Intelligenc
           </section>
 
           <section class="cp-section" aria-labelledby="import-footprint-title">
-  <div class="cp-section-head">
-    <h3 id="import-footprint-title" class="cp-section-title">Import Footprint</h3>
-  </div>
+            <div class="cp-section-head">
+              <h3 id="import-footprint-title" class="cp-section-title">Import Footprint</h3>
+            </div>
 
-  <div class="cp-grid cp-grid-2">
-    <div class="cp-row">
-      <label class="cp-label" for="cp-annual-import-value">Approximate annual import value</label>
-      <select class="cp-select" id="cp-annual-import-value" name="annual_import_value">
-        <option value="">Select</option>
-        <option>Under $10M</option>
-        <option>$10M–$50M</option>
-        <option>$50M–$100M</option>
-        <option>$100M–$250M</option>
-        <option>$250M–$500M</option>
-        <option>Over $500M</option>
-      </select>
-    </div>
+            <div class="cp-grid cp-grid-2">
+              <div class="cp-row">
+                <label class="cp-label" for="cp-annual-import-value">Approximate annual import value</label>
+                <select class="cp-select" id="cp-annual-import-value" name="annual_import_value">
+                  <option value="">Select</option>
+                  <option>Under $10M</option>
+                  <option>$10M–$50M</option>
+                  <option>$50M–$100M</option>
+                  <option>$100M–$250M</option>
+                  <option>$250M–$500M</option>
+                  <option>Over $500M</option>
+                </select>
+              </div>
 
-    <div class="cp-row">
-      <label class="cp-label" for="cp-shipment-volume">Approximate annual shipment volume</label>
-      <select class="cp-select" id="cp-shipment-volume" name="shipment_volume">
-        <option value="">Select</option>
-        <option>Fewer than 100 shipments/year</option>
-        <option>100–500 shipments/year</option>
-        <option>500–1,000 shipments/year</option>
-        <option>1,000–5,000 shipments/year</option>
-        <option>Over 5,000 shipments/year</option>
-      </select>
-    </div>
-  </div>
+              <div class="cp-row">
+                <label class="cp-label" for="cp-shipment-volume">Approximate annual shipment volume</label>
+                <select class="cp-select" id="cp-shipment-volume" name="shipment_volume">
+                  <option value="">Select</option>
+                  <option>Fewer than 100 shipments/year</option>
+                  <option>100–500 shipments/year</option>
+                  <option>500–1,000 shipments/year</option>
+                  <option>1,000–5,000 shipments/year</option>
+                  <option>Over 5,000 shipments/year</option>
+                </select>
+              </div>
+            </div>
 
-  <div class="cp-row">
-    <label class="cp-label" for="cp-brokers">Customs broker(s)</label>
-    <input
-      class="cp-input"
-      type="text"
-      id="cp-brokers"
-      name="customs_brokers"
-      placeholder="e.g., Livingston, Expeditors"
-    >
-  </div>
+            <div class="cp-row">
+              <label class="cp-label" for="cp-brokers">Customs broker(s)</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-brokers"
+                name="customs_brokers"
+                placeholder="e.g., Livingston, Expeditors"
+              >
+            </div>
 
-  <div class="cp-row">
-    <label class="cp-label" for="cp-ports">Main ports of entry</label>
-    <input
-      class="cp-input"
-      type="text"
-      id="cp-ports"
-      name="main_ports_of_entry"
-      placeholder="e.g., Los Angeles/Long Beach, Savannah, Newark"
-    >
-  </div>
+            <div class="cp-row">
+              <label class="cp-label" for="cp-ports">Main ports of entry</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-ports"
+                name="main_ports_of_entry"
+                placeholder="e.g., Los Angeles/Long Beach, Savannah, Newark"
+              >
+            </div>
 
- <div class="cp-grid cp-grid-2">
-  <div class="cp-row">
-    <fieldset class="cp-fieldset">
-      <legend class="cp-label">Primary incoterms used</legend>
+            <div class="cp-grid cp-grid-2">
+              <div class="cp-row">
+                <fieldset class="cp-fieldset">
+                  <legend class="cp-label">Primary incoterms used</legend>
 
-      <div class="cp-check-grid cp-check-grid-incoterms">
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="EXW">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">EXW</span>
-        </label>
+                  <div class="cp-check-grid cp-check-grid-incoterms">
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="EXW">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">EXW</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="FOB">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">FOB</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="FOB">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">FOB</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="DDP">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">DDP</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="DDP">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">DDP</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="CFR">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">CFR</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="CFR">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">CFR</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="FCA">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">FCA</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="FCA">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">FCA</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="CIF">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">CIF</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="CIF">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">CIF</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="Other">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Other</span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
+                    <label class="cp-check">
+                      <input type="checkbox" name="incoterms[]" value="Other">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Other</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
 
-  <div class="cp-row">
-    <fieldset class="cp-fieldset">
-      <legend class="cp-label">Main modes used</legend>
+              <div class="cp-row">
+                <fieldset class="cp-fieldset">
+                  <legend class="cp-label">Main modes used</legend>
 
-      <div class="cp-check-grid cp-check-grid-modes">
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Ocean">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Ocean</span>
-        </label>
+                  <div class="cp-check-grid cp-check-grid-modes">
+                    <label class="cp-check">
+                      <input type="checkbox" name="modes[]" value="Ocean">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Ocean</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Air">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Air</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="modes[]" value="Air">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Air</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Parcel / express">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Parcel / express</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="modes[]" value="Parcel / express">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Parcel / express</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Truck">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Truck</span>
-        </label>
+                    <label class="cp-check">
+                      <input type="checkbox" name="modes[]" value="Truck">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Truck</span>
+                    </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Rail">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Rail</span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
-</div>
-</div>
-  </div>
-</section>
+                    <label class="cp-check">
+                      <input type="checkbox" name="modes[]" value="Rail">
+                      <span class="cp-check-box" aria-hidden="true"></span>
+                      <span class="cp-check-text">Rail</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </section>
+
           <section class="cp-section" aria-labelledby="products-exposure-title">
-  <div class="cp-section-head">
-    <h3 id="products-exposure-title" class="cp-section-title">Products &amp; Exposure Priorities</h3>
-  </div>
+            <div class="cp-section-head">
+              <h3 id="products-exposure-title" class="cp-section-title">Products &amp; Exposure Priorities</h3>
+            </div>
 
-  <div class="cp-row">
-    <label class="cp-label" for="cp-product-categories">Primary product categories</label>
-    <input
-      class="cp-input"
-      type="text"
-      id="cp-product-categories"
-      name="product_categories"
-      placeholder="e.g., furniture, lighting, housewares, electronics"
-    >
-  </div>
+            <div class="cp-row">
+              <label class="cp-label" for="cp-product-categories">Primary product categories</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-product-categories"
+                name="product_categories"
+                placeholder="e.g., furniture, lighting, housewares, electronics"
+              >
+            </div>
 
-  <div class="cp-row">
-    <label class="cp-label" for="cp-critical-lines">Mission-critical product lines</label>
-    <input
-      class="cp-input"
-      type="text"
-      id="cp-critical-lines"
-      name="mission_critical_lines"
-      placeholder="Product lines where disruption would matter most"
-    >
-  </div>
+            <div class="cp-row">
+              <label class="cp-label" for="cp-critical-lines">Mission-critical product lines</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-critical-lines"
+                name="mission_critical_lines"
+                placeholder="Product lines where disruption would matter most"
+              >
+            </div>
 
-  <div class="cp-row">
-    <label class="cp-label" for="cp-keywords">Product keywords to track</label>
-    <input
-      class="cp-input"
-      type="text"
-      id="cp-keywords"
-      name="product_keywords"
-      placeholder="e.g., upholstered furniture, vanities, lithium batteries"
-    >
-  </div>
+            <div class="cp-row">
+              <label class="cp-label" for="cp-keywords">Product keywords to track</label>
+              <input
+                class="cp-input"
+                type="text"
+                id="cp-keywords"
+                name="product_keywords"
+                placeholder="e.g., upholstered furniture, vanities, lithium batteries"
+              >
+            </div>
 
-  <div class="cp-row">
-    <fieldset class="cp-fieldset">
-      <legend class="cp-label">Priority exposure areas</legend>
+            <div class="cp-row">
+              <fieldset class="cp-fieldset">
+                <legend class="cp-label">Priority exposure areas</legend>
 
-      <div class="cp-check-grid cp-check-grid-exposure">
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="Tariffs / trade policy">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Tariffs / trade policy</span>
-        </label>
+                <div class="cp-check-grid cp-check-grid-exposure">
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Tariffs / trade policy">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">Tariffs / trade policy</span>
+                  </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="AD/CVD exposure">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">AD/CVD exposure</span>
-        </label>
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="AD/CVD exposure">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">AD/CVD exposure</span>
+                  </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="Forced labor / UFLPA">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Forced labor / UFLPA</span>
-        </label>
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Forced labor / UFLPA">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">Forced labor / UFLPA</span>
+                  </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="Customs exams / inspection friction">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Customs exams / inspection friction</span>
-        </label>
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Customs exams / inspection friction">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">Customs exams / inspection friction</span>
+                  </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="Product safety / regulatory exposure">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Product safety / regulatory exposure</span>
-        </label>
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Product safety / regulatory exposure">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">Product safety / regulatory exposure</span>
+                  </label>
 
-        <label class="cp-check">
-          <input type="checkbox" name="priority_exposure_areas[]" value="Sanctions / restricted party exposure">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Sanctions / restricted party exposure</span>
-        </label>
-      </div>
-    </fieldset>
-  </div>
-  <div class="cp-row">
-    <label class="cp-label" for="cp-immediate-escalation">Products or issues that should trigger immediate escalation</label>
-    <textarea
-      class="cp-textarea"
-      id="cp-immediate-escalation"
-      name="immediate_escalation_products"
-      rows="4"
-      placeholder="Products, categories, or issues where you want faster escalation"
-    ></textarea>
-  </div>
-</section>
+                  <label class="cp-check">
+                    <input type="checkbox" name="priority_exposure_areas[]" value="Sanctions / restricted party exposure">
+                    <span class="cp-check-box" aria-hidden="true"></span>
+                    <span class="cp-check-text">Sanctions / restricted party exposure</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="cp-row">
+              <label class="cp-label" for="cp-immediate-escalation">Products or issues that should trigger immediate escalation</label>
+              <textarea
+                class="cp-textarea"
+                id="cp-immediate-escalation"
+                name="immediate_escalation_products"
+                rows="4"
+                placeholder="Products, categories, or issues where you want faster escalation"
+              ></textarea>
+            </div>
+          </section>
         </form>
       </div>
     </div>
