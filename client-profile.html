@@ -16,6 +16,58 @@ description: Private client profile form for configuring Import Risk Intelligenc
   .site-footer .footer-nav{
     display: none !important;
   }
+
+  .cp-form-footer{
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .cp-form-note{
+    margin: 0 0 1rem;
+    color: rgba(255,255,255,0.72);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .cp-submit-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    padding: 0.95rem 1.35rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .cp-submit-btn:hover{
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.28);
+  }
+
+  .cp-submit-btn:disabled{
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .cp-form-status{
+    margin: 1rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .cp-form-status-success{
+    color: #b9f3c4;
+  }
+
+  .cp-form-status-error{
+    color: #ffb3b3;
+  }
 </style>
 
 <main class="client-profile-page">
@@ -44,7 +96,9 @@ description: Private client profile form for configuring Import Risk Intelligenc
           </p>
         </div>
 
-        <form class="cp-form" action="#" method="post">
+        <form class="cp-form" id="client-profile-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="post">
+          <input type="hidden" name="_subject" value="New IRI Client Profile Submission">
+
           <section class="cp-section" aria-labelledby="company-overview-title">
             <div class="cp-section-head">
               <h3 id="company-overview-title" class="cp-section-title">Company Overview</h3>
@@ -344,8 +398,73 @@ description: Private client profile form for configuring Import Risk Intelligenc
               ></textarea>
             </div>
           </section>
+
+          <div class="cp-form-footer">
+            <p class="cp-form-note">
+              Anything not covered here can be added later by email.
+            </p>
+
+            <button class="cp-submit-btn" type="submit">Submit profile</button>
+
+            <p class="cp-form-status cp-form-status-success" id="cp-form-success" hidden>
+              Thanks. Your client profile was submitted successfully.
+            </p>
+
+            <p class="cp-form-status cp-form-status-error" id="cp-form-error" hidden>
+              Something went wrong and your profile could not be submitted. Please try again or email me directly.
+            </p>
+          </div>
         </form>
       </div>
     </div>
   </section>
 </main>
+
+<script>
+  (function () {
+    const form = document.getElementById('client-profile-form');
+    const successMessage = document.getElementById('cp-form-success');
+    const errorMessage = document.getElementById('cp-form-error');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      successMessage.hidden = true;
+      errorMessage.hidden = true;
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton ? submitButton.textContent : '';
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMessage.hidden = false;
+        } else {
+          errorMessage.hidden = false;
+        }
+      } catch (error) {
+        errorMessage.hidden = false;
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    });
+  })();
+</script>
