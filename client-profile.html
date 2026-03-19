@@ -260,30 +260,19 @@ description: Private client profile form for configuring Import Risk Intelligenc
               <h3 id="origin-title" class="cp-section-title">Origin Locations &amp; Risks</h3>
             </div>
 
-            <div class="cp-row">
-              <label class="cp-label" for="cp-primary-countries">Primary countries of origin<span class="cp-required">*</span></label>
+                       <div class="cp-row">
+              <label class="cp-label" for="cp-origin-countries-share">Countries of origin and approximate share<span class="cp-required">*</span></label>
               <textarea
                 class="cp-textarea"
-                id="cp-primary-countries"
-                name="primary_countries_of_origin"
+                id="cp-origin-countries-share"
+                name="countries_of_origin_and_share"
                 rows="4"
                 required
-                placeholder="e.g., China, Vietnam, India, Mexico"
+                placeholder="e.g., Mexico 50%, Vietnam 20%, India 15%"
               ></textarea>
             </div>
 
-            <div class="cp-row">
-              <label class="cp-label" for="cp-origin-share">Top origin countries by share</label>
-              <textarea
-                class="cp-textarea"
-                id="cp-origin-share"
-                name="top_origin_countries_by_share"
-                rows="4"
-                placeholder="e.g., China ~60%, Vietnam ~25%, India ~15%"
-              ></textarea>
-            </div>
-
-            <div class="cp-row">
+           <div class="cp-row">
               <label class="cp-label" for="cp-ports-departure">Primary ports of departure (if known)</label>
               <input
                 class="cp-input"
