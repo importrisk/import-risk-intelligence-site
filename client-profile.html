@@ -244,11 +244,11 @@ description: Private client profile form for configuring Import Risk Intelligenc
             </div>
 
             <div class="cp-row">
-              <label class="cp-label" for="cp-immediate-escalation">Priority sensitivities</label>
+              <label class="cp-label" for="cp-priority-sensitivities">Priority sensitivities</label>
               <textarea
                 class="cp-textarea"
-                id="cp-immediate-escalation"
-                name="immediate_escalation_triggers"
+                id="cp-priority-sensitivities"
+                name="priority_sensitivities"
                 rows="4"
                 placeholder="e.g., developments that would be especially sensitive for your business, products, or supply chain"
               ></textarea>
@@ -260,7 +260,7 @@ description: Private client profile form for configuring Import Risk Intelligenc
               <h3 id="origin-title" class="cp-section-title">Origin Locations &amp; Risks</h3>
             </div>
 
-                       <div class="cp-row">
+            <div class="cp-row">
               <label class="cp-label" for="cp-origin-countries-share">Countries of origin and approximate share<span class="cp-required">*</span></label>
               <textarea
                 class="cp-textarea"
@@ -272,7 +272,7 @@ description: Private client profile form for configuring Import Risk Intelligenc
               ></textarea>
             </div>
 
-           <div class="cp-row">
+            <div class="cp-row">
               <label class="cp-label" for="cp-ports-departure">Primary ports of departure (if known)</label>
               <input
                 class="cp-input"
@@ -284,17 +284,18 @@ description: Private client profile form for configuring Import Risk Intelligenc
             </div>
 
             <div class="cp-row">
-              <label class="cp-label" for="cp-origin-notes">Origin risks</label>
+              <label class="cp-label" for="cp-origin-risks">Origin risks</label>
               <textarea
                 class="cp-textarea"
-                id="cp-origin-notes"
-                name="origin_notes"
+                id="cp-origin-risks"
+                name="origin_risks"
                 rows="4"
                 placeholder="e.g., any history of political unrest, labor strikes, policy changes, enforcement pressure, or other origin-side concerns"
               ></textarea>
             </div>
           </section>
-             <section class="cp-section" aria-labelledby="lanes-dependencies-title">
+
+          <section class="cp-section" aria-labelledby="lanes-dependencies-title">
             <div class="cp-section-head">
               <h3 id="lanes-dependencies-title" class="cp-section-title">Key Lanes &amp; Logistics Dependencies</h3>
             </div>
@@ -333,11 +334,11 @@ description: Private client profile form for configuring Import Risk Intelligenc
             </div>
 
             <div class="cp-row">
-              <label class="cp-label" for="cp-chokepoints">Known chokepoints or fragile links</label>
+              <label class="cp-label" for="cp-fragile-points">Known fragile points or recurring issues</label>
               <textarea
                 class="cp-textarea"
-                id="cp-chokepoints"
-                name="known_chokepoints_or_fragile_links"
+                id="cp-fragile-points"
+                name="known_fragile_points_or_recurring_issues"
                 rows="4"
                 placeholder="e.g., any history of congestion, labor disruption, rail delays, border issues, port disruption, equipment shortages, or other recurring problems affecting your flow"
               ></textarea>
