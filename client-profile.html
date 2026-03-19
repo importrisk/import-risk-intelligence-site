@@ -231,6 +231,98 @@ description: Private client profile form for configuring Import Risk Intelligenc
 </div>
   </div>
 </section>
+          <section class="cp-section" aria-labelledby="products-exposure-title">
+  <div class="cp-section-head">
+    <h3 id="products-exposure-title" class="cp-section-title">Products &amp; Exposure Priorities</h3>
+  </div>
+
+  <div class="cp-row">
+    <label class="cp-label" for="cp-product-categories">Primary product categories</label>
+    <input
+      class="cp-input"
+      type="text"
+      id="cp-product-categories"
+      name="product_categories"
+      placeholder="e.g., furniture, lighting, housewares, electronics"
+    >
+  </div>
+
+  <div class="cp-row">
+    <label class="cp-label" for="cp-critical-lines">Mission-critical product lines</label>
+    <input
+      class="cp-input"
+      type="text"
+      id="cp-critical-lines"
+      name="mission_critical_lines"
+      placeholder="Product lines where disruption would matter most"
+    >
+  </div>
+
+  <div class="cp-row">
+    <label class="cp-label" for="cp-keywords">Product keywords to track</label>
+    <input
+      class="cp-input"
+      type="text"
+      id="cp-keywords"
+      name="product_keywords"
+      placeholder="e.g., upholstered furniture, vanities, lithium batteries"
+    >
+  </div>
+
+  <div class="cp-row">
+    <fieldset class="cp-fieldset">
+      <legend class="cp-label">Priority exposure areas</legend>
+
+      <div class="cp-check-grid cp-check-grid-exposure">
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="Tariffs / trade policy">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Tariffs / trade policy</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="AD/CVD exposure">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">AD/CVD exposure</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="Forced labor / UFLPA">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Forced labor / UFLPA</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="Customs exams / inspection friction">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Customs exams / inspection friction</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="Product safety / regulatory exposure">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Product safety / regulatory exposure</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="priority_exposure_areas[]" value="Sanctions / restricted party exposure">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Sanctions / restricted party exposure</span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+  <div class="cp-row">
+    <label class="cp-label" for="cp-immediate-escalation">Products or issues that should trigger immediate escalation</label>
+    <textarea
+      class="cp-textarea"
+      id="cp-immediate-escalation"
+      name="immediate_escalation_products"
+      rows="4"
+      placeholder="Products, categories, or issues where you want faster escalation"
+    ></textarea>
+  </div>
+</section>
         </form>
       </div>
     </div>
