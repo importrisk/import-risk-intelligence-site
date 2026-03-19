@@ -1685,14 +1685,16 @@ select.cs-input:-webkit-autofill:focus{
 
 .cp-check-grid{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
-  gap: 12px 28px;
-  margin-top: 4px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+  row-gap: 14px;
+  margin-top: 6px;
+  align-items: start;
 }
 
 .cp-check{
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
   min-height: 22px;
@@ -1705,7 +1707,9 @@ select.cs-input:-webkit-autofill:focus{
 .cp-check input[type="checkbox"]{
   position: absolute;
   opacity: 0;
-  pointer-events: none;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .cp-check-box{
@@ -1716,7 +1720,6 @@ select.cs-input:-webkit-autofill:focus{
   border: 1px solid rgba(255,255,255,.24);
   background: rgba(0,0,0,.18);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
 }
 
 .cp-check-text{
@@ -1734,7 +1737,6 @@ select.cs-input:-webkit-autofill:focus{
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   opacity: 0;
-  transition: opacity .15s ease;
 }
 
 .cp-check:hover .cp-check-box{
@@ -1757,11 +1759,9 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
-  .cp-check-grid{
-    grid-template-columns: repeat(2, minmax(0, max-content));
-    gap: 10px 18px;
+  .cp-grid-2{
+    grid-template-columns: 1fr;
   }
-}
 
   .cp-section{
     margin-top: 26px;
@@ -1769,8 +1769,9 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .cp-check-grid{
-    grid-template-columns: repeat(2, minmax(0, max-content));
-    gap: 10px 18px;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 12px;
   }
 }
 /* =========================================================
