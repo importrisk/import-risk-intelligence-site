@@ -139,12 +139,12 @@ description: Private client profile form for configuring Import Risk Intelligenc
     >
   </div>
 
-  <div class="cp-grid cp-grid-2">
+ <div class="cp-grid cp-grid-2">
   <div class="cp-row">
     <fieldset class="cp-fieldset">
       <legend class="cp-label">Primary incoterms used</legend>
 
-      <div class="cp-check-grid cp-check-grid-compact">
+      <div class="cp-check-grid cp-check-grid-incoterms">
         <label class="cp-check">
           <input type="checkbox" name="incoterms[]" value="EXW">
           <span class="cp-check-box" aria-hidden="true"></span>
@@ -155,6 +155,18 @@ description: Private client profile form for configuring Import Risk Intelligenc
           <input type="checkbox" name="incoterms[]" value="FOB">
           <span class="cp-check-box" aria-hidden="true"></span>
           <span class="cp-check-text">FOB</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="incoterms[]" value="DDP">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">DDP</span>
+        </label>
+
+        <label class="cp-check">
+          <input type="checkbox" name="incoterms[]" value="CFR">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">CFR</span>
         </label>
 
         <label class="cp-check">
@@ -170,18 +182,6 @@ description: Private client profile form for configuring Import Risk Intelligenc
         </label>
 
         <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="CFR">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">CFR</span>
-        </label>
-
-        <label class="cp-check">
-          <input type="checkbox" name="incoterms[]" value="DDP">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">DDP</span>
-        </label>
-
-        <label class="cp-check">
           <input type="checkbox" name="incoterms[]" value="Other">
           <span class="cp-check-box" aria-hidden="true"></span>
           <span class="cp-check-text">Other</span>
@@ -194,7 +194,7 @@ description: Private client profile form for configuring Import Risk Intelligenc
     <fieldset class="cp-fieldset">
       <legend class="cp-label">Main modes used</legend>
 
-      <div class="cp-check-grid cp-check-grid-compact">
+      <div class="cp-check-grid cp-check-grid-modes">
         <label class="cp-check">
           <input type="checkbox" name="modes[]" value="Ocean">
           <span class="cp-check-box" aria-hidden="true"></span>
@@ -208,6 +208,12 @@ description: Private client profile form for configuring Import Risk Intelligenc
         </label>
 
         <label class="cp-check">
+          <input type="checkbox" name="modes[]" value="Parcel / express">
+          <span class="cp-check-box" aria-hidden="true"></span>
+          <span class="cp-check-text">Parcel / express</span>
+        </label>
+
+        <label class="cp-check">
           <input type="checkbox" name="modes[]" value="Truck">
           <span class="cp-check-box" aria-hidden="true"></span>
           <span class="cp-check-text">Truck</span>
@@ -217,12 +223,6 @@ description: Private client profile form for configuring Import Risk Intelligenc
           <input type="checkbox" name="modes[]" value="Rail">
           <span class="cp-check-box" aria-hidden="true"></span>
           <span class="cp-check-text">Rail</span>
-        </label>
-
-        <label class="cp-check">
-          <input type="checkbox" name="modes[]" value="Parcel / express">
-          <span class="cp-check-box" aria-hidden="true"></span>
-          <span class="cp-check-text">Parcel / express</span>
         </label>
       </div>
     </fieldset>
