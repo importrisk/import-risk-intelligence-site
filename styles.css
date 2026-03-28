@@ -590,8 +590,8 @@ img{ max-width: 100%; height: auto; display: block; }
 .approach-intro-block::before{
   content: "";
   width: 3px;
-  height: calc(100% - 10px);
-  margin-top: 5px;
+  height: calc(100% - 14px);
+  margin-top: 7px;
   background: rgba(127,177,234,0.82);
 }
 
