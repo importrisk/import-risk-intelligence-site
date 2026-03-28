@@ -573,6 +573,52 @@ img{ max-width: 100%; height: auto; display: block; }
   margin-left: 38px;
 }
 
+/* What Not Knowing Can Cost You */
+.cost-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.cost-card{
+  padding: 22px 24px;
+  border-radius: 0;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.cost-card-title{
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cost-card-text{
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.96);
+}
+
+.cost-card-subtext{
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.72);
+}
+
+.cost-summary{
+  margin-top: 24px;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+}
+
 @media (max-width: 720px){
   .coverage-card{
     padding: 16px 18px 14px 20px;
@@ -612,8 +658,28 @@ img{ max-width: 100%; height: auto; display: block; }
   .coverage-delivery-wrap .inline-learn-more{
     margin-left: 34px;
   }
-}
 
+  .cost-card{
+    padding: 18px 18px;
+  }
+
+  .cost-card-title{
+    font-size: 1.3rem;
+  }
+
+  .cost-card-text{
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .cost-card-subtext{
+    font-size: 0.95rem;
+  }
+
+  .cost-summary{
+    font-size: 1rem;
+  }
+}
 /* =========================================================
    8) HOME — BIO CARD (IF PRESENT)
    ========================================================= */
