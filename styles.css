@@ -481,9 +481,26 @@ img{ max-width: 100%; height: auto; display: block; }
   max-width: 980px;
 }
 
+.approach-intro-block{
+  max-width: 860px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 3px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: start;
+}
+
+.approach-intro-block::before{
+  content: "";
+  width: 3px;
+  height: calc(100% - 14px);
+  margin-top: 7px;
+  background: rgba(127,177,234,0.82);
+}
+
 .approach-intro{
   max-width: 780px;
-  margin-bottom: 0;
+  margin: 0;
   font-size: 1.02rem;
   line-height: 1.62;
 }
@@ -553,17 +570,30 @@ img{ max-width: 100%; height: auto; display: block; }
 .approach-close-block{
   max-width: 780px;
   margin-top: 28px;
-  padding: 0 0 0 18px;
-  border-left: 3px solid rgba(127,177,234,0.82);
 }
 
 .approach-close-title{
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   font-size: 1.55rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 760;
   color: rgba(255,255,255,0.98);
+}
+
+.approach-close-copy{
+  display: grid;
+  grid-template-columns: 3px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: start;
+}
+
+.approach-close-copy::before{
+  content: "";
+  width: 3px;
+  height: calc(100% - 10px);
+  margin-top: 5px;
+  background: rgba(127,177,234,0.82);
 }
 
 .approach-close{
@@ -576,27 +606,6 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-more{
   margin-top: 18px;
-}
-
-.approach-intro-block{
-  max-width: 860px;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 3px minmax(0, 1fr);
-  column-gap: 10px;
-  align-items: start;
-}
-
-.approach-intro-block::before{
-  content: "";
-  width: 3px;
-  height: calc(100% - 14px);
-  margin-top: 7px;
-  background: rgba(127,177,234,0.82);
-}
-
-.approach-intro{
-  margin: 0;
 }
 
 /* =========================================================
@@ -639,8 +648,8 @@ img{ max-width: 100%; height: auto; display: block; }
     font-size: 1.32rem;
   }
 
-  .approach-close-block{
-    padding-left: 14px;
+  .approach-close-copy{
+    column-gap: 10px;
   }
 }
 
