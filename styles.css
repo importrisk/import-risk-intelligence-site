@@ -247,7 +247,7 @@ img{ max-width: 100%; height: auto; display: block; }
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: saturate(.96) contrast(.99) brightness(1.02);
+  filter: saturate(.92) contrast(.98) brightness(.92);
   z-index: 0;
   pointer-events: none;
 }
