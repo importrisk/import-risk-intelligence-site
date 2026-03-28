@@ -491,7 +491,7 @@ img{ max-width: 100%; height: auto; display: block; }
 .approach-divider{
   width: 100%;
   height: 1px;
-  margin: 26px 0 20px;
+  margin: 22px 0 12px;
   background: linear-gradient(
     90deg,
     rgba(255,255,255,0.04) 0%,
@@ -507,7 +507,7 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 .approach-row{
-  padding: 28px 0 30px;
+  padding: 20px 0 30px;
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
