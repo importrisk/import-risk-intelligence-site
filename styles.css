@@ -480,8 +480,8 @@ img{ max-width: 100%; height: auto; display: block; }
 .coverage-card,
 .coverage-delivery{
   position: relative;
-  padding: 20px 22px 18px 24px;
-  border-radius: 14px;
+  padding: 18px 22px 16px 24px;
+  border-radius: 0;
   background: linear-gradient(
     180deg,
     rgba(255,255,255,0.05) 0%,
@@ -499,16 +499,16 @@ img{ max-width: 100%; height: auto; display: block; }
   content: "";
   position: absolute;
   left: 0;
-  top: 26px;
+  top: 22px;
   width: 3px;
-  height: 72px;
+  height: 66px;
   border-radius: 999px;
   background: rgba(111, 177, 255, 0.95);
   box-shadow: 0 0 16px rgba(111, 177, 255, 0.35);
 }
 
 .coverage-card-title{
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-size: 18px;
   line-height: 1.2;
   font-weight: 700;
@@ -518,24 +518,50 @@ img{ max-width: 100%; height: auto; display: block; }
 .coverage-card-text{
   margin: 0;
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.5;
   color: rgba(255,255,255,0.88);
   max-width: 95%;
 }
 
 .coverage-delivery{
-  margin: 4px 0 26px;
+  margin: 4px 0 0;
 }
 
 .coverage-delivery-list{
-  margin: 10px 0 0 20px;
+  list-style: none;
+  margin: 10px 0 0;
   padding: 0;
-  color: rgba(255,255,255,0.9);
 }
 
 .coverage-delivery-list li{
-  margin: 8px 0;
+  position: relative;
+  margin: 12px 0;
+  padding-left: 42px;
   line-height: 1.45;
+  color: rgba(255,255,255,0.9);
+}
+
+.coverage-delivery-list li::before{
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(111,177,255,.35);
+  border-radius: 50%;
+  color: rgba(170,210,255,.98);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.coverage-delivery .inline-learn-more{
+  display: inline-block;
+  margin-top: 14px;
 }
 
 @media (max-width: 720px){
