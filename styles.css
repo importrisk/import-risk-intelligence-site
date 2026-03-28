@@ -475,83 +475,144 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   APPROACH SECTION — EARLIER WARNING
+   APPROACH SECTION — WHAT EARLY WARNING DOES FOR YOU
    ========================================================= */
-.approach-intro{
+#approach{
   max-width: 980px;
+}
+
+.approach-intro{
+  max-width: 860px;
   margin-bottom: 0;
+  font-size: 1.02rem;
+  line-height: 1.62;
 }
 
 .approach-divider{
   width: 100%;
   height: 1px;
-  margin: 24px 0 26px;
+  margin: 26px 0 30px;
   background: linear-gradient(
     90deg,
-    rgba(160, 205, 255, 0.78) 0%,
-    rgba(255, 255, 255, 0.16) 72%,
-    rgba(255, 255, 255, 0.02) 100%
+    rgba(160,205,255,0.88) 0%,
+    rgba(255,255,255,0.16) 72%,
+    rgba(255,255,255,0.02) 100%
   );
   box-shadow: 0 0 18px rgba(111,177,255,0.10);
 }
 
-.approach-stack{
-  display: flex;
-  flex-direction: column;
-}
-
-.approach-item{
+/* HERO ROW */
+.approach-hero{
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  padding: 22px 0 24px;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 34px;
+  align-items: center;
+  padding: 4px 0 28px;
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
-.approach-item:first-child{
-  padding-top: 0;
+.approach-hero-copy{
+  max-width: 820px;
 }
 
-.approach-item-callout{
-  grid-template-columns: minmax(0, 1fr) 240px;
-  align-items: center;
-  gap: 28px;
+.approach-kicker{
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(148,197,255,0.95);
 }
 
-.approach-item-title{
-  margin: 0 0 8px;
-  font-size: 1.55rem;
-  line-height: 1.15;
-  font-weight: 700;
-  color: rgba(255,255,255,0.97);
-  letter-spacing: -0.01em;
+.approach-hero-title{
+  margin: 0 0 12px;
+  font-size: 2.15rem;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 750;
+  color: rgba(255,255,255,0.98);
 }
 
-.approach-item-text{
+.approach-hero-text{
   margin: 0;
-  max-width: 880px;
-  font-size: 1.06rem;
-  line-height: 1.6;
+  font-size: 1.02rem;
+  line-height: 1.68;
+  color: rgba(255,255,255,0.84);
+}
+
+.approach-hero-stat{
+  justify-self: end;
+  text-align: right;
+  padding-left: 10px;
+}
+
+.approach-hero-stat-value{
+  font-size: 3.35rem;
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.approach-hero-stat-label{
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: rgba(170,210,255,0.94);
+}
+
+/* FOLLOW-ON ROWS */
+.approach-list{
+  max-width: 900px;
+}
+
+.approach-row{
+  padding: 26px 0 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.approach-row-title{
+  margin: 0 0 10px;
+  font-size: 1.28rem;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  font-weight: 730;
+  color: rgba(255,255,255,0.97);
+}
+
+.approach-row-text{
+  margin: 0;
+  max-width: 820px;
+  font-size: 1rem;
+  line-height: 1.68;
   color: rgba(255,255,255,0.82);
 }
 
-.approach-side-note{
-  justify-self: end;
-  text-align: right;
-  font-size: 1.3rem;
-  line-height: 1.18;
-  font-weight: 700;
+/* CLOSE */
+.approach-close-block{
+  max-width: 860px;
+  margin-top: 28px;
+  padding: 0 0 0 18px;
+  border-left: 3px solid rgba(127,177,234,0.82);
+}
+
+.approach-close-title{
+  margin: 0 0 8px;
+  font-size: 1.55rem;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  color: rgba(170,210,255,0.95);
+  font-weight: 760;
+  color: rgba(255,255,255,0.98);
 }
 
 .approach-close{
-  margin: 22px 0 0;
-  max-width: 980px;
-  font-size: 1.08rem;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.62;
   font-weight: 500;
-  color: rgba(255,255,255,0.94);
+  color: rgba(255,255,255,0.92);
 }
 
 .method-more{
@@ -559,47 +620,70 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================================================
-   APPROACH SECTION RESPONSIVE
+   APPROACH RESPONSIVE
    ========================================================= */
 @media (max-width: 900px){
-  .approach-item-callout{
+  .approach-hero{
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
     align-items: start;
   }
 
-  .approach-side-note{
+  .approach-hero-stat{
     justify-self: start;
     text-align: left;
+    padding-left: 0;
   }
 }
 
 @media (max-width: 720px){
+  #approach{
+    max-width: none;
+  }
+
   .approach-divider{
-    margin: 20px 0 22px;
+    margin: 22px 0 24px;
   }
 
-  .approach-item{
-    padding: 18px 0 20px;
+  .approach-hero{
+    padding-bottom: 22px;
   }
 
-  .approach-item-title{
-    font-size: 1.28rem;
+  .approach-hero-title{
+    font-size: 1.7rem;
+    line-height: 1.1;
   }
 
-  .approach-item-text,
-  .approach-close{
+  .approach-hero-text,
+  .approach-row-text,
+  .approach-close,
+  .approach-intro{
     font-size: 1rem;
-    line-height: 1.58;
+    line-height: 1.6;
   }
 
-  .approach-side-note{
-    font-size: 1.12rem;
-    line-height: 1.22;
+  .approach-hero-stat-value{
+    font-size: 2.5rem;
   }
 
-  .method-more{
-    margin-top: 16px;
+  .approach-hero-stat-label{
+    font-size: 0.95rem;
+  }
+
+  .approach-row{
+    padding: 22px 0 24px;
+  }
+
+  .approach-row-title{
+    font-size: 1.18rem;
+  }
+
+  .approach-close-title{
+    font-size: 1.32rem;
+  }
+
+  .approach-close-block{
+    padding-left: 14px;
   }
 }
 /* =========================================================
