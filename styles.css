@@ -227,7 +227,8 @@ img{ max-width: 100%; height: auto; display: block; }
   min-height: 70vh;
   display: flex;
   flex-direction: column;
-  padding-top: var(--topbar-h);
+  justify-content: flex-start;
+  padding-top: calc(var(--topbar-h) + 24px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -257,7 +258,7 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 88px 0 0;
+  padding: 48px 0 0;
 }
 
 .hero-title{
