@@ -503,64 +503,30 @@ img{ max-width: 100%; height: auto; display: block; }
 
 /* HERO ROW */
 .approach-hero{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 34px;
-  align-items: center;
+  display: block;
   padding: 4px 0 28px;
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
 .approach-hero-copy{
-  max-width: 820px;
-}
-
-.approach-kicker{
-  margin: 0 0 12px;
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(148,197,255,0.95);
+  max-width: 760px;
 }
 
 .approach-hero-title{
   margin: 0 0 12px;
-  font-size: 2.15rem;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-size: 1.7rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   font-weight: 750;
   color: rgba(255,255,255,0.98);
 }
 
 .approach-hero-text{
   margin: 0;
+  max-width: 720px;
   font-size: 1.02rem;
   line-height: 1.68;
   color: rgba(255,255,255,0.84);
-}
-
-.approach-hero-stat{
-  justify-self: end;
-  text-align: right;
-  padding-left: 10px;
-}
-
-.approach-hero-stat-value{
-  font-size: 3.35rem;
-  line-height: 0.92;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: #ffffff;
-}
-
-.approach-hero-stat-label{
-  margin-top: 10px;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: 600;
-  color: rgba(170,210,255,0.94);
 }
 
 /* FOLLOW-ON ROWS */
