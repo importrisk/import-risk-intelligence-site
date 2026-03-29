@@ -1974,6 +1974,17 @@ select.cs-input:-webkit-autofill:focus{
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
+.pricing-card-featured-cta{
+  margin-top: 22px;
+  display: block;
+  clear: both;
+  text-align: right;
+}
+
+.pricing-card-cta-btn{
+  min-width: 180px;
+}
+
 /* Includes */
 .pricing-includes{
   margin-top: 44px;
