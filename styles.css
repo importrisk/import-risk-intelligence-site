@@ -1385,21 +1385,49 @@ select.cs-input:-webkit-autofill:focus{
 
 /* Card header (inside the dark card) */
 .brief-card-head{
-  padding: 6px 0 18px;
+  padding: 6px 0 0;
   margin: 0 0 22px;
-  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
 .brief-card-head h2{
-  margin: 0 0 6px;
+  margin: 0 0 18px;
   font-size: 26px;
   letter-spacing: .2px;
   color: rgba(255,255,255,.94);
 }
 
 .brief-card-head .muted{
-  margin: 0;
   color: var(--muted, rgba(255,255,255,.82));
+}
+
+.brief-intro-lead{
+  margin: 0 0 10px;
+  max-width: 58ch;
+  line-height: 1.5;
+}
+
+.brief-intro-copy{
+  margin: 0 0 10px;
+  max-width: 72ch;
+  line-height: 1.5;
+}
+
+.brief-term{
+  color: rgba(127,177,234,.96);
+  font-weight: 700;
+}
+
+.brief-intro-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.brief-link-inline{
+  margin-left: 0;
 }
 
 .brief-card-foot{
@@ -1416,6 +1444,13 @@ select.cs-input:-webkit-autofill:focus{
   margin-top: 0;    /* prevent extra gap */
 }
 
+@media (max-width: 640px){
+  .brief-intro-links{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
 /* =========================================================
    BRIEF ENTRY — streamlined “PDF-like” reading
    ========================================================= */
