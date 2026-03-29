@@ -2068,6 +2068,8 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-card-cta-secondary{
   margin-top: auto;
   padding-top: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .pricing-card-cta-secondary .pricing-card-cta-btn{
