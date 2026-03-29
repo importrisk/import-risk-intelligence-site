@@ -1811,6 +1811,15 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.97);
 }
 
+.pricing-card-starting{
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(148,197,255,.92);
+}
+
 .pricing-card-price{
   margin: 0;
   font-size: 34px;
