@@ -1866,12 +1866,13 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-domain-bullet{
-  width: 2px;
-  height: 14px;
-  border-radius: 999px;
-  background: rgba(139,188,255,.95);
-  box-shadow: 0 0 8px rgba(139,188,255,.20);
-  flex: 0 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #8bbcff;
+  font-size: 12px;
+  line-height: 1;
+  flex: 0 0 auto;
 }
 
 .pricing-domain-list{
