@@ -1694,24 +1694,17 @@ select.cs-input:-webkit-autofill:focus{
   margin-top: -340px;
 }
 
-.brief-intro-card,
-.brief-cta-card{
+/* Intro card */
+.brief-intro-card{
   background: rgba(14, 22, 34, .82);
   border: 1px solid rgba(255,255,255,.10);
   box-shadow: 0 18px 44px rgba(0,0,0,.28);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  padding: 24px 32px 20px;
 }
 
-.brief-intro-card{
-  padding: 24px 24px 20px;
-}
-
-.brief-cta-card{
-  margin-top: 28px;
-  padding: 8px 24px 20px;
-}
-
+/* Group spacing */
 .brief-group{
   margin-top: 34px;
 }
@@ -1728,11 +1721,13 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.66);
 }
 
+/* Card stack */
 .brief-stack{
   display: grid;
   gap: 22px;
 }
 
+/* Individual brief cards */
 .brief-entry-card{
   max-width: none;
   margin: 0;
@@ -1755,7 +1750,7 @@ select.cs-input:-webkit-autofill:focus{
   display: none;
 }
 
-/* old giant wrapper no longer used */
+/* Old giant wrapper no longer used */
 .brief-card.spill-up{
   max-width: none;
   margin: 0;
