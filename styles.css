@@ -1859,7 +1859,7 @@ select.cs-input:-webkit-autofill:focus{
   gap: 8px;
   color: rgba(255,255,255,.72);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: .12em;
   text-transform: uppercase;
