@@ -606,6 +606,7 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .method-more{
   margin-top: 18px;
+  align: right;
 }
 
 /* =========================================================
