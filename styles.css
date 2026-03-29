@@ -1897,9 +1897,13 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-card-featured-grid{
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr) 340px;
   gap: 28px;
   align-items: start;
+}
+
+.pricing-card-main{
+  min-width: 0;
 }
 
 .pricing-card-title-featured{
@@ -1922,6 +1926,15 @@ select.cs-input:-webkit-autofill:focus{
   align-self: start;
 }
 
+.pricing-card-starting{
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(148,197,255,.92);
+}
+
 .pricing-card-price-featured{
   font-size: 60px;
   line-height: .95;
@@ -1931,7 +1944,16 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-card-term{
   margin: 10px 0 0;
   font-size: 15px;
+  line-height: 1.35;
   color: rgba(148,197,255,.92);
+}
+
+.pricing-card-cta{
+  margin-top: 18px;
+}
+
+.pricing-card-cta-btn{
+  min-width: 180px;
 }
 
 .pricing-card-divider{
@@ -1948,10 +1970,13 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-card-list-featured{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px 22px;
 }
-
 /* Secondary cards */
 .pricing-secondary-wrap{
   margin-top: 24px;
