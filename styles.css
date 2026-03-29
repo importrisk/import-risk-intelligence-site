@@ -1940,18 +1940,27 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(148,197,255,.92);
 }
 
-.pricing-card-price-featured span{
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0;
+.pricing-card-term{
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
   color: rgba(148,197,255,.92);
 }
 
-.pricing-card-term{
-  margin: 4px 0 0;
-  font-size: 15px;
-  line-height: 1.2;
-  color: rgba(148,197,255,.92);
+.pricing-card-cta{
+  margin-top: 18px;
+}
+
+.pricing-card-cta-btn{
+  min-width: 180px;
+}
+
+.pricing-card-term-sub{
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(255,255,255,.96);
 }
 
 .pricing-card-divider{
@@ -1975,7 +1984,6 @@ select.cs-input:-webkit-autofill:focus{
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px 22px;
 }
-
 /* Secondary cards */
 .pricing-secondary-wrap{
   margin-top: 24px;
