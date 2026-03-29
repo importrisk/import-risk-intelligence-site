@@ -1667,7 +1667,7 @@ select.cs-input:-webkit-autofill:focus{
       rgba(20, 42, 68, .58) 52%,
       rgba(16, 34, 56, .72) 100%
     ),
-    url("assets/images/pricing_hero.jpg");
+    url("assets/images/pricing_hero_blue.jpg");
   background-size: cover;
   background-position: center 48%;
   background-repeat: no-repeat;
