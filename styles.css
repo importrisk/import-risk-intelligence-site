@@ -1844,6 +1844,32 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 15px;
 }
 
+.pricing-domain-columns{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(170px, 220px));
+  gap: 12px 30px;
+  margin-top: 22px;
+  margin-left: 10px;
+  max-width: 520px;
+}
+
+.pricing-domain-item{
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: rgba(255,255,255,.80);
+  font-size: 16px;
+  line-height: 1.15;
+  letter-spacing: .01em;
+}
+
+.pricing-domain-bullet{
+  width: 12px;
+  height: 1px;
+  background: rgba(139,188,255,.92);
+  box-shadow: 0 0 6px rgba(139,188,255,.16);
+  flex: 0 0 12px;
+}
 .pricing-domain-list{
   display: flex;
   flex-wrap: wrap;
