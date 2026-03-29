@@ -1650,14 +1650,20 @@ select.cs-input:-webkit-autofill:focus{
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
+  background-image:
     linear-gradient(180deg,
-      rgba(18, 34, 54, .94) 0%,
-      rgba(24, 42, 66, .92) 58%,
-      rgba(34, 54, 80, .88) 100%),
-    radial-gradient(1000px 420px at 18% 10%,
-      rgba(127,177,234,.14) 0%,
-      rgba(127,177,234,0) 62%);
+      rgba(9, 20, 34, .78) 0%,
+      rgba(13, 26, 43, .82) 52%,
+      rgba(18, 33, 52, .86) 100%),
+    radial-gradient(900px 320px at 42% 34%,
+      rgba(255,255,255,.04) 0%,
+      rgba(255,255,255,0) 58%),
+    url("assets/images/pricing_hero.jpg");
+  background-size: cover;
+  background-position: center 44%;
+  background-repeat: no-repeat;
+  filter: saturate(.42) contrast(.84) brightness(.52) blur(.3px);
+  transform: scale(1.01);
 }
 
 .pricing-top::after{
