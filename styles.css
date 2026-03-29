@@ -1847,29 +1847,33 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-domain-columns{
   display: grid;
   grid-template-columns: repeat(4, max-content);
-  gap: 16px 34px;
+  gap: 20px 34px;
   margin-top: 24px;
-  margin-left: 14px;
-  max-width: 720px;
+  margin-left: 28px;
+  max-width: 860px;
 }
 
 .pricing-domain-item{
   display: flex;
   align-items: center;
-  gap: 11px;
-  color: rgba(255,255,255,.80);
-  font-size: 16px;
-  line-height: 1.15;
-  letter-spacing: .01em;
+  gap: 12px;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .pricing-domain-bullet{
-  width: 12px;
-  height: 1px;
-  background: rgba(139,188,255,.92);
-  box-shadow: 0 0 6px rgba(139,188,255,.16);
-  flex: 0 0 12px;
+  width: 2px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(139,188,255,.95);
+  box-shadow: 0 0 8px rgba(139,188,255,.20);
+  flex: 0 0 2px;
 }
+
 .pricing-domain-list{
   display: flex;
   flex-wrap: wrap;
