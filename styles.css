@@ -1652,14 +1652,14 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 0;
   background-image:
     linear-gradient(180deg,
-      rgba(24, 48, 82, .38) 0%,
-      rgba(20, 42, 74, .46) 52%,
-      rgba(14, 34, 64, .56) 100%),
+      rgba(36, 63, 98, .22) 0%,
+      rgba(28, 54, 90, .30) 52%,
+      rgba(20, 44, 78, .38) 100%),
     url("assets/images/pricing_hero.jpg");
   background-size: cover;
   background-position: center 44%;
   background-repeat: no-repeat;
-  filter: saturate(.90) contrast(.92) brightness(.60) blur(.08px);
+  filter: brightness(.88) saturate(1.02);
   transform: scale(1.01);
 }
 
