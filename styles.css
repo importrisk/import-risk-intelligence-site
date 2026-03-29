@@ -1824,7 +1824,7 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0;
-  color: rgba(255,255,255,.68);
+  color: rgba(148,197,255,.92);
 }
 
 .pricing-card-text{
@@ -1912,7 +1912,7 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-card-term{
   margin: 10px 0 0;
   font-size: 15px;
-  color: rgba(255,255,255,.68);
+  color: rgba(148,197,255,.92);
 }
 
 .pricing-card-divider{
@@ -1954,6 +1954,7 @@ select.cs-input:-webkit-autofill:focus{
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
+
 /* Includes */
 .pricing-includes{
   margin-top: 44px;
