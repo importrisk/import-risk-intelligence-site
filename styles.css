@@ -1574,6 +1574,19 @@ select.cs-input:-webkit-autofill:focus{
 .brief-sources li{ margin: 0 0 5px; }
 .brief-sources li:last-child{ margin-bottom: 0; }
 
+.brief-page-cta{
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.brief-page-cta-text{
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.90);
+}
+
 /* =========================================================
    INSIGHTS — subdued source links (brief-sources only)
    ========================================================= */
