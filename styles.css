@@ -2092,7 +2092,7 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-include-title{
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin: 0 0 8px;
   font-size: 18px;
   line-height: 1.2;
@@ -2107,13 +2107,14 @@ select.cs-input:-webkit-autofill:focus{
   height: 22px;
   border-radius: 999px;
   border: 1px solid rgba(139,188,255,.42);
-  background: rgba(139,188,255,.08);
+  background: transparent;
   color: #8bbcff;
   font-size: 13px;
   line-height: 1;
   flex: 0 0 22px;
-  box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset;
+  box-shadow: none;
 }
+
 /* Includes */
 .pricing-includes{
   margin-top: 44px;
