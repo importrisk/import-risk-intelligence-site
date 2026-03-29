@@ -2270,6 +2270,25 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-cta-actions{
   margin-top: 6px;
 }
+
+.pricing-cta-email{
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,.66);
+}
+
+.pricing-cta-email a{
+  color: rgba(255,255,255,.82);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.pricing-cta-email a:hover{
+  color: #8bbcff;
+  border-bottom-color: rgba(139,188,255,.42);
+}
+
 /* Responsive */
 @media (max-width: 980px){
   .pricing-card-featured-grid{
