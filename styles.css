@@ -2147,6 +2147,40 @@ select.cs-input:-webkit-autofill:focus{
 }
 /* Special Projects + CTA */
 
+.pricing-special-projects-list-intro{
+  margin-bottom: 10px;
+}
+
+.pricing-special-projects-list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 780px;
+}
+
+.pricing-special-projects-list li{
+  position: relative;
+  padding-left: 20px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.78);
+}
+
+.pricing-special-projects-list li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(139,188,255,.95);
+  box-shadow: 0 0 8px rgba(139,188,255,.18);
+  transform: translateY(-50%);
+}
+
 .pricing-special-projects{
   margin-top: 56px;
 }
