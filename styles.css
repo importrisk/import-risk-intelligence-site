@@ -1844,6 +1844,29 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 15px;
 }
 
+.pricing-domain-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 18px;
+  max-width: 780px;
+  color: rgba(255,255,255,.78);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.pricing-domain-list span{
+  position: relative;
+  padding-right: 14px;
+}
+
+.pricing-domain-list span:not(:last-child)::after{
+  content: "·";
+  position: absolute;
+  right: 0;
+  opacity: .55;
+}
+
 .pricing-card-list{
   list-style: none;
   margin: 0;
