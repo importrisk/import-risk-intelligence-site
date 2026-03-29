@@ -1664,11 +1664,24 @@ select.cs-input:-webkit-autofill:focus{
   transform: scale(1.01);
 }
 
+.pricing-top::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .pricing-top-inner{
   position: relative;
   z-index: 2;
   padding: 58px 0 42px;
   max-width: 980px;
+  text-align: center;
 }
 
 .pricing-title{
@@ -1682,6 +1695,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-intro{
   max-width: 780px;
+  margin: 0 auto;
 }
 
 .pricing-subtitle{
