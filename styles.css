@@ -1659,7 +1659,7 @@ select.cs-input:-webkit-autofill:focus{
   background-size: cover;
   background-position: center 44%;
   background-repeat: no-repeat;
-  filter: brightness(.88) saturate(1.02);
+  filter: brightness(.76) saturate(1.12);
   transform: scale(1.01);
 }
 
