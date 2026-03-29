@@ -1643,47 +1643,24 @@ select.cs-input:-webkit-autofill:focus{
   min-height: 320px;
   overflow: hidden;
   isolation: isolate;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(42, 64, 94, 1) 0%,
-      rgba(34, 56, 84, 1) 46%,
-      rgba(24, 46, 72, 1) 100%
-    );
+  background: transparent;
 }
 
 .pricing-top-bg{
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 62%;
+  inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(
-      180deg,
-      rgba(34, 56, 84, 0) 0%,
-      rgba(28, 50, 78, .34) 20%,
-      rgba(20, 42, 68, .58) 52%,
-      rgba(16, 34, 56, .72) 100%
-    ),
+    linear-gradient(180deg,
+      rgba(36, 63, 98, .22) 0%,
+      rgba(28, 54, 90, .30) 52%,
+      rgba(20, 44, 78, .38) 100%),
     url("assets/images/pricing_hero_blue.jpg");
   background-size: cover;
-  background-position: center 48%;
+  background-position: center 44%;
   background-repeat: no-repeat;
-  filter: brightness(.82) saturate(.98) contrast(.92);
+  filter: brightness(.88) saturate(1.02);
   transform: scale(1.01);
-}
-
-.pricing-top::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: rgba(255,255,255,.10);
-  z-index: 2;
 }
 
 .pricing-top-inner{
