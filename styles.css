@@ -2148,6 +2148,48 @@ select.cs-input:-webkit-autofill:focus{
   line-height: 1.55;
   color: rgba(255,255,255,.74);
 }
+
+.pricing-use-cases{
+  margin-top: 46px;
+}
+
+.pricing-use-cases-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 20px;
+}
+
+.pricing-use-case{
+  padding: 0 28px;
+}
+
+.pricing-use-case:first-child{
+  padding-left: 0;
+}
+
+.pricing-use-case:last-child{
+  padding-right: 0;
+}
+
+.pricing-use-case:not(:last-child){
+  border-right: 1px solid rgba(255,255,255,.10);
+}
+
+.pricing-use-case-title{
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #8bbcff;
+}
+
+.pricing-use-case-text{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.78);
+}
+
 /* Special Projects + CTA */
 
 .pricing-special-projects-list-intro{
