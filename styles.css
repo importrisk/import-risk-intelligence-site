@@ -1817,7 +1817,7 @@ select.cs-input:-webkit-autofill:focus{
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(148,197,255,.92);
+  color: rgba(255,255,255,.97);
 }
 
 .pricing-card-price{
@@ -1878,6 +1878,10 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-card-cta-btn{
   min-width: 180px;
+}
+
+.pricing-card-term-sub{
+  margin-top: 4px;
 }
 
 /* Featured card */
