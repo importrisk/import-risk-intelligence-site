@@ -2156,15 +2156,16 @@ select.cs-input:-webkit-autofill:focus{
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
-  max-width: 780px;
+  gap: 8px;
+  max-width: 900px;
 }
 
 .pricing-special-projects-list li{
   position: relative;
-  padding-left: 20px;
+  padding-left: 16px;
   font-size: 18px;
-  line-height: 1.55;
+  font-weight: 500;
+  line-height: 1.6;
   color: rgba(255,255,255,.78);
 }
 
@@ -2172,12 +2173,12 @@ select.cs-input:-webkit-autofill:focus{
   content: "";
   position: absolute;
   left: 0;
-  top: 0.72em;
-  width: 6px;
-  height: 6px;
+  top: 0.78em;
+  width: 5px;
+  height: 5px;
   border-radius: 999px;
   background: rgba(139,188,255,.95);
-  box-shadow: 0 0 8px rgba(139,188,255,.18);
+  box-shadow: 0 0 8px rgba(139,188,255,.16);
   transform: translateY(-50%);
 }
 
