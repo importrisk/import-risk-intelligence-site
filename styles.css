@@ -1656,22 +1656,15 @@ select.cs-input:-webkit-autofill:focus{
       rgba(28, 54, 90, .24) 48%,
       rgba(20, 44, 78, .34) 72%,
       rgba(16, 34, 56, .48) 100%),
-    linear-gradient(0deg,
-      rgba(20, 42, 68, .72) 0%,
-      rgba(20, 42, 68, .38) 24%,
-      rgba(20, 42, 68, 0) 46%),
+    linear-gradient(180deg,
+      rgba(20, 42, 68, 0) 0%,
+      rgba(20, 42, 68, .18) 28%,
+      rgba(20, 42, 68, .42) 62%,
+      rgba(20, 42, 68, .72) 100%),
     url("assets/images/water-texture.jpg"),
     url("assets/images/pricing_hero_blue.jpg");
-  background-size:
-    cover,
-    cover,
-    cover,
-    cover;
-  background-position:
-    center 44%,
-    center bottom,
-    center bottom,
-    center 44%;
+  background-size: cover, cover, cover, cover;
+  background-position: center 44%, center bottom, center bottom, center 44%;
   background-repeat: no-repeat;
   filter: brightness(.80) saturate(1.08);
   transform: scale(1.01);
