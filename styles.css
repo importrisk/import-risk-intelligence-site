@@ -1945,6 +1945,13 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(148,197,255,.92);
 }
 
+.pricing-card-price-featured span{
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: rgba(148,197,255,.92);
+}
+
 .pricing-card-term{
   margin: 10px 0 0;
   font-size: 15px;
