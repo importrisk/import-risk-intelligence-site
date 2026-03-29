@@ -39,10 +39,10 @@
   background-image:
     /* stronger de-fog (still subtle, but you’ll actually see it) */
     linear-gradient(180deg,
-      rgba(10,20,32,.18) 0%,
-      rgba(10,20,32,.12) 60%,
-      rgba(10,20,32,.08) 100%
-    ),
+  rgba(10,20,32,.28) 0%,
+  rgba(10,20,32,.18) 60%,
+  rgba(10,20,32,.12) 100%
+),
     linear-gradient(
       180deg,
       var(--hero-top) 0%,
