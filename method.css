@@ -343,16 +343,17 @@
   background: rgba(255,255,255,.08);
 }
 
-/* Kicker line ("See how…") */
+/* Kicker line */
 .method-practice .mp-card-footer .mp-cta-kicker,
 .method-practice .mp-card-cta .mp-cta-kicker{
   margin: 0 0 10px;
   font-size: 15px;
   line-height: 1.45;
   color: rgba(255,255,255,.70);
+  min-height: 44px;
 }
 
-/* Link — hard reset so it cannot be offset by any older rules */
+/* Link */
 .method-practice .mp-card-footer .inline-learn-more,
 .method-practice .mp-card-cta .inline-learn-more{
   display: inline-flex;
@@ -376,8 +377,6 @@
 .method-practice .mp-card-cta .inline-learn-more:hover{
   opacity: .85;
 }
-
-
 /* =========================================================
    7) PRICING (centered)
    ========================================================= */
