@@ -1575,14 +1575,12 @@ select.cs-input:-webkit-autofill:focus{
 .brief-sources li:last-child{ margin-bottom: 0; }
 
 .brief-page-cta{
-  margin-top: 44px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.10);
+  margin-top: 40px;
 }
 
 .brief-page-cta-text{
   margin: 0 0 10px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   color: rgba(255,255,255,.90);
 }
