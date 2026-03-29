@@ -2156,7 +2156,7 @@ select.cs-input:-webkit-autofill:focus{
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 8px;
+  gap: 6px;
   max-width: 900px;
 }
 
