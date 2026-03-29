@@ -320,8 +320,8 @@
 .method-practice .mp-card-footer,
 .method-practice .mp-card-cta{
   margin-top: auto;
-  min-height: 150px;
-  padding-top: 18px;
+  padding-top: 22px;
+  padding-bottom: 6px;
 
   /* Align kicker + link with list-item TEXT edge (not the check icon) */
   padding-left: 34px;
@@ -329,8 +329,8 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
+  justify-content: flex-start;
 
   text-align: left;
   position: relative;
@@ -351,11 +351,11 @@
 /* Kicker line */
 .method-practice .mp-card-footer .mp-cta-kicker,
 .method-practice .mp-card-cta .mp-cta-kicker{
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   font-size: 15px;
   line-height: 1.45;
   color: rgba(255,255,255,.70);
-  min-height: 52px;
+  min-height: 0;
 }
 
 /* Link */
