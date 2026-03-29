@@ -320,15 +320,20 @@
 .method-practice .mp-card-footer,
 .method-practice .mp-card-cta{
   margin-top: auto;
+  min-height: 150px;
   padding-top: 18px;
 
   /* Align kicker + link with list-item TEXT edge (not the check icon) */
   padding-left: 34px;
   padding-right: 6px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
   text-align: left;
   position: relative;
-
   border-top: 0;
 }
 
@@ -346,11 +351,11 @@
 /* Kicker line */
 .method-practice .mp-card-footer .mp-cta-kicker,
 .method-practice .mp-card-cta .mp-cta-kicker{
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 15px;
   line-height: 1.45;
   color: rgba(255,255,255,.70);
-  min-height: 44px;
+  min-height: 52px;
 }
 
 /* Link */
@@ -377,6 +382,7 @@
 .method-practice .mp-card-cta .inline-learn-more:hover{
   opacity: .85;
 }
+
 /* =========================================================
    7) PRICING (centered)
    ========================================================= */
