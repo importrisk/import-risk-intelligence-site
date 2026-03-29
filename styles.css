@@ -1872,6 +1872,14 @@ select.cs-input:-webkit-autofill:focus{
   opacity: 0.95;
 }
 
+.pricing-card-cta{
+  margin-top: 18px;
+}
+
+.pricing-card-cta-btn{
+  min-width: 180px;
+}
+
 /* Featured card */
 .pricing-featured-wrap{
   margin-top: 18px;
