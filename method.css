@@ -319,7 +319,7 @@
    ========================================================= */
 .method-practice .mp-card-footer,
 .method-practice .mp-card-cta{
-  margin-top: 22px;
+  margin-top: auto;
   padding-top: 18px;
 
   /* Align kicker + link with list-item TEXT edge (not the check icon) */
