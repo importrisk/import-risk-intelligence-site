@@ -1846,11 +1846,11 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-domain-columns{
   display: grid;
-  grid-template-columns: repeat(2, minmax(170px, 220px));
-  gap: 12px 30px;
-  margin-top: 22px;
-  margin-left: 10px;
-  max-width: 520px;
+  grid-template-columns: repeat(4, max-content);
+  gap: 16px 34px;
+  margin-top: 24px;
+  margin-left: 14px;
+  max-width: 720px;
 }
 
 .pricing-domain-item{
