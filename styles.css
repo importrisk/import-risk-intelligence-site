@@ -2454,9 +2454,11 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .pricing-card-priceblock{
-    text-align: left;
-  }
-
+  width: 100%;
+  margin-left: 0;
+  text-align: left;
+}
+  
   .pricing-card-list-featured{
     grid-template-columns: 1fr;
   }
