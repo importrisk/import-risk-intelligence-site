@@ -1967,7 +1967,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-card-title{
   margin: 0 0 10px;
-  font-size: 30px;
+  font-size: 34px;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: rgba(255,255,255,.97);
@@ -1985,7 +1985,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-card-price{
   margin: 0;
-  font-size: 34px;
+  font-size: 38px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
