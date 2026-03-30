@@ -548,9 +548,9 @@ img{ max-width: 100%; height: auto; display: block; }
 
 .approach-bullets li{
   position: relative;
-  padding-left: 22px;
-  font-size: 0.98rem;
-  line-height: 1.62;
+  padding-left: 18px;
+  font-size: 0.94rem;
+  line-height: 1.38;
   color: rgba(255,255,255,0.82);
 }
 
@@ -558,11 +558,11 @@ img{ max-width: 100%; height: auto; display: block; }
   content: "";
   position: absolute;
   left: 0;
-  top: calc(0.55em - 1px);
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid rgba(148,197,255,0.95);
-  border-right: 2px solid rgba(148,197,255,0.95);
+  top: calc(0.48em - 1px);
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid rgba(148,197,255,0.95);
+  border-right: 1.5px solid rgba(148,197,255,0.95);
   transform: rotate(45deg);
   opacity: 0.95;
 }
