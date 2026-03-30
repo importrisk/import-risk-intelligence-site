@@ -1778,10 +1778,13 @@ select.cs-input:-webkit-autofill:focus{
   .brief-link-inline{
     display: inline-block;
   }
-}
-/* =========================================================
+}/* =========================================================
    PRICING PAGE
-   Darker blue + water texture + featured full-width card
+   Revised structure
+   - featured Full Coverage card
+   - two smaller single-lane cards
+   - larger Tariff + Sanctions card
+   - right-side support column
    ========================================================= */
 
 .pricing-page{
@@ -1805,11 +1808,13 @@ select.cs-input:-webkit-autofill:focus{
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(180deg,
+    linear-gradient(
+      180deg,
       rgba(36, 63, 98, .18) 0%,
       rgba(28, 54, 90, .24) 48%,
       rgba(20, 44, 78, .34) 72%,
-      rgba(16, 34, 56, .48) 100%),
+      rgba(16, 34, 56, .48) 100%
+    ),
     url("assets/images/pricing_hero_blue.jpg");
   background-size: cover, cover;
   background-position: center 44%, center 44%;
@@ -1892,6 +1897,7 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 2;
 }
 
+/* Scope row */
 .pricing-scope{
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
@@ -1930,19 +1936,7 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.76);
 }
 
-@media (max-width: 980px){
-  .pricing-scope{
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .pricing-scope-copy,
-  .pricing-scope-text{
-    max-width: 820px;
-  }
-}
-
-/* Cards shared */
+/* Shared card styles */
 .pricing-card{
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.10);
@@ -1998,62 +1992,6 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 15px;
 }
 
-.pricing-domain-columns{
-  display: grid;
-  grid-template-columns: repeat(4, max-content);
-  gap: 20px 34px;
-  margin-top: 24px;
-  margin-left: 28px;
-  max-width: 860px;
-}
-
-.pricing-domain-item{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,.72);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.pricing-domain-bullet{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #8bbcff;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1;
-  flex: 0 0 auto;
-}
-
-.pricing-domain-list{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
-  margin-top: 18px;
-  max-width: 780px;
-  color: rgba(255,255,255,.78);
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.pricing-domain-list span{
-  position: relative;
-  padding-right: 14px;
-}
-
-.pricing-domain-list span:not(:last-child)::after{
-  content: "·";
-  position: absolute;
-  right: 0;
-  opacity: .55;
-}
-
 .pricing-card-list{
   list-style: none;
   margin: 0;
@@ -2095,10 +2033,23 @@ select.cs-input:-webkit-autofill:focus{
   margin-top: 12px;
   font-size: 12px;
   line-height: 1.3;
-  color: rgba(255,255,255,.84);
+  color: rgba(255,255,255,.96);
 }
 
-/* Featured card */
+.pricing-card-divider{
+  height: 1px;
+  margin: 24px 0 22px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.12) 26%,
+    rgba(170,210,255,0.38) 50%,
+    rgba(255,255,255,0.12) 74%,
+    rgba(255,255,255,0.04) 100%
+  );
+}
+
+/* Featured Full Coverage card */
 .pricing-featured-wrap{
   margin-top: 18px;
 }
@@ -2158,51 +2109,56 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(148,197,255,.92);
 }
 
-.pricing-card-cta{
-  margin-top: 18px;
-}
-
-.pricing-card-cta-btn{
-  min-width: 180px;
-}
-
-.pricing-card-term-sub{
-  margin-top: 12px;
-  font-size: 12px;
-  line-height: 1.3;
-  color: rgba(255,255,255,.96);
-}
-
-.pricing-card-divider{
-  height: 1px;
-  margin: 24px 0 22px;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.04) 0%,
-    rgba(255,255,255,0.12) 26%,
-    rgba(170,210,255,0.38) 50%,
-    rgba(255,255,255,0.12) 74%,
-    rgba(255,255,255,0.04) 100%
-  );
-}
-
 .pricing-card-list-featured{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px 22px;
 }
-/* Secondary cards */
+
+.pricing-domain-columns{
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 20px 34px;
+  margin-top: 24px;
+  margin-left: 28px;
+  max-width: 860px;
+}
+
+.pricing-domain-item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-domain-bullet{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #8bbcff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+/* Two smaller cards */
 .pricing-secondary-wrap{
   margin-top: 24px;
 }
 
 .pricing-secondary-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
+}
+
+.pricing-secondary-grid-two{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .pricing-card-secondary{
@@ -2246,6 +2202,130 @@ select.cs-input:-webkit-autofill:focus{
   border-color: rgba(139,188,255,.42);
 }
 
+/* Combined row */
+.pricing-combined-row{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 22px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.pricing-combined-main{
+  min-width: 0;
+}
+
+.pricing-combined-side{
+  display: grid;
+  gap: 22px;
+}
+
+/* Large Tariff + Sanctions card */
+.pricing-card-combined{
+  padding: 28px 28px 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.08) 0%,
+    rgba(255,255,255,.06) 100%
+  );
+  border: 1px solid rgba(127,177,234,.18);
+  box-shadow: 0 18px 44px rgba(0,0,0,.24);
+}
+
+.pricing-card-combined-head{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.pricing-card-combined-titlewrap{
+  min-width: 0;
+}
+
+.pricing-card-title-combined{
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+.pricing-card-combined-priceblock{
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pricing-card-price-combined{
+  font-size: 48px;
+  line-height: .95;
+  font-weight: 800;
+  color: rgba(148,197,255,.92);
+}
+
+.pricing-card-price-combined span{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pricing-card-text-combined{
+  max-width: 860px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.84);
+  margin-bottom: 0;
+}
+
+.pricing-card-list-combined{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 22px;
+}
+
+.pricing-card-cta-combined{
+  margin-top: 22px;
+}
+
+/* Right-side support panels */
+.pricing-sidepanel{
+  padding: 20px 20px 18px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 18px 44px rgba(0,0,0,.18);
+}
+
+.pricing-sidepanel-title{
+  margin-bottom: 16px;
+}
+
+.pricing-sidepanel-title-small{
+  margin: 0 0 14px;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.95);
+}
+
+.pricing-sidepanel-list{
+  display: grid;
+  gap: 16px;
+}
+
+.pricing-include-item{
+  padding: 18px 18px 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.pricing-sidepanel .pricing-include-item{
+  padding: 0 0 14px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.pricing-sidepanel .pricing-include-item:last-child{
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
 .pricing-include-title{
   display: flex;
   align-items: center;
@@ -2253,7 +2333,7 @@ select.cs-input:-webkit-autofill:focus{
   margin: 0 0 8px;
   font-size: 18px;
   line-height: 1.2;
-  color: #8bbcff;
+  color: rgba(255,255,255,.94);
 }
 
 .pricing-include-icon{
@@ -2272,30 +2352,6 @@ select.cs-input:-webkit-autofill:focus{
   box-shadow: none;
 }
 
-/* Includes */
-.pricing-includes{
-  margin-top: 44px;
-}
-
-.pricing-includes-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.pricing-include-item{
-  padding: 18px 18px 16px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.pricing-include-title{
-  margin: 0 0 8px;
-  font-size: 18px;
-  line-height: 1.2;
-  color: rgba(255,255,255,.94);
-}
-
 .pricing-include-text{
   margin: 0;
   font-size: 14px;
@@ -2303,48 +2359,43 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.74);
 }
 
-.pricing-use-cases{
-  margin-top: 46px;
+.pricing-card-list-side{
+  gap: 14px;
 }
 
-.pricing-use-cases-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  margin-top: 20px;
+.pricing-sidepanel-note{
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.66);
 }
 
-.pricing-use-case{
-  padding: 0 28px;
+/* Old standalone includes section no longer used */
+.pricing-includes{
+  display: none;
 }
 
-.pricing-use-case:first-child{
-  padding-left: 0;
-}
-
-.pricing-use-case:last-child{
-  padding-right: 0;
-}
-
-.pricing-use-case:not(:last-child){
-  border-right: 1px solid rgba(255,255,255,.10);
-}
-
-.pricing-use-case-title{
-  margin: 0 0 10px;
-  font-size: 18px;
-  line-height: 1.2;
-  color: #8bbcff;
-}
-
-.pricing-use-case-text{
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.78);
+.pricing-includes-grid{
+  display: none;
 }
 
 /* Special Projects + CTA */
+.pricing-special-projects{
+  margin-top: 56px;
+}
+
+.pricing-special-projects-inner{
+  max-width: 980px;
+}
+
+.pricing-special-projects-text{
+  max-width: 1080px;
+  margin: 0 0 18px;
+}
+
+.pricing-special-projects-text:last-child{
+  margin-bottom: 0;
+}
 
 .pricing-special-projects-list-intro{
   margin-bottom: 10px;
@@ -2379,23 +2430,6 @@ select.cs-input:-webkit-autofill:focus{
   background: rgba(139,188,255,.95);
   box-shadow: 0 0 8px rgba(139,188,255,.16);
   transform: translateY(-50%);
-}
-
-.pricing-special-projects{
-  margin-top: 56px;
-}
-
-.pricing-special-projects-inner{
-  max-width: 980px;
-}
-
-.pricing-special-projects-text{
-  max-width: 1080px;
-  margin: 0 0 18px;
-}
-
-.pricing-special-projects-text:last-child{
-  margin-bottom: 0;
 }
 
 .pricing-cta{
@@ -2446,30 +2480,65 @@ select.cs-input:-webkit-autofill:focus{
    PRICING — RESPONSIVE
    ========================================================= */
 
-/* Tablet + small laptop */
+@media (max-width: 1100px){
+  .pricing-combined-row{
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
+
 @media (max-width: 980px){
+  .pricing-scope{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pricing-scope-copy,
+  .pricing-scope-text{
+    max-width: 820px;
+  }
+
   .pricing-card-featured-grid{
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
   .pricing-card-priceblock{
-  width: 100%;
-  margin-left: 0;
-  text-align: left;
-}
-  
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+
   .pricing-card-list-featured{
     grid-template-columns: 1fr;
   }
 
-  .pricing-secondary-grid,
-  .pricing-includes-grid{
+  .pricing-secondary-grid-two{
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-combined-row{
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-combined-side{
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .pricing-card-combined-head{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .pricing-card-combined-priceblock{
+    text-align: left;
+  }
+
+  .pricing-card-list-combined{
     grid-template-columns: 1fr;
   }
 }
 
-/* Phone */
 @media (max-width: 760px){
   .pricing-top-inner{
     padding: 54px 0 36px;
@@ -2491,20 +2560,40 @@ select.cs-input:-webkit-autofill:focus{
     padding: 20px 18px 18px;
   }
 
-  .pricing-card-title-featured{
-    font-size: 32px;
-  }
-
-  .pricing-card-price-featured{
-    font-size: 48px;
+  .pricing-card-combined{
+    padding: 22px 18px 20px;
   }
 
   .pricing-card-title{
     font-size: 24px;
   }
 
+  .pricing-card-title-featured{
+    font-size: 32px;
+  }
+
+  .pricing-card-title-combined{
+    font-size: 32px;
+  }
+
   .pricing-card-price{
     font-size: 30px;
+  }
+
+  .pricing-card-price-featured{
+    font-size: 48px;
+  }
+
+  .pricing-card-price-combined{
+    font-size: 40px;
+  }
+
+  .pricing-card-price-combined span{
+    font-size: 15px;
+  }
+
+  .pricing-card-text-combined{
+    font-size: 16px;
   }
 
   .pricing-cta-title{
@@ -2530,6 +2619,18 @@ select.cs-input:-webkit-autofill:focus{
   .pricing-domain-bullet{
     font-size: 10px;
     margin-top: 1px;
+  }
+
+  .pricing-combined-side{
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-sidepanel{
+    padding: 18px 18px 16px;
+  }
+
+  .pricing-sidepanel-title-small{
+    font-size: 20px;
   }
 }
 
