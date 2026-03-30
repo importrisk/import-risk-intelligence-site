@@ -2291,7 +2291,7 @@ select.cs-input:-webkit-autofill:focus{
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.12fr 1fr 1fr;
   gap: 0;
 }
 
