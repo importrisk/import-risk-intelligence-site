@@ -2401,7 +2401,6 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-cta{
   margin-top: 48px;
   padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.10);
   max-width: 760px;
 }
 
