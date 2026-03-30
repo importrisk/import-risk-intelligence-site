@@ -2263,6 +2263,44 @@ select.cs-input:-webkit-autofill:focus{
   line-height: 1.65;
   color: rgba(255,255,255,.70);
 }
+.pricing-process-strip{
+  margin-top: 28px;
+  padding: 6px 0 2px;
+}
+
+.pricing-process-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.pricing-process-item{
+  padding: 26px 28px 24px;
+  min-width: 0;
+}
+
+.pricing-process-item + .pricing-process-item{
+  border-left: 1px solid rgba(255,255,255,.10);
+}
+
+.pricing-process-title{
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #f5f7fb;
+}
+
+.pricing-process-text{
+  margin: 0;
+  max-width: 34ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.72);
+}
+
 .pricing-secondary-wrap{
   margin-top: 24px;
 }
@@ -2477,6 +2515,23 @@ select.cs-input:-webkit-autofill:focus{
     max-width: none;
   }
 
+  .pricing-process-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-process-item{
+    padding: 22px 0;
+  }
+
+  .pricing-process-item + .pricing-process-item{
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.10);
+  }
+
+  .pricing-process-text{
+    max-width: none;
+  }
+
   .pricing-secondary-grid-two{
     grid-template-columns: 1fr;
   }
@@ -2501,6 +2556,15 @@ select.cs-input:-webkit-autofill:focus{
 
   .pricing-card-secondary{
     padding: 20px 18px 18px;
+  }
+
+  .pricing-process-title{
+    font-size: 20px;
+  }
+
+  .pricing-process-text{
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .pricing-card-title{
