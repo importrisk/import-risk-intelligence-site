@@ -1925,6 +1925,14 @@ select.cs-input:-webkit-autofill:focus{
   max-width: 700px;
 }
 
+.pricing-scope-fit{
+  margin: 14px 0 0;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #8bbcff;
+}
+
 .pricing-sidecard{
   padding: 18px 18px 16px;
   background: rgba(255,255,255,.06);
