@@ -1782,11 +1782,11 @@ select.cs-input:-webkit-autofill:focus{
 
 /* =========================================================
    PRICING PAGE
-   Revised layout
-   - featured Full Coverage card
-   - two standard pricing cards
-   - open featured Tariff + Sanctions section
-   - editorial-style support rail on right
+   Revised structure
+   - Full Coverage featured at top
+   - Tariff + Sanctions below
+   - right-side support space reserved
+   - single-lane cards below
    ========================================================= */
 
 .pricing-page{
@@ -2165,7 +2165,32 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 /* =========================================================
-   TWO STANDARD CARDS
+   COMBINED ROW
+   ========================================================= */
+
+.pricing-combined-row{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.pricing-combined-left{
+  min-width: 0;
+}
+
+.pricing-card-combined-standard{
+  height: 100%;
+}
+
+.pricing-combined-right{
+  min-height: 100%;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+
+/* =========================================================
+   STANDARD SECONDARY CARDS
    ========================================================= */
 
 .pricing-secondary-wrap{
@@ -2223,221 +2248,11 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 /* =========================================================
-   COMBINED FEATURE + SUPPORT RAIL
-   ========================================================= */
-
-.pricing-combined-row{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 34px;
-  align-items: start;
-  margin-top: 34px;
-}
-
-.pricing-combined-main{
-  min-width: 0;
-}
-
-/* featured section, intentionally not another identical card */
-.pricing-combined-feature{
-  padding: 6px 0 0;
-  border-top: 1px solid rgba(127,177,234,.38);
-}
-
-.pricing-combined-header{
-  max-width: 760px;
-}
-
-.pricing-combined-title{
-  margin: 0;
-  font-size: 56px;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  color: rgba(255,255,255,.97);
-}
-
-.pricing-combined-price{
-  margin: 12px 0 0;
-  font-size: 54px;
-  line-height: .95;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: rgba(148,197,255,.92);
-}
-
-.pricing-combined-price span{
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
-.pricing-combined-text{
-  max-width: 860px;
-  margin: 22px 0 0;
-  font-size: 21px;
-  line-height: 1.48;
-  color: rgba(255,255,255,.84);
-}
-
-.pricing-combined-divider{
-  height: 1px;
-  margin: 26px 0 24px;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.04) 0%,
-    rgba(255,255,255,0.12) 26%,
-    rgba(170,210,255,0.32) 50%,
-    rgba(255,255,255,0.12) 74%,
-    rgba(255,255,255,0.04) 100%
-  );
-}
-
-.pricing-combined-points{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px 28px;
-  max-width: 980px;
-}
-
-.pricing-combined-point{
-  position: relative;
-  padding-left: 22px;
-}
-
-.pricing-combined-point::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: calc(0.55em + 4px);
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid rgba(148,197,255,0.95);
-  border-right: 2px solid rgba(148,197,255,0.95);
-  transform: rotate(45deg);
-  opacity: 0.95;
-}
-
-.pricing-combined-point p{
-  margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.58;
-  color: rgba(255,255,255,.82);
-}
-
-.pricing-combined-actions{
-  margin-top: 28px;
-}
-
-/* =========================================================
-   SUPPORT RAIL
-   ========================================================= */
-
-.pricing-support-rail{
-  position: relative;
-  padding-left: 22px;
-}
-
-.pricing-support-rail::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,.06) 0%,
-    rgba(127,177,234,.18) 18%,
-    rgba(255,255,255,.10) 100%
-  );
-}
-
-.pricing-support-section + .pricing-support-section{
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
-.pricing-support-title{
-  margin: 0 0 18px;
-  font-size: 20px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.96);
-}
-
-.pricing-support-title-small{
-  margin: 0 0 16px;
-  font-size: 18px;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.94);
-}
-
-.pricing-support-list{
-  display: grid;
-  gap: 18px;
-}
-
-.pricing-support-item{
-  padding: 0;
-}
-
-.pricing-support-item-title{
-  margin: 0 0 8px;
-  font-size: 16px;
-  line-height: 1.2;
-  color: rgba(255,255,255,.94);
-}
-
-.pricing-support-item-text{
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255,255,255,.72);
-}
-
-.pricing-support-bullets{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.pricing-support-bullets li{
-  position: relative;
-  padding-left: 18px;
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(255,255,255,.78);
-}
-
-.pricing-support-bullets li::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: .7em;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: rgba(139,188,255,.92);
-  transform: translateY(-50%);
-}
-
-.pricing-support-note{
-  margin: 16px 0 0;
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(255,255,255,.62);
-}
-
-/* =========================================================
    SPECIAL PROJECTS + CTA
    ========================================================= */
 
 .pricing-special-projects{
-  margin-top: 64px;
+  margin-top: 56px;
 }
 
 .pricing-special-projects-inner{
@@ -2536,21 +2351,6 @@ select.cs-input:-webkit-autofill:focus{
    PRICING — RESPONSIVE
    ========================================================= */
 
-@media (max-width: 1100px){
-  .pricing-combined-row{
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 28px;
-  }
-
-  .pricing-combined-title{
-    font-size: 50px;
-  }
-
-  .pricing-combined-price{
-    font-size: 48px;
-  }
-}
-
 @media (max-width: 980px){
   .pricing-scope{
     grid-template-columns: 1fr;
@@ -2577,31 +2377,19 @@ select.cs-input:-webkit-autofill:focus{
     grid-template-columns: 1fr;
   }
 
-  .pricing-secondary-grid-two{
-    grid-template-columns: 1fr;
-  }
-
   .pricing-combined-row{
     grid-template-columns: 1fr;
-    gap: 30px;
   }
 
-  .pricing-support-rail{
-    padding-left: 0;
+  .pricing-combined-right{
+    min-height: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    min-height: 80px;
   }
 
-  .pricing-support-rail::before{
-    display: none;
-  }
-
-  .pricing-support-section + .pricing-support-section{
-    margin-top: 28px;
-    padding-top: 22px;
-  }
-
-  .pricing-combined-points{
+  .pricing-secondary-grid-two{
     grid-template-columns: 1fr;
-    gap: 14px;
   }
 }
 
@@ -2666,32 +2454,7 @@ select.cs-input:-webkit-autofill:focus{
     font-size: 10px;
     margin-top: 1px;
   }
-
-  .pricing-combined-title{
-    font-size: 40px;
-  }
-
-  .pricing-combined-price{
-    font-size: 40px;
-  }
-
-  .pricing-combined-price span{
-    font-size: 16px;
-  }
-
-  .pricing-combined-text{
-    font-size: 18px;
-  }
-
-  .pricing-support-title{
-    font-size: 18px;
-  }
-
-  .pricing-support-title-small{
-    font-size: 17px;
-  }
 }
-
 /* =========================================================
    CLIENT PROFILE PAGE — SHELL ONLY
    ========================================================= */
