@@ -2264,15 +2264,29 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.70);
 }
 .pricing-process-strip{
+  position: relative;
   margin-top: 28px;
-  padding: 6px 0 2px;
+  padding: 14px 0 10px;
+}
+
+.pricing-process-strip::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.02);
+  pointer-events: none;
 }
 
 .pricing-process-grid{
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  border-top: 1px solid rgba(255,255,255,.08);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
@@ -2286,11 +2300,30 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-process-title{
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 10px;
   font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #f5f7fb;
+}
+
+.pricing-process-title::before{
+  content: "›";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border: 1px solid rgba(139,188,255,.32);
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1;
+  color: #8bbcff;
+  transform: translateY(-1px);
 }
 
 .pricing-process-text{
@@ -2520,7 +2553,7 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .pricing-process-item{
-    padding: 22px 0;
+    padding: 20px 0;
   }
 
   .pricing-process-item + .pricing-process-item{
