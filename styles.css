@@ -433,7 +433,7 @@ img{ max-width: 100%; height: auto; display: block; }
 .section-title{
   margin: 0 0 12px;
   color: var(--ink);
-  font-size: 34px;
+  font-size: 32px;
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
@@ -2093,7 +2093,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-card-title-featured{
-  font-size: 40px;
+  font-size: 36px;
   margin-bottom: 12px;
 }
 
@@ -2180,16 +2180,16 @@ select.cs-input:-webkit-autofill:focus{
   min-width: 0;
 }
 
-.pricing-combined-right{
+ .pricing-combined-right{
   min-height: 100%;
   border-left: 0;
-  padding: 22px 0 0 42px;
+  padding: 22px 0 0 90px;
 }
 
 .pricing-support-rail{
   padding: 0;
   background: transparent;
-  max-width: 520px;
+  max-width: 580px;
 }
 
 .pricing-support-section{
@@ -2197,34 +2197,34 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-support-kicker{
-  margin: 0 0 18px;
+  margin: 0 0 12px;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .18em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.44);
+  color: rgba(255,255,255,.45);
+}
+
+.pricing-support-intro{
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.35;
+  color: rgba(255,255,255,.85);
 }
 
 .pricing-support-cost{
   margin: 0;
-  font-size: 54px;
-  line-height: .95;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: rgba(255,255,255,.92);
-}
-
-.pricing-support-cost-sub{
-  margin: 12px 0 0;
-  font-size: 18px;
-  line-height: 1.2;
-  color: rgba(255,255,255,.86);
+  font-size: 38px;
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(200,215,235,.75);
 }
 
 .pricing-support-cost-detail{
   margin: 10px 0 0;
-  max-width: 24ch;
-  font-size: 15px;
+  max-width: 34ch;
+  font-size: 16px;
   line-height: 1.55;
   color: rgba(255,255,255,.68);
 }
@@ -2232,17 +2232,16 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-support-rule{
   width: 100%;
   height: 1px;
-  margin: 28px 0 28px;
-  background: rgba(255,255,255,.12);
+  margin: 28px 0;
+  background: rgba(255,255,255,.10);
 }
 
 .pricing-support-statement{
   margin: 0;
-  max-width: 24ch;
+  max-width: 28ch;
   font-size: 19px;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,.92);
+  line-height: 1.5;
+  color: rgba(255,255,255,.90);
 }
 
 .pricing-support-statement strong{
@@ -2252,12 +2251,11 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-support-note{
   margin: 0;
-  max-width: 32ch;
+  max-width: 36ch;
   font-size: 16px;
   line-height: 1.65;
-  color: rgba(255,255,255,.68);
+  color: rgba(255,255,255,.70);
 }
-
 .pricing-secondary-wrap{
   margin-top: 24px;
 }
@@ -2450,7 +2448,7 @@ select.cs-input:-webkit-autofill:focus{
     border-left: 0;
     border-top: 0;
     min-height: 0;
-    padding: 18px 0 0;
+    padding: 18px 0 0 12px;
   }
 
   .pricing-support-rail{
