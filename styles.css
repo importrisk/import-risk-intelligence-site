@@ -1778,13 +1778,15 @@ select.cs-input:-webkit-autofill:focus{
   .brief-link-inline{
     display: inline-block;
   }
-}/* =========================================================
+}
+
+/* =========================================================
    PRICING PAGE
-   Revised structure
+   Revised layout
    - featured Full Coverage card
-   - two smaller single-lane cards
-   - larger Tariff + Sanctions card
-   - right-side support column
+   - two standard pricing cards
+   - open featured Tariff + Sanctions section
+   - editorial-style support rail on right
    ========================================================= */
 
 .pricing-page{
@@ -1793,7 +1795,10 @@ select.cs-input:-webkit-autofill:focus{
   overflow: hidden;
 }
 
-/* Top section */
+/* =========================================================
+   TOP SECTION
+   ========================================================= */
+
 .pricing-top{
   position: relative;
   padding-top: var(--topbar-h);
@@ -1869,7 +1874,10 @@ select.cs-input:-webkit-autofill:focus{
   margin-bottom: 0;
 }
 
-/* Body section */
+/* =========================================================
+   BODY SECTION
+   ========================================================= */
+
 .pricing-body{
   position: relative;
   padding: 54px 0 80px;
@@ -1897,7 +1905,10 @@ select.cs-input:-webkit-autofill:focus{
   z-index: 2;
 }
 
-/* Scope row */
+/* =========================================================
+   SCOPE ROW
+   ========================================================= */
+
 .pricing-scope{
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
@@ -1936,7 +1947,10 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.76);
 }
 
-/* Shared card styles */
+/* =========================================================
+   SHARED CARD STYLES
+   ========================================================= */
+
 .pricing-card{
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.10);
@@ -2049,7 +2063,10 @@ select.cs-input:-webkit-autofill:focus{
   );
 }
 
-/* Featured Full Coverage card */
+/* =========================================================
+   FULL COVERAGE FEATURED CARD
+   ========================================================= */
+
 .pricing-featured-wrap{
   margin-top: 18px;
 }
@@ -2147,7 +2164,10 @@ select.cs-input:-webkit-autofill:focus{
   flex: 0 0 auto;
 }
 
-/* Two smaller cards */
+/* =========================================================
+   TWO STANDARD CARDS
+   ========================================================= */
+
 .pricing-secondary-wrap{
   margin-top: 24px;
 }
@@ -2202,186 +2222,222 @@ select.cs-input:-webkit-autofill:focus{
   border-color: rgba(139,188,255,.42);
 }
 
-/* Combined row */
+/* =========================================================
+   COMBINED FEATURE + SUPPORT RAIL
+   ========================================================= */
+
 .pricing-combined-row{
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 34px;
   align-items: start;
-  margin-top: 24px;
+  margin-top: 34px;
 }
 
 .pricing-combined-main{
   min-width: 0;
 }
 
-.pricing-combined-side{
-  display: grid;
-  gap: 22px;
+/* featured section, intentionally not another identical card */
+.pricing-combined-feature{
+  padding: 6px 0 0;
+  border-top: 1px solid rgba(127,177,234,.38);
 }
 
-/* Large Tariff + Sanctions card */
-.pricing-card-combined{
-  padding: 28px 28px 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,.08) 0%,
-    rgba(255,255,255,.06) 100%
-  );
-  border: 1px solid rgba(127,177,234,.18);
-  box-shadow: 0 18px 44px rgba(0,0,0,.24);
+.pricing-combined-header{
+  max-width: 760px;
 }
 
-.pricing-card-combined-head{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 20px;
-  align-items: start;
-  margin-bottom: 12px;
+.pricing-combined-title{
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,.97);
 }
 
-.pricing-card-combined-titlewrap{
-  min-width: 0;
-}
-
-.pricing-card-title-combined{
-  font-size: 40px;
-  margin-bottom: 0;
-}
-
-.pricing-card-combined-priceblock{
-  text-align: right;
-  white-space: nowrap;
-}
-
-.pricing-card-price-combined{
-  font-size: 48px;
+.pricing-combined-price{
+  margin: 12px 0 0;
+  font-size: 54px;
   line-height: .95;
   font-weight: 800;
+  letter-spacing: -0.03em;
   color: rgba(148,197,255,.92);
 }
 
-.pricing-card-price-combined span{
-  font-size: 16px;
+.pricing-combined-price span{
+  font-size: 20px;
   font-weight: 500;
+  letter-spacing: 0;
 }
 
-.pricing-card-text-combined{
+.pricing-combined-text{
   max-width: 860px;
-  font-size: 17px;
-  line-height: 1.55;
+  margin: 22px 0 0;
+  font-size: 21px;
+  line-height: 1.48;
   color: rgba(255,255,255,.84);
-  margin-bottom: 0;
 }
 
-.pricing-card-list-combined{
+.pricing-combined-divider{
+  height: 1px;
+  margin: 26px 0 24px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.12) 26%,
+    rgba(170,210,255,0.32) 50%,
+    rgba(255,255,255,0.12) 74%,
+    rgba(255,255,255,0.04) 100%
+  );
+}
+
+.pricing-combined-points{
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px 22px;
+  gap: 18px 28px;
+  max-width: 980px;
 }
 
-.pricing-card-cta-combined{
-  margin-top: 22px;
+.pricing-combined-point{
+  position: relative;
+  padding-left: 22px;
 }
 
-/* Right-side support panels */
-.pricing-sidepanel{
-  padding: 20px 20px 18px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.09);
-  box-shadow: 0 18px 44px rgba(0,0,0,.18);
+.pricing-combined-point::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(0.55em + 4px);
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(148,197,255,0.95);
+  border-right: 2px solid rgba(148,197,255,0.95);
+  transform: rotate(45deg);
+  opacity: 0.95;
 }
 
-.pricing-sidepanel-title{
-  margin-bottom: 16px;
+.pricing-combined-point p{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.58;
+  color: rgba(255,255,255,.82);
 }
 
-.pricing-sidepanel-title-small{
-  margin: 0 0 14px;
-  font-size: 22px;
+.pricing-combined-actions{
+  margin-top: 28px;
+}
+
+/* =========================================================
+   SUPPORT RAIL
+   ========================================================= */
+
+.pricing-support-rail{
+  position: relative;
+  padding-left: 22px;
+}
+
+.pricing-support-rail::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.06) 0%,
+    rgba(127,177,234,.18) 18%,
+    rgba(255,255,255,.10) 100%
+  );
+}
+
+.pricing-support-section + .pricing-support-section{
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.pricing-support-title{
+  margin: 0 0 18px;
+  font-size: 20px;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: rgba(255,255,255,.95);
+  color: rgba(255,255,255,.96);
 }
 
-.pricing-sidepanel-list{
-  display: grid;
-  gap: 16px;
-}
-
-.pricing-include-item{
-  padding: 18px 18px 16px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.pricing-sidepanel .pricing-include-item{
-  padding: 0 0 14px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.pricing-sidepanel .pricing-include-item:last-child{
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.pricing-include-title{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 8px;
+.pricing-support-title-small{
+  margin: 0 0 16px;
   font-size: 18px;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.94);
+}
+
+.pricing-support-list{
+  display: grid;
+  gap: 18px;
+}
+
+.pricing-support-item{
+  padding: 0;
+}
+
+.pricing-support-item-title{
+  margin: 0 0 8px;
+  font-size: 16px;
   line-height: 1.2;
   color: rgba(255,255,255,.94);
 }
 
-.pricing-include-icon{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(139,188,255,.42);
-  background: transparent;
-  color: #8bbcff;
-  font-size: 13px;
-  line-height: 1;
-  flex: 0 0 22px;
-  box-shadow: none;
-}
-
-.pricing-include-text{
+.pricing-support-item-text{
   margin: 0;
   font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.72);
+}
+
+.pricing-support-bullets{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.pricing-support-bullets li{
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
   line-height: 1.55;
-  color: rgba(255,255,255,.74);
+  color: rgba(255,255,255,.78);
 }
 
-.pricing-card-list-side{
-  gap: 14px;
+.pricing-support-bullets li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .7em;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(139,188,255,.92);
+  transform: translateY(-50%);
 }
 
-.pricing-sidepanel-note{
+.pricing-support-note{
   margin: 16px 0 0;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255,255,255,.66);
+  color: rgba(255,255,255,.62);
 }
 
-/* Old standalone includes section no longer used */
-.pricing-includes{
-  display: none;
-}
+/* =========================================================
+   SPECIAL PROJECTS + CTA
+   ========================================================= */
 
-.pricing-includes-grid{
-  display: none;
-}
-
-/* Special Projects + CTA */
 .pricing-special-projects{
-  margin-top: 56px;
+  margin-top: 64px;
 }
 
 .pricing-special-projects-inner{
@@ -2482,7 +2538,16 @@ select.cs-input:-webkit-autofill:focus{
 
 @media (max-width: 1100px){
   .pricing-combined-row{
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 28px;
+  }
+
+  .pricing-combined-title{
+    font-size: 50px;
+  }
+
+  .pricing-combined-price{
+    font-size: 48px;
   }
 }
 
@@ -2518,24 +2583,25 @@ select.cs-input:-webkit-autofill:focus{
 
   .pricing-combined-row{
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .pricing-combined-side{
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
+  .pricing-support-rail{
+    padding-left: 0;
   }
 
-  .pricing-card-combined-head{
+  .pricing-support-rail::before{
+    display: none;
+  }
+
+  .pricing-support-section + .pricing-support-section{
+    margin-top: 28px;
+    padding-top: 22px;
+  }
+
+  .pricing-combined-points{
     grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .pricing-card-combined-priceblock{
-    text-align: left;
-  }
-
-  .pricing-card-list-combined{
-    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
@@ -2560,19 +2626,11 @@ select.cs-input:-webkit-autofill:focus{
     padding: 20px 18px 18px;
   }
 
-  .pricing-card-combined{
-    padding: 22px 18px 20px;
-  }
-
   .pricing-card-title{
     font-size: 24px;
   }
 
   .pricing-card-title-featured{
-    font-size: 32px;
-  }
-
-  .pricing-card-title-combined{
     font-size: 32px;
   }
 
@@ -2582,18 +2640,6 @@ select.cs-input:-webkit-autofill:focus{
 
   .pricing-card-price-featured{
     font-size: 48px;
-  }
-
-  .pricing-card-price-combined{
-    font-size: 40px;
-  }
-
-  .pricing-card-price-combined span{
-    font-size: 15px;
-  }
-
-  .pricing-card-text-combined{
-    font-size: 16px;
   }
 
   .pricing-cta-title{
@@ -2621,16 +2667,28 @@ select.cs-input:-webkit-autofill:focus{
     margin-top: 1px;
   }
 
-  .pricing-combined-side{
-    grid-template-columns: 1fr;
+  .pricing-combined-title{
+    font-size: 40px;
   }
 
-  .pricing-sidepanel{
-    padding: 18px 18px 16px;
+  .pricing-combined-price{
+    font-size: 40px;
   }
 
-  .pricing-sidepanel-title-small{
-    font-size: 20px;
+  .pricing-combined-price span{
+    font-size: 16px;
+  }
+
+  .pricing-combined-text{
+    font-size: 18px;
+  }
+
+  .pricing-support-title{
+    font-size: 18px;
+  }
+
+  .pricing-support-title-small{
+    font-size: 17px;
   }
 }
 
