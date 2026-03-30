@@ -2280,9 +2280,9 @@ select.cs-input:-webkit-autofill:focus{
   background:
     linear-gradient(
       180deg,
-      rgba(6,16,32,.58) 0%,
-      rgba(7,18,36,.72) 48%,
-      rgba(6,16,32,.60) 100%
+      rgba(8,20,40,.34) 0%,
+      rgba(8,22,44,.46) 48%,
+      rgba(8,20,40,.36) 100%
     );
   pointer-events: none;
 }
@@ -2323,10 +2323,10 @@ select.cs-input:-webkit-autofill:focus{
   align-items: center;
   gap: 12px;
   margin: 0 0 10px;
-  font-size: 22px;
-  line-height: 1.2;
+  font-size: 19px;
+  line-height: 1.22;
   letter-spacing: -0.02em;
-  color: #f5f7fb;
+  color: #8bbcff;
 }
 
 .pricing-process-title::before{
@@ -2627,7 +2627,7 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .pricing-process-title{
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .pricing-process-text{
