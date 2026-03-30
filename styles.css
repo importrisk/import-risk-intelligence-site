@@ -2222,17 +2222,17 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-support-cost-sub{
-  margin: 10px 0 0;
+  margin: 4px 0 0;
   font-size: 18px;
-  line-height: 1.25;
+  line-height: 1.2;
   color: rgba(255,255,255,.82);
 }
 
 .pricing-support-cost-detail{
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   max-width: 34ch;
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.45;
   color: rgba(255,255,255,.68);
 }
 
