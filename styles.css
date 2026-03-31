@@ -2674,6 +2674,10 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
+  .pricing-special-projects{
+    display: none;
+  }
+
   .pricing-top-inner{
     padding: 54px 0 36px;
   }
