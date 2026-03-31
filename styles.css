@@ -1890,7 +1890,7 @@ select.cs-input:-webkit-autofill:focus{
   line-height: 1.02;
   letter-spacing: -0.03em;
   color: rgba(255,255,255,.97);
-  text-shadow: 0 14px 34px rgba(0,0,0,.18);
+  text-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
 
 .pricing-intro{
@@ -1903,6 +1903,7 @@ select.cs-input:-webkit-autofill:focus{
   font-size: 18px;
   line-height: 1.4;
   color: rgba(255,255,255,.82);
+  text-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
 
 .pricing-subtitle:last-child{
