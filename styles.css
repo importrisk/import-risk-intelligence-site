@@ -2434,7 +2434,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .pricing-card-combined-standard .pricing-card-text{
-  max-width: 34ch;
+  max-width: none;
 }
 
 .pricing-card-combined-standard .pricing-card-list{
