@@ -2433,6 +2433,15 @@ select.cs-input:-webkit-autofill:focus{
   margin-bottom: 0;
 }
 
+.pricing-card-combined-standard .pricing-card-text{
+  max-width: 34ch;
+}
+
+.pricing-card-combined-standard .pricing-card-list{
+  max-width: 38ch;
+}
+
+
 .pricing-card-cta-secondary{
   margin-top: auto;
   padding-top: 24px;
