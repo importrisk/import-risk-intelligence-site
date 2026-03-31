@@ -1837,7 +1837,7 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-top{
   position: relative;
   padding-top: var(--topbar-h);
-  min-height: 400px;
+  min-height: 460px;
   overflow: hidden;
   isolation: isolate;
   background: transparent;
