@@ -2675,8 +2675,10 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
-  .pricing-special-projects{
-    display: none;
+  .pricing-special-projects,
+  #special-projects,
+  .pricing-special-projects-inner{
+    display: none !important;
   }
 
   .pricing-top-inner{
