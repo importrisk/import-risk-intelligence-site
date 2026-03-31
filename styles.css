@@ -1580,10 +1580,10 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-summary{
-  margin: 12px 0 0;
-  max-width: 92ch;
-  line-height: 1.5;
-  color: rgba(255,255,255,.92);
+  margin: 14px 0 0;
+  max-width: 82ch;
+  line-height: 1.6;
+  color: rgba(255,255,255,.88);
 }
 
 /* =========================================================
@@ -1637,40 +1637,75 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-body{
-  margin-top: 12px;
-  padding-top: 12px;
+  margin-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,.10);
 }
 
 .brief-body .brief-section + .brief-section{
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 22px;
+  padding-top: 18px;
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .brief-h{
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: .18em;
-  color: rgba(255,255,255,.60);
+  letter-spacing: .20em;
+  color: rgba(139,188,255,.88);
 }
 
 .brief-section p{
-  margin: 0 0 8px;
-  max-width: 78ch;
-  line-height: 1.5;
+  margin: 0 0 10px;
+  max-width: 72ch;
+  line-height: 1.65;
+  color: rgba(255,255,255,.82);
 }
 
 .brief-section p:last-child{
   margin-bottom: 0;
 }
 
+.brief-impact-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.brief-impact-item{
+  padding: 14px 14px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.brief-impact-label{
+  margin: 0 0 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(139,188,255,.86);
+}
+
+.brief-impact-copy{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.84);
+}
+
+@media (max-width: 760px){
+  .brief-impact-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
 .brief-sources{
   margin: 0;
   padding-left: 18px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.78);
+  line-height: 1.6;
+  color: rgba(255,255,255,.72);
 }
 
 .brief-sources li{
