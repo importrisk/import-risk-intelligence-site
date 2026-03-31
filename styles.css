@@ -1508,7 +1508,8 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-title{
-  margin: 0;
+  margin: 0 0 18px;
+  max-width: 24ch;
   font-size: 18px;
   line-height: 1.25;
   color: rgba(255,255,255,.96);
@@ -1554,11 +1555,11 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-meta{
-  margin: 12px 0 0;
+  margin: 0;
   display: block;
   font-size: 13px;
-  line-height: 1.35;
-  color: rgba(255,255,255,.78);
+  line-height: 1.5;
+  color: rgba(255,255,255,.74);
 }
 
 .brief-meta .brief-coverage{
@@ -1566,7 +1567,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-meta .brief-impact{
-  margin: 2px 0 0;
+  margin: 6px 0 0;
 }
 
 .brief-meta strong{
@@ -1580,10 +1581,10 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 .brief-summary{
-  margin: 14px 0 0;
-  max-width: 82ch;
-  line-height: 1.6;
-  color: rgba(255,255,255,.88);
+  margin: 22px 0 0;
+  max-width: 64ch;
+  line-height: 1.72;
+  color: rgba(255,255,255,.86);
 }
 
 /* =========================================================
