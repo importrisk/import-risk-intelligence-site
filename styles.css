@@ -2094,6 +2094,12 @@ select.cs-input:-webkit-autofill:focus{
   color: rgba(255,255,255,.92);
 }
 
+.pricing-card-secondary .pricing-card-term-sub{
+  margin-top: 8px;
+  margin-left: 0;
+  color: rgba(255,255,255,.82);
+}
+
 .pricing-card-divider{
   height: 1px;
   margin: 24px 0 22px;
