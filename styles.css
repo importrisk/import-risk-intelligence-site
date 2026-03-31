@@ -3519,3 +3519,9 @@ select.cs-input:-webkit-autofill:focus{
     margin: 0 auto;
   }
 }
+
+@media (max-width: 760px){
+  section#special-projects{
+    display: none !important;
+  }
+}
