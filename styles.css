@@ -111,7 +111,7 @@ img{ max-width: 100%; height: auto; display: block; }
   height: var(--topbar-h);
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
+  background: rgba(255,0,0,.25);
 }
 
 .topbar-inner{
