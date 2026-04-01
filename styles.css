@@ -332,8 +332,11 @@ img{ max-width: 100%; height: auto; display: block; }
   }
 
   .nav-backdrop{
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 9997;
     background: rgba(0,0,0,.35);
     display: none;
