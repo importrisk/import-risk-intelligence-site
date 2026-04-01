@@ -2033,7 +2033,7 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-top-inner{
   position: relative;
   z-index: 2;
-  padding: 48px 0 34px;
+  padding: 28px 0 34px;
   max-width: 980px;
   text-align: center;
   transform: translateY(-14px);
