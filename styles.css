@@ -2035,7 +2035,7 @@ select.cs-input:-webkit-autofill:focus{
   padding: 28px 0 34px;
   max-width: 980px;
   text-align: center;
-  transform: translateY(-14px);
+  transform: translateY(8px);
 }
 
 .pricing-title{
