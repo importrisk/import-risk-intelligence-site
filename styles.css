@@ -219,46 +219,6 @@ img{ max-width: 100%; height: auto; display: block; }
 }
 .nav-cta:hover{ background: rgba(127,177,234,.72); }
 
-/* Tablet header: two clean rows, no split CTA */
-@media (min-width: 721px) and (max-width: 1100px){
-  :root{
-    --topbar-h: 108px;
-  }
-
-  .topbar-inner{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    align-content: center;
-    row-gap: 10px;
-  }
-
-  .brand{
-    height: auto;
-    align-self: end;
-  }
-
-  .nav{
-    height: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
-    font-size: 12px;
-  }
-
-  .nav-link{
-    height: 34px;
-    padding: 0 8px;
-  }
-
-  .nav-cta{
-    height: 36px;
-    padding: 0 12px;
-  }
-}
-
 /* Hamburger menu (CSS-only “sheet” overlay) <=720px
    Requires sibling order:
    input.nav-toggle + label.hamburger + a.brand + nav.nav + label.nav-backdrop
