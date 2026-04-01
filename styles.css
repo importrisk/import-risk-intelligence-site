@@ -3549,3 +3549,12 @@ select.cs-input:-webkit-autofill:focus{
     display: none !important;
   }
 }
+
+/* Force hide Special Projects on phone */
+@media screen and (max-width: 900px){
+  .pricing-page #special-projects,
+  .pricing-page .pricing-special-projects,
+  .pricing-page .pricing-special-projects-inner{
+    display: none !important;
+  }
+}
