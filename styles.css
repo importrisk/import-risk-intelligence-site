@@ -111,7 +111,7 @@ img{ max-width: 100%; height: auto; display: block; }
   height: var(--topbar-h);
   display: flex;
   align-items: center;
-  background: transparent;
+  background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
 }
 
 .topbar-inner{
@@ -120,7 +120,7 @@ img{ max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
+  background: transparent;
 }
 
 /* Brand */
