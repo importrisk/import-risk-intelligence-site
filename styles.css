@@ -3528,4 +3528,51 @@ select.cs-input:-webkit-autofill:focus{
   }
 }
 
+/* =========================================================
+   TABLET HEADER LAYOUT
+   721px–1100px: brand on first row, nav + CTA on second row
+   ========================================================= */
+@media (min-width: 721px) and (max-width: 1100px){
+  :root{
+    --topbar-h: 112px;
+  }
 
+  .topbar{
+    height: var(--topbar-h);
+  }
+
+  .topbar-inner{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-content: center;
+    row-gap: 12px;
+  }
+
+  .brand{
+    height: auto;
+    align-self: end;
+  }
+
+  .nav{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .nav-link{
+    height: 34px;
+    padding: 0 8px;
+  }
+
+  .nav-cta{
+    height: 38px;
+    padding: 0 12px;
+  }
+}
+\n
