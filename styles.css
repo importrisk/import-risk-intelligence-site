@@ -105,8 +105,7 @@ img{ max-width: 100%; height: auto; display: block; }
    3) TOPBAR / NAV
    ========================================================= */
 .topbar{
-  position: absolute;
-  inset: 0 0 auto 0;
+  position: relative;
   z-index: 5;
   height: var(--topbar-h);
   display: flex;
