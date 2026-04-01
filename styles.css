@@ -3543,3 +3543,9 @@ select.cs-input:-webkit-autofill:focus{
 
 
 /* Force hide Special Projects on phone */
+
+@media (max-width: 760px){
+  .pricing-sidecard{
+    display: none !important;
+  }
+}
