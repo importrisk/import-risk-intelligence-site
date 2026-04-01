@@ -110,7 +110,8 @@ img{ max-width: 100%; height: auto; display: block; }
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-  width: min(var(--container), calc(100% - 40px));
+  width: calc(100% - 40px);
+  max-width: var(--container);
   height: var(--topbar-h);
   display: flex;
   align-items: center;
