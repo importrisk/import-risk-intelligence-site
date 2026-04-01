@@ -3531,3 +3531,25 @@ select.cs-input:-webkit-autofill:focus{
   min-width: 0;
   justify-content: flex-end;
 }
+
+@media (max-width: 1100px){
+  .topbar-inner{
+    min-width: 0;
+  }
+
+  .nav{
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .nav-link{
+    padding: 0 8px;
+  }
+
+  .brand{
+    flex: 0 0 auto;
+  }
+}
+
