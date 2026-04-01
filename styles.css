@@ -3304,7 +3304,7 @@ select.cs-input:-webkit-autofill:focus{
   .hamburger span:nth-child(3){ top: 28px; }
 
   .nav{
-    position: fixed;
+    position: absolute;
     top: var(--topbar-h);
     left: 0;
     right: 0;
@@ -3367,7 +3367,7 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .nav-backdrop{
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 9997;
     background: rgba(0,0,0,.35);
