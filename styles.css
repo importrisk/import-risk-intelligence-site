@@ -3219,7 +3219,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 /* 641–720px: “non-hamburger” layout only */
-@media (min-width: 641px) and (max-width: 720px){
+@media (min-width: 721px) and (max-width: 1100px){
   .topbar-inner{
     justify-content: space-between;
     align-items: flex-start;
@@ -3260,7 +3260,7 @@ select.cs-input:-webkit-autofill:focus{
 .hamburger{ display: none; }
 .nav-backdrop{ display: none; }
 
-@media (max-width: 1100px){
+@media (max-width: 720px){
 
   .topbar{
     left: 0;
