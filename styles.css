@@ -378,6 +378,7 @@ img{ max-width: 100%; height: auto; display: block; }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: calc(var(--topbar-h) + 24px);
   overflow: hidden;
   isolation: isolate;
@@ -1025,6 +1026,7 @@ img{ max-width: 100%; height: auto; display: block; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
 
   height: calc(72vh - 50px);
@@ -1273,6 +1275,7 @@ select.cs-input:-webkit-autofill:focus{
    ========================================================= */
 .policy-hero{
   position: relative;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
   min-height: 260px;
   overflow: hidden;
@@ -1378,6 +1381,7 @@ select.cs-input:-webkit-autofill:focus{
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
   height: 72vh;
   min-height: 600px;
@@ -1986,6 +1990,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .pricing-top{
   position: relative;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
   min-height: 320px;
   overflow: hidden;
@@ -2930,6 +2935,7 @@ select.cs-input:-webkit-autofill:focus{
 
 .client-profile-hero{
   position: relative;
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
   min-height: 440px;
   overflow: hidden;
