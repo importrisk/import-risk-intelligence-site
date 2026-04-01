@@ -1981,7 +1981,6 @@ select.cs-input:-webkit-autofill:focus{
 .pricing-page{
   position: relative;
   color: var(--ink);
-  overflow: hidden;
 }
 
 /* =========================================================
