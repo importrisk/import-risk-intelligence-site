@@ -3535,21 +3535,35 @@ select.cs-input:-webkit-autofill:focus{
 @media (max-width: 1100px){
   .topbar-inner{
     min-width: 0;
+    gap: 12px;
+  }
+
+  .brand{
+    flex: 0 0 auto;
+  }
+
+  .brand-ir{
+    font-size: 22px;
+  }
+
+  .brand-name{
+    font-size: 13px;
   }
 
   .nav{
     flex: 1 1 auto;
     min-width: 0;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 10px;
+    font-size: 12px;
   }
 
   .nav-link{
-    padding: 0 8px;
+    padding: 0 7px;
   }
 
-  .brand{
-    flex: 0 0 auto;
+  .nav-cta{
+    padding: 0 12px;
   }
 }
 
