@@ -2692,13 +2692,6 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
-  #special-projects,
-  .pricing-special-projects,
-  .pricing-special-projects-inner,
-  a[href="#special-projects"]{
-    display: none !important;
-  }
-
   .pricing-top-inner{
     padding: 54px 0 36px;
   }
