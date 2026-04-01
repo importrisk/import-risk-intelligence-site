@@ -110,7 +110,16 @@ img{ max-width: 100%; height: auto; display: block; }
   height: var(--topbar-h);
   display: flex;
   align-items: center;
+  background: transparent;
+}
+
+.topbar::before{
+  content: "";
+  position: absolute;
+  inset: 0;
   background: linear-gradient(180deg, rgba(15,27,43,.22) 0%, rgba(15,27,43,0) 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .topbar-inner{
