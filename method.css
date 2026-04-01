@@ -26,6 +26,7 @@
 .method-hero{
   position: relative;
   min-height: clamp(420px, 56vh, 620px);
+  margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
   padding-bottom: 96px;
   overflow: hidden;
