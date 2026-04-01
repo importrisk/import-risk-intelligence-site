@@ -2676,9 +2676,7 @@ select.cs-input:-webkit-autofill:focus{
 }
 
 @media (max-width: 760px){
-  .pricing-special-projects,
-  #special-projects,
-  .pricing-special-projects-inner{
+  .pricing-sidecard{
     display: none !important;
   }
 
@@ -3247,7 +3245,7 @@ select.cs-input:-webkit-autofill:focus{
   }
 
   .nav-link[href*="#home"]{ grid-column: 1; }
-  .nav-link[href*="method"]{ grid-column: 2; }
+  .nav-link[href*="coverage"]{ grid-column: 2; }
 }
 
 /* Hamburger menu (CSS-only “sheet” overlay) <=720px
