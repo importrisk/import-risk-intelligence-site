@@ -1992,7 +1992,7 @@ select.cs-input:-webkit-autofill:focus{
   position: relative;
   margin-top: calc(-1 * var(--topbar-h));
   padding-top: var(--topbar-h);
-  min-height: 320px;
+  min-height: 420px;
   overflow: hidden;
   isolation: isolate;
   background: transparent;
