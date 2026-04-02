@@ -2472,6 +2472,11 @@ select.cs-input:-webkit-autofill:focus{
   line-height: 1.65;
   color: rgba(255,255,255,.70);
 }
+
+.pricing-support-note + .pricing-support-note{
+  margin-top: 12px;
+}
+
 .pricing-process-strip{
   position: relative;
   margin-top: 28px;
