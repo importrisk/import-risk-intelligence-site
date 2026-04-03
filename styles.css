@@ -2038,34 +2038,9 @@ select.cs-input:-webkit-autofill:focus{
   transform: translateY(8px);
 }
 
-.pricing-title{
-  margin: 0 0 12px;
-  font-size: 46px;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  color: rgba(255,255,255,.97);
-  text-shadow:
-    0 2px 10px rgba(0,0,0,.42),
-    0 14px 30px rgba(0,0,0,.26);
-}
-
 .pricing-intro{
   max-width: 780px;
   margin: 0 auto;
-}
-
-.pricing-subtitle{
-  margin: 0 0 16px;
-  font-size: 18px;
-  line-height: 1.4;
-  color: rgba(255,255,255,.82);
-  text-shadow:
-    0 2px 10px rgba(0,0,0,.42),
-    0 14px 30px rgba(0,0,0,.26);
-}
-
-.pricing-subtitle:last-child{
-  margin-bottom: 0;
 }
 
 /* =========================================================
@@ -2844,14 +2819,6 @@ select.cs-input:-webkit-autofill:focus{
 
   .pricing-top-inner{
     padding: 54px 0 36px;
-  }
-
-  .pricing-title{
-    font-size: 52px;
-  }
-
-  .pricing-subtitle{
-    font-size: 17px;
   }
 
   .pricing-card-featured{
