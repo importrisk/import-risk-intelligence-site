@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services</title>
+  <meta name="description" content="Services and scope options for Import Risk Intelligence." />
+ <link rel="stylesheet" href="/styles.css?v=88" />
+
+</head>
+
+<body>
+  <!-- Top Bar -->
+<header class="topbar">
+  <div class="container topbar-inner">
+
+    <!-- Hamburger toggle (CSS-only) -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu" />
+    <label for="nav-toggle" class="hamburger" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </label>
+
+    <!-- Brand (right side on mobile via CSS next step) -->
+    <a class="brand" href="index.html" aria-label="Import Risk Intelligence">
+      <span class="brand-ir">IR</span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-name">Import Risk Intelligence</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="nav" aria-label="Primary">
+  <a class="nav-link" href="index.html#home">Home</a>
+  <a class="nav-link" href="coverage.html">Coverage</a>
+  <a class="nav-link" href="briefs.html">Alerts & Briefs</a>
+  <a class="nav-link" href="services.html">Services</a>
+  <a class="nav-link nav-cta" href="contact.html#request">Get in Touch</a>
+</nav>
+
+    <!-- Backdrop: tap outside menu to close -->
+    <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+
+  </div>
+</header>
+
+
+  <section class="pricing-page">
+  <section class="pricing-top">
+    <div class="pricing-top-bg" aria-hidden="true"></div>
+
+    <div class="container pricing-top-inner">
+      <h1 class="hero-title">Services</h1>
+
+      <div class="pricing-intro">
+        <p class="hero-subtitle">
+          IRI gives your team focused risk briefs tied to the trade policy, enforcement, and logistics developments most likely to affect landed cost and supply continuity.
+        </p>
+        <p class="hero-subtitle">
+          Built for importers that need actionable intelligence without hiring a dedicated internal risk team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-body">
+    <div class="container pricing-body-inner">
+
+      <style>
+        /* ── Service page: home-page-style two-column layout ── */
+
+        .svc-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 340px;
+          gap: 0 80px;
+          align-items: start;
+        }
+
+        /* Left column: main content */
+        .svc-main {
+          min-width: 0;
+        }
+
+        .svc-intro {
+          margin-bottom: 48px;
+        }
+
+        .svc-intro-heading {
+          margin: 0 0 18px;
+          font-size: 28px;
+          line-height: 1.08;
+          letter-spacing: -0.01em;
+          color: rgba(255,255,255,.96);
+        }
+
+        .svc-intro-text {
+          margin: 0 0 12px;
+          font-size: 16px;
+          line-height: 1.65;
+          color: rgba(255,255,255,.64);
+          max-width: 620px;
+        }
+
+        .svc-intro-bullets {
+          margin: 18px 0 18px;
+          padding: 0 0 0 18px;
+          list-style: none;
+        }
+
+        .svc-intro-bullets li {
+          position: relative;
+          margin: 0 0 10px;
+          font-size: 15px;
+          line-height: 1.65;
+          color: rgba(148,197,255,.88);
+          padding-left: 12px;
+        }
+
+        .svc-intro-bullets li::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: rgba(148,197,255,.88);
+        }
+
+        .svc-intro-fit {
+          margin: 0;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: .03em;
+          color: #8bbcff;
+        }
+
+        /* Process module in sidebar */
+        .svc-sidebar-process {
+          border-top: 1px solid rgba(255,255,255,.08);
+          padding-top: 44px;
+          margin-top: 44px;
+        }
+
+        .svc-sidebar-process-heading {
+          margin: 0 0 28px;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: rgba(148,197,255,.88);
+        }
+
+        .svc-sidebar-process-item {
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+          margin-bottom: 0;
+        }
+
+        .svc-sidebar-process-icon {
+          flex-shrink: 0;
+          width: 24px;
+          height: 24px;
+          margin-top: 1px;
+          color: rgba(148,197,255,.75);
+          transition: color .2s ease;
+        }
+
+        .svc-sidebar-process-item:hover .svc-sidebar-process-icon {
+          color: rgba(148,197,255,.95);
+        }
+
+        .svc-sidebar-process-title {
+          margin: 0 0 6px;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: -.01em;
+          color: rgba(255,255,255,.88);
+        }
+
+        .svc-sidebar-process-text {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.6;
+          color: rgba(255,255,255,.56);
+        }
+
+        .svc-sidebar-process-divider {
+          width: 100%;
+          height: 1px;
+          background: rgba(255,255,255,.06);
+          margin: 12px 0;
+        }
+
+        /* Engagement sections */
+        .svc-engagements {
+          margin-bottom: 0;
+        }
+
+        .svc-engagement {
+          padding: 44px 0;
+          border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+
+        .svc-engagement-num {
+          margin: 0 0 16px;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,.28);
+        }
+
+        .svc-engagement-title {
+          margin: 0 0 14px;
+          font-size: 22px;
+          line-height: 1.1;
+          letter-spacing: -0.01em;
+          color: rgba(255,255,255,.96);
+        }
+
+        .svc-engagement-text {
+          margin: 0 0 12px;
+          font-size: 15px;
+          line-height: 1.65;
+          color: rgba(255,255,255,.64);
+          max-width: 600px;
+        }
+
+        .svc-engagement-scope {
+          margin: 16px 0 6px;
+          font-size: 17px;
+          font-weight: 600;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: rgba(148,197,255,.88);
+        }
+
+        .svc-engagement-scope-main {
+          margin: 16px 0 6px;
+          font-size: 17px;
+          font-weight: 600;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: rgba(148,197,255,.88);
+        }
+
+        .svc-engagement-scope-sub {
+          margin: 0 0 14px;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.5;
+          color: rgba(255,255,255,.52);
+        }
+
+        .svc-engagement-fit {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.65;
+          color: rgba(255,255,255,.64);
+          max-width: 580px;
+        }
+
+        /* Right sidebar */
+        .svc-sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+        }
+
+        .svc-sidebar-panel {
+          padding: 0;
+          border: none;
+          background: transparent;
+        }
+
+        .svc-sidebar-panel:first-child {
+          padding-top: 44px;
+          border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        /* Request scope widget */
+        .svc-sidebar-widget {
+          padding: 24px;
+          margin: 0;
+          border: 1px solid rgba(255,255,255,.12);
+          background: rgba(20, 32, 48, .72);
+          border-top: 1px solid rgba(255,255,255,.08);
+          padding-top: 24px;
+        }
+
+        .svc-sidebar-widget-heading {
+          margin: 12px 0 14px;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          color: rgba(255,255,255,.94);
+        }
+
+        .svc-sidebar-widget-body {
+          margin: 0 0 18px;
+          font-size: 13px;
+          line-height: 1.6;
+          color: rgba(255,255,255,.64);
+        }
+
+        /* Widget form */
+        .svc-sidebar-form {
+          margin: 18px 0 0;
+        }
+
+        .svc-form-row {
+          margin: 0 0 12px;
+        }
+
+        .svc-form-label {
+          display: block;
+          margin: 0 0 6px;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: .05em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,.72);
+        }
+
+        .svc-form-input,
+        .svc-form-textarea {
+          width: 100%;
+          padding: 9px 10px;
+          border-radius: 0;
+          border: 1px solid rgba(255,255,255,.12);
+          background: rgba(0,0,0,.12);
+          color: rgba(255,255,255,.92);
+          font-size: 13px;
+          font-family: inherit;
+          outline: none;
+        }
+
+        .svc-form-input:focus,
+        .svc-form-textarea:focus {
+          border-color: rgba(127,177,234,.45);
+          box-shadow: 0 0 0 2px rgba(127,177,234,.12);
+        }
+
+        .svc-form-input:-webkit-autofill,
+        .svc-form-input:-webkit-autofill:hover,
+        .svc-form-input:-webkit-autofill:focus,
+        .svc-form-textarea:-webkit-autofill,
+        .svc-form-textarea:-webkit-autofill:hover,
+        .svc-form-textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: rgba(255,255,255,.92);
+          -webkit-box-shadow: 0 0 0 1000px rgba(255,255,255,.04) inset;
+          box-shadow: 0 0 0 1000px rgba(255,255,255,.04) inset;
+          caret-color: rgba(255,255,255,.92);
+          transition: background-color 9999s ease-in-out 0s;
+        }
+
+        .svc-form-button {
+          width: 100%;
+          height: 40px;
+          padding: 0 14px;
+          margin: 12px 0 0;
+          border-radius: 0;
+          border: 1px solid rgba(127,177,234,.45);
+          background: rgba(127,177,234,.18);
+          color: rgba(255,255,255,.92);
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          cursor: pointer;
+          transition: background .2s ease;
+        }
+
+        .svc-form-button:hover {
+          background: rgba(127,177,234,.24);
+        }
+
+        .svc-form-button:disabled {
+          opacity: .65;
+          cursor: not-allowed;
+        }
+
+        .svc-form-status {
+          margin: 10px 0 -5px;
+          font-size: 12px;
+          line-height: 1.5;
+          color: rgba(255,255,255,.56);
+          min-height: 1.5em;
+        }
+
+        .svc-sidebar-widget-reassurance {
+          margin: 12px 0 0;
+          font-size: 12px;
+          line-height: 1.5;
+          color: rgba(255,255,255,.48);
+        }
+
+        .svc-sidebar-kicker {
+          margin: 0 0 14px;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,.38);
+        }
+
+        .svc-sidebar-text {
+          margin: 0 0 18px;
+          font-size: 14px;
+          line-height: 1.7;
+          color: rgba(255,255,255,.52);
+        }
+
+        .svc-sidebar-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgba(127,177,234,.88);
+          text-decoration: none;
+          border-bottom: 1px solid rgba(127,177,234,.20);
+          padding-bottom: 2px;
+          transition: color .15s ease, gap .15s ease, border-color .15s ease;
+        }
+
+        .svc-sidebar-cta:hover {
+          color: rgba(160,200,255,.96);
+          gap: 9px;
+          border-bottom-color: rgba(160,200,255,.40);
+        }
+
+        /* Reality panel in sidebar */
+        .svc-sidebar-reality {
+          border-top: 1px solid rgba(255,255,255,.08);
+          padding-top: 44px;
+          margin-top: 24px;
+        }
+
+        .svc-sidebar-reality-intro {
+          margin: 0 0 4px;
+          font-size: 13px;
+          line-height: 1.35;
+          color: rgba(255,255,255,.48);
+        }
+
+        .svc-sidebar-reality-number {
+          margin: 0 0 6px;
+          font-size: 28px;
+          font-weight: 800;
+          letter-spacing: -0.01em;
+          line-height: 1.1;
+          color: rgba(148,197,255,.56);
+        }
+
+        .svc-sidebar-reality-subtext {
+          margin: 0 0 18px;
+          font-size: 12px;
+          line-height: 1.5;
+          color: rgba(255,255,255,.36);
+        }
+
+        .svc-sidebar-reality-divider {
+          width: 32px;
+          height: 1px;
+          background: rgba(255,255,255,.12);
+          margin: 16px 0;
+        }
+
+        .svc-sidebar-reality-statement {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.6;
+          color: rgba(255,255,255,.40);
+        }
+
+        .svc-sidebar-reality-highlight {
+          display: block;
+          margin-top: 6px;
+          font-size: 14px;
+          font-weight: 700;
+          color: rgba(148,197,255,.88);
+        }
+
+        .svc-sidebar-reality-closing {
+          margin: 0 0 8px;
+          font-size: 12px;
+          line-height: 1.5;
+          color: rgba(255,255,255,.34);
+        }
+
+        .svc-sidebar-reality-closing:last-child {
+          margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1020px) {
+          .svc-wrapper {
+            grid-template-columns: 1fr;
+            gap: 52px 0;
+          }
+          .svc-sidebar {
+            flex-direction: row;
+            gap: 40px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,.08);
+          }
+          .svc-sidebar-panel {
+            flex: 1;
+            padding: 0 !important;
+            border: none !important;
+          }
+          .svc-sidebar-panel:first-child {
+            border-top: none !important;
+            padding-top: 0 !important;
+          }
+          .svc-sidebar-widget {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-top: none !important;
+            padding-top: 20px !important;
+            margin: 0;
+          }
+          .svc-sidebar-reality {
+            border-top: none !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+          .svc-sidebar-process {
+            border-top: none !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .svc-sidebar {
+            flex-direction: column;
+            gap: 32px;
+          }
+          .svc-sidebar-panel {
+            flex: none;
+          }
+          .svc-sidebar-widget {
+            border-top: 1px solid rgba(255,255,255,.08) !important;
+            padding-top: 24px !important;
+            margin-top: 32px !important;
+          }
+          .svc-sidebar-reality {
+            border-top: 1px solid rgba(255,255,255,.08) !important;
+            padding-top: 32px !important;
+            margin-top: 32px !important;
+          }
+          .svc-sidebar-process {
+            border-top: 1px solid rgba(255,255,255,.08) !important;
+            padding-top: 32px !important;
+            margin-top: 32px !important;
+          }
+        }
+      </style>
+
+      <!-- Two-column wrapper -->
+      <div class="svc-wrapper">
+
+        <!-- Left column: main content -->
+        <div class="svc-main">
+
+          <!-- Intro -->
+          <section class="svc-intro">
+            <h2 class="svc-intro-heading">Engagement options</h2>
+            <p class="svc-intro-text">
+              Choose focused risk work for a defined question, or retained coverage for ongoing import risk monitoring.
+            </p>
+            <ul class="svc-intro-bullets">
+              <li>Human analyzed import risk intelligence, delivered by email in PDF format.</li>
+              <li>No SaaS platform, systems integration, or internal training required.</li>
+              <li>Best fit for mid-market U.S. importers with $50M to $1.5B in annual revenue.</li>
+            </ul>
+          </section>
+
+          <!-- Engagement sections -->
+          <div class="svc-engagements" role="list">
+
+            <!-- 01 Targeted Import Risk Review Briefs -->
+            <article class="svc-engagement" role="listitem">
+              <p class="svc-engagement-num">01 / Focused engagement</p>
+              <h3 class="svc-engagement-title">Targeted Import Risk Reviews</h3>
+              <p class="svc-engagement-text">
+                For one defined import risk question, sourcing lane, supplier exposure, tariff issue, enforcement concern, product category, or management decision.
+              </p>
+              <p class="svc-engagement-scope-main">FOCUSED REVIEWS FROM $1,500</p>
+              <p class="svc-engagement-scope-sub">Fees typically range from $1,500 to $4,000 depending on issue complexity, urgency, and depth of analysis.</p>
+              <p class="svc-engagement-fit">
+                Best for urgent questions, board prep, supplier reviews, sourcing decisions, cost exposure reviews, or validating a risk before committing to ongoing coverage.
+              </p>
+            </article>
+
+            <!-- 02 Retained Coverage -->
+            <article class="svc-engagement" role="listitem">
+              <p class="svc-engagement-num">02 / Retained engagement</p>
+              <h3 class="svc-engagement-title">Ongoing Risk Coverage</h3>
+              <p class="svc-engagement-text">
+                Continuous monitoring across the external risk domains most likely to affect landed cost, timing, compliance, and supply continuity.
+              </p>
+              <p class="svc-engagement-scope">Starting at $4,000 per month</p>
+              <p class="svc-engagement-scope-sub">Typically $4,000 to $6,000 per month based on import profile. No long term commitment.</p>
+              <p class="svc-engagement-fit">
+                Best for importers that need ongoing visibility across tariffs, customs enforcement, sanctions, labor, ports and lanes, severe weather, geopolitics, and related operational risk.
+              </p>
+            </article>
+
+            <!-- 03 Custom Scoped Work -->
+            <article class="svc-engagement" role="listitem">
+              <p class="svc-engagement-num">03 / Special services</p>
+              <h3 class="svc-engagement-title">Custom Scoped Risk Coverage</h3>
+              <p class="svc-engagement-text">
+                For ongoing coverage of a defined import risk area, without the cost or scope of a full retained program.
+              </p>
+              <p class="svc-engagement-scope">Defined coverage from $1,500 per month</p>
+              <p class="svc-engagement-scope-sub">Typically $1500 to $2500 depending on scope.</p>
+              <p class="svc-engagement-fit">
+                Usual focus areas include tariff changes, customs enforcement, country risk, supplier exposure, sourcing regions, product categories, or high value trade lanes.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Right sidebar -->
+        <aside class="svc-sidebar">
+
+          <!-- Request scope widget -->
+          <div class="svc-sidebar-widget">
+            <p class="svc-sidebar-kicker">Start a conversation</p>
+            <h3 class="svc-sidebar-widget-heading">Ask about fit</h3>
+
+            <form class="svc-sidebar-form" action="https://formspree.io/f/maqdnvve" method="POST">
+              <input type="hidden" name="_subject" value="IRI services inquiry">
+              <input type="text" name="_gotcha" style="display:none">
+
+              <div class="svc-form-row">
+                <label class="svc-form-label" for="svc-name">Name</label>
+                <input class="svc-form-input" id="svc-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="svc-form-row">
+                <label class="svc-form-label" for="svc-email">Work email</label>
+                <input class="svc-form-input" id="svc-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="svc-form-row">
+                <label class="svc-form-label" for="svc-company">Company</label>
+                <input class="svc-form-input" id="svc-company" name="company" type="text" autocomplete="organization" required />
+              </div>
+
+              <div class="svc-form-row">
+                <label class="svc-form-label" for="svc-message">Message</label>
+                <textarea class="svc-form-textarea" id="svc-message" name="message" rows="4" required></textarea>
+              </div>
+
+              <button class="svc-form-button" type="submit">Send message</button>
+              <p class="svc-form-status" id="svc-form-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="svc-sidebar-widget-reassurance">No sales call required. I'll reply by email.</p>
+          </div>
+
+          <!-- Process module -->
+          <div class="svc-sidebar-panel svc-sidebar-process">
+            <p class="svc-sidebar-process-heading">Designed to respect your time</p>
+
+            <div class="svc-sidebar-process-item">
+              <svg class="svc-sidebar-process-icon" viewBox="0 0 24 24" width="24" height="24">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="10" r="1.2" fill="currentColor"/>
+                <circle cx="15" cy="10" r="1.2" fill="currentColor"/>
+                <path d="M8 15c1.5 2 3 2.5 4 2.5s2.5-.5 4-2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h5 class="svc-sidebar-process-title">No sales calls or pitch decks</h5>
+                <p class="svc-sidebar-process-text">No calls or deck walkthroughs required unless you want one.</p>
+              </div>
+            </div>
+
+            <div class="svc-sidebar-process-divider"></div>
+
+            <div class="svc-sidebar-process-item">
+              <svg class="svc-sidebar-process-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9 14 12 11 15 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <h5 class="svc-sidebar-process-title">Short intake</h5>
+                <p class="svc-sidebar-process-text">Import profile intake takes less than 10 minutes. No systems integration setup or training needed.</p>
+              </div>
+            </div>
+
+            <div class="svc-sidebar-process-divider"></div>
+
+            <div class="svc-sidebar-process-item">
+              <svg class="svc-sidebar-process-icon" viewBox="0 0 24 24" width="24" height="24">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <h5 class="svc-sidebar-process-title">Fast turnaround</h5>
+                <p class="svc-sidebar-process-text">Retained coverage can begin within 48 hours. Focused briefs are typically delivered in 3 to 5 business days.</p>
+              </div>
+            </div>
+
+            <div class="svc-sidebar-process-divider"></div>
+
+            <div class="svc-sidebar-process-item">
+              <svg class="svc-sidebar-process-icon" viewBox="0 0 24 24" width="24" height="24">
+                <rect x="3" y="4" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 2v4M8 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <div>
+                <h5 class="svc-sidebar-process-title">No long term commitments</h5>
+                <p class="svc-sidebar-process-text">No long term contracts required. Cancel at any time.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reality panel -->
+          <div class="svc-sidebar-panel svc-sidebar-reality">
+            <p class="svc-sidebar-kicker">Reality of an internal risk team</p>
+            <p class="svc-sidebar-reality-intro">Even a lean setup could easily cost</p>
+            <p class="svc-sidebar-reality-number">$150k–$200k+</p>
+            <p class="svc-sidebar-reality-subtext">per year to build internally</p>
+            <div class="svc-sidebar-reality-divider"></div>
+            <p class="svc-sidebar-reality-statement">
+              Most tools generate alert volume.<br>
+              <span class="svc-sidebar-reality-highlight">IRI delivers leadership visibility.</span>
+            </p>
+            <div class="svc-sidebar-reality-divider"></div>
+            <p class="svc-sidebar-reality-closing">
+              Actionable intelligence without added headcount or another SaaS platform.
+            </p>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+    <script>
+      (function () {
+        const form = document.querySelector(".svc-sidebar-form");
+        const statusEl = document.getElementById("svc-form-status");
+        if (!form || !statusEl) return;
+
+        const btn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          if (btn) btn.disabled = true;
+          statusEl.textContent = "Sending…";
+
+          try {
+            const res = await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+              headers: { "Accept": "application/json" }
+            });
+
+            if (res.ok) {
+              form.reset();
+              statusEl.textContent = "Thank you. I'll reply by email shortly.";
+            } else {
+              let msg = "Couldn't send that. Please email coverage@importriskreport.com.";
+              try {
+                const data = await res.json();
+                if (data && data.errors && data.errors.length) {
+                  msg = data.errors[0].message || msg;
+                }
+              } catch (_) {}
+              statusEl.textContent = msg;
+            }
+          } catch (err) {
+            statusEl.textContent = "Connection issue. Please try again or email coverage@importriskreport.com.";
+          } finally {
+            if (btn) btn.disabled = false;
+          }
+        });
+      })();
+    </script>
+  </section>
+</section>
+
+
+  <footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <div class="footer-brandline">
+        <a href="./" class="footer-home-link" aria-label="Import Risk Intelligence home">
+          <span class="footer-ir">IR</span>
+          <span class="footer-pipe">|</span>
+          Import Risk Intelligence
+        </a>
+      </div>
+
+      <p class="footer-desc">
+        Independent external risk analysis for U.S. importers.<br />
+        Focused on judgment, relevance, and decision support.
+      </p>
+
+      <p class="footer-legal">
+        Informational purposes only. Not legal advice.
+        No warranties, express or implied.
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="./">Home</a>
+      <a href="./coverage.html">Coverage</a>
+      <a href="./briefs.html">Alerts & Briefs</a>
+      <a href="./services.html">Services</a>
+      <a href="./contact.html">Get in Touch</a>
+      <a href="./privacy.html">Privacy Policy</a>
+    </nav>
+
+      <div class="footer-meta">
+        <span class="footer-label">Email:</span>
+        <a class="footer-email js-email"
+           data-user="coverage"
+           data-domain="importriskreport.com"
+           href="#">
+          coverage@importriskreport.com
+        </a>
+      </div>
+
+      <div class="footer-copy">
+        © <span id="year"></span> Import Risk Intelligence
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+  <!-- Footer year -->
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Email obfuscation: render mailto via JS -->
+  <script>
+    (function () {
+      document.querySelectorAll(".js-email").forEach((a) => {
+        const user = a.getAttribute("data-user");
+        const domain = a.getAttribute("data-domain");
+        if (!user || !domain) return;
+        const email = `${user}@${domain}`;
+        a.textContent = email;
+        a.href = `mailto:${email}`;
+        a.rel = "nofollow";
+      });
+    })();
+  </script>
+</body>
+</html>
